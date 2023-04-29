@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "county-cricket-live"
+version = "0.1.0"
+description = ""
+authors = ["Paul Bailey <bailey@dreamshake.net>"]
+readme = "README.md"
+packages = [{include = "script"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+google-api-python-client = "^2.86.0"
+google-auth-oauthlib = "^1.0.0"
+google-auth-httplib2 = "^0.1.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+ruff = "^0.0.263"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
