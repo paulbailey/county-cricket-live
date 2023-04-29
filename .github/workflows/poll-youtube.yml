@@ -25,6 +25,7 @@ jobs:
           cache: poetry
       - name: Test Poetry environment
         run: |
+          poetry install
           poetry run python script/download.py
   deploy:
     needs: find-videos
