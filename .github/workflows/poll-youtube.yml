@@ -23,10 +23,10 @@ jobs:
         with:
           python-version: "3.10"
           cache: poetry
-      - name: Test Poetry environment
-        run: |
-          poetry install
-          poetry run python script/download.py
+      - name: Setup poetry environment
+        run: poetry install
+      - name: Fetch videos
+        run: poetry run python script/download.py
   deploy:
     needs: find-videos
     environment:
