@@ -28,6 +28,7 @@ jobs:
         run: |
           poetry run python --version
   deploy:
+    needs: find-videos
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
