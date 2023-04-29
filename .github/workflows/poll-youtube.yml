@@ -2,7 +2,10 @@ name: YouTube playlist polling
 on:
   schedule:
     - cron: '5/10 * * * *'
-on: [push]
+  push:
+    branches:
+      - main
+
 jobs:
   find-videos:
     runs-on: ubuntu-latest
