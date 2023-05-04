@@ -24,6 +24,7 @@ with open("channels.json") as json_counties:
             playlistId=live_playlist_id
         )
         live_videos_response = live_videos_request.execute()
+        print(live_videos_response)
         live_videos = live_videos_response['items']
         live_video_ids = [video['contentDetails']['videoId'] for video in live_videos]
 
