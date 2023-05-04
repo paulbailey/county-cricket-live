@@ -1,9 +1,11 @@
+import json
 import os
 
 from googleapiclient.discovery import build
 
-if "GOOGLE_API_KEY" in os.environ and os.environ["GOOGLE_API_KEY"] != "":
-    print("API key present")
+with open("counties.json") as json_counties:
+    counties = json.load(json_counties)
     youtube_service = build("youtube", "v3",developerKey=os.environ["GOOGLE_API_KEY"])
-print("Hello world")
-
+    for county in counties:
+        print(f"{county['name']} - {county['youtubeChannelId']}")
+    youtube_service.close()
