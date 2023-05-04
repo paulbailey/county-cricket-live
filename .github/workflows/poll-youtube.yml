@@ -26,6 +26,8 @@ jobs:
       - name: Setup poetry environment
         run: poetry install
       - name: Fetch videos
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: poetry run python script/download.py
   deploy:
     needs: find-videos
