@@ -16,7 +16,9 @@
             src="https://www.youtube.com/embed/live_stream?channel=UCT1aGQpOXmqSHH63xvxn1TA?enablejsapi=1"
             frameborder="0" allowfullscreen></iframe>
         <script>
-            player = new YT.Player('northants', {});
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('northants', {});
+            }
         </script>
         Derbyshire<iframe width="560" height="315"
             src="https://www.youtube.com/embed/live_stream?channel=UCdsIWgLpXJZowUJvvh4gDoA" frameborder="0"
