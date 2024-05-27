@@ -19,7 +19,15 @@
                 player = new YT.Player('player', {
                     height: '390',
                     width: '640',
-                    videoId: 'live_stream?channel=UCT1aGQpOXmqSHH63xvxn1TA', // Replace with your video ID or use the live stream link
+                    // Using the channel URL for live stream
+                    videoId: '',
+                    playerVars: {
+                        'listType': 'search',
+                        'list': 'Live',
+                        'channelId': 'UCT1aGQpOXmqSHH63xvxn1TA', // Replace with your channel ID
+                        'autoplay': 1,
+                        'mute': 1
+                    },
                     events: {
                         'onError': onPlayerError,
                         'onReady': onPlayerReady
