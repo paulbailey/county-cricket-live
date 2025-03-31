@@ -13,15 +13,16 @@
       "channelName": "Gloucestershire County Cricket Club",
       "description": "Gloucestershire host Leeds-Bradford UCCE in an ECB Friendly. Watch our test stream live from the Seat Unique Stadium, Bristol.\n\n#BecomeGlorious",
       "publishedAt": "2025-03-31T08:47:04Z"
-    },
-    {
-      "videoId": "6MJt--Sap1I",
-      "title": "\ud83c\udfa5 DAY TWO STREAM (\ud83d\udd07) | Kent vs. Loughborough UCCE",
-      "channelName": "Kent County Cricket Club",
-      "description": "\ud83c\udfdf\ufe0f Live pre-season action from The Spitfire Ground, St Lawrence.\n\nTHERE IS NO SOUND ON THIS STREAM.\n\n\ud83c\udf9f\ufe0f Get your 2025 Rothesay County Championship tickets today at tickets.kentcricket.co.uk",
-      "publishedAt": "2025-03-30T17:05:57Z"
     }
   ],
-  "upcomingMatches": [],
-  "lastChanged": "2025-03-31T17:05:45.638297+00:00"
+  "upcomingMatches": [
+    {
+      "videoId": "IiV1bD2rGJc",
+      "title": "\ud83c\udfa5 DAY THREE STREAM (\ud83d\udd07) | Kent vs. Loughborough UCCE",
+      "channelName": "Kent County Cricket Club",
+      "description": "\ud83c\udfdf\ufe0f Live pre-season action from The Spitfire Ground, St Lawrence.\n\nTHERE IS NO SOUND ON THIS STREAM.\n\n\ud83c\udf9f\ufe0f Get your 2025 Rothesay County Championship tickets today at tickets.kentcricket.co.uk",
+      "scheduledStartTime": "2025-04-01T09:45:00Z"
+    }
+  ],
+  "lastChanged": "2025-03-31T17:22:32.231168+00:00"
 }
