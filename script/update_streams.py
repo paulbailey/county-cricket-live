@@ -17,72 +17,112 @@ def load_channels():
 def get_live_streams(channels):
     live_streams = []
     upcoming_matches = []
+    all_video_ids = []
 
+    # Get live and upcoming streams for each channel
     for channel in channels:
         try:
-            # Get channel's live streams
-            request = youtube.search().list(
-                part="snippet",
-                channelId=channel["youtubeChannelId"],
-                eventType="live",
-                type="video",
-                maxResults=5,
+            print(f"\nChecking channel: {channel['name']}")
+
+            # First get the channel's playlists
+            channel_request = youtube.channels().list(
+                part="contentDetails", id=channel["youtubeChannelId"]
             )
-            response = request.execute()
+            channel_response = channel_request.execute()
 
-            for item in response.get("items", []):
-                video_id = item["id"]["videoId"]
-                snippet = item["snippet"]
+            if not channel_response.get("items"):
+                print(f"No channel found for {channel['name']}")
+                continue
 
-                stream_data = {
-                    "videoId": video_id,
-                    "title": snippet["title"],
-                    "channelName": channel["name"],
-                    "description": snippet["description"],
-                    "publishedAt": snippet["publishedAt"],
-                }
-                live_streams.append(stream_data)
+            playlists = channel_response["items"][0]["contentDetails"][
+                "relatedPlaylists"
+            ]
 
-            # Get channel's upcoming streams
-            request = youtube.search().list(
-                part="snippet",
-                channelId=channel["youtubeChannelId"],
-                eventType="upcoming",
-                type="video",
-                maxResults=5,
-            )
-            response = request.execute()
-
-            for item in response.get("items", []):
-                video_id = item["id"]["videoId"]
-                snippet = item["snippet"]
-
-                # Get video details to get scheduled start time
-                video_request = youtube.videos().list(
-                    part="liveStreamingDetails", id=video_id
+            # Get live streams
+            if "live" in playlists:
+                live_playlist_request = youtube.playlistItems().list(
+                    part="contentDetails",
+                    playlistId=playlists["live"],
+                    maxResults=50,  # Maximum allowed
                 )
-                video_response = video_request.execute()
+                live_playlist_response = live_playlist_request.execute()
 
-                if video_response["items"]:
-                    live_details = video_response["items"][0].get(
-                        "liveStreamingDetails", {}
-                    )
-                    scheduled_start = live_details.get("scheduledStartTime")
+                for item in live_playlist_response.get("items", []):
+                    all_video_ids.append(item["contentDetails"]["videoId"])
+                print(
+                    f"Found {len(live_playlist_response.get('items', []))} live videos"
+                )
 
-                    if scheduled_start:
-                        match_data = {
-                            "videoId": video_id,
-                            "title": snippet["title"],
-                            "channelName": channel["name"],
-                            "description": snippet["description"],
-                            "scheduledStartTime": scheduled_start,
-                        }
-                        upcoming_matches.append(match_data)
+            # Get upcoming streams
+            if "upcoming" in playlists:
+                upcoming_playlist_request = youtube.playlistItems().list(
+                    part="contentDetails",
+                    playlistId=playlists["upcoming"],
+                    maxResults=50,  # Maximum allowed
+                )
+                upcoming_playlist_response = upcoming_playlist_request.execute()
+
+                for item in upcoming_playlist_response.get("items", []):
+                    all_video_ids.append(item["contentDetails"]["videoId"])
+                print(
+                    f"Found {len(upcoming_playlist_response.get('items', []))} upcoming videos"
+                )
 
         except HttpError as e:
             print(f'Error fetching data for {channel["name"]}: {e}')
             continue
 
+    print(f"\nTotal videos found: {len(all_video_ids)}")
+
+    # Get video details in batches of 50 (YouTube API limit)
+    for i in range(0, len(all_video_ids), 50):
+        batch = all_video_ids[i : i + 50]
+        try:
+            video_request = youtube.videos().list(
+                part="snippet,liveStreamingDetails", id=",".join(batch)
+            )
+            video_response = video_request.execute()
+
+            for item in video_response.get("items", []):
+                video_id = item["id"]
+                snippet = item["snippet"]
+                live_details = item.get("liveStreamingDetails", {})
+
+                if live_details.get("actualStartTime"):  # Live stream
+                    print(f"Found live stream: {snippet['title']}")
+                    stream_data = {
+                        "videoId": video_id,
+                        "title": snippet["title"],
+                        "channelName": next(
+                            ch["name"]
+                            for ch in channels
+                            if ch["youtubeChannelId"] == snippet["channelId"]
+                        ),
+                        "description": snippet["description"],
+                        "publishedAt": snippet["publishedAt"],
+                    }
+                    live_streams.append(stream_data)
+                elif live_details.get("scheduledStartTime"):  # Upcoming stream
+                    print(f"Found upcoming stream: {snippet['title']}")
+                    match_data = {
+                        "videoId": video_id,
+                        "title": snippet["title"],
+                        "channelName": next(
+                            ch["name"]
+                            for ch in channels
+                            if ch["youtubeChannelId"] == snippet["channelId"]
+                        ),
+                        "description": snippet["description"],
+                        "scheduledStartTime": live_details["scheduledStartTime"],
+                    }
+                    upcoming_matches.append(match_data)
+
+        except HttpError as e:
+            print(f"Error fetching video details: {e}")
+            continue
+
+    print(f"\nTotal live streams found: {len(live_streams)}")
+    print(f"Total upcoming streams found: {len(upcoming_matches)}")
     return live_streams, upcoming_matches
 
 

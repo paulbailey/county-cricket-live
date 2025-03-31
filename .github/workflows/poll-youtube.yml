@@ -2,10 +2,10 @@ name: Poll YouTube for Live Streams
 
 on:
   schedule:
-    - cron: '55 8-20 * * *'  # At 55 minutes past every hour from 8am to 8pm
-    - cron: '10 9-21 * * *'  # At 10 minutes past every hour from 9am to 9pm
-    - cron: '25 8-20 * * *'  # At 25 minutes past every hour from 8am to 8pm
-    - cron: '40 8-20 * * *'  # At 40 minutes past every hour from 8am to 8pm
+    - cron: '0 8-20 * * *'  # At the start of every hour from 8am to 8pm
+    - cron: '15 8-20 * * *'  # At 15 minutes past every hour from 8am to 8pm
+    - cron: '30 8-20 * * *'  # At 30 minutes past every hour from 8am to 8pm
+    - cron: '45 8-20 * * *'  # At 45 minutes past every hour from 8am to 8pm
   workflow_dispatch:  # Allow manual trigger
 
 permissions:
