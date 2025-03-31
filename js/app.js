@@ -1,6 +1,7 @@
 // Alpine.js app
 function streamApp() {
     return {
+        autoplayEnabled: false,
         liveStreams: [],
         upcomingMatches: [],
         players: new Map(),

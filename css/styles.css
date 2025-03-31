@@ -67,3 +67,13 @@ body {
         transform: translateX(100%);
     }
 }
+
+/* Toggle switch styles */
+input:checked~.block {
+    background-color: #48bb78;
+}
+
+input:checked~.dot {
+    transform: translateX(16px);
+    /* Move the dot to the right by the width of the track minus the dot width */
+}
