@@ -26,7 +26,7 @@ def get_live_streams(channels):
                 f"\nChecking channel: {channel['name']} ({channel['youtubeChannelId']})"
             )
 
-            # First get the channel's playlists
+            # First get the channel's uploads playlist ID
             channel_request = youtube.channels().list(
                 part="contentDetails", id=channel["youtubeChannelId"]
             )
@@ -36,56 +36,32 @@ def get_live_streams(channels):
                 print(f"No channel found for {channel['name']}")
                 continue
 
-            playlists = channel_response["items"][0]["contentDetails"][
+            uploads_playlist_id = channel_response["items"][0]["contentDetails"][
                 "relatedPlaylists"
-            ]
-            print(f"Found playlists: {list(playlists.keys())}")
+            ]["uploads"]
+            print(f"Found uploads playlist ID: {uploads_playlist_id}")
 
-            # Get live streams
-            if "live" in playlists:
-                live_playlist_request = youtube.playlistItems().list(
-                    part="contentDetails",
-                    playlistId=playlists["live"],
-                    maxResults=50,  # Maximum allowed
-                )
-                live_playlist_response = live_playlist_request.execute()
+            # Get videos from uploads playlist
+            playlist_request = youtube.playlistItems().list(
+                part="contentDetails",
+                playlistId=uploads_playlist_id,
+                maxResults=50,  # Maximum allowed
+            )
+            playlist_response = playlist_request.execute()
 
-                for item in live_playlist_response.get("items", []):
-                    all_video_ids.append(item["contentDetails"]["videoId"])
+            for item in playlist_response.get("items", []):
+                all_video_ids.append(item["contentDetails"]["videoId"])
+            print(
+                f"Found {len(playlist_response.get('items', []))} videos in uploads playlist"
+            )
+            if playlist_response.get("items"):
                 print(
-                    f"Found {len(live_playlist_response.get('items', []))} live videos"
+                    "Video IDs:",
+                    [
+                        item["contentDetails"]["videoId"]
+                        for item in playlist_response["items"]
+                    ],
                 )
-                if live_playlist_response.get("items"):
-                    print(
-                        "Live video IDs:",
-                        [
-                            item["contentDetails"]["videoId"]
-                            for item in live_playlist_response["items"]
-                        ],
-                    )
-
-            # Get upcoming streams
-            if "upcoming" in playlists:
-                upcoming_playlist_request = youtube.playlistItems().list(
-                    part="contentDetails",
-                    playlistId=playlists["upcoming"],
-                    maxResults=50,  # Maximum allowed
-                )
-                upcoming_playlist_response = upcoming_playlist_request.execute()
-
-                for item in upcoming_playlist_response.get("items", []):
-                    all_video_ids.append(item["contentDetails"]["videoId"])
-                print(
-                    f"Found {len(upcoming_playlist_response.get('items', []))} upcoming videos"
-                )
-                if upcoming_playlist_response.get("items"):
-                    print(
-                        "Upcoming video IDs:",
-                        [
-                            item["contentDetails"]["videoId"]
-                            for item in upcoming_playlist_response["items"]
-                        ],
-                    )
 
         except HttpError as e:
             print(f'Error fetching data for {channel["name"]}: {e}')
@@ -109,6 +85,7 @@ def get_live_streams(channels):
 
                 print(f"\nChecking video: {snippet['title']}")
                 print(f"Video ID: {video_id}")
+                print(f"Published at: {snippet['publishedAt']}")
                 print(f"Live details: {json.dumps(live_details, indent=2)}")
 
                 if live_details.get("actualStartTime"):  # Live stream
