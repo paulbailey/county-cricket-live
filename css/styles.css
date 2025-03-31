@@ -38,19 +38,6 @@ body {
     background: #555;
 }
 
-/* Dark mode scrollbar */
-.dark ::-webkit-scrollbar-track {
-    background: #1f2937;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-    background: #4b5563;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-    background: #6b7280;
-}
-
 /* Stream card hover effects */
 .stream-card {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -89,12 +76,4 @@ body {
     100% {
         transform: translateX(100%);
     }
-}
-
-/* Dark mode loading animation */
-.dark .loading::after {
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.1),
-            transparent);
 }

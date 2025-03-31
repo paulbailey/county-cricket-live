@@ -1,19 +1,3 @@
-// Dark mode functionality
-const themeToggle = document.getElementById('theme-toggle');
-const html = document.documentElement;
-
-// Check for saved theme preference
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    html.classList.add('dark');
-} else {
-    html.classList.remove('dark');
-}
-
-themeToggle.addEventListener('click', () => {
-    html.classList.toggle('dark');
-    localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
-});
-
 // Stream data loading
 async function loadStreamData() {
     try {
@@ -40,7 +24,7 @@ function updateStreams(data) {
             liveStreamsContainer.appendChild(streamCard);
         });
     } else {
-        liveStreamsContainer.innerHTML = '<p class="text-gray-600 dark:text-gray-400">No live streams at the moment.</p>';
+        liveStreamsContainer.innerHTML = '<p class="text-gray-600">No live streams at the moment.</p>';
     }
 
     // Update upcoming matches
@@ -50,13 +34,13 @@ function updateStreams(data) {
             upcomingMatchesContainer.appendChild(matchCard);
         });
     } else {
-        upcomingMatchesContainer.innerHTML = '<p class="text-gray-600 dark:text-gray-400">No upcoming matches scheduled.</p>';
+        upcomingMatchesContainer.innerHTML = '<p class="text-gray-600">No upcoming matches scheduled.</p>';
     }
 }
 
 function createStreamCard(item, isLive) {
     const card = document.createElement('div');
-    card.className = 'stream-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden';
+    card.className = 'stream-card bg-white rounded-lg shadow-md overflow-hidden';
 
     const content = `
         <div class="aspect-w-16 aspect-h-9">
@@ -72,11 +56,11 @@ function createStreamCard(item, isLive) {
         }
         </div>
         <div class="p-4">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">${item.title}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400">${item.channelName}</p>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">${item.title}</h3>
+            <p class="text-sm text-gray-600">${item.channelName}</p>
             ${isLive ?
-            '<span class="inline-block px-2 py-1 text-xs font-semibold text-red-600 bg-red-100 dark:bg-red-900 dark:text-red-200 rounded-full mt-2">LIVE</span>' :
-            `<p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Scheduled: ${new Date(item.scheduledStartTime).toLocaleString()}</p>`
+            '<span class="inline-block px-2 py-1 text-xs font-semibold text-red-600 bg-red-100 rounded-full mt-2">LIVE</span>' :
+            `<p class="text-sm text-gray-600 mt-2">Scheduled: ${new Date(item.scheduledStartTime).toLocaleString()}</p>`
         }
         </div>
     `;
