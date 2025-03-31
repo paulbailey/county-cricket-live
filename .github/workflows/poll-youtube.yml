@@ -7,9 +7,6 @@ on:
     - cron: '25 8-20 * * *'  # At 25 minutes past every hour from 8am to 8pm
     - cron: '40 8-20 * * *'  # At 40 minutes past every hour from 8am to 8pm
   workflow_dispatch:  # Allow manual trigger
-  push:
-    branches:
-      - main
 
 permissions:
   contents: write
