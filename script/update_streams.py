@@ -73,6 +73,7 @@ def get_live_streams(channels):
     for i in range(0, len(all_video_ids), 50):
         batch = all_video_ids[i : i + 50]
         try:
+            print(f"\nFetching details for batch of {len(batch)} videos")
             video_request = youtube.videos().list(
                 part="snippet,liveStreamingDetails", id=",".join(batch)
             )
@@ -86,10 +87,13 @@ def get_live_streams(channels):
                 print(f"\nChecking video: {snippet['title']}")
                 print(f"Video ID: {video_id}")
                 print(f"Published at: {snippet['publishedAt']}")
+                print(f"Channel ID: {snippet['channelId']}")
                 print(f"Live details: {json.dumps(live_details, indent=2)}")
 
-                if live_details.get("actualStartTime"):  # Live stream
+                # Check for live stream
+                if live_details.get("actualStartTime"):
                     print(f"Found live stream: {snippet['title']}")
+                    print(f"Actual start time: {live_details['actualStartTime']}")
                     stream_data = {
                         "videoId": video_id,
                         "title": snippet["title"],
@@ -102,8 +106,10 @@ def get_live_streams(channels):
                         "publishedAt": snippet["publishedAt"],
                     }
                     live_streams.append(stream_data)
-                elif live_details.get("scheduledStartTime"):  # Upcoming stream
+                # Check for upcoming stream
+                elif live_details.get("scheduledStartTime"):
                     print(f"Found upcoming stream: {snippet['title']}")
+                    print(f"Scheduled start time: {live_details['scheduledStartTime']}")
                     match_data = {
                         "videoId": video_id,
                         "title": snippet["title"],
@@ -116,6 +122,8 @@ def get_live_streams(channels):
                         "scheduledStartTime": live_details["scheduledStartTime"],
                     }
                     upcoming_matches.append(match_data)
+                else:
+                    print("Not a live or upcoming stream")
 
         except HttpError as e:
             print(f"Error fetching video details: {e}")
