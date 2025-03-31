@@ -8,14 +8,24 @@
     <meta name="description"
         content="Watch live streams from all 18 first-class county cricket clubs in England. Access live coverage of county matches in one place.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-50" x-data="streamApp()">
     <header class="bg-white shadow-sm">
         <nav class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <a href="/" class="text-2xl font-bold text-gray-900">County Cricket Live</a>
+                <div class="flex items-center space-x-2">
+                    <label class="text-sm text-gray-600">Autoplay videos</label>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" x-model="autoplayEnabled" @change="toggleAutoplay" class="sr-only peer">
+                        <div
+                            class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                        </div>
+                    </label>
+                </div>
             </div>
         </nav>
     </header>
