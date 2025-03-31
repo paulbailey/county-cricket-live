@@ -9,6 +9,7 @@
         content="Watch live streams from all 18 first-class county cricket clubs in England. Access live coverage of county matches in one place.">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
@@ -24,7 +25,7 @@
                     <label class="flex items-center space-x-2 cursor-pointer">
                         <span class="text-sm text-gray-600">Play All</span>
                         <div class="relative">
-                            <input type="checkbox" x-model="autoplayEnabled" class="sr-only">
+                            <input type="checkbox" x-model="autoplayEnabled" @change="toggleAllPlayers" class="sr-only">
                             <div class="block bg-gray-600 w-10 h-6 rounded-full"></div>
                             <div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
                         </div>
@@ -45,8 +46,8 @@
                     <div class="stream-card bg-white rounded-lg shadow-md overflow-hidden">
                         <div class="relative aspect-w-16 aspect-h-9">
                             <div class="absolute inset-0 w-full h-full">
-                                <iframe
-                                    :src="'https://www.youtube.com/embed/' + stream.videoId + '?enablejsapi=1&origin=' + encodeURIComponent(window.location.origin)"
+                                <iframe :id="'player-' + stream.videoId"
+                                    :src="'https://www.youtube.com/embed/' + stream.videoId + '?enablejsapi=1&origin=' + encodeURIComponent(window.location.origin) + '&autoplay=' + (autoplayEnabled ? '1' : '0')"
                                     class="absolute inset-0 w-full h-full"
                                     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
