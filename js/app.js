@@ -1,37 +1,12 @@
-// Cookie handling functions
-function setCookie(name, value, days) {
-    let expires = "";
-    if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function getCookie(name) {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
 // Alpine.js app
 function streamApp() {
     return {
-        autoplayEnabled: getCookie('autoplayEnabled') === 'true' || false,
         liveStreams: [],
         upcomingMatches: [],
         players: new Map(),
         apiReady: false,
 
         async init() {
-            console.log('Initializing app, autoplay:', this.autoplayEnabled);
-
             // Load initial data immediately
             await this.loadStreamData();
 
@@ -55,28 +30,6 @@ function streamApp() {
             }
         },
 
-        toggleAutoplay() {
-            this.autoplayEnabled = !this.autoplayEnabled;
-            console.log('Toggling autoplay:', this.autoplayEnabled);
-            setCookie('autoplayEnabled', this.autoplayEnabled, 365);
-
-            this.players.forEach((player, videoId) => {
-                try {
-                    if (this.autoplayEnabled) {
-                        console.log(`Playing video ${videoId}`);
-                        player.playVideo();
-                        player.mute();
-                    } else {
-                        console.log(`Stopping video ${videoId}`);
-                        player.stopVideo();
-                        player.unMute();
-                    }
-                } catch (error) {
-                    console.error(`Error controlling player for video ${videoId}:`, error);
-                }
-            });
-        },
-
         async loadStreamData() {
             try {
                 const response = await fetch('data/streams.json');
@@ -95,10 +48,6 @@ function streamApp() {
         onPlayerReady(videoId, event) {
             console.log(`Player ready for video ${videoId}`);
             this.players.set(videoId, event.target);
-            if (this.autoplayEnabled) {
-                event.target.playVideo();
-                event.target.mute();
-            }
         },
 
         formatTimeUntil(startTime) {
