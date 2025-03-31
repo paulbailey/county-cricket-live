@@ -1,13 +1,6 @@
 {
   "liveStreams": [
     {
-      "videoId": "uzvdFpq-kNE",
-      "title": "\ud83d\udd34 LIVE CRICKET | Derbyshire vs SACA Friendly",
-      "channelName": "Derbyshire County Cricket Club",
-      "description": "Live action from The County Ground, Derby, as the South Asian Cricket Academy face Derbyshire in a three-day friendly.\n\nMatch Centre \u27a1\ufe0f: https://cricket.derbyshireccc.com/fixtures/first-xi/2025-season/friendly/derbyshire-vs-saca-2025/?tab=m_summary\n\nOnline Shop \u27a1\ufe0f: https://cricket.derbyshireccc.com/shop/\n\n#livestream #Derbyshire #cricket #live",
-      "publishedAt": "2025-03-31T08:30:14Z"
-    },
-    {
       "videoId": "JS9zXlUrzB8",
       "title": "\ud83d\udd34 TEST STREAM | Gloucestershire v Leeds-Bradford UCCE | Day Two | ECB Friendly",
       "channelName": "Gloucestershire County Cricket Club",
@@ -24,5 +17,5 @@
       "scheduledStartTime": "2025-04-01T09:45:00Z"
     }
   ],
-  "lastChanged": "2025-03-31T17:22:32.231168+00:00"
+  "lastChanged": "2025-03-31T17:47:23.931833+00:00"
 }
