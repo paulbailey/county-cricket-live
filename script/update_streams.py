@@ -90,8 +90,10 @@ def get_live_streams(channels):
                 print(f"Channel ID: {snippet['channelId']}")
                 print(f"Live details: {json.dumps(live_details, indent=2)}")
 
-                # Check for live stream
-                if live_details.get("actualStartTime"):
+                # Check for live stream (must have actualStartTime but no actualEndTime)
+                if live_details.get("actualStartTime") and not live_details.get(
+                    "actualEndTime"
+                ):
                     print(f"Found live stream: {snippet['title']}")
                     print(f"Actual start time: {live_details['actualStartTime']}")
                     stream_data = {
