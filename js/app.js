@@ -25,44 +25,36 @@ function streamApp() {
     return {
         autoplayEnabled: getCookie('autoplayEnabled') === 'true',
         iframes: new Map(),
+        players: new Map(),
 
         init() {
-            this.loadStreamData();
-            setInterval(() => this.loadStreamData(), 5 * 60 * 1000);
+            // Load YouTube IFrame API
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            // Define the global callback for the API
+            window.onYouTubeIframeAPIReady = () => {
+                this.loadStreamData();
+                setInterval(() => this.loadStreamData(), 5 * 60 * 1000);
+            };
         },
 
         toggleAutoplay() {
             setCookie('autoplayEnabled', this.autoplayEnabled, 365);
-            this.updateAllIframes();
+            this.updateAllPlayers();
         },
 
-        updateAllIframes() {
-            this.iframes.forEach((iframe, videoId) => {
-                // Store the current time of the video
-                const currentTime = iframe.contentWindow?.getCurrentTime?.() || 0;
-
-                // Create new iframe with updated parameters
-                const newIframe = document.createElement('iframe');
-                newIframe.className = iframe.className;
-                newIframe.allow = iframe.allow;
-                newIframe.allowFullscreen = iframe.allowFullscreen;
-
-                // Set the new source with appropriate parameters
-                const params = new URLSearchParams();
+        updateAllPlayers() {
+            this.players.forEach((player, videoId) => {
                 if (this.autoplayEnabled) {
-                    params.append('autoplay', '1');
-                    params.append('mute', '1');
+                    player.playVideo();
+                    player.mute();
+                } else {
+                    player.pauseVideo();
+                    player.unMute();
                 }
-                if (currentTime > 0) {
-                    params.append('start', Math.floor(currentTime));
-                }
-                newIframe.src = `https://www.youtube.com/embed/${videoId}?${params.toString()}&origin=${encodeURIComponent(window.location.origin)}&enablejsapi=1`;
-
-                // Replace the old iframe with the new one
-                iframe.parentNode.replaceChild(newIframe, iframe);
-
-                // Update the reference in our map
-                this.iframes.set(videoId, newIframe);
             });
         },
 
@@ -84,6 +76,7 @@ function streamApp() {
             liveStreamsContainer.innerHTML = '';
             upcomingMatchesContainer.innerHTML = '';
             this.iframes.clear();
+            this.players.clear();
 
             // Update live streams
             if (data.liveStreams && data.liveStreams.length > 0) {
@@ -119,12 +112,27 @@ function streamApp() {
 
                 const iframe = document.createElement('iframe');
                 iframe.className = 'absolute inset-0 w-full h-full';
-                iframe.src = `https://www.youtube.com/embed/${item.videoId}${this.autoplayEnabled ? '?autoplay=1&mute=1' : ''}&origin=${encodeURIComponent(window.location.origin)}&enablejsapi=1`;
+                iframe.src = `https://www.youtube.com/embed/${item.videoId}?enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`;
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
                 iframe.allowFullscreen = true;
 
-                // Store iframe reference for autoplay toggling
+                // Store iframe reference
                 this.iframes.set(item.videoId, iframe);
+
+                // Create YouTube player when iframe loads
+                iframe.onload = () => {
+                    const player = new YT.Player(iframe, {
+                        events: {
+                            'onReady': (event) => {
+                                this.players.set(item.videoId, event.target);
+                                if (this.autoplayEnabled) {
+                                    event.target.playVideo();
+                                    event.target.mute();
+                                }
+                            }
+                        }
+                    });
+                };
 
                 // Add error handling for non-embeddable videos
                 iframe.onerror = () => {
