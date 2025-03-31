@@ -23,41 +23,52 @@ function getCookie(name) {
 // Alpine.js app
 function streamApp() {
     return {
-        autoplayEnabled: getCookie('autoplayEnabled') === 'true',
-        iframes: new Map(),
+        autoplayEnabled: getCookie('autoplayEnabled') === 'true' || false,
+        liveStreams: [],
+        upcomingMatches: [],
         players: new Map(),
         apiReady: false,
 
-        init() {
+        async init() {
+            console.log('Initializing app, autoplay:', this.autoplayEnabled);
+
+            // Load initial data immediately
+            await this.loadStreamData();
+
+            // Set up periodic updates
+            setInterval(() => this.loadStreamData(), 5 * 60 * 1000);
+
             // Load YouTube IFrame API
-            const tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            if (!window.YT) {
+                const tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                const firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-            // Define the global callback for the API
-            window.onYouTubeIframeAPIReady = () => {
+                // Define the global callback for the API
+                window.onYouTubeIframeAPIReady = () => {
+                    console.log('YouTube IFrame API Ready');
+                    this.apiReady = true;
+                };
+            } else {
                 this.apiReady = true;
-                this.loadStreamData();
-                setInterval(() => this.loadStreamData(), 5 * 60 * 1000);
-            };
-        },
-
-        toggleAutoplay() {
-            setCookie('autoplayEnabled', this.autoplayEnabled, 365);
-            if (this.apiReady) {
-                this.updateAllPlayers();
             }
         },
 
-        updateAllPlayers() {
+        toggleAutoplay() {
+            this.autoplayEnabled = !this.autoplayEnabled;
+            console.log('Toggling autoplay:', this.autoplayEnabled);
+            setCookie('autoplayEnabled', this.autoplayEnabled, 365);
+
             this.players.forEach((player, videoId) => {
                 try {
                     if (this.autoplayEnabled) {
+                        console.log(`Playing video ${videoId}`);
                         player.playVideo();
                         player.mute();
                     } else {
-                        player.pauseVideo();
+                        console.log(`Stopping video ${videoId}`);
+                        player.stopVideo();
                         player.unMute();
                     }
                 } catch (error) {
@@ -77,147 +88,26 @@ function streamApp() {
         },
 
         updateStreams(data) {
-            const liveStreamsContainer = document.getElementById('live-streams');
-            const upcomingMatchesContainer = document.getElementById('upcoming-matches');
+            this.liveStreams = data.liveStreams || [];
+            this.upcomingMatches = data.upcomingMatches || [];
+        },
 
-            // Clear existing content
-            liveStreamsContainer.innerHTML = '';
-            upcomingMatchesContainer.innerHTML = '';
-            this.iframes.clear();
-            this.players.clear();
-
-            // Update live streams
-            if (data.liveStreams && data.liveStreams.length > 0) {
-                data.liveStreams.forEach(stream => {
-                    const streamCard = this.createStreamCard(stream, true);
-                    liveStreamsContainer.appendChild(streamCard);
-                });
-            } else {
-                liveStreamsContainer.innerHTML = '<p class="text-gray-600">No live streams at the moment.</p>';
-            }
-
-            // Update upcoming matches
-            if (data.upcomingMatches && data.upcomingMatches.length > 0) {
-                data.upcomingMatches.forEach(match => {
-                    const matchCard = this.createStreamCard(match, false);
-                    upcomingMatchesContainer.appendChild(matchCard);
-                });
-            } else {
-                upcomingMatchesContainer.innerHTML = '<p class="text-gray-600">No upcoming matches scheduled.</p>';
+        onPlayerReady(videoId, event) {
+            console.log(`Player ready for video ${videoId}`);
+            this.players.set(videoId, event.target);
+            if (this.autoplayEnabled) {
+                event.target.playVideo();
+                event.target.mute();
             }
         },
 
-        createStreamCard(item, isLive) {
-            const card = document.createElement('div');
-            card.className = 'stream-card bg-white rounded-lg shadow-md overflow-hidden';
-
-            const videoContainer = document.createElement('div');
-            videoContainer.className = 'relative aspect-w-16 aspect-h-9';
-
-            if (isLive) {
-                const videoWrapper = document.createElement('div');
-                videoWrapper.className = 'absolute inset-0 w-full h-full';
-
-                const iframe = document.createElement('iframe');
-                iframe.className = 'absolute inset-0 w-full h-full';
-                iframe.src = `https://www.youtube.com/embed/${item.videoId}?enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`;
-                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-                iframe.allowFullscreen = true;
-
-                // Store iframe reference
-                this.iframes.set(item.videoId, iframe);
-
-                // Create YouTube player when iframe loads
-                iframe.onload = () => {
-                    if (this.apiReady) {
-                        const player = new YT.Player(iframe, {
-                            events: {
-                                'onReady': (event) => {
-                                    this.players.set(item.videoId, event.target);
-                                    if (this.autoplayEnabled) {
-                                        event.target.playVideo();
-                                        event.target.mute();
-                                    }
-                                }
-                            }
-                        });
-                    }
-                };
-
-                // Add error handling for non-embeddable videos
-                iframe.onerror = () => {
-                    const thumbnail = document.createElement('img');
-                    thumbnail.className = 'absolute inset-0 w-full h-full object-cover';
-                    thumbnail.src = `https://img.youtube.com/vi/${item.videoId}/maxresdefault.jpg`;
-                    thumbnail.alt = item.title;
-
-                    const playButton = document.createElement('div');
-                    playButton.className = 'absolute inset-0 flex items-center justify-center bg-black bg-opacity-50';
-                    playButton.innerHTML = `
-                        <div class="text-white text-center">
-                            <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                            </svg>
-                            <p class="text-sm">Watch on YouTube</p>
-                        </div>
-                    `;
-
-                    playButton.onclick = () => {
-                        window.open(`https://www.youtube.com/watch?v=${item.videoId}`, '_blank');
-                    };
-
-                    videoWrapper.innerHTML = '';
-                    videoWrapper.appendChild(thumbnail);
-                    videoWrapper.appendChild(playButton);
-                };
-
-                videoWrapper.appendChild(iframe);
-                videoContainer.appendChild(videoWrapper);
-            } else {
-                const thumbnail = document.createElement('img');
-                thumbnail.className = 'absolute inset-0 w-full h-full object-cover';
-                thumbnail.src = `https://img.youtube.com/vi/${item.videoId}/maxresdefault.jpg`;
-                thumbnail.alt = item.title;
-                videoContainer.appendChild(thumbnail);
-            }
-
-            const content = document.createElement('div');
-            content.className = 'p-4';
-
-            const title = document.createElement('h3');
-            title.className = 'text-lg font-semibold text-gray-900 mb-2';
-            title.textContent = item.title;
-
-            const channel = document.createElement('p');
-            channel.className = 'text-sm text-gray-600';
-            channel.textContent = item.channelName;
-
-            const time = document.createElement('p');
-            time.className = 'text-sm text-gray-500 mt-2';
-            if (isLive) {
-                time.innerHTML = '<span class="inline-block px-2 py-1 text-xs font-semibold text-red-600 bg-red-100 rounded-full">LIVE</span>';
-            } else {
-                const startTime = new Date(item.scheduledStartTime);
-                const now = new Date();
-                const diff = startTime - now;
-                const hours = Math.floor(diff / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                time.textContent = `Starts in ${hours}h ${minutes}m`;
-            }
-
-            content.appendChild(title);
-            content.appendChild(channel);
-            content.appendChild(time);
-
-            card.appendChild(videoContainer);
-            card.appendChild(content);
-
-            return card;
+        formatTimeUntil(startTime) {
+            const start = new Date(startTime);
+            const now = new Date();
+            const diff = start - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            return `Starts in ${hours}h ${minutes}m`;
         }
     }
 }
-
-// Initialize when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    streamApp().init();
-}); 
