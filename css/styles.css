@@ -1,5 +1,10 @@
 /* Custom styles to complement Tailwind CSS */
 
+/* Hide elements with x-cloak until Alpine.js is initialized */
+[x-cloak] {
+    display: none !important;
+}
+
 /* Aspect ratio utilities */
 .aspect-w-16 {
     position: relative;
