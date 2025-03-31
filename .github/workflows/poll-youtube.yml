@@ -11,6 +11,7 @@ on:
 permissions:
   contents: write
   pull-requests: none
+  actions: write
 
 jobs:
   poll-youtube:
@@ -39,9 +40,31 @@ jobs:
         GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
       run: python script/update_streams.py
     
+    - name: Check if streams.json changed
+      id: check_changes
+      run: |
+        git add data/streams.json
+        if ! git diff --cached --quiet; then
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+        fi
+
     - name: Commit and push if changed
+      if: steps.check_changes.outputs.changed == 'true'
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add data/streams.json
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update streams data" && git push)
+        git commit -m "Update streams data"
+        git push
+
+    - name: Trigger deploy workflow
+      if: steps.check_changes.outputs.changed == 'true'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          await github.rest.actions.createWorkflowDispatch({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            workflow_id: 'deploy.yml',
+            ref: 'main'
+          })
