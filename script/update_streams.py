@@ -18,6 +18,7 @@ def get_live_streams(channels):
     live_streams = []
     upcoming_matches = []
     all_video_ids = []
+    current_time = datetime.now(timezone.utc)
 
     # Get live and upcoming streams for each channel
     for channel in channels:
@@ -108,22 +109,32 @@ def get_live_streams(channels):
                         "publishedAt": snippet["publishedAt"],
                     }
                     live_streams.append(stream_data)
-                # Check for upcoming stream
+                # Check for upcoming stream (must have scheduledStartTime in the future)
                 elif live_details.get("scheduledStartTime"):
-                    print(f"Found upcoming stream: {snippet['title']}")
-                    print(f"Scheduled start time: {live_details['scheduledStartTime']}")
-                    match_data = {
-                        "videoId": video_id,
-                        "title": snippet["title"],
-                        "channelName": next(
-                            ch["name"]
-                            for ch in channels
-                            if ch["youtubeChannelId"] == snippet["channelId"]
-                        ),
-                        "description": snippet["description"],
-                        "scheduledStartTime": live_details["scheduledStartTime"],
-                    }
-                    upcoming_matches.append(match_data)
+                    scheduled_time = datetime.fromisoformat(
+                        live_details["scheduledStartTime"].replace("Z", "+00:00")
+                    )
+                    if scheduled_time > current_time:
+                        print(f"Found upcoming stream: {snippet['title']}")
+                        print(
+                            f"Scheduled start time: {live_details['scheduledStartTime']}"
+                        )
+                        match_data = {
+                            "videoId": video_id,
+                            "title": snippet["title"],
+                            "channelName": next(
+                                ch["name"]
+                                for ch in channels
+                                if ch["youtubeChannelId"] == snippet["channelId"]
+                            ),
+                            "description": snippet["description"],
+                            "scheduledStartTime": live_details["scheduledStartTime"],
+                        }
+                        upcoming_matches.append(match_data)
+                    else:
+                        print(
+                            f"Scheduled stream has already started: {snippet['title']}"
+                        )
                 else:
                     print("Not a live or upcoming stream")
 
