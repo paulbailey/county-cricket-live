@@ -99,7 +99,7 @@ function streamApp() {
 
                 const iframe = document.createElement('iframe');
                 iframe.className = 'absolute inset-0 w-full h-full';
-                iframe.src = `https://www.youtube.com/embed/${item.videoId}${this.autoplayEnabled ? '?autoplay=1&mute=1' : ''}`;
+                iframe.src = `https://www.youtube.com/embed/${item.videoId}${this.autoplayEnabled ? '?autoplay=1&mute=1' : ''}&origin=${encodeURIComponent(window.location.origin)}&enablejsapi=1`;
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
                 iframe.allowFullscreen = true;
 
