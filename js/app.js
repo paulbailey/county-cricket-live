@@ -26,6 +26,7 @@ function streamApp() {
         autoplayEnabled: getCookie('autoplayEnabled') === 'true',
         iframes: new Map(),
         players: new Map(),
+        apiReady: false,
 
         init() {
             // Load YouTube IFrame API
@@ -36,6 +37,7 @@ function streamApp() {
 
             // Define the global callback for the API
             window.onYouTubeIframeAPIReady = () => {
+                this.apiReady = true;
                 this.loadStreamData();
                 setInterval(() => this.loadStreamData(), 5 * 60 * 1000);
             };
@@ -43,17 +45,23 @@ function streamApp() {
 
         toggleAutoplay() {
             setCookie('autoplayEnabled', this.autoplayEnabled, 365);
-            this.updateAllPlayers();
+            if (this.apiReady) {
+                this.updateAllPlayers();
+            }
         },
 
         updateAllPlayers() {
             this.players.forEach((player, videoId) => {
-                if (this.autoplayEnabled) {
-                    player.playVideo();
-                    player.mute();
-                } else {
-                    player.pauseVideo();
-                    player.unMute();
+                try {
+                    if (this.autoplayEnabled) {
+                        player.playVideo();
+                        player.mute();
+                    } else {
+                        player.pauseVideo();
+                        player.unMute();
+                    }
+                } catch (error) {
+                    console.error(`Error controlling player for video ${videoId}:`, error);
                 }
             });
         },
@@ -121,17 +129,19 @@ function streamApp() {
 
                 // Create YouTube player when iframe loads
                 iframe.onload = () => {
-                    const player = new YT.Player(iframe, {
-                        events: {
-                            'onReady': (event) => {
-                                this.players.set(item.videoId, event.target);
-                                if (this.autoplayEnabled) {
-                                    event.target.playVideo();
-                                    event.target.mute();
+                    if (this.apiReady) {
+                        const player = new YT.Player(iframe, {
+                            events: {
+                                'onReady': (event) => {
+                                    this.players.set(item.videoId, event.target);
+                                    if (this.autoplayEnabled) {
+                                        event.target.playVideo();
+                                        event.target.mute();
+                                    }
                                 }
                             }
-                        }
-                    });
+                        });
+                    }
                 };
 
                 // Add error handling for non-embeddable videos
