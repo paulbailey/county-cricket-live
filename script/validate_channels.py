@@ -19,7 +19,7 @@ def validate_channels():
             )
             response = request.execute()
 
-            if not response["items"]:
+            if "items" not in response or not response["items"]:
                 print(
                     f"❌ Channel not found: {channel['name']} (ID: {channel['youtubeChannelId']})"
                 )
@@ -35,6 +35,10 @@ def validate_channels():
 
         except HttpError as e:
             print(f"❌ Error checking channel {channel['name']}: {e}")
+            print()
+        except KeyError as e:
+            print(f"❌ Unexpected API response for {channel['name']}: {e}")
+            print(f"   Response: {response}")
             print()
 
 
