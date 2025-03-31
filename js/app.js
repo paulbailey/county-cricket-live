@@ -62,9 +62,9 @@ function createStreamCard(item, isLive) {
         <div class="aspect-w-16 aspect-h-9">
             ${isLive ?
             `<iframe 
-                    src="https://www.youtube.com/embed/${item.videoId}?autoplay=1" 
+                    src="https://www.youtube.com/embed/${item.videoId}" 
                     frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen
                     class="w-full h-full">
                 </iframe>` :
