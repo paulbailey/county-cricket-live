@@ -38,11 +38,31 @@ function streamApp() {
 
         updateAllIframes() {
             this.iframes.forEach((iframe, videoId) => {
+                // Store the current time of the video
+                const currentTime = iframe.contentWindow?.getCurrentTime?.() || 0;
+
+                // Create new iframe with updated parameters
+                const newIframe = document.createElement('iframe');
+                newIframe.className = iframe.className;
+                newIframe.allow = iframe.allow;
+                newIframe.allowFullscreen = iframe.allowFullscreen;
+
+                // Set the new source with appropriate parameters
+                const params = new URLSearchParams();
                 if (this.autoplayEnabled) {
-                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
-                } else {
-                    iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                    params.append('autoplay', '1');
+                    params.append('mute', '1');
                 }
+                if (currentTime > 0) {
+                    params.append('start', Math.floor(currentTime));
+                }
+                newIframe.src = `https://www.youtube.com/embed/${videoId}?${params.toString()}&origin=${encodeURIComponent(window.location.origin)}&enablejsapi=1`;
+
+                // Replace the old iframe with the new one
+                iframe.parentNode.replaceChild(newIframe, iframe);
+
+                // Update the reference in our map
+                this.iframes.set(videoId, newIframe);
             });
         },
 
