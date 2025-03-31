@@ -133,12 +133,36 @@ def main():
     # Sort upcoming matches by scheduled start time
     upcoming_matches.sort(key=lambda x: x["scheduledStartTime"])
 
+    # Load existing data to check for changes
+    try:
+        with open("data/streams.json", "r") as f:
+            existing_data = json.load(f)
+            existing_live = existing_data.get("liveStreams", [])
+            existing_upcoming = existing_data.get("upcomingMatches", [])
+            last_changed = existing_data.get("lastChanged")
+    except (FileNotFoundError, json.JSONDecodeError):
+        existing_live = []
+        existing_upcoming = []
+        last_changed = None
+
+    # Check if there are any changes
+    has_changes = json.dumps(live_streams, sort_keys=True) != json.dumps(
+        existing_live, sort_keys=True
+    ) or json.dumps(upcoming_matches, sort_keys=True) != json.dumps(
+        existing_upcoming, sort_keys=True
+    )
+
     # Create output data
     output_data = {
-        "lastUpdated": datetime.now(timezone.utc).isoformat(),
         "liveStreams": live_streams,
         "upcomingMatches": upcoming_matches,
     }
+
+    # Only update lastChanged if there are actual changes
+    if has_changes:
+        output_data["lastChanged"] = datetime.now(timezone.utc).isoformat()
+    elif last_changed:
+        output_data["lastChanged"] = last_changed
 
     # Write to file
     with open("data/streams.json", "w") as f:
