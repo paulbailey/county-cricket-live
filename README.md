@@ -29,18 +29,23 @@ A simple web application that shows live and upcoming county cricket streams fro
 - YouTube Data API key
 - GitHub account for Actions
 
-### Setup
+## Local Development
 
 1. Clone the repository
 2. Install dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
+
 3. Create a `.env` file with your YouTube API key:
+
    ```
    YOUTUBE_API_KEY=your_api_key_here
    ```
+
 4. Run the update script:
+
    ```bash
    python script/update_streams.py
    ```
@@ -48,10 +53,12 @@ A simple web application that shows live and upcoming county cricket streams fro
 ### Local Development
 
 1. Start a local server:
+
    ```bash
    python -m http.server 8000
    ```
-2. Open http://localhost:8000 in your browser
+
+2. Open <http://localhost:8000> in your browser
 
 ## Contributing
 
