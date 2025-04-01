@@ -176,17 +176,19 @@ def post_to_bluesky(messages):
 
     # Create the posts in sequence, threading them together
     previous_post = None
+    first_post = None
     for text_builder in messages:
         if previous_post:
-            previous_post_ref = models.create_strong_ref(previous_post)
             # Create a reply to the previous post
-            previous_post = client.send_post(
+            new_previous_post = models.create_strong_ref(client.send_post(
                 text=text_builder,
-                reply_to=previous_post_ref,
-            )
+                reply_to=models.AppBskyFeedPost.ReplyRef(parent=previous_post, root=first_post),
+            ))
+            previous_post = new_previous_post
         else:
             # Create the first post in the thread
-            previous_post = client.send_post(text=text_builder)
+            previous_post = models.create_strong_ref(client.send_post(text=text_builder))
+            first_post = previous_post
 
 
 def main():
