@@ -3,8 +3,7 @@ import json
 from datetime import datetime, timezone
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from atproto import Client, client_utils
-from atproto.client.models.utils import create_strong_ref
+from atproto import Client, client_utils, models
 
 # YouTube API setup
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
@@ -179,17 +178,15 @@ def post_to_bluesky(messages):
     previous_post = None
     for text_builder in messages:
         if previous_post:
-            previous_post_ref = create_strong_ref(previous_post)
+            previous_post_ref = models.create_strong_ref(previous_post)
             # Create a reply to the previous post
             previous_post = client.send_post(
                 text=text_builder,
-                reply_to={"uri": previous_post.uri, "cid": previous_post.cid},
+                reply_to=previous_post_ref,
             )
         else:
             # Create the first post in the thread
-            previous_post = client.send_post(
-                text=text_builder
-            )
+            previous_post = client.send_post(text=text_builder)
 
 
 def main():
