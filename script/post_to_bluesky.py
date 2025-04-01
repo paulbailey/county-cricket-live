@@ -16,7 +16,8 @@ def format_stream_message(streams):
     # Bluesky has a 300 character limit per post
     MAX_POST_LENGTH = 300
     BASE_MESSAGE = "🔴 New live streams detected:\n\n"
-    URL_MESSAGE = "\nWatch all streams at: https://countycricket.live"
+    URL = "https://countycricket.live"
+    URL_MESSAGE = f"\nWatch all streams at: {URL}"
 
     # Calculate how many streams we can fit in one post
     # Reserve space for the base message, URL message, and some buffer
@@ -37,7 +38,9 @@ def format_stream_message(streams):
         if i + streams_per_post >= len(streams):
             message += URL_MESSAGE
 
-        messages.append(message)
+        messages.append(
+            (message, URL if i + streams_per_post >= len(streams) else None)
+        )
 
     return messages
 
@@ -51,13 +54,48 @@ def post_to_bluesky(messages):
 
     # Create the posts in sequence, threading them together
     previous_post = None
-    for message in messages:
+    for message, url in messages:
         if previous_post:
             # Create a reply to the previous post
-            client.send_post(text=message, reply_to=previous_post)
+            if url:
+                # Add URL as a facet for the last post
+                client.send_post(
+                    text=message,
+                    reply_to=previous_post,
+                    facets=[
+                        {
+                            "index": {
+                                " byteStart": len(message) - len(url),
+                                "byteEnd": len(message),
+                            },
+                            "features": [
+                                {"$type": "app.bsky.richtext.facet#link", "uri": url}
+                            ],
+                        }
+                    ],
+                )
+            else:
+                client.send_post(text=message, reply_to=previous_post)
         else:
             # Create the first post in the thread
-            previous_post = client.send_post(text=message)
+            if url:
+                # Add URL as a facet for the first post
+                previous_post = client.send_post(
+                    text=message,
+                    facets=[
+                        {
+                            "index": {
+                                " byteStart": len(message) - len(url),
+                                "byteEnd": len(message),
+                            },
+                            "features": [
+                                {"$type": "app.bsky.richtext.facet#link", "uri": url}
+                            ],
+                        }
+                    ],
+                )
+            else:
+                previous_post = client.send_post(text=message)
 
 
 def main():
