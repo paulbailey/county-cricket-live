@@ -40,10 +40,12 @@ jobs:
         BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
         BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
       run: |
-        python script/update_and_notify.py
-        # Capture the output variables
-        echo "has_changes=$(grep '^has_changes=' <<< "$(python script/update_and_notify.py)" | cut -d'=' -f2)" >> $GITHUB_OUTPUT
-        echo "has_new_streams=$(grep '^has_new_streams=' <<< "$(python script/update_and_notify.py)" | cut -d'=' -f2)" >> $GITHUB_OUTPUT
+        # Run the script and capture its output
+        output=$(python script/update_and_notify.py)
+        echo "$output"
+        # Extract the variables from the output
+        echo "has_changes=$(echo "$output" | grep '^has_changes=' | cut -d'=' -f2)" >> $GITHUB_OUTPUT
+        echo "has_new_streams=$(echo "$output" | grep '^has_new_streams=' | cut -d'=' -f2)" >> $GITHUB_OUTPUT
 
     - name: Commit and push if changed
       if: steps.update.outputs.has_changes == 'true'
