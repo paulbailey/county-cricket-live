@@ -137,7 +137,7 @@ def format_stream_message(streams):
     MAX_POST_LENGTH = 300
     BASE_MESSAGE = "🔴 New live streams detected:\n\n"
     URL = "https://countycricket.live"
-    URL_MESSAGE = f"\nWatch all streams at: {URL}"
+    URL_MESSAGE = "\nWatch all streams at: countycricket.live"
 
     # Calculate how many streams we can fit in one post
     available_space = MAX_POST_LENGTH - len(BASE_MESSAGE) - len(URL_MESSAGE) - 10
@@ -151,7 +151,8 @@ def format_stream_message(streams):
 
         # Create text builder for this message
         text_builder = client_utils.TextBuilder()
-        text_builder.text(BASE_MESSAGE)
+        if i == 0:
+            text_builder.text(BASE_MESSAGE)
 
         for stream in chunk:
             text_builder.text(f"• {stream['channelName']}: {stream['title']}\n")
@@ -180,14 +181,20 @@ def post_to_bluesky(messages):
     for text_builder in messages:
         if previous_post:
             # Create a reply to the previous post
-            new_previous_post = models.create_strong_ref(client.send_post(
-                text=text_builder,
-                reply_to=models.AppBskyFeedPost.ReplyRef(parent=previous_post, root=first_post),
-            ))
+            new_previous_post = models.create_strong_ref(
+                client.send_post(
+                    text=text_builder,
+                    reply_to=models.AppBskyFeedPost.ReplyRef(
+                        parent=previous_post, root=first_post
+                    ),
+                )
+            )
             previous_post = new_previous_post
         else:
             # Create the first post in the thread
-            previous_post = models.create_strong_ref(client.send_post(text=text_builder))
+            previous_post = models.create_strong_ref(
+                client.send_post(text=text_builder)
+            )
             first_post = previous_post
 
 
