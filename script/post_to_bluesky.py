@@ -65,7 +65,7 @@ def post_to_bluesky(messages):
                     facets=[
                         {
                             "index": {
-                                " byteStart": len(message) - len(url),
+                                "byteStart": len(message) - len(url),
                                 "byteEnd": len(message),
                             },
                             "features": [
@@ -85,7 +85,7 @@ def post_to_bluesky(messages):
                     facets=[
                         {
                             "index": {
-                                " byteStart": len(message) - len(url),
+                                "byteStart": len(message) - len(url),
                                 "byteEnd": len(message),
                             },
                             "features": [
