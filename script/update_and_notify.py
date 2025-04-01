@@ -175,7 +175,7 @@ def post_to_bluesky(messages):
 
     # Create the posts in sequence, threading them together
     previous_post = None
-    for text_builder, is_last in messages:
+    for text_builder in messages:
         if previous_post:
             # Create a reply to the previous post
             previous_post = client.send_post(text=text_builder, reply_to=previous_post)
