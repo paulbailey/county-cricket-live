@@ -105,6 +105,7 @@ def get_live_streams(channels):
                             for ch in channels
                             if ch["youtubeChannelId"] == snippet["channelId"]
                         ),
+                        "channelId": snippet["channelId"],
                         "description": snippet["description"],
                         "publishedAt": snippet["publishedAt"],
                     }
@@ -127,6 +128,7 @@ def get_live_streams(channels):
                                 for ch in channels
                                 if ch["youtubeChannelId"] == snippet["channelId"]
                             ),
+                            "channelId": snippet["channelId"],
                             "description": snippet["description"],
                             "scheduledStartTime": live_details["scheduledStartTime"],
                         }
