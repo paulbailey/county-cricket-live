@@ -43,7 +43,7 @@
     </header>
     <main class="container mx-auto px-4 py-8">
         <section class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">Live Streams</h1>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Live Matches</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <template x-if="liveStreams.length === 0">
                     <p class="text-base-content/70">No live streams at the moment.</p>
@@ -78,7 +78,7 @@
         </section>
 
         <section>
-            <h2 class="text-2xl font-bold mb-4">Upcoming Matches</h2>
+            <h2 class="text-2xl font-bold mb-4">Scheduled Live Streams</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <template x-if="upcomingMatches.length === 0">
                     <p class="text-base-content/70">No upcoming matches scheduled.</p>
