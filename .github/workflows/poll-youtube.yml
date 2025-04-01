@@ -33,9 +33,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r script/requirements.txt
     
-    - name: Create data directory
-      run: mkdir -p data
-    
     - name: Update streams data
       env:
         GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
