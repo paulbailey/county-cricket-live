@@ -129,6 +129,7 @@ def get_live_streams(channels):
 
 
 def format_stream_message(streams):
+    print(f"Formatting stream message for {len(streams)} streams")
     if not streams:
         return None
 
@@ -141,8 +142,8 @@ def format_stream_message(streams):
     # Calculate how many streams we can fit in one post
     available_space = MAX_POST_LENGTH - len(BASE_MESSAGE) - len(URL_MESSAGE) - 10
     streams_per_post = max(
-        1, available_space // 50
-    )  # Estimate 50 chars per stream entry
+        1, available_space // 75
+    )  # Estimate 75 chars per stream entry
 
     messages = []
     for i in range(0, len(streams), streams_per_post):
