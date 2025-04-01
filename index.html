@@ -61,7 +61,13 @@
                         </div>
                         <div class="card-body">
                             <h3 class="card-title" x-text="stream.title"></h3>
-                            <p class="text-base-content/70" x-text="stream.channelName"></p>
+                            <p class="text-base-content/70" x-text="stream.description"></p>
+                            <p class="text-base-content/70">
+                                <a :href="'https://www.youtube.com/channel/' + stream.channelId" target="_blank"
+                                    rel="noopener noreferrer" class="link link-hover">
+                                    <span x-text="stream.channelName"></span>
+                                </a>
+                            </p>
                             <div class="card-actions justify-end">
                                 <div class="badge badge-error">LIVE</div>
                             </div>
@@ -85,7 +91,13 @@
                         </figure>
                         <div class="card-body">
                             <h3 class="card-title" x-text="match.title"></h3>
-                            <p class="text-base-content/70" x-text="match.channelName"></p>
+                            <p class="text-base-content/70" x-text="match.description"></p>
+                            <p class="text-base-content/70">
+                                <a :href="'https://www.youtube.com/channel/' + match.channelId" target="_blank"
+                                    rel="noopener noreferrer" class="link link-hover">
+                                    <span x-text="match.channelName"></span>
+                                </a>
+                            </p>
                             <div class="card-actions justify-end">
                                 <div class="badge badge-ghost" x-text="formatTimeUntil(match.scheduledStartTime)"></div>
                             </div>
