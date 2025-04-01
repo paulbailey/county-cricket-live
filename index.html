@@ -61,7 +61,20 @@
                         </div>
                         <div class="card-body">
                             <h3 class="card-title" x-text="stream.title"></h3>
-                            <p class="text-base-content/70" x-html="formatDescription(stream.description)"></p>
+                            <template x-if="shouldCollapseDescription(stream.description)">
+                                <div class="collapse collapse-arrow">
+                                    <input type="checkbox" />
+                                    <div class="collapse-title text-base-content/70">
+                                        <span x-text="stream.description.split('\n')[0]"></span>
+                                    </div>
+                                    <div class="collapse-content text-base-content/70">
+                                        <p x-html="formatDescription(stream.description)"></p>
+                                    </div>
+                                </div>
+                            </template>
+                            <template x-if="!shouldCollapseDescription(stream.description)">
+                                <p class="text-base-content/70" x-html="formatDescription(stream.description)"></p>
+                            </template>
                             <p class="text-base-content/70">
                                 <a :href="'https://www.youtube.com/channel/' + stream.channelId" target="_blank"
                                     rel="noopener noreferrer" class="link link-hover">
@@ -91,7 +104,20 @@
                         </figure>
                         <div class="card-body">
                             <h3 class="card-title" x-text="match.title"></h3>
-                            <p class="text-base-content/70" x-html="formatDescription(match.description)"></p>
+                            <template x-if="shouldCollapseDescription(match.description)">
+                                <div class="collapse collapse-arrow">
+                                    <input type="checkbox" />
+                                    <div class="collapse-title text-base-content/70">
+                                        <span x-text="match.description.split('\n')[0]"></span>
+                                    </div>
+                                    <div class="collapse-content text-base-content/70">
+                                        <p x-html="formatDescription(match.description)"></p>
+                                    </div>
+                                </div>
+                            </template>
+                            <template x-if="!shouldCollapseDescription(match.description)">
+                                <p class="text-base-content/70" x-html="formatDescription(match.description)"></p>
+                            </template>
                             <p class="text-base-content/70">
                                 <a :href="'https://www.youtube.com/channel/' + match.channelId" target="_blank"
                                     rel="noopener noreferrer" class="link link-hover">

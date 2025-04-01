@@ -145,6 +145,15 @@ function streamApp() {
             formatted = formatted.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer" class="link link-hover">$1</a>');
 
             return formatted;
+        },
+
+        shouldCollapseDescription(description) {
+            if (!description) return false;
+            // Count the number of line breaks and characters
+            const lineBreaks = (description.match(/\n/g) || []).length;
+            const charCount = description.length;
+            // Collapse if more than 1 line break or more than 100 characters
+            return lineBreaks > 1 || charCount > 100;
         }
     };
 }
