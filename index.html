@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -16,28 +16,26 @@
     <title>County Cricket Live - Live Streams from All First-Class Counties</title>
     <meta name="description"
         content="Watch live streams from all 18 first-class county cricket clubs in England. Access live coverage of county matches in one place.">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="css/styles.css" rel="stylesheet">
     <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body x-data="streamApp()" x-init="init()" class="bg-gray-100 min-h-screen">
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-8">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <h1 class="text-2xl font-bold text-gray-900">County Cricket Live</h1>
-                    <a href="about.html" class="text-gray-600 hover:text-gray-900">About</a>
+<body x-data="streamApp()" x-init="init()" class="min-h-screen bg-base-100">
+    <header class="navbar bg-base-100 shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-4">
+                    <h1 class="text-2xl font-bold">County Cricket Live</h1>
+                    <!-- <a href="about.html" class="link link-hover text-base-content/70">About</a> -->
                 </div>
-                <div class="flex items-center space-x-4">
-                    <label class="flex items-center space-x-2 cursor-pointer" x-cloak>
-                        <span class="text-sm text-gray-600">Play All</span>
-                        <div class="relative">
-                            <input type="checkbox" x-model="autoplayEnabled" @change="toggleAllPlayers" class="sr-only">
-                            <div class="block bg-gray-600 w-10 h-6 rounded-full"></div>
-                            <div class="dot absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition"></div>
-                        </div>
+                <div class="flex items-center">
+                    <label class="label cursor-pointer gap-2" x-cloak>
+                        <span class="label-text">Play All</span>
+                        <input type="checkbox" x-model="autoplayEnabled" @change="toggleAllPlayers"
+                            class="toggle toggle-primary" />
                     </label>
                 </div>
             </div>
@@ -48,10 +46,10 @@
             <h1 class="text-3xl font-bold text-gray-900 mb-4">Live Streams</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <template x-if="liveStreams.length === 0">
-                    <p class="text-gray-600">No live streams at the moment.</p>
+                    <p class="text-base-content/70">No live streams at the moment.</p>
                 </template>
                 <template x-for="stream in liveStreams" :key="stream.videoId">
-                    <div class="stream-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="card bg-base-100 shadow-xl">
                         <div class="relative aspect-w-16 aspect-h-9">
                             <div class="absolute inset-0 w-full h-full">
                                 <iframe :id="'player-' + stream.videoId"
@@ -61,13 +59,12 @@
                                     allowfullscreen></iframe>
                             </div>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2" x-text="stream.title"></h3>
-                            <p class="text-sm text-gray-600" x-text="stream.channelName"></p>
-                            <p class="text-sm text-gray-500 mt-2">
-                                <span
-                                    class="inline-block px-2 py-1 text-xs font-semibold text-red-600 bg-red-100 rounded-full">LIVE</span>
-                            </p>
+                        <div class="card-body">
+                            <h3 class="card-title" x-text="stream.title"></h3>
+                            <p class="text-base-content/70" x-text="stream.channelName"></p>
+                            <div class="card-actions justify-end">
+                                <div class="badge badge-error">LIVE</div>
+                            </div>
                         </div>
                     </div>
                 </template>
@@ -75,22 +72,23 @@
         </section>
 
         <section>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Upcoming Matches</h2>
+            <h2 class="text-2xl font-bold mb-4">Upcoming Matches</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <template x-if="upcomingMatches.length === 0">
-                    <p class="text-gray-600">No upcoming matches scheduled.</p>
+                    <p class="text-base-content/70">No upcoming matches scheduled.</p>
                 </template>
                 <template x-for="match in upcomingMatches" :key="match.videoId">
-                    <div class="stream-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="relative aspect-w-16 aspect-h-9">
+                    <div class="card bg-base-100 shadow-xl">
+                        <figure class="relative aspect-w-16 aspect-h-9">
                             <img :src="'https://img.youtube.com/vi/' + match.videoId + '/maxresdefault.jpg'"
                                 :alt="match.title" class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2" x-text="match.title"></h3>
-                            <p class="text-sm text-gray-600" x-text="match.channelName"></p>
-                            <p class="text-sm text-gray-500 mt-2" x-text="formatTimeUntil(match.scheduledStartTime)">
-                            </p>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title" x-text="match.title"></h3>
+                            <p class="text-base-content/70" x-text="match.channelName"></p>
+                            <div class="card-actions justify-end">
+                                <div class="badge badge-ghost" x-text="formatTimeUntil(match.scheduledStartTime)"></div>
+                            </div>
                         </div>
                     </div>
                 </template>
