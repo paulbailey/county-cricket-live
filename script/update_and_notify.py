@@ -157,11 +157,11 @@ def format_stream_message(streams):
 
         # Add URL only to the last message
         if i + streams_per_post >= len(streams):
-            text_builder.text(URL_MESSAGE)
+            text_builder.text("\n")
             # Add URL as a link facet
-            text_builder.link(URL, len(text_builder.text) - len(URL))
+            text_builder.link(URL_MESSAGE, URL)
 
-        messages.append((text_builder, i + streams_per_post >= len(streams)))
+        messages.append(text_builder)
 
     return messages
 
@@ -178,16 +178,10 @@ def post_to_bluesky(messages):
     for text_builder, is_last in messages:
         if previous_post:
             # Create a reply to the previous post
-            previous_post = client.send_post(
-                text=text_builder.text,
-                reply_to=previous_post,
-                facets=text_builder.facets,
-            )
+            previous_post = client.send_post(text=text_builder, reply_to=previous_post)
         else:
             # Create the first post in the thread
-            previous_post = client.send_post(
-                text=text_builder.text, facets=text_builder.facets
-            )
+            previous_post = client.send_post(text=text_builder)
 
 
 def main():
