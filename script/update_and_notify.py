@@ -1,6 +1,7 @@
 import os
 import json
 from datetime import datetime, timezone
+from pathlib import Path
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from atproto import Client, client_utils, models
@@ -240,6 +241,7 @@ def main():
 
     # Write to file if there are changes
     if has_changes:
+        Path("data").mkdir(parents=True, exist_ok=True)
         with open("data/streams.json", "w") as f:
             json.dump(output_data, f, indent=2)
         print("Updated streams.json with new data")
