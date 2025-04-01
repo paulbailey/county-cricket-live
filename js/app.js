@@ -132,6 +132,19 @@ function streamApp() {
                 return `Starts in ${hours}h ${minutes}m`;
             }
             return `Starts in ${minutes}m`;
+        },
+
+        formatDescription(description) {
+            if (!description) return '';
+
+            // Convert newlines to <br> tags
+            let formatted = description.replace(/\n/g, '<br>');
+
+            // Wrap URLs in <a> tags
+            const urlRegex = /(https?:\/\/[^\s<]+)/g;
+            formatted = formatted.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer" class="link link-hover">$1</a>');
+
+            return formatted;
         }
     };
 }
