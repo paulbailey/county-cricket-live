@@ -1,14 +1,5 @@
 {
-  "liveStreams": [
-    {
-      "videoId": "diRIS0lb6JU",
-      "title": "Yorkshire Cricket Vertu Preview Show 2025",
-      "channelName": "Yorkshire CCC",
-      "channelId": "UCfbQbd1wpa6SP0uo22T6cXA",
-      "description": "Hosted by Michael McCann, we preview the men's and women's 2025 season in the first live stream of the season. Sponsored by Vertu, our live streaming partner will ensure all home (non-televised) games will be broadcast on this channel free-of-charge throughout the campaign. We speak to Jonny Bairstow, Dawid Malan, Lauren Winfield-Hill amongst other players and coaching staff.",
-      "publishedAt": "2025-04-02T17:00:06Z"
-    }
-  ],
+  "liveStreams": [],
   "upcomingMatches": [],
-  "lastChanged": "2025-04-02T17:14:50.231761+00:00"
+  "lastChanged": "2025-04-02T18:16:03.468352+00:00"
 }
