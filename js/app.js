@@ -163,3 +163,5 @@ function streamApp() {
         }
     };
 }
+
+window.streamApp = streamApp;
