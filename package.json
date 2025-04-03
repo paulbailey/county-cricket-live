@@ -7,7 +7,7 @@
     "build:css": "tailwindcss -i css/styles.css -o public/css/compiled.css --minify",
     "build:js": "esbuild js/app.js --bundle --outfile=public/js/bundle.js --minify",
     "build": "npm run build:css && npm run build:js",
-    "dev": "mkdir -p public/data && cp data/* public/data && concurrently \"tailwindcss -i css/styles.css -o public/css/compiled.css --watch\" \"esbuild js/app.js --bundle --outfile=public/js/bundle.js --watch\" \"live-server public --no-browser --watch=public/**/*\""
+    "dev": "concurrently \"tailwindcss -i css/styles.css -o public/css/compiled.css --watch\" \"esbuild js/app.js --bundle --outfile=public/js/bundle.js --watch\" \"live-server public --no-browser --watch=public/**/*\""
   },
   "repository": {
     "type": "git",
