@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 .env
 node_modules/
+public/css/compiled.css
+public/js/bundle.js

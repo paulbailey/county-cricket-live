@@ -16,11 +16,7 @@
     <title>County Cricket Live - Live Streams from All First-Class Counties</title>
     <meta name="description"
         content="Watch live streams from all 18 first-class county cricket clubs in England. Access live coverage of county matches in one place.">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="css/styles.css" rel="stylesheet">
-    <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="css/compiled.css" rel="stylesheet">
 </head>
 
 <body x-data="streamApp()" x-init="init()" class="min-h-screen bg-base-100">
@@ -160,8 +156,11 @@
             </p>
         </div>
     </footer>
+    <!-- YouTube iframe API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
 
-    <script src="js/app.js"></script>
+    <!-- Bundled Alpine.js -->
+    <script src="js/bundle.js"></script>
 </body>
 
 </html>

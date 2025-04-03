@@ -22,7 +22,7 @@ def load_channels():
 
 def load_existing_streams():
     try:
-        with open("data/streams.json", "r") as f:
+        with open("public/data/streams.json", "r") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return {"liveStreams": [], "upcomingMatches": [], "lastChanged": None}
@@ -241,8 +241,8 @@ def main():
 
     # Write to file if there are changes
     if has_changes:
-        Path("data").mkdir(parents=True, exist_ok=True)
-        with open("data/streams.json", "w") as f:
+        Path("public/data").mkdir(parents=True, exist_ok=True)
+        with open("public/data/streams.json", "w") as f:
             json.dump(output_data, f, indent=2)
         print("Updated streams.json with new data")
 
