@@ -9,10 +9,13 @@ Alpine.data('stream', () => ({
     players: new Map(),
     apiReady: false,
     playersInitialized: false,
+    metadataLoaded: false,
 
     async init() {
         // Load initial data immediately
         await this.loadStreamData();
+
+        this.metadataLoaded = true;
 
         // Set up periodic updates
         setInterval(() => this.loadStreamData(), 5 * 60 * 1000);

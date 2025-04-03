@@ -19,7 +19,7 @@
     <link href="css/compiled.css" rel="stylesheet">
 </head>
 
-<body x-data="stream" x-init="init()" class="min-h-screen bg-base-100">
+<body x-data="stream" x-init="init()" class="min-h-screen bg-base-100" x-show="metadataLoaded">
     <header class="navbar bg-base-100 shadow-md">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center w-full">
@@ -136,7 +136,7 @@
         </section>
     </main>
 
-    <footer class="bg-white mt-12">
+    <footer class="bg-white mt-12" x-show="metadataLoaded">
         <div class="container mx-auto px-4 py-6">
             <p class="text-center space-x-4">
                 <a href="https://github.com/pbailey/gh-repos/county-cricket-live" target="_blank"
