@@ -40,12 +40,12 @@
     <main class="container mx-auto px-4 py-8">
         <section class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 mb-4">Live Matches</h1>
+            <template x-if="liveStreams.length === 0">
+                <p class="text-base-content/70">There are no current live YouTube streams. When first class counties
+                    in England and Wales are playing a match, you'll see all the available streams here, in embedded
+                    players.</p>
+            </template>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <template x-if="liveStreams.length === 0">
-                    <p class="text-base-content/70">There are no current live YouTube streams. When first class counties
-                        in England and Wales are playing a match, you'll see all the available streams here, in embedded
-                        players.</p>
-                </template>
                 <template x-for="stream in liveStreams" :key="stream.videoId">
                     <div class="card bg-base-100 shadow-xl">
                         <div class="relative aspect-w-16 aspect-h-9">
@@ -90,14 +90,14 @@
 
         <section>
             <h2 class="text-2xl font-bold mb-4">Scheduled Live Streams</h2>
+            <template x-if="upcomingMatches.length === 0">
+                <p class="text-base-content/70">No upcoming matches scheduled. It's up to the counties themselves
+                    whether they post a schedule to their YouTube channel, and experience suggests that most of them
+                    don't, most of the time.</p>
+                <p class="text-base-content/70">You shouldn't be surprised therefore to see this section empty most
+                    of the time.</p>
+            </template>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <template x-if="upcomingMatches.length === 0">
-                    <p class="text-base-content/70">No upcoming matches scheduled. It's up to the counties themselves
-                        whether they post a schedule to their YouTube channel, and experience suggests that most of them
-                        don't, most of the time.</p>
-                    <p class="text-base-content/70">You shouldn't be surprised therefore to see this section empty most
-                        of the time.</p>
-                </template>
                 <template x-for="match in upcomingMatches" :key="match.videoId">
                     <div class="card bg-base-100 shadow-xl">
                         <figure class="relative aspect-w-16 aspect-h-9">
