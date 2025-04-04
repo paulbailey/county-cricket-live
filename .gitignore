@@ -6,3 +6,5 @@ __pycache__/
 node_modules/
 public/css/compiled.css
 public/js/bundle.js
+.coverage
+.env

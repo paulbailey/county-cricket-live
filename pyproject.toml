@@ -14,3 +14,15 @@ dependencies = [
     "google-auth-httplib2>=0.2.0",
     "google-auth-oauthlib>=1.2.1",
 ]
+
+[dependency-groups]
+test = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["script/tests"]
+pythonpath = ["."]
+addopts = "-v --cov=script --cov-report=term-missing"
