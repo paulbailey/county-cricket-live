@@ -59,12 +59,12 @@
         }
       },
       {
-        "videoId": "E5h_vRgfIQ8",
-        "title": "LIVE STREAM: Somerset vs Worcestershire - Day One",
+        "videoId": null,
+        "title": "Somerset vs Worcestershire",
         "channelName": "Somerset CCC",
         "channelId": "UCcCeaTFtzWdkTQYeFRRWvSg",
-        "description": "WATCH LIVE as Somerset take on Worcestershire in the 2025 County Championship \n\n#cricket #livestream #somerset",
-        "publishedAt": "2025-04-04T08:46:11Z",
+        "description": "County Championship Division One - The Cooper Associates County Ground, Taunton",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division One",
           "match_url": "https://www.espncricinfo.com/series/8052/game/1461826/somerset-vs-worcestershire-3rd-match-county-championship-division-one-2025",
@@ -102,12 +102,12 @@
   "County Championship Division Two": {
     "live": [
       {
-        "videoId": "_ASqEkZ_vwE",
-        "title": "\ud83d\udd34 LIVE CRICKET | Derbyshire vs Gloucestershire, Day One",
+        "videoId": null,
+        "title": "Derbyshire vs Gloucestershire",
         "channelName": "Derbyshire CCC",
         "channelId": "UCdsIWgLpXJZowUJvvh4gDoA",
-        "description": "Live action from The County Ground, Derby, as Derbyshire take on Gloucestershire in the Rothesay County Championship.\n\nMatch Centre \u27a1\ufe0f: https://cricket.derbyshireccc.com/fixtures/first-xi/2025-season/rothesay-county-championship/derbyshire-vs-gloucestershire-cc-2025/?tab=m_summary\n\nOnline Shop \u27a1\ufe0f: https://cricket.derbyshireccc.com/shop/\n\n#livestream #Derbyshire #cricket #live #countychampionship #countycricket",
-        "publishedAt": "2025-04-04T09:00:01Z",
+        "description": "County Championship Division Two - County Ground, Derby",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division Two",
           "match_url": "https://www.espncricinfo.com/series/8204/game/1461895/derbyshire-vs-gloucestershire-2nd-match-county-championship-division-two-2025",
@@ -140,12 +140,12 @@
         }
       },
       {
-        "videoId": "-78yVgYW7Ho",
-        "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY ONE",
+        "videoId": null,
+        "title": "Middlesex vs Lancashire",
         "channelName": "Middlesex CCC",
         "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
-        "description": "Middlesex Cricket's live and enhanced broadcast of our Division Two Rothesay County Championship match at Lord's Cricket Ground, London against Lancashire.\n\nBUY BLAST TICKETS: https://www.middlesexccc.com/page/tickets-home\nBECOME A MEMBER: https://shop.middlesexccc.com/memberships/subscribe/\n\nMiddlesex's live stream is brought to you by Dafabet, the Club's Principal Sponsor.\n\n#cricket #cricketlive #cricketlover #cricketlovers #livestream #onemiddlesex",
-        "publishedAt": "2025-04-04T07:50:36Z",
+        "description": "County Championship Division Two - Lord's, London",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division Two",
           "match_url": "https://www.espncricinfo.com/series/8204/game/1461896/middlesex-vs-lancashire-3rd-match-county-championship-division-two-2025",
@@ -159,12 +159,12 @@
         }
       },
       {
-        "videoId": "HtCSyItqbOE",
-        "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 1 | Rothesay County Championship",
+        "videoId": null,
+        "title": "Northamptonshire vs Kent",
         "channelName": "Northamptonshire CCC",
         "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
-        "description": "",
-        "publishedAt": "2025-04-04T08:10:37Z",
+        "description": "County Championship Division Two - County Ground, Northampton",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division Two",
           "match_url": "https://www.espncricinfo.com/series/8204/game/1461894/northamptonshire-vs-kent-1st-match-county-championship-division-two-2025",
