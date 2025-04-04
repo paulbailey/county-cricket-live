@@ -1,0 +1,52 @@
+[
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462007/derbyshire-vs-surrey-one-day-cup-2025",
+    "team1": "Derbyshire",
+    "team2": "Surrey",
+    "start_date": "2025-08-22",
+    "end_date": "2025-08-22",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462008/lancashire-vs-warwickshire-one-day-cup-2025",
+    "team1": "Lancashire",
+    "team2": "Warwickshire",
+    "start_date": "2025-08-22",
+    "end_date": "2025-08-22",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462009/nottingham-vs-gloucestershire-one-day-cup-2025",
+    "team1": "Nottingham",
+    "team2": "Gloucestershire",
+    "start_date": "2025-08-22",
+    "end_date": "2025-08-22",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462010/worcestershire-vs-glamorgan-one-day-cup-2025",
+    "team1": "Worcestershire",
+    "team2": "Glamorgan",
+    "start_date": "2025-08-22",
+    "end_date": "2025-08-22",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462011/yorkshire-vs-durham-one-day-cup-2025",
+    "team1": "Yorkshire",
+    "team2": "Durham",
+    "start_date": "2025-08-22",
+    "end_date": "2025-08-22",
+    "start_time_gmt": null,
+    "venue": null
+  }
+]

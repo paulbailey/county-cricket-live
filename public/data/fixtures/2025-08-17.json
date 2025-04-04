@@ -1,0 +1,72 @@
+[
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461993/kent-vs-lancashire-one-day-cup-2025",
+    "team1": "Kent",
+    "team2": "Lancashire",
+    "start_date": "2025-08-17",
+    "end_date": "2025-08-17",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461994/leicestershire-vs-essex-one-day-cup-2025",
+    "team1": "Leicestershire",
+    "team2": "Essex",
+    "start_date": "2025-08-17",
+    "end_date": "2025-08-17",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461995/middlesex-vs-yorkshire-one-day-cup-2025",
+    "team1": "Middlesex",
+    "team2": "Yorkshire",
+    "start_date": "2025-08-17",
+    "end_date": "2025-08-17",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461996/northamptonshire-vs-sussex-one-day-cup-2025",
+    "team1": "Northamptonshire",
+    "team2": "Sussex",
+    "start_date": "2025-08-17",
+    "end_date": "2025-08-17",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461997/somerset-vs-warwickshire-one-day-cup-2025",
+    "team1": "Somerset",
+    "team2": "Warwickshire",
+    "start_date": "2025-08-17",
+    "end_date": "2025-08-17",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461998/worcestershire-vs-gloucestershire-one-day-cup-2025",
+    "team1": "Worcestershire",
+    "team2": "Gloucestershire",
+    "start_date": "2025-08-17",
+    "end_date": "2025-08-17",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461992/glamorgan-vs-nottingham-one-day-cup-2025",
+    "team1": "Glamorgan",
+    "team2": "Nottingham",
+    "start_date": "2025-08-17",
+    "end_date": "2025-08-17",
+    "start_time_gmt": null,
+    "venue": null
+  }
+]

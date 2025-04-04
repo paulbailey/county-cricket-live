@@ -1,0 +1,62 @@
+[
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460766/essex-vs-somerset-south-group-t20-blast-2025",
+    "team1": "Essex",
+    "team2": "Somerset",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-01",
+    "start_time_gmt": null,
+    "venue": "County Ground, Chelmsford"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460767/middlesex-vs-glamorgan-south-group-t20-blast-2025",
+    "team1": "Middlesex",
+    "team2": "Glamorgan",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-01",
+    "start_time_gmt": null,
+    "venue": "Merchant Taylors' School Ground, Northwood"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460768/northamptonshire-vs-leicestershire-north-group-t20-blast-2025",
+    "team1": "Northamptonshire",
+    "team2": "Leicestershire",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-01",
+    "start_time_gmt": null,
+    "venue": "County Ground, Northampton"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460769/sussex-vs-gloucestershire-south-group-t20-blast-2025",
+    "team1": "Sussex",
+    "team2": "Gloucestershire",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-01",
+    "start_time_gmt": null,
+    "venue": "County Ground, Hove"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460764/durham-vs-lancashire-north-group-t20-blast-2025",
+    "team1": "Durham",
+    "team2": "Lancashire",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-01",
+    "start_time_gmt": null,
+    "venue": "Riverside Ground, Chester-le-Street"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460765/worcestershire-vs-yorkshire-north-group-t20-blast-2025",
+    "team1": "Worcestershire",
+    "team2": "Yorkshire",
+    "start_date": "2025-06-01",
+    "end_date": "2025-06-01",
+    "start_time_gmt": null,
+    "venue": "County Ground, New Road, Worcester"
+  }
+]

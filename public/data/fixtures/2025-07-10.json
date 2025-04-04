@@ -1,0 +1,32 @@
+[
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460848/hampshire-vs-glamorgan-south-group-t20-blast-2025",
+    "team1": "Hampshire",
+    "team2": "Glamorgan",
+    "start_date": "2025-07-10",
+    "end_date": "2025-07-10",
+    "start_time_gmt": null,
+    "venue": "The Rose Bowl, Southampton"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460849/leicestershire-vs-northamptonshire-north-group-t20-blast-2025",
+    "team1": "Leicestershire",
+    "team2": "Northamptonshire",
+    "start_date": "2025-07-10",
+    "end_date": "2025-07-10",
+    "start_time_gmt": null,
+    "venue": "Grace Road, Leicester"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460847/derbyshire-vs-worcestershire-north-group-t20-blast-2025",
+    "team1": "Derbyshire",
+    "team2": "Worcestershire",
+    "start_date": "2025-07-10",
+    "end_date": "2025-07-10",
+    "start_time_gmt": null,
+    "venue": "County Ground, Derby"
+  }
+]

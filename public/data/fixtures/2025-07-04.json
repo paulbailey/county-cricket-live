@@ -1,0 +1,72 @@
+[
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460829/northamptonshire-vs-lancashire-north-group-t20-blast-2025",
+    "team1": "Northamptonshire",
+    "team2": "Lancashire",
+    "start_date": "2025-07-04",
+    "end_date": "2025-07-04",
+    "start_time_gmt": null,
+    "venue": "County Ground, Northampton"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460830/somerset-vs-glamorgan-south-group-t20-blast-2025",
+    "team1": "Somerset",
+    "team2": "Glamorgan",
+    "start_date": "2025-07-04",
+    "end_date": "2025-07-04",
+    "start_time_gmt": null,
+    "venue": "The Cooper Associates County Ground, Taunton"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460825/durham-vs-nottinghamshire-north-group-t20-blast-2025",
+    "team1": "Durham",
+    "team2": "Nottinghamshire",
+    "start_date": "2025-07-04",
+    "end_date": "2025-07-04",
+    "start_time_gmt": null,
+    "venue": "Riverside Ground, Chester-le-Street"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460831/yorkshire-vs-worcestershire-north-group-t20-blast-2025",
+    "team1": "Yorkshire",
+    "team2": "Worcestershire",
+    "start_date": "2025-07-04",
+    "end_date": "2025-07-04",
+    "start_time_gmt": null,
+    "venue": "Headingley, Leeds"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460826/essex-vs-gloucestershire-south-group-t20-blast-2025",
+    "team1": "Essex",
+    "team2": "Gloucestershire",
+    "start_date": "2025-07-04",
+    "end_date": "2025-07-04",
+    "start_time_gmt": null,
+    "venue": "County Ground, Chelmsford"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460827/kent-vs-sussex-south-group-t20-blast-2025",
+    "team1": "Kent",
+    "team2": "Sussex",
+    "start_date": "2025-07-04",
+    "end_date": "2025-07-04",
+    "start_time_gmt": null,
+    "venue": "St Lawrence Ground, Canterbury"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460828/leicestershire-vs-birmingham-bears-north-group-t20-blast-2025",
+    "team1": "Leicestershire",
+    "team2": "Birmingham Bears",
+    "start_date": "2025-07-04",
+    "end_date": "2025-07-04",
+    "start_time_gmt": null,
+    "venue": "Grace Road, Leicester"
+  }
+]

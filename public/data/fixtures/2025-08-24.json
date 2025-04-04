@@ -1,0 +1,82 @@
+[
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462018/nottingham-vs-surrey-one-day-cup-2025",
+    "team1": "Nottingham",
+    "team2": "Surrey",
+    "start_date": "2025-08-24",
+    "end_date": "2025-08-24",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462012/durham-vs-warwickshire-one-day-cup-2025",
+    "team1": "Durham",
+    "team2": "Warwickshire",
+    "start_date": "2025-08-24",
+    "end_date": "2025-08-24",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462019/sussex-vs-yorkshire-one-day-cup-2025",
+    "team1": "Sussex",
+    "team2": "Yorkshire",
+    "start_date": "2025-08-24",
+    "end_date": "2025-08-24",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462013/essex-vs-gloucestershire-one-day-cup-2025",
+    "team1": "Essex",
+    "team2": "Gloucestershire",
+    "start_date": "2025-08-24",
+    "end_date": "2025-08-24",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462014/hampshire-vs-derbyshire-one-day-cup-2025",
+    "team1": "Hampshire",
+    "team2": "Derbyshire",
+    "start_date": "2025-08-24",
+    "end_date": "2025-08-24",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462015/kent-vs-somerset-one-day-cup-2025",
+    "team1": "Kent",
+    "team2": "Somerset",
+    "start_date": "2025-08-24",
+    "end_date": "2025-08-24",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462016/leicestershire-vs-worcestershire-one-day-cup-2025",
+    "team1": "Leicestershire",
+    "team2": "Worcestershire",
+    "start_date": "2025-08-24",
+    "end_date": "2025-08-24",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462017/northamptonshire-vs-middlesex-one-day-cup-2025",
+    "team1": "Northamptonshire",
+    "team2": "Middlesex",
+    "start_date": "2025-08-24",
+    "end_date": "2025-08-24",
+    "start_time_gmt": null,
+    "venue": null
+  }
+]

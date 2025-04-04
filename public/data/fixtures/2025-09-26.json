@@ -1,0 +1,92 @@
+[
+  {
+    "competition": "County Championship Division One",
+    "match_url": "https://www.espncricinfo.com/series/8052/game/1461893/yorkshire-vs-durham-70th-match-county-championship-division-one-2025",
+    "team1": "Yorkshire",
+    "team2": "Durham",
+    "start_date": "2025-09-24",
+    "end_date": "2025-09-27",
+    "start_time_gmt": null,
+    "venue": "Headingley, Leeds"
+  },
+  {
+    "competition": "County Championship Division One",
+    "match_url": "https://www.espncricinfo.com/series/8052/game/1461889/essex-vs-somerset-66th-match-county-championship-division-one-2025",
+    "team1": "Essex",
+    "team2": "Somerset",
+    "start_date": "2025-09-24",
+    "end_date": "2025-09-27",
+    "start_time_gmt": null,
+    "venue": "County Ground, Chelmsford"
+  },
+  {
+    "competition": "County Championship Division One",
+    "match_url": "https://www.espncricinfo.com/series/8052/game/1461890/nottinghamshire-vs-warwickshire-67th-match-county-championship-division-one-2025",
+    "team1": "Nottinghamshire",
+    "team2": "Warwickshire",
+    "start_date": "2025-09-24",
+    "end_date": "2025-09-27",
+    "start_time_gmt": null,
+    "venue": "Trent Bridge, Nottingham"
+  },
+  {
+    "competition": "County Championship Division One",
+    "match_url": "https://www.espncricinfo.com/series/8052/game/1461891/hampshire-vs-surrey-68th-match-county-championship-division-one-2025",
+    "team1": "Hampshire",
+    "team2": "Surrey",
+    "start_date": "2025-09-24",
+    "end_date": "2025-09-27",
+    "start_time_gmt": null,
+    "venue": "The Rose Bowl, Southampton"
+  },
+  {
+    "competition": "County Championship Division One",
+    "match_url": "https://www.espncricinfo.com/series/8052/game/1461892/worcestershire-vs-sussex-69th-match-county-championship-division-one-2025",
+    "team1": "Worcestershire",
+    "team2": "Sussex",
+    "start_date": "2025-09-24",
+    "end_date": "2025-09-27",
+    "start_time_gmt": null,
+    "venue": "County Ground, New Road, Worcester"
+  },
+  {
+    "competition": "County Championship Division Two",
+    "match_url": "https://www.espncricinfo.com/series/8204/game/1461946/northamptonshire-vs-leicestershire-53rd-match-county-championship-division-two-2025",
+    "team1": "Northamptonshire",
+    "team2": "Leicestershire",
+    "start_date": "2025-09-24",
+    "end_date": "2025-09-27",
+    "start_time_gmt": null,
+    "venue": "County Ground, Northampton"
+  },
+  {
+    "competition": "County Championship Division Two",
+    "match_url": "https://www.espncricinfo.com/series/8204/game/1461947/kent-vs-derbyshire-54th-match-county-championship-division-two-2025",
+    "team1": "Kent",
+    "team2": "Derbyshire",
+    "start_date": "2025-09-24",
+    "end_date": "2025-09-27",
+    "start_time_gmt": null,
+    "venue": "St Lawrence Ground, Canterbury"
+  },
+  {
+    "competition": "County Championship Division Two",
+    "match_url": "https://www.espncricinfo.com/series/8204/game/1461948/middlesex-vs-gloucestershire-55th-match-county-championship-division-two-2025",
+    "team1": "Middlesex",
+    "team2": "Gloucestershire",
+    "start_date": "2025-09-24",
+    "end_date": "2025-09-27",
+    "start_time_gmt": null,
+    "venue": "Lord's, London"
+  },
+  {
+    "competition": "County Championship Division Two",
+    "match_url": "https://www.espncricinfo.com/series/8204/game/1461949/glamorgan-vs-lancashire-56th-match-county-championship-division-two-2025",
+    "team1": "Glamorgan",
+    "team2": "Lancashire",
+    "start_date": "2025-09-24",
+    "end_date": "2025-09-27",
+    "start_time_gmt": null,
+    "venue": "Sophia Gardens, Cardiff"
+  }
+]

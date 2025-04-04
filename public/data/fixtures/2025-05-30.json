@@ -1,0 +1,62 @@
+[
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460760/somerset-vs-surrey-south-group-t20-blast-2025",
+    "team1": "Somerset",
+    "team2": "Surrey",
+    "start_date": "2025-05-30",
+    "end_date": "2025-05-30",
+    "start_time_gmt": null,
+    "venue": "The Cooper Associates County Ground, Taunton"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460761/yorkshire-vs-northamptonshire-north-group-t20-blast-2025",
+    "team1": "Yorkshire",
+    "team2": "Northamptonshire",
+    "start_date": "2025-05-30",
+    "end_date": "2025-05-30",
+    "start_time_gmt": null,
+    "venue": "Headingley, Leeds"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460756/gloucestershire-vs-kent-south-group-t20-blast-2025",
+    "team1": "Gloucestershire",
+    "team2": "Kent",
+    "start_date": "2025-05-30",
+    "end_date": "2025-05-30",
+    "start_time_gmt": null,
+    "venue": "County Ground, Bristol"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460757/hampshire-vs-essex-south-group-t20-blast-2025",
+    "team1": "Hampshire",
+    "team2": "Essex",
+    "start_date": "2025-05-30",
+    "end_date": "2025-05-30",
+    "start_time_gmt": null,
+    "venue": "The Rose Bowl, Southampton"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460758/leicestershire-vs-derbyshire-north-group-t20-blast-2025",
+    "team1": "Leicestershire",
+    "team2": "Derbyshire",
+    "start_date": "2025-05-30",
+    "end_date": "2025-05-30",
+    "start_time_gmt": null,
+    "venue": "Grace Road, Leicester"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460759/nottinghamshire-vs-birmingham-bears-north-group-t20-blast-2025",
+    "team1": "Nottinghamshire",
+    "team2": "Birmingham Bears",
+    "start_date": "2025-05-30",
+    "end_date": "2025-05-30",
+    "start_time_gmt": null,
+    "venue": "Trent Bridge, Nottingham"
+  }
+]

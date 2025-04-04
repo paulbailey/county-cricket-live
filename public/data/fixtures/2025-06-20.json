@@ -1,0 +1,82 @@
+[
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460823/northamptonshire-vs-nottinghamshire-north-group-t20-blast-2025",
+    "team1": "Northamptonshire",
+    "team2": "Nottinghamshire",
+    "start_date": "2025-06-20",
+    "end_date": "2025-06-20",
+    "start_time_gmt": null,
+    "venue": "County Ground, Northampton"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460817/birmingham-bears-vs-worcestershire-north-group-t20-blast-2025",
+    "team1": "Birmingham Bears",
+    "team2": "Worcestershire",
+    "start_date": "2025-06-20",
+    "end_date": "2025-06-20",
+    "start_time_gmt": null,
+    "venue": "Edgbaston, Birmingham"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460824/surrey-vs-middlesex-south-group-t20-blast-2025",
+    "team1": "Surrey",
+    "team2": "Middlesex",
+    "start_date": "2025-06-20",
+    "end_date": "2025-06-20",
+    "start_time_gmt": null,
+    "venue": "Kennington Oval, London"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460818/derbyshire-vs-lancashire-north-group-t20-blast-2025",
+    "team1": "Derbyshire",
+    "team2": "Lancashire",
+    "start_date": "2025-06-20",
+    "end_date": "2025-06-20",
+    "start_time_gmt": null,
+    "venue": "County Ground, Derby"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460819/durham-vs-yorkshire-north-group-t20-blast-2025",
+    "team1": "Durham",
+    "team2": "Yorkshire",
+    "start_date": "2025-06-20",
+    "end_date": "2025-06-20",
+    "start_time_gmt": null,
+    "venue": "Riverside Ground, Chester-le-Street"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460820/essex-vs-kent-south-group-t20-blast-2025",
+    "team1": "Essex",
+    "team2": "Kent",
+    "start_date": "2025-06-20",
+    "end_date": "2025-06-20",
+    "start_time_gmt": null,
+    "venue": "County Ground, Chelmsford"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460821/glamorgan-vs-somerset-south-group-t20-blast-2025",
+    "team1": "Glamorgan",
+    "team2": "Somerset",
+    "start_date": "2025-06-20",
+    "end_date": "2025-06-20",
+    "start_time_gmt": null,
+    "venue": "Sophia Gardens, Cardiff"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460822/gloucestershire-vs-hampshire-south-group-t20-blast-2025",
+    "team1": "Gloucestershire",
+    "team2": "Hampshire",
+    "start_date": "2025-06-20",
+    "end_date": "2025-06-20",
+    "start_time_gmt": null,
+    "venue": "County Ground, Bristol"
+  }
+]

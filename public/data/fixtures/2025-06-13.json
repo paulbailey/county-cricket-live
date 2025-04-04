@@ -1,0 +1,72 @@
+[
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460798/northamptonshire-vs-durham-north-group-t20-blast-2025",
+    "team1": "Northamptonshire",
+    "team2": "Durham",
+    "start_date": "2025-06-13",
+    "end_date": "2025-06-13",
+    "start_time_gmt": null,
+    "venue": "County Ground, Northampton"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460799/nottinghamshire-vs-derbyshire-north-group-t20-blast-2025",
+    "team1": "Nottinghamshire",
+    "team2": "Derbyshire",
+    "start_date": "2025-06-13",
+    "end_date": "2025-06-13",
+    "start_time_gmt": null,
+    "venue": "Trent Bridge, Nottingham"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460800/sussex-vs-essex-south-group-t20-blast-2025",
+    "team1": "Sussex",
+    "team2": "Essex",
+    "start_date": "2025-06-13",
+    "end_date": "2025-06-13",
+    "start_time_gmt": null,
+    "venue": "County Ground, Hove"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460801/worcestershire-vs-lancashire-north-group-t20-blast-2025",
+    "team1": "Worcestershire",
+    "team2": "Lancashire",
+    "start_date": "2025-06-13",
+    "end_date": "2025-06-13",
+    "start_time_gmt": null,
+    "venue": "County Ground, New Road, Worcester"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460802/yorkshire-vs-birmingham-bears-north-group-t20-blast-2025",
+    "team1": "Yorkshire",
+    "team2": "Birmingham Bears",
+    "start_date": "2025-06-13",
+    "end_date": "2025-06-13",
+    "start_time_gmt": null,
+    "venue": "Headingley, Leeds"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460796/gloucestershire-vs-somerset-south-group-t20-blast-2025",
+    "team1": "Gloucestershire",
+    "team2": "Somerset",
+    "start_date": "2025-06-13",
+    "end_date": "2025-06-13",
+    "start_time_gmt": null,
+    "venue": "County Ground, Bristol"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460797/hampshire-vs-middlesex-south-group-t20-blast-2025",
+    "team1": "Hampshire",
+    "team2": "Middlesex",
+    "start_date": "2025-06-13",
+    "end_date": "2025-06-13",
+    "start_time_gmt": null,
+    "venue": "The Rose Bowl, Southampton"
+  }
+]

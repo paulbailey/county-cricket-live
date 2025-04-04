@@ -1,0 +1,42 @@
+[
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461964/glamorgan-vs-derbyshire-one-day-cup-2025",
+    "team1": "Glamorgan",
+    "team2": "Derbyshire",
+    "start_date": "2025-08-07",
+    "end_date": "2025-08-07",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461965/hampshire-vs-essex-one-day-cup-2025",
+    "team1": "Hampshire",
+    "team2": "Essex",
+    "start_date": "2025-08-07",
+    "end_date": "2025-08-07",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461966/nottingham-vs-worcestershire-one-day-cup-2025",
+    "team1": "Nottingham",
+    "team2": "Worcestershire",
+    "start_date": "2025-08-07",
+    "end_date": "2025-08-07",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461967/sussex-vs-kent-one-day-cup-2025",
+    "team1": "Sussex",
+    "team2": "Kent",
+    "start_date": "2025-08-07",
+    "end_date": "2025-08-07",
+    "start_time_gmt": null,
+    "venue": null
+  }
+]

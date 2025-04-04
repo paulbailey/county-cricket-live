@@ -1,0 +1,42 @@
+[
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460843/birmingham-bears-vs-lancashire-north-group-t20-blast-2025",
+    "team1": "Birmingham Bears",
+    "team2": "Lancashire",
+    "start_date": "2025-07-09",
+    "end_date": "2025-07-09",
+    "start_time_gmt": null,
+    "venue": "Edgbaston, Birmingham"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460844/gloucestershire-vs-surrey-south-group-t20-blast-2025",
+    "team1": "Gloucestershire",
+    "team2": "Surrey",
+    "start_date": "2025-07-09",
+    "end_date": "2025-07-09",
+    "start_time_gmt": null,
+    "venue": "County Ground, Bristol"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460845/middlesex-vs-hampshire-south-group-t20-blast-2025",
+    "team1": "Middlesex",
+    "team2": "Hampshire",
+    "start_date": "2025-07-09",
+    "end_date": "2025-07-09",
+    "start_time_gmt": null,
+    "venue": "Merchant Taylors' School Ground, Northwood"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460846/sussex-vs-kent-south-group-t20-blast-2025",
+    "team1": "Sussex",
+    "team2": "Kent",
+    "start_date": "2025-07-09",
+    "end_date": "2025-07-09",
+    "start_time_gmt": null,
+    "venue": "County Ground, Hove"
+  }
+]

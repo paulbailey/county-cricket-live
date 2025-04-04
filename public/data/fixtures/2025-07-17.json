@@ -1,0 +1,42 @@
+[
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460868/essex-vs-hampshire-south-group-t20-blast-2025",
+    "team1": "Essex",
+    "team2": "Hampshire",
+    "start_date": "2025-07-17",
+    "end_date": "2025-07-17",
+    "start_time_gmt": null,
+    "venue": "County Ground, Chelmsford"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460869/gloucestershire-vs-sussex-south-group-t20-blast-2025",
+    "team1": "Gloucestershire",
+    "team2": "Sussex",
+    "start_date": "2025-07-17",
+    "end_date": "2025-07-17",
+    "start_time_gmt": null,
+    "venue": "College Ground, Cheltenham"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460870/worcestershire-vs-nottinghamshire-north-group-t20-blast-2025",
+    "team1": "Worcestershire",
+    "team2": "Nottinghamshire",
+    "start_date": "2025-07-17",
+    "end_date": "2025-07-17",
+    "start_time_gmt": null,
+    "venue": "County Ground, New Road, Worcester"
+  },
+  {
+    "competition": "T20 Blast",
+    "match_url": "https://www.espncricinfo.com/series/8053/game/1460871/yorkshire-vs-lancashire-north-group-t20-blast-2025",
+    "team1": "Yorkshire",
+    "team2": "Lancashire",
+    "start_date": "2025-07-17",
+    "end_date": "2025-07-17",
+    "start_time_gmt": null,
+    "venue": "Headingley, Leeds"
+  }
+]

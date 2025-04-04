@@ -1,0 +1,72 @@
+[
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461975/middlesex-vs-sussex-one-day-cup-2025",
+    "team1": "Middlesex",
+    "team2": "Sussex",
+    "start_date": "2025-08-10",
+    "end_date": "2025-08-10",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461976/somerset-vs-lancashire-one-day-cup-2025",
+    "team1": "Somerset",
+    "team2": "Lancashire",
+    "start_date": "2025-08-10",
+    "end_date": "2025-08-10",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461977/warwickshire-vs-northamptonshire-one-day-cup-2025",
+    "team1": "Warwickshire",
+    "team2": "Northamptonshire",
+    "start_date": "2025-08-10",
+    "end_date": "2025-08-10",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461971/derbyshire-vs-nottingham-one-day-cup-2025",
+    "team1": "Derbyshire",
+    "team2": "Nottingham",
+    "start_date": "2025-08-10",
+    "end_date": "2025-08-10",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461972/essex-vs-worcestershire-one-day-cup-2025",
+    "team1": "Essex",
+    "team2": "Worcestershire",
+    "start_date": "2025-08-10",
+    "end_date": "2025-08-10",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461973/gloucestershire-vs-leicestershire-one-day-cup-2025",
+    "team1": "Gloucestershire",
+    "team2": "Leicestershire",
+    "start_date": "2025-08-10",
+    "end_date": "2025-08-10",
+    "start_time_gmt": null,
+    "venue": null
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1461974/kent-vs-durham-one-day-cup-2025",
+    "team1": "Kent",
+    "team2": "Durham",
+    "start_date": "2025-08-10",
+    "end_date": "2025-08-10",
+    "start_time_gmt": null,
+    "venue": null
+  }
+]

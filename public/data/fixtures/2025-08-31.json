@@ -1,0 +1,22 @@
+[
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462031/tbc-vs-tbc-semi-fial-one-day-cup-2025",
+    "team1": "tbc",
+    "team2": "tbc",
+    "start_date": "2025-08-31",
+    "end_date": "2025-08-31",
+    "start_time_gmt": null,
+    "venue": "TBA"
+  },
+  {
+    "competition": "One-Day Cup",
+    "match_url": "https://www.espncricinfo.com/series/8335/game/1462030/tbc-vs-tbc-semi-fial-one-day-cup-2025",
+    "team1": "tbc",
+    "team2": "tbc",
+    "start_date": "2025-08-31",
+    "end_date": "2025-08-31",
+    "start_time_gmt": null,
+    "venue": "TBA"
+  }
+]
