@@ -14,10 +14,10 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 youtube = build("youtube", "v3", developerKey=GOOGLE_API_KEY)
 
 # Bluesky setup
-BSKY_USERNAME = os.getenv("BSKY_USERNAME")
-BSKY_PASSWORD = os.getenv("BSKY_PASSWORD")
+BLUESKY_USERNAME = os.getenv("BLUESKY_USERNAME")
+BLUESKY_PASSWORD = os.getenv("BLUESKY_PASSWORD")
 client = Client()
-client.login(BSKY_USERNAME, BSKY_PASSWORD)
+client.login(BLUESKY_USERNAME, BLUESKY_PASSWORD)
 
 def load_channels():
     with open("channels.json") as f:
