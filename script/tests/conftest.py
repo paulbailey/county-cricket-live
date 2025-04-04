@@ -1,6 +1,12 @@
 import pytest
 import os
 from pathlib import Path
+from .fixtures import (
+    MOCK_CHANNELS,
+    MOCK_FIXTURES,
+    MOCK_EXISTING_STREAMS,
+    MOCK_YOUTUBE_RESPONSE
+)
 
 @pytest.fixture(autouse=True)
 def setup_test_environment():
@@ -21,4 +27,20 @@ def setup_test_environment():
     yield
     
     # Clean up after tests if needed
-    pass 
+    pass
+
+@pytest.fixture
+def mock_channels():
+    return MOCK_CHANNELS
+
+@pytest.fixture
+def mock_fixtures():
+    return MOCK_FIXTURES
+
+@pytest.fixture
+def mock_existing_streams():
+    return MOCK_EXISTING_STREAMS
+
+@pytest.fixture
+def mock_youtube_response():
+    return MOCK_YOUTUBE_RESPONSE 
