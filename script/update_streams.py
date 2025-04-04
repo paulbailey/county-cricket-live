@@ -243,6 +243,11 @@ def post_to_bluesky(streams_data):
     """Post to Bluesky about the available streams."""
     if not streams_data:
         return
+        
+    # Skip posting if SKIP_BLUESKY_POSTING is set
+    if os.getenv("SKIP_BLUESKY_POSTING", "false").lower() == "true":
+        print("Skipping Bluesky post due to SKIP_BLUESKY_POSTING environment variable")
+        return
     
     client = Client()
     client.login(BLUESKY_USERNAME, BLUESKY_PASSWORD)
@@ -300,23 +305,21 @@ def post_to_bluesky(streams_data):
         
         # Post remaining chunks as replies
         for chunk in chunks[1:]:
-            client.send_post(
-                text=chunk,
-                reply_to=models.AppBskyFeedPost.ReplyRef(
-                    parent=models.AppBskyFeedPost.ReplyRefParent(
-                        uri=first_post.uri,
-                        cid=first_post.cid
-                    ),
-                    root=models.AppBskyFeedPost.ReplyRefRoot(
-                        uri=first_post.uri,
-                        cid=first_post.cid
-                    )
+            reply = models.AppBskyFeedPost.Reply(
+                parent=models.AppBskyFeedPost.ReplyRef(
+                    uri=first_post.uri,
+                    cid=first_post.cid
+                ),
+                root=models.AppBskyFeedPost.ReplyRef(
+                    uri=first_post.uri,
+                    cid=first_post.cid
                 )
             )
-            print("Posted reply to Bluesky successfully")
+            client.send_post(text=chunk, reply_to=reply)
+            print("Posted reply chunk to Bluesky successfully")
             
     except Exception as e:
-        print(f"Error posting to Bluesky: {e}")
+        print(f"Error posting to Bluesky: {str(e)}")
     
 def main():
     channels = load_channels()

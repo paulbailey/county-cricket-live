@@ -8,9 +8,17 @@ on:
     paths:
       - 'script/**'
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+        GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+        BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
+       SKIP_BLUESKY_POSTING: "true"
     steps:
       - uses: actions/checkout@v4
       
