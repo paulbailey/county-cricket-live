@@ -138,7 +138,7 @@ def get_new_streams(existing_streams, new_streams):
         for existing_stream in existing_comp.get("live", []):
             if existing_stream.get("fixture") and not existing_stream.get("isPlaceholder"):
                 fixture = existing_stream["fixture"]
-                fixture_id = f"{fixture['home_team']}-{fixture['away_team']}-{fixture['date']}"
+                fixture_id = f"{fixture['home_team']}-{fixture['away_team']}-{fixture['start_date']}-{fixture['end_date']}"
                 existing_fixture_ids.add(fixture_id)
         
         # Check for new fixtures that now have streams
@@ -147,7 +147,7 @@ def get_new_streams(existing_streams, new_streams):
                 continue
                 
             fixture = new_stream["fixture"]
-            fixture_id = f"{fixture['home_team']}-{fixture['away_team']}-{fixture['date']}"
+            fixture_id = f"{fixture['home_team']}-{fixture['away_team']}-{fixture['start_date']}-{fixture['end_date']}"
             
             # Only add if this is a new fixture getting a stream
             if fixture_id not in existing_fixture_ids:
