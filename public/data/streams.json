@@ -2,21 +2,40 @@
   "County Championship Division One": {
     "live": [
       {
-        "videoId": "E5h_vRgfIQ8",
-        "title": "LIVE STREAM: Somerset vs Worcestershire - Day One",
-        "channelName": "Somerset CCC",
-        "channelId": "UCcCeaTFtzWdkTQYeFRRWvSg",
-        "description": "WATCH LIVE as Somerset take on Worcestershire in the 2025 County Championship \n\n#cricket #livestream #somerset",
-        "publishedAt": "2025-04-04T08:46:11Z",
+        "videoId": "iP3knBsqm2o",
+        "title": "LIVE STREAM |  Nottinghamshire v Durham",
+        "channelName": "Nottinghamshire CCC",
+        "channelId": "UCiOki3bA8llEHVgXBQ3x6wg",
+        "description": "Action from Trent Bridge, Nottingham - Nottinghamshire vs Durham\nIf you are experiencing any issues with pictures and sound please refresh the page.\n#trentbridgelive \n\n#Notts #cricket #NottinghamshireCCC #score #nottsccclivestream #live #stream #sport #watchlive #livesports",
+        "publishedAt": "2025-04-04T09:33:29Z",
         "fixture": {
           "competition": "County Championship Division One",
-          "match_url": "https://www.espncricinfo.com/series/8052/game/1461826/somerset-vs-worcestershire-3rd-match-county-championship-division-one-2025",
-          "home_team": "Somerset",
-          "away_team": "Worcestershire",
+          "match_url": "https://www.espncricinfo.com/series/8052/game/1461828/nottinghamshire-vs-durham-5th-match-county-championship-division-one-2025",
+          "home_team": "Nottinghamshire",
+          "away_team": "Durham",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00:00",
-          "venue": "The Cooper Associates County Ground, Taunton",
+          "venue": "Trent Bridge, Nottingham",
+          "day": "Day 1 of 4"
+        }
+      },
+      {
+        "videoId": "IFQUJ3UVNM8",
+        "title": "LIVE STREAM | Hampshire Men v Yorkshire | Rothesay County Championship (Day One)",
+        "channelName": "Hampshire CCC",
+        "channelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
+        "description": "Watch the live stream from day one (Friday 4th April 2025) of Hampshire Men's Rothesay County Championship match against Yorkshire at Utilita Bowl.",
+        "publishedAt": "2025-04-04T08:37:25Z",
+        "fixture": {
+          "competition": "County Championship Division One",
+          "match_url": "https://www.espncricinfo.com/series/8052/game/1461825/hampshire-vs-yorkshire-2nd-match-county-championship-division-one-2025",
+          "home_team": "Hampshire",
+          "away_team": "Yorkshire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00:00",
+          "venue": "The Rose Bowl, Southampton",
           "day": "Day 1 of 4"
         }
       },
@@ -40,25 +59,6 @@
         }
       },
       {
-        "videoId": "iP3knBsqm2o",
-        "title": "LIVE STREAM |  Nottinghamshire v Durham",
-        "channelName": "Nottinghamshire CCC",
-        "channelId": "UCiOki3bA8llEHVgXBQ3x6wg",
-        "description": "Action from Trent Bridge, Nottingham - Nottinghamshire vs Durham\nIf you are experiencing any issues with pictures and sound please refresh the page.\n#trentbridgelive \n\n#Notts #cricket #NottinghamshireCCC #score #nottsccclivestream #live #stream #sport #watchlive #livesports",
-        "publishedAt": "2025-04-04T09:33:29Z",
-        "fixture": {
-          "competition": "County Championship Division One",
-          "match_url": "https://www.espncricinfo.com/series/8052/game/1461828/nottinghamshire-vs-durham-5th-match-county-championship-division-one-2025",
-          "home_team": "Nottinghamshire",
-          "away_team": "Durham",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00:00",
-          "venue": "Trent Bridge, Nottingham",
-          "day": "Day 1 of 4"
-        }
-      },
-      {
         "videoId": "mfkV1ZCNABE",
         "title": "LIVE: Essex v Surrey: Day 1 Stream",
         "channelName": "Essex CCC",
@@ -78,21 +78,21 @@
         }
       },
       {
-        "videoId": "IFQUJ3UVNM8",
-        "title": "LIVE STREAM | Hampshire Men v Yorkshire | Rothesay County Championship (Day One)",
-        "channelName": "Hampshire CCC",
-        "channelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
-        "description": "Watch the live stream from day one (Friday 4th April 2025) of Hampshire Men's Rothesay County Championship match against Yorkshire at Utilita Bowl.",
-        "publishedAt": "2025-04-04T08:37:25Z",
+        "videoId": "E5h_vRgfIQ8",
+        "title": "LIVE STREAM: Somerset vs Worcestershire - Day One",
+        "channelName": "Somerset CCC",
+        "channelId": "UCcCeaTFtzWdkTQYeFRRWvSg",
+        "description": "WATCH LIVE as Somerset take on Worcestershire in the 2025 County Championship \n\n#cricket #livestream #somerset",
+        "publishedAt": "2025-04-04T08:46:11Z",
         "fixture": {
           "competition": "County Championship Division One",
-          "match_url": "https://www.espncricinfo.com/series/8052/game/1461825/hampshire-vs-yorkshire-2nd-match-county-championship-division-one-2025",
-          "home_team": "Hampshire",
-          "away_team": "Yorkshire",
+          "match_url": "https://www.espncricinfo.com/series/8052/game/1461826/somerset-vs-worcestershire-3rd-match-county-championship-division-one-2025",
+          "home_team": "Somerset",
+          "away_team": "Worcestershire",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00:00",
-          "venue": "The Rose Bowl, Southampton",
+          "venue": "The Cooper Associates County Ground, Taunton",
           "day": "Day 1 of 4"
         }
       }
@@ -101,25 +101,6 @@
   },
   "County Championship Division Two": {
     "live": [
-      {
-        "videoId": "6UU5HzzK1FE",
-        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day One",
-        "channelName": "Glamorgan CCC",
-        "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
-        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
-        "publishedAt": "2025-04-04T08:04:06Z",
-        "fixture": {
-          "competition": "County Championship Division Two",
-          "match_url": "https://www.espncricinfo.com/series/8204/game/1461897/glamorgan-vs-leicestershire-4th-match-county-championship-division-two-2025",
-          "home_team": "Glamorgan",
-          "away_team": "Leicestershire",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00:00",
-          "venue": "Sophia Gardens, Cardiff",
-          "day": "Day 1 of 4"
-        }
-      },
       {
         "videoId": "HtCSyItqbOE",
         "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 1 | Rothesay County Championship",
@@ -140,21 +121,21 @@
         }
       },
       {
-        "videoId": "-78yVgYW7Ho",
-        "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY ONE",
-        "channelName": "Middlesex CCC",
-        "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
-        "description": "Middlesex Cricket's live and enhanced broadcast of our Division Two Rothesay County Championship match at Lord's Cricket Ground, London against Lancashire.\n\nBUY BLAST TICKETS: https://www.middlesexccc.com/page/tickets-home\nBECOME A MEMBER: https://shop.middlesexccc.com/memberships/subscribe/\n\nMiddlesex's live stream is brought to you by Dafabet, the Club's Principal Sponsor.\n\n#cricket #cricketlive #cricketlover #cricketlovers #livestream #onemiddlesex",
-        "publishedAt": "2025-04-04T07:50:36Z",
+        "videoId": "6UU5HzzK1FE",
+        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day One",
+        "channelName": "Glamorgan CCC",
+        "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
+        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
+        "publishedAt": "2025-04-04T08:04:06Z",
         "fixture": {
           "competition": "County Championship Division Two",
-          "match_url": "https://www.espncricinfo.com/series/8204/game/1461896/middlesex-vs-lancashire-3rd-match-county-championship-division-two-2025",
-          "home_team": "Middlesex",
-          "away_team": "Lancashire",
+          "match_url": "https://www.espncricinfo.com/series/8204/game/1461897/glamorgan-vs-leicestershire-4th-match-county-championship-division-two-2025",
+          "home_team": "Glamorgan",
+          "away_team": "Leicestershire",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00:00",
-          "venue": "Lord's, London",
+          "venue": "Sophia Gardens, Cardiff",
           "day": "Day 1 of 4"
         }
       },
@@ -176,9 +157,28 @@
           "venue": "County Ground, Derby",
           "day": "Day 1 of 4"
         }
+      },
+      {
+        "videoId": "-78yVgYW7Ho",
+        "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY ONE",
+        "channelName": "Middlesex CCC",
+        "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
+        "description": "Middlesex Cricket's live and enhanced broadcast of our Division Two Rothesay County Championship match at Lord's Cricket Ground, London against Lancashire.\n\nBUY BLAST TICKETS: https://www.middlesexccc.com/page/tickets-home\nBECOME A MEMBER: https://shop.middlesexccc.com/memberships/subscribe/\n\nMiddlesex's live stream is brought to you by Dafabet, the Club's Principal Sponsor.\n\n#cricket #cricketlive #cricketlover #cricketlovers #livestream #onemiddlesex",
+        "publishedAt": "2025-04-04T07:50:36Z",
+        "fixture": {
+          "competition": "County Championship Division Two",
+          "match_url": "https://www.espncricinfo.com/series/8204/game/1461896/middlesex-vs-lancashire-3rd-match-county-championship-division-two-2025",
+          "home_team": "Middlesex",
+          "away_team": "Lancashire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00:00",
+          "venue": "Lord's, London",
+          "day": "Day 1 of 4"
+        }
       }
     ],
     "upcoming": []
   },
-  "lastUpdated": "2025-04-04T10:00:10.417327+00:00"
+  "lastUpdated": "2025-04-04T10:15:17.808239+00:00"
 }
