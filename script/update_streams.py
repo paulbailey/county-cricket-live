@@ -189,22 +189,38 @@ def main():
             competition = match["fixture"]["competition"]
             competitions[competition]["upcoming"].append(match)
     
-    # Combine all streams
-    all_streams = {
-        **competitions,
-        "lastUpdated": datetime.now(timezone.utc).isoformat()
-    }
+    # Sort streams by home team within each competition
+    for competition in competitions:
+        # Sort live streams
+        competitions[competition]["live"].sort(
+            key=lambda x: x["fixture"]["home_team"] if x["fixture"] else ""
+        )
+        # Sort upcoming matches
+        competitions[competition]["upcoming"].sort(
+            key=lambda x: x["fixture"]["home_team"] if x["fixture"] else ""
+        )
     
-    # Write to file
-    output_dir = Path("public/data")
-    output_dir.mkdir(exist_ok=True)
-    
-    with open(output_dir / "streams.json", "w") as f:
-        json.dump(all_streams, f, indent=2)
+    # Only update streams.json if there are placeholders
+    if placeholders:
+        # Combine all streams
+        all_streams = {
+            **competitions,
+            "lastUpdated": datetime.now(timezone.utc).isoformat()
+        }
         
+        # Write to file
+        output_dir = Path("public/data")
+        output_dir.mkdir(exist_ok=True)
+        
+        with open(output_dir / "streams.json", "w") as f:
+            json.dump(all_streams, f, indent=2)
+        print("Updated streams.json with placeholders")
+    else:
+        print("No placeholders found, skipping streams.json update")
+    
     print(f"Found {len(live_streams)} live streams, {len(upcoming_matches)} upcoming matches, and {len(placeholders)} placeholders")
     
-    # Post to Bluesky
+    # Post to Bluesky regardless of placeholders
     post_to_bluesky(competitions)
 
 if __name__ == "__main__":

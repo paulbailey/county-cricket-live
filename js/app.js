@@ -99,13 +99,21 @@ Alpine.data('stream', () => ({
             // Remove lastUpdated from the data
             const { lastUpdated, ...competitions } = data;
 
-            // Update competitions
-            this.competitions = competitions;
+            // Check if there are any placeholders
+            const hasPlaceholders = Object.values(competitions).some(comp =>
+                comp.live?.some(stream => stream.isPlaceholder)
+            );
 
-            // Reinitialize players if needed
-            if (this.apiReady) {
-                this.playersInitialized = false;
-                this.initializePlayers();
+            // Only update if there are placeholders or this is the first load
+            if (hasPlaceholders || !this.metadataLoaded) {
+                this.competitions = competitions;
+                this.metadataLoaded = true;
+
+                // Reinitialize players if needed
+                if (this.apiReady) {
+                    this.playersInitialized = false;
+                    this.initializePlayers();
+                }
             }
         } catch (error) {
             console.error('Error loading stream data:', error);
@@ -214,3 +222,52 @@ Alpine.data('stream', () => ({
 // Initialize Alpine
 Alpine.plugin(persist)
 Alpine.start()
+
+function displayStreams(streams) {
+    const container = document.getElementById('streams-container');
+    container.innerHTML = '';
+
+    // Sort competitions alphabetically
+    const sortedCompetitions = Object.keys(streams)
+        .filter(key => key !== 'lastUpdated')
+        .sort();
+
+    sortedCompetitions.forEach(competition => {
+        const compData = streams[competition];
+        if (!compData.live || compData.live.length === 0) return;
+
+        // Sort live streams by home team
+        const sortedStreams = [...compData.live].sort((a, b) => {
+            const teamA = a.fixture?.home_team || '';
+            const teamB = b.fixture?.home_team || '';
+            return teamA.localeCompare(teamB);
+        });
+
+        const compDiv = document.createElement('div');
+        compDiv.className = 'mb-8';
+        compDiv.innerHTML = `
+            <h2 class="text-2xl font-bold mb-4">${competition}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                ${sortedStreams.map(stream => `
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="aspect-w-16 aspect-h-9">
+                            <iframe
+                                class="w-full h-full"
+                                src="https://www.youtube.com/embed/${stream.videoId}?enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}&autoplay=${autoplayEnabled ? '1' : '0'}&mute=1"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2">${stream.fixture.home_team} vs ${stream.fixture.away_team}</h3>
+                            <p class="text-gray-600">${stream.fixture.venue}</p>
+                            <p class="text-gray-600">${formatLocalTime(stream.fixture.start_date)}</p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+        container.appendChild(compDiv);
+    });
+}
