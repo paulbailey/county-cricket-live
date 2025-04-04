@@ -40,6 +40,8 @@ jobs:
       id: update
       env:
         GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
+        BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
       run: |
         # Run the script and capture its output
         output=$(uv run script/update_streams.py)
