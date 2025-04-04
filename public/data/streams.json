@@ -78,12 +78,12 @@
         }
       },
       {
-        "videoId": "KJyji8WGlTM",
-        "title": "\ud83d\udd34 LIVE STREAM | Warwickshire v Sussex | Day One | Rothesay County Championship",
+        "videoId": null,
+        "title": "Warwickshire vs Sussex",
         "channelName": "Warwickshire CCC",
         "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
-        "description": "Watch Day One of the Rothesay County Championship fixture between Warwickshire and Sussex at Edgbaston from 11am on Friday 4th April.\n\nFor replays, live text commentary and scorecard, visit our Match Centre at edgbaston.com.",
-        "publishedAt": "2025-04-04T08:14:50Z",
+        "description": "County Championship Division One - Edgbaston, Birmingham",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division One",
           "match_url": "https://www.espncricinfo.com/series/8052/game/1461827/warwickshire-vs-sussex-4th-match-county-championship-division-one-2025",
