@@ -1,6 +1,14 @@
 {
   "liveStreams": [
     {
+      "videoId": "mfkV1ZCNABE",
+      "title": "LIVE: Essex v Surrey: Day 1 Stream",
+      "channelName": "Essex CCC",
+      "channelId": "UCL0ebrj8ISVXWikxxtjRlsA",
+      "description": "Live stream of the Rothesay County Championship match between Essex and Surrey at the Ambassador Cruise Line, taking place on Friday 04 - Monday 07 April 2025.\n\nScheduled hours of play:\n\n11am: Start of play\n1pm-1:40pm: Lunch\n3:40pm-4pm: Tea\nClose of play: 6pm\n\nAll Essex home games at the Ambassador Cruise Line Ground will be streamed during the 2025 season, so hit the subscribe button to find out when we're next live!",
+      "publishedAt": "2024-10-29T09:13:03Z"
+    },
+    {
       "videoId": "-78yVgYW7Ho",
       "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY ONE",
       "channelName": "Middlesex CCC",
@@ -15,6 +23,14 @@
       "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
       "description": "",
       "publishedAt": "2025-04-04T08:10:37Z"
+    },
+    {
+      "videoId": "iP3knBsqm2o",
+      "title": "LIVE STREAM |  Nottinghamshire v Durham",
+      "channelName": "Nottinghamshire CCC",
+      "channelId": "UCiOki3bA8llEHVgXBQ3x6wg",
+      "description": "Action from Trent Bridge, Nottingham - Nottinghamshire vs Durham\nIf you are experiencing any issues with pictures and sound please refresh the page.\n#trentbridgelive \n\n#Notts #cricket #NottinghamshireCCC #score #nottsccclivestream #live #stream #sport #watchlive #livesports",
+      "publishedAt": "2025-04-04T09:33:29Z"
     },
     {
       "videoId": "E5h_vRgfIQ8",
@@ -59,5 +75,5 @@
       "scheduledStartTime": "2025-04-04T09:45:00Z"
     }
   ],
-  "lastChanged": "2025-04-04T09:34:12.764209+00:00"
+  "lastChanged": "2025-04-04T09:42:22.352913+00:00"
 }
