@@ -41,7 +41,7 @@
                 <template x-if="competition.live.length === 0">
                     <p class="text-base-content/70">No live streams available for this competition.</p>
                 </template>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="auto-grid">
                     <template x-for="stream in competition.live" :key="stream.videoId || stream.fixture.match_url">
                         <div class="card bg-base-100 shadow-xl">
                             <template x-if="stream.videoId">

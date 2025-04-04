@@ -89,3 +89,10 @@ input:checked~.dot {
     transform: translateX(16px);
     /* Move the dot to the right by the width of the track minus the dot width */
 }
+
+/* Auto-fit grid layout */
+.auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    gap: 1.5rem;
+}
