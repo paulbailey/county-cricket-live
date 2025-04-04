@@ -122,25 +122,31 @@ def create_placeholder_streams(fixtures, channels, live_streams, upcoming_matche
     return placeholders
 
 def get_new_streams(existing_streams, new_streams):
-    """Compare existing and new streams to find new ones."""
-    new_live_streams = []
+    """Compare existing and new streams to find new or changed streams."""
+    new_or_changed = []
     
-    # Get all existing video IDs
-    existing_video_ids = set()
-    for comp_data in existing_streams.values():
-        if "live" in comp_data:
-            for stream in comp_data["live"]:
-                if not stream.get("isPlaceholder") and stream.get("videoId"):
-                    existing_video_ids.add(stream["videoId"])
-    
-    # Find new streams
     for comp_name, comp_data in new_streams.items():
-        if "live" in comp_data:
-            for stream in comp_data["live"]:
-                if not stream.get("isPlaceholder") and stream.get("videoId") not in existing_video_ids:
-                    new_live_streams.append(stream)
+        if comp_name not in existing_streams:
+            # New competition found
+            new_or_changed.extend(comp_data.get("live", []))
+            continue
+            
+        existing_comp = existing_streams[comp_name]
+        for new_stream in comp_data.get("live", []):
+            if new_stream.get("isPlaceholder"):
+                continue
+                
+            # Check if this stream is new or changed
+            is_new = True
+            for existing_stream in existing_comp.get("live", []):
+                if existing_stream.get("videoId") == new_stream.get("videoId"):
+                    is_new = False
+                    break
+                    
+            if is_new:
+                new_or_changed.append(new_stream)
     
-    return new_live_streams
+    return new_or_changed
 
 def post_to_bluesky(streams_data):
     """Post to Bluesky about the available streams."""
@@ -270,25 +276,48 @@ def main():
     # Load existing streams
     existing_streams = load_existing_streams()
     
-    # Only update streams.json if there are placeholders
-    if placeholders:
-        # Combine all streams
-        all_streams = {
-            **competitions,
-            "lastUpdated": datetime.now(timezone.utc).isoformat()
-        }
-        
-        # Write to file
-        output_dir = Path("public/data")
-        output_dir.mkdir(exist_ok=True)
-        
-        with open(output_dir / "streams.json", "w") as f:
-            json.dump(all_streams, f, indent=2)
-        print("Updated streams.json with placeholders")
-        has_changes = True
+    # Check for changes in video IDs
+    has_changes = False
+    if existing_streams:
+        for comp_name, comp_data in competitions.items():
+            if comp_name not in existing_streams:
+                has_changes = True
+                break
+                
+            existing_comp = existing_streams[comp_name]
+            for new_stream in comp_data.get("live", []):
+                if new_stream.get("isPlaceholder"):
+                    continue
+                    
+                # Check if this stream is new or changed
+                is_new = True
+                for existing_stream in existing_comp.get("live", []):
+                    if existing_stream.get("videoId") == new_stream.get("videoId"):
+                        is_new = False
+                        break
+                        
+                if is_new:
+                    has_changes = True
+                    break
+                    
+            if has_changes:
+                break
     else:
-        print("No placeholders found, skipping streams.json update")
-        has_changes = False
+        # No existing streams, so this is definitely a change
+        has_changes = True
+    
+    # Combine all streams
+    all_streams = {
+        **competitions,
+        "lastUpdated": datetime.now(timezone.utc).isoformat()
+    }
+    
+    # Write to file
+    output_dir = Path("public/data")
+    output_dir.mkdir(exist_ok=True)
+    
+    with open(output_dir / "streams.json", "w") as f:
+        json.dump(all_streams, f, indent=2)
     
     print(f"Found {len(live_streams)} live streams, {len(upcoming_matches)} upcoming matches, and {len(placeholders)} placeholders")
     
