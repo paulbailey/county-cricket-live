@@ -18,8 +18,12 @@ BLUESKY_USERNAME = os.getenv("BLUESKY_USERNAME")
 BLUESKY_PASSWORD = os.getenv("BLUESKY_PASSWORD")
 
 def load_channels():
-    with open("channels.json") as f:
-        return json.load(f)
+    """Load channels from channels.json file."""
+    try:
+        with open("channels.json") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
 
 def load_fixtures():
     fixtures_dir = Path("public/data/fixtures")
@@ -32,8 +36,11 @@ def load_fixtures():
     if not fixtures_file.exists():
         return []
         
-    with open(fixtures_file) as f:
-        return json.load(f)
+    try:
+        with open(fixtures_file) as f:
+            return json.load(f)
+    except json.JSONDecodeError:
+        return []
 
 def load_existing_streams():
     """Load existing streams from streams.json if it exists."""
@@ -41,8 +48,11 @@ def load_existing_streams():
     if not streams_file.exists():
         return {}
         
-    with open(streams_file) as f:
-        return json.load(f)
+    try:
+        with open(streams_file) as f:
+            return json.load(f)
+    except json.JSONDecodeError:
+        return {}
 
 def get_channel_id_for_team(team_name, channels):
     for channel in channels.values():
