@@ -21,12 +21,12 @@
         }
       },
       {
-        "videoId": "IFQUJ3UVNM8",
-        "title": "LIVE STREAM | Hampshire Men v Yorkshire | Rothesay County Championship (Day One)",
+        "videoId": null,
+        "title": "Hampshire vs Yorkshire",
         "channelName": "Hampshire CCC",
         "channelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
-        "description": "Watch the live stream from day one (Friday 4th April 2025) of Hampshire Men's Rothesay County Championship match against ...",
-        "publishedAt": "2025-04-04T08:37:25Z",
+        "description": "County Championship Division One - The Rose Bowl, Southampton",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division One",
           "match_url": "https://www.espncricinfo.com/series/8052/game/1461825/hampshire-vs-yorkshire-2nd-match-county-championship-division-one-2025",
@@ -180,5 +180,5 @@
     ],
     "upcoming": []
   },
-  "lastUpdated": "2025-04-04T12:32:25.251388+00:00"
+  "lastUpdated": "2025-04-04T12:35:43.459158+00:00"
 }
