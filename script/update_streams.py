@@ -16,8 +16,6 @@ youtube = build("youtube", "v3", developerKey=GOOGLE_API_KEY)
 # Bluesky setup
 BLUESKY_USERNAME = os.getenv("BLUESKY_USERNAME")
 BLUESKY_PASSWORD = os.getenv("BLUESKY_PASSWORD")
-client = Client()
-client.login(BLUESKY_USERNAME, BLUESKY_PASSWORD)
 
 def load_channels():
     with open("channels.json") as f:
@@ -148,6 +146,9 @@ def post_to_bluesky(streams_data):
     """Post to Bluesky about the available streams."""
     if not streams_data:
         return
+    
+    client = Client()
+    client.login(BLUESKY_USERNAME, BLUESKY_PASSWORD)
         
     # Count only actual live streams (excluding placeholders)
     live_count = sum(
@@ -219,6 +220,8 @@ def post_to_bluesky(streams_data):
             
     except Exception as e:
         print(f"Error posting to Bluesky: {e}")
+    
+    client.logout()
 
 def main():
     channels = load_channels()
