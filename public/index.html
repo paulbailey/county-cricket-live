@@ -54,7 +54,7 @@
                                     <div class="relative aspect-w-16 aspect-h-9">
                                         <div class="absolute inset-0 w-full h-full">
                                             <iframe :id="'player-' + stream.videoId"
-                                                :src="'https://www.youtube.com/embed/' + stream.videoId + '?enablejsapi=1&origin=' + encodeURIComponent(window.location.origin) + '&autoplay=' + (autoplayEnabled ? '1' : '0')"
+                                                :src="'https://www.youtube.com/embed/' + stream.videoId + '?enablejsapi=1&origin=' + encodeURIComponent(window.location.origin) + '&autoplay=' + (autoplayEnabled ? '1' : '0') + '&mute=' + (autoplayEnabled ? '1' : '0')"
                                                 class="absolute inset-0 w-full h-full"
                                                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                 allowfullscreen></iframe>

@@ -79,6 +79,9 @@ Alpine.data('stream', () => ({
                     console.log(`Creating player for video ${stream.videoId}`);
                     new YT.Player(`player-${stream.videoId}`, {
                         videoId: stream.videoId,
+                        playerVars: {
+                            'mute': 1
+                        },
                         events: {
                             'onReady': (event) => this.onPlayerReady(stream.videoId, event)
                         }
@@ -117,6 +120,10 @@ Alpine.data('stream', () => ({
         if (this.autoplayEnabled) {
             console.log(`Starting video ${videoId} due to autoplay being enabled`);
             event.target.playVideo();
+            // Mute after a short delay to ensure the player is playing
+            setTimeout(() => {
+                event.target.mute();
+            }, 1000);
         }
     },
 
@@ -133,6 +140,10 @@ Alpine.data('stream', () => ({
             if (player && typeof player.playVideo === 'function') {
                 console.log('Playing video');
                 player.playVideo();
+                // Mute after a short delay to ensure the player is playing
+                setTimeout(() => {
+                    player.mute();
+                }, 1000);
             } else {
                 console.log('Player or playVideo function not available');
             }
@@ -141,6 +152,7 @@ Alpine.data('stream', () => ({
         const pauseVideo = (player) => {
             if (player && typeof player.pauseVideo === 'function') {
                 console.log('Pausing video');
+                player.unMute();
                 player.pauseVideo();
             } else {
                 console.log('Player or pauseVideo function not available');
