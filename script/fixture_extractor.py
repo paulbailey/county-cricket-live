@@ -104,10 +104,29 @@ def parse_fixtures(url, competition):
             match_url = match_no_anchor["href"] if match_no_anchor else None
             venue = extract_venue(match_title)
 
+            # Get team names from batting order display
             team1_text = match.find("div", class_="innings-info-1").get_text(strip=True)
             team2_text = match.find("div", class_="innings-info-2").get_text(strip=True)
             team1 = clean_team_name(team1_text)
             team2 = clean_team_name(team2_text)
+
+            # Determine home and away teams from URL
+            if match_url:
+                # URL format is like: /series/8052/game/1461830/nottinghamshire-vs-essex-7th-match-county-championship-division-one-2025
+                url_parts = match_url.split("/")
+                home_team_from_url = url_parts[-1].split("-vs-")[0].replace("-", " ").title()
+                
+                # Match the team names from URL with batting order to determine home/away
+                if team1.lower() == home_team_from_url.lower():
+                    home_team = team1
+                    away_team = team2
+                else:
+                    home_team = team2
+                    away_team = team1
+            else:
+                # Fallback to using batting order if URL parsing fails
+                home_team = team1
+                away_team = team2
 
             status_div = match.find("div", class_="match-status")
             status_text = status_div.get_text(strip=True) if status_div else ""
@@ -117,8 +136,8 @@ def parse_fixtures(url, competition):
                 {
                     "competition": competition,
                     "match_url": match_url,
-                    "home_team": team1,
-                    "away_team": team2,
+                    "home_team": home_team,
+                    "away_team": away_team,
                     "start_date": start_date,
                     "end_date": end_date,
                     "start_time_gmt": start_time_gmt,
