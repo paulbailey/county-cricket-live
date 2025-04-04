@@ -221,8 +221,6 @@ def post_to_bluesky(streams_data):
     except Exception as e:
         print(f"Error posting to Bluesky: {e}")
     
-    client.logout()
-
 def main():
     channels = load_channels()
     fixtures = load_fixtures()
