@@ -1,12 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime, timedelta
+from datetime import timedelta
 import json
 import os
 import re
 import time
 import random
 from daterangeparser import parse as parse_date
+import dateparser
 
 
 def parse_date_range(date_str):
@@ -19,18 +20,10 @@ def parse_date_range(date_str):
 
         # Check if it's a single date (no hyphen)
         if "-" not in date_str:
-            try:
-                # Try to parse as "Month Day Year" format
-                single_date = datetime.strptime(date_str, "%B %d %Y")
+            single_date = dateparser.parse(date_str)
+            if single_date:
                 return single_date.date(), single_date.date()
-            except ValueError:
-                try:
-                    # Try to parse as "Month Day" format (assuming current year)
-                    single_date = datetime.strptime(date_str, "%B %d")
-                    single_date = single_date.replace(year=datetime.now().year)
-                    return single_date.date(), single_date.date()
-                except ValueError:
-                    return None, None
+            return None, None
 
         # Parse the date range
         start_date, end_date = parse_date(date_str)
@@ -45,11 +38,8 @@ def parse_start_time_gmt(status_text):
         r"\((?:\d{1,2}:\d{2})\s+local\s+\|\s+(\d{1,2}:\d{2})\s+GMT\)", status_text
     )
     if match:
-        try:
-            t = datetime.strptime(match.group(1), "%H:%M")
-            return t.time()
-        except ValueError:
-            return None
+        t = dateparser.parse(match.group(1) + " GMT")
+        return t.time() if t else None
     return None
 
 
@@ -136,6 +126,12 @@ def group_fixtures_by_day(fixtures):
     for fixture in fixtures:
         start = fixture["start_date"]
         end = fixture["end_date"]
+        
+        # Skip fixtures with missing dates
+        if start is None or end is None:
+            print(f"Skipping fixture with missing dates: {fixture.get('team1', 'Unknown')} vs {fixture.get('team2', 'Unknown')}")
+            continue
+            
         current = start
         while current <= end:
             key = current.isoformat()
