@@ -2,12 +2,12 @@
   "County Championship Division One": {
     "live": [
       {
-        "videoId": "mfkV1ZCNABE",
-        "title": "LIVE: Essex v Surrey: Day 1 Stream",
+        "videoId": null,
+        "title": "Essex vs Surrey",
         "channelName": "Essex CCC",
         "channelId": "UCL0ebrj8ISVXWikxxtjRlsA",
-        "description": "Live stream of the Rothesay County Championship match between Essex and Surrey at the Ambassador Cruise Line, taking place on Friday 04 - Monday 07 April 2025.\n\nScheduled hours of play:\n\n11am: Start of play\n1pm-1:40pm: Lunch\n3:40pm-4pm: Tea\nClose of play: 6pm\n\nAll Essex home games at the Ambassador Cruise Line Ground will be streamed during the 2025 season, so hit the subscribe button to find out when we're next live!",
-        "publishedAt": "2024-10-29T09:13:03Z",
+        "description": "County Championship Division One - County Ground, Chelmsford",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division One",
           "match_url": "https://www.espncricinfo.com/series/8052/game/1461824/essex-vs-surrey-1st-match-county-championship-division-one-2025",
@@ -21,12 +21,12 @@
         }
       },
       {
-        "videoId": "IFQUJ3UVNM8",
-        "title": "LIVE STREAM | Hampshire Men v Yorkshire | Rothesay County Championship (Day One)",
+        "videoId": null,
+        "title": "Hampshire vs Yorkshire",
         "channelName": "Hampshire CCC",
         "channelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
-        "description": "Watch the live stream from day one (Friday 4th April 2025) of Hampshire Men's Rothesay County Championship match against Yorkshire at Utilita Bowl.",
-        "publishedAt": "2025-04-04T08:37:25Z",
+        "description": "County Championship Division One - The Rose Bowl, Southampton",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division One",
           "match_url": "https://www.espncricinfo.com/series/8052/game/1461825/hampshire-vs-yorkshire-2nd-match-county-championship-division-one-2025",
@@ -40,12 +40,12 @@
         }
       },
       {
-        "videoId": "bsWmE4moHJE",
-        "title": "\ud83d\udd34 LIVE STREAM |  Day One | Nottinghamshire v Durham | Rothesay County Championship",
+        "videoId": null,
+        "title": "Nottinghamshire vs Durham",
         "channelName": "Nottinghamshire CCC",
         "channelId": "UCiOki3bA8llEHVgXBQ3x6wg",
-        "description": "Live stream action from Trent Bridge, Nottingham of Nottinghamshire vs Durham in the Rothesay County Championship Division One. \n\nIf you are experiencing any issues with pictures and sound please refresh the page.\n#trentbridgelive \n\n#Notts #cricket #NottinghamshireCCC #score #nottsccclivestream #live #stream #sport #watchlive #livesports",
-        "publishedAt": "2025-04-04T12:11:20Z",
+        "description": "County Championship Division One - Trent Bridge, Nottingham",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division One",
           "match_url": "https://www.espncricinfo.com/series/8052/game/1461828/nottinghamshire-vs-durham-5th-match-county-championship-division-one-2025",
@@ -121,12 +121,12 @@
         }
       },
       {
-        "videoId": "6UU5HzzK1FE",
-        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day One",
+        "videoId": null,
+        "title": "Glamorgan vs Leicestershire",
         "channelName": "Glamorgan CCC",
         "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
-        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
-        "publishedAt": "2025-04-04T08:04:06Z",
+        "description": "County Championship Division Two - Sophia Gardens, Cardiff",
+        "isPlaceholder": true,
         "fixture": {
           "competition": "County Championship Division Two",
           "match_url": "https://www.espncricinfo.com/series/8204/game/1461897/glamorgan-vs-leicestershire-4th-match-county-championship-division-two-2025",
