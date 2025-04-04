@@ -1,6 +1,14 @@
 {
   "liveStreams": [
     {
+      "videoId": "_ASqEkZ_vwE",
+      "title": "\ud83d\udd34 LIVE CRICKET | Derbyshire vs Gloucestershire, Day One",
+      "channelName": "Derbyshire CCC",
+      "channelId": "UCdsIWgLpXJZowUJvvh4gDoA",
+      "description": "Live action from The County Ground, Derby, as Derbyshire take on Gloucestershire in the Rothesay County Championship.\n\nMatch Centre \u27a1\ufe0f: https://cricket.derbyshireccc.com/fixtures/first-xi/2025-season/rothesay-county-championship/derbyshire-vs-gloucestershire-cc-2025/?tab=m_summary\n\nOnline Shop \u27a1\ufe0f: https://cricket.derbyshireccc.com/shop/\n\n#livestream #Derbyshire #cricket #live #countychampionship #countycricket",
+      "publishedAt": "2025-04-04T09:00:01Z"
+    },
+    {
       "videoId": "mfkV1ZCNABE",
       "title": "LIVE: Essex v Surrey: Day 1 Stream",
       "channelName": "Essex CCC",
@@ -15,6 +23,14 @@
       "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
       "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
       "publishedAt": "2025-04-04T08:04:06Z"
+    },
+    {
+      "videoId": "IFQUJ3UVNM8",
+      "title": "LIVE STREAM | Hampshire Men v Yorkshire | Rothesay County Championship (Day One)",
+      "channelName": "Hampshire CCC",
+      "channelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
+      "description": "Watch the live stream from day one (Friday 4th April 2025) of Hampshire Men's Rothesay County Championship match against Yorkshire at Utilita Bowl.",
+      "publishedAt": "2025-04-04T08:37:25Z"
     },
     {
       "videoId": "-78yVgYW7Ho",
@@ -58,5 +74,5 @@
     }
   ],
   "upcomingMatches": [],
-  "lastChanged": "2025-04-04T09:45:07.444064+00:00"
+  "lastChanged": "2025-04-04T09:48:41.839974+00:00"
 }
