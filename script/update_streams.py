@@ -53,6 +53,8 @@ def get_channel_id_for_team(team_name, channels):
 def get_live_streams(fixtures, channels):
     live_streams = []
     upcoming_matches = []
+    all_video_ids = []
+    current_time = datetime.now(timezone.utc)
     
     # Create a set of channels that are actually playing today
     active_channels = set()
@@ -61,50 +63,111 @@ def get_live_streams(fixtures, channels):
         if channel_id:
             active_channels.add(channel_id)
     
-    # For each active channel, get their most recent live stream
+    # For each active channel, get their uploads playlist
     for channel_id in active_channels:
         try:
-            # Search for live streams
-            request = youtube.search().list(
-                part="snippet",
-                channelId=channel_id,
-                eventType="live",
-                type="video",
-                maxResults=1,  # We only need the most recent one
-                order="date"
+            # Get the channel's uploads playlist ID
+            channel_request = youtube.channels().list(
+                part="contentDetails",
+                id=channel_id
             )
-            response = request.execute()
+            channel_response = channel_request.execute()
             
-            items = response.get("items", [])
-            if items:
-                item = items[0]
-                # Find the matching fixture for this channel
-                matching_fixture = next(
-                    (f for f in fixtures if get_channel_id_for_team(f["home_team"], channels) == channel_id),
-                    None
-                )
+            if not channel_response.get("items"):
+                print(f"No channel found for ID {channel_id}")
+                continue
                 
-                if matching_fixture:
-                    stream_data = {
-                        "videoId": item["id"]["videoId"],
-                        "title": item["snippet"]["title"],
-                        "channelName": next(
-                            ch["name"]
-                            for ch in channels.values()
-                            if ch["youtubeChannelId"] == channel_id
-                        ),
-                        "channelId": channel_id,
-                        "description": item["snippet"]["description"],
-                        "publishedAt": item["snippet"]["publishedAt"],
-                        "fixture": matching_fixture
-                    }
-                    live_streams.append(stream_data)
-                    
+            uploads_playlist_id = channel_response["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+            
+            # Get videos from uploads playlist
+            playlist_request = youtube.playlistItems().list(
+                part="contentDetails",
+                playlistId=uploads_playlist_id,
+                maxResults=50  # Maximum allowed
+            )
+            playlist_response = playlist_request.execute()
+            
+            for item in playlist_response.get("items", []):
+                all_video_ids.append(item["contentDetails"]["videoId"])
+                
         except Exception as e:
-            print(f"Error getting stream for channel {channel_id}: {str(e)}")
+            print(f"Error getting playlist for channel {channel_id}: {str(e)}")
             if "quotaExceeded" in str(e):
                 print("YouTube API quota exceeded. Some streams may be missing.")
-                break  # Stop making requests if we've hit the quota
+                break
+    
+    # Get video details in batches of 50 (YouTube API limit)
+    for i in range(0, len(all_video_ids), 50):
+        batch = all_video_ids[i:i + 50]
+        try:
+            video_request = youtube.videos().list(
+                part="snippet,liveStreamingDetails",
+                id=",".join(batch)
+            )
+            video_response = video_request.execute()
+            
+            for item in video_response.get("items", []):
+                video_id = item["id"]
+                snippet = item["snippet"]
+                live_details = item.get("liveStreamingDetails", {})
+                
+                # Check for live stream (must have actualStartTime but no actualEndTime)
+                if live_details.get("actualStartTime") and not live_details.get("actualEndTime"):
+                    # Find the matching fixture for this channel
+                    matching_fixture = next(
+                        (f for f in fixtures if get_channel_id_for_team(f["home_team"], channels) == snippet["channelId"]),
+                        None
+                    )
+                    
+                    if matching_fixture:
+                        stream_data = {
+                            "videoId": video_id,
+                            "title": snippet["title"],
+                            "channelName": next(
+                                ch["name"]
+                                for ch in channels.values()
+                                if ch["youtubeChannelId"] == snippet["channelId"]
+                            ),
+                            "channelId": snippet["channelId"],
+                            "description": snippet["description"],
+                            "publishedAt": snippet["publishedAt"],
+                            "fixture": matching_fixture
+                        }
+                        live_streams.append(stream_data)
+                
+                # Check for upcoming stream (must have scheduledStartTime in the future)
+                elif live_details.get("scheduledStartTime"):
+                    scheduled_time = datetime.fromisoformat(
+                        live_details["scheduledStartTime"].replace("Z", "+00:00")
+                    )
+                    if scheduled_time > current_time:
+                        # Find the matching fixture for this channel
+                        matching_fixture = next(
+                            (f for f in fixtures if get_channel_id_for_team(f["home_team"], channels) == snippet["channelId"]),
+                            None
+                        )
+                        
+                        if matching_fixture:
+                            match_data = {
+                                "videoId": video_id,
+                                "title": snippet["title"],
+                                "channelName": next(
+                                    ch["name"]
+                                    for ch in channels.values()
+                                    if ch["youtubeChannelId"] == snippet["channelId"]
+                                ),
+                                "channelId": snippet["channelId"],
+                                "description": snippet["description"],
+                                "scheduledStartTime": live_details["scheduledStartTime"],
+                                "fixture": matching_fixture
+                            }
+                            upcoming_matches.append(match_data)
+                            
+        except Exception as e:
+            print(f"Error fetching video details: {str(e)}")
+            if "quotaExceeded" in str(e):
+                print("YouTube API quota exceeded. Some streams may be missing.")
+                break
             
     return live_streams, upcoming_matches
 
