@@ -287,8 +287,10 @@ def main():
         with open(output_dir / "streams.json", "w") as f:
             json.dump(all_streams, f, indent=2)
         print("Updated streams.json with placeholders")
+        has_changes = True
     else:
         print("No placeholders found, skipping streams.json update")
+        has_changes = False
     
     print(f"Found {len(live_streams)} live streams, {len(upcoming_matches)} upcoming matches, and {len(placeholders)} placeholders")
     
@@ -299,6 +301,8 @@ def main():
         post_to_bluesky(competitions)
     else:
         print("No new streams found, skipping Bluesky post")
+
+    print(f"has_changes={str(has_changes).lower()}")
 
 if __name__ == "__main__":
     main() 
