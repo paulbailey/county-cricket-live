@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone
 from googleapiclient.discovery import build
-from atproto import Client
+from atproto import Client, models
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -35,6 +35,15 @@ def load_fixtures():
         return []
         
     with open(fixtures_file) as f:
+        return json.load(f)
+
+def load_existing_streams():
+    """Load existing streams from streams.json if it exists."""
+    streams_file = Path("public/data/streams.json")
+    if not streams_file.exists():
+        return {}
+        
+    with open(streams_file) as f:
         return json.load(f)
 
 def get_channel_id_for_team(team_name, channels):
@@ -114,6 +123,27 @@ def create_placeholder_streams(fixtures, channels, live_streams, upcoming_matche
             
     return placeholders
 
+def get_new_streams(existing_streams, new_streams):
+    """Compare existing and new streams to find new ones."""
+    new_live_streams = []
+    
+    # Get all existing video IDs
+    existing_video_ids = set()
+    for comp_data in existing_streams.values():
+        if "live" in comp_data:
+            for stream in comp_data["live"]:
+                if not stream.get("isPlaceholder") and stream.get("videoId"):
+                    existing_video_ids.add(stream["videoId"])
+    
+    # Find new streams
+    for comp_name, comp_data in new_streams.items():
+        if "live" in comp_data:
+            for stream in comp_data["live"]:
+                if not stream.get("isPlaceholder") and stream.get("videoId") not in existing_video_ids:
+                    new_live_streams.append(stream)
+    
+    return new_live_streams
+
 def post_to_bluesky(streams_data):
     """Post to Bluesky about the available streams."""
     if not streams_data:
@@ -138,19 +168,55 @@ def post_to_bluesky(streams_data):
                 # Filter out placeholders
                 actual_streams = [s for s in comp_data["live"] if not s.get("isPlaceholder")]
                 if actual_streams:
-                    text += f"🏏 {comp_name}\n"
+                    # Shorten competition name if needed
+                    comp_short = comp_name.replace("County Championship ", "")
+                    text += f"🏏 {comp_short}\n"
                     for stream in actual_streams:
                         fixture = stream["fixture"]
-                        text += f"• {fixture['home_team']} vs {fixture['away_team']} at {fixture['venue']}\n"
+                        text += f"• {fixture['home_team']} v {fixture['away_team']}\n"
                     text += "\n"
+    
+    # Split text into chunks if needed
+    chunks = []
+    current_chunk = ""
+    
+    for line in text.split("\n"):
+        if len(current_chunk) + len(line) + 1 > 300:  # +1 for newline
+            if current_chunk:
+                chunks.append(current_chunk.strip())
+            current_chunk = line + "\n"
+        else:
+            current_chunk += line + "\n"
+    
+    if current_chunk:
+        chunks.append(current_chunk.strip())
     
     # Post to Bluesky
     try:
-        client.send_post(
-            text=text,
-            created_at=datetime.now(timezone.utc)
-        )
-        print("Posted to Bluesky successfully")
+        if not chunks:
+            return
+            
+        # Post first chunk
+        first_post = client.send_post(text=chunks[0])
+        print("Posted first chunk to Bluesky successfully")
+        
+        # Post remaining chunks as replies
+        for chunk in chunks[1:]:
+            client.send_post(
+                text=chunk,
+                reply_to=models.AppBskyFeedPost.ReplyRef(
+                    parent=models.AppBskyFeedPost.ReplyRefParent(
+                        uri=first_post.uri,
+                        cid=first_post.cid
+                    ),
+                    root=models.AppBskyFeedPost.ReplyRefRoot(
+                        uri=first_post.uri,
+                        cid=first_post.cid
+                    )
+                )
+            )
+            print("Posted reply to Bluesky successfully")
+            
     except Exception as e:
         print(f"Error posting to Bluesky: {e}")
 
@@ -200,6 +266,9 @@ def main():
             key=lambda x: x["fixture"]["home_team"] if x["fixture"] else ""
         )
     
+    # Load existing streams
+    existing_streams = load_existing_streams()
+    
     # Only update streams.json if there are placeholders
     if placeholders:
         # Combine all streams
@@ -220,8 +289,13 @@ def main():
     
     print(f"Found {len(live_streams)} live streams, {len(upcoming_matches)} upcoming matches, and {len(placeholders)} placeholders")
     
-    # Post to Bluesky regardless of placeholders
-    post_to_bluesky(competitions)
+    # Only post to Bluesky if there are new streams
+    new_streams = get_new_streams(existing_streams, competitions)
+    if new_streams:
+        print(f"Found {len(new_streams)} new streams, posting to Bluesky")
+        post_to_bluesky(competitions)
+    else:
+        print("No new streams found, skipping Bluesky post")
 
 if __name__ == "__main__":
     main() 
