@@ -1,0 +1,59 @@
+name: Update Fixtures
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # Run at 9:00 AM UTC every day
+  workflow_dispatch:  # Allow manual triggering
+
+permissions:
+  contents: write
+  pull-requests: none
+  actions: write
+
+jobs:
+  update-fixtures:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+  
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+  
+      - name: Install dependencies
+        run: uv sync --all-extras --dev
+
+      - name: Run fixture extractor
+        run: uv run script/fixture_extractor.py
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git add public/data/fixtures/
+          git status --porcelain
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Configure Git
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Commit and push changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git commit -m "Update fixtures [skip ci]"
+          git push 
