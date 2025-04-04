@@ -65,11 +65,15 @@ def get_live_streams(fixtures, channels):
             channelId=channel_id,
             eventType="live",
             type="video",
-            maxResults=10
+            maxResults=10,
+            order="date"  # Sort by date to get most recent first
         )
         response = request.execute()
         
-        for item in response.get("items", []):
+        # Get the most recent live stream (first item since we sorted by date)
+        items = response.get("items", [])
+        if items:
+            item = items[0]  # Take only the most recent stream
             stream_data = {
                 "videoId": item["id"]["videoId"],
                 "title": item["snippet"]["title"],
