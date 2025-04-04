@@ -44,8 +44,15 @@ jobs:
         # Run the script and capture its output
         output=$(uv run script/update_streams.py)
         echo "$output"
-        # Extract the variables from the output
-        echo "has_changes=true" >> $GITHUB_OUTPUT
+        
+        # Check if there are any changes to commit
+        if git diff --quiet public/data/streams.json; then
+          echo "No changes to commit"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Changes detected"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
 
     - name: Commit and push if changed
       if: steps.update.outputs.has_changes == 'true'
