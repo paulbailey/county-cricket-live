@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import dateparser
-from datetime import timedelta
+from datetime import datetime, timedelta
 import json
 import os
 import re
@@ -20,10 +19,18 @@ def parse_date_range(date_str):
 
         # Check if it's a single date (no hyphen)
         if "-" not in date_str:
-            single_date = dateparser.parse(date_str)
-            if single_date:
+            try:
+                # Try to parse as "Month Day Year" format
+                single_date = datetime.strptime(date_str, "%B %d %Y")
                 return single_date.date(), single_date.date()
-            return None, None
+            except ValueError:
+                try:
+                    # Try to parse as "Month Day" format (assuming current year)
+                    single_date = datetime.strptime(date_str, "%B %d")
+                    single_date = single_date.replace(year=datetime.now().year)
+                    return single_date.date(), single_date.date()
+                except ValueError:
+                    return None, None
 
         # Parse the date range
         start_date, end_date = parse_date(date_str)
@@ -38,8 +45,11 @@ def parse_start_time_gmt(status_text):
         r"\((?:\d{1,2}:\d{2})\s+local\s+\|\s+(\d{1,2}:\d{2})\s+GMT\)", status_text
     )
     if match:
-        t = dateparser.parse(match.group(1) + " GMT")
-        return t.time() if t else None
+        try:
+            t = datetime.strptime(match.group(1), "%H:%M")
+            return t.time()
+        except ValueError:
+            return None
     return None
 
 
