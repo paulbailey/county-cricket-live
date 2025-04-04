@@ -53,7 +53,7 @@ jobs:
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add data/streams.json
+        git add public/data/streams.json
         git commit -m "Update streams data"
         git push
 
