@@ -400,7 +400,7 @@ def main():
     # Combine all streams
     all_streams = {
         **competitions,
-        "lastUpdated": datetime.now(timezone.utc).isoformat()
+        "lastUpdated": datetime.now(timezone.utc).isoformat() if has_changes else existing_streams.get("lastUpdated", datetime.now(timezone.utc).isoformat())
     }
     
     # Write to file
