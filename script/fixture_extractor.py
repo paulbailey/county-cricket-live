@@ -50,6 +50,14 @@ def extract_venue(match_title):
     return parts[1].strip() if len(parts) == 2 else None
 
 
+def clean_team_name(team_text):
+    # Remove any score information after the team name by splitting on first number
+    # e.g. "Essex 56/0 (15.1 ov)" -> "Essex"
+    # e.g. "Kent Spitfires 156/3" -> "Kent Spitfires"
+    parts = re.split(r'\d', team_text, maxsplit=1)
+    return parts[0].strip()
+
+
 def parse_fixtures(url, competition):
     fixtures = []
 
@@ -96,8 +104,10 @@ def parse_fixtures(url, competition):
             match_url = match_no_anchor["href"] if match_no_anchor else None
             venue = extract_venue(match_title)
 
-            team1 = match.find("div", class_="innings-info-1").get_text(strip=True)
-            team2 = match.find("div", class_="innings-info-2").get_text(strip=True)
+            team1_text = match.find("div", class_="innings-info-1").get_text(strip=True)
+            team2_text = match.find("div", class_="innings-info-2").get_text(strip=True)
+            team1 = clean_team_name(team1_text)
+            team2 = clean_team_name(team2_text)
 
             status_div = match.find("div", class_="match-status")
             status_text = status_div.get_text(strip=True) if status_div else ""
