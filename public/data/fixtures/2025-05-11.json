@@ -2,61 +2,67 @@
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461845/essex-vs-yorkshire-22nd-match-county-championship-division-one-2025",
-    "team1": "Essex",
-    "team2": "Yorkshire",
+    "home_team": "Essex",
+    "away_team": "Yorkshire",
     "start_date": "2025-05-09",
     "end_date": "2025-05-12",
     "start_time_gmt": null,
-    "venue": "County Ground, Chelmsford"
+    "venue": "County Ground, Chelmsford",
+    "day": "Day 3 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461846/warwickshire-vs-surrey-23rd-match-county-championship-division-one-2025",
-    "team1": "Warwickshire",
-    "team2": "Surrey",
+    "home_team": "Warwickshire",
+    "away_team": "Surrey",
     "start_date": "2025-05-09",
     "end_date": "2025-05-12",
     "start_time_gmt": null,
-    "venue": "Edgbaston, Birmingham"
+    "venue": "Edgbaston, Birmingham",
+    "day": "Day 3 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461847/nottinghamshire-vs-hampshire-24th-match-county-championship-division-one-2025",
-    "team1": "Nottinghamshire",
-    "team2": "Hampshire",
+    "home_team": "Nottinghamshire",
+    "away_team": "Hampshire",
     "start_date": "2025-05-09",
     "end_date": "2025-05-12",
     "start_time_gmt": null,
-    "venue": "Trent Bridge, Nottingham"
+    "venue": "Trent Bridge, Nottingham",
+    "day": "Day 3 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461848/sussex-vs-worcestershire-25th-match-county-championship-division-one-2025",
-    "team1": "Sussex",
-    "team2": "Worcestershire",
+    "home_team": "Sussex",
+    "away_team": "Worcestershire",
     "start_date": "2025-05-09",
     "end_date": "2025-05-12",
     "start_time_gmt": null,
-    "venue": "County Ground, Hove"
+    "venue": "County Ground, Hove",
+    "day": "Day 3 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461913/kent-vs-glamorgan-20th-match-county-championship-division-two-2025",
-    "team1": "Kent",
-    "team2": "Glamorgan",
+    "home_team": "Kent",
+    "away_team": "Glamorgan",
     "start_date": "2025-05-09",
     "end_date": "2025-05-12",
     "start_time_gmt": null,
-    "venue": "St Lawrence Ground, Canterbury"
+    "venue": "St Lawrence Ground, Canterbury",
+    "day": "Day 3 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461912/northamptonshire-vs-lancashire-19th-match-county-championship-division-two-2025",
-    "team1": "Northamptonshire",
-    "team2": "Lancashire",
+    "home_team": "Northamptonshire",
+    "away_team": "Lancashire",
     "start_date": "2025-05-09",
     "end_date": "2025-05-12",
     "start_time_gmt": null,
-    "venue": "County Ground, Northampton"
+    "venue": "County Ground, Northampton",
+    "day": "Day 3 of 4"
   }
 ]

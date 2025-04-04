@@ -2,91 +2,100 @@
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461830/nottinghamshire-vs-essex-7th-match-county-championship-division-one-2025",
-    "team1": "Nottinghamshire",
-    "team2": "Essex",
+    "home_team": "Nottinghamshire",
+    "away_team": "Essex",
     "start_date": "2025-04-11",
     "end_date": "2025-04-14",
     "start_time_gmt": null,
-    "venue": "Trent Bridge, Nottingham"
+    "venue": "Trent Bridge, Nottingham",
+    "day": "Day 1 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461831/surrey-vs-hampshire-8th-match-county-championship-division-one-2025",
-    "team1": "Surrey",
-    "team2": "Hampshire",
+    "home_team": "Surrey",
+    "away_team": "Hampshire",
     "start_date": "2025-04-11",
     "end_date": "2025-04-14",
     "start_time_gmt": null,
-    "venue": "Kennington Oval, London"
+    "venue": "Kennington Oval, London",
+    "day": "Day 1 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461832/sussex-vs-somerset-9th-match-county-championship-division-one-2025",
-    "team1": "Sussex",
-    "team2": "Somerset",
+    "home_team": "Sussex",
+    "away_team": "Somerset",
     "start_date": "2025-04-11",
     "end_date": "2025-04-14",
     "start_time_gmt": null,
-    "venue": "County Ground, Hove"
+    "venue": "County Ground, Hove",
+    "day": "Day 1 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461833/yorkshire-vs-worcestershire-10th-match-county-championship-division-one-2025",
-    "team1": "Yorkshire",
-    "team2": "Worcestershire",
+    "home_team": "Yorkshire",
+    "away_team": "Worcestershire",
     "start_date": "2025-04-11",
     "end_date": "2025-04-14",
     "start_time_gmt": null,
-    "venue": "Headingley, Leeds"
+    "venue": "Headingley, Leeds",
+    "day": "Day 1 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461829/durham-vs-warwickshire-6th-match-county-championship-division-one-2025",
-    "team1": "Durham",
-    "team2": "Warwickshire",
+    "home_team": "Durham",
+    "away_team": "Warwickshire",
     "start_date": "2025-04-11",
     "end_date": "2025-04-14",
     "start_time_gmt": null,
-    "venue": "Riverside Ground, Chester-le-Street"
+    "venue": "Riverside Ground, Chester-le-Street",
+    "day": "Day 1 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461900/leicestershire-vs-derbyshire-7th-match-county-championship-division-two-2025",
-    "team1": "Leicestershire",
-    "team2": "Derbyshire",
+    "home_team": "Leicestershire",
+    "away_team": "Derbyshire",
     "start_date": "2025-04-11",
     "end_date": "2025-04-15",
     "start_time_gmt": null,
-    "venue": "Grace Road, Leicester"
+    "venue": "Grace Road, Leicester",
+    "day": "Day 1 of 5"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461901/gloucestershire-vs-glamorgan-8th-match-county-championship-division-two-2025",
-    "team1": "Gloucestershire",
-    "team2": "Glamorgan",
+    "home_team": "Gloucestershire",
+    "away_team": "Glamorgan",
     "start_date": "2025-04-11",
     "end_date": "2025-04-15",
     "start_time_gmt": null,
-    "venue": "County Ground, Bristol"
+    "venue": "County Ground, Bristol",
+    "day": "Day 1 of 5"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461898/kent-vs-middlesex-5th-match-county-championship-division-two-2025",
-    "team1": "Kent",
-    "team2": "Middlesex",
+    "home_team": "Kent",
+    "away_team": "Middlesex",
     "start_date": "2025-04-11",
     "end_date": "2025-04-15",
     "start_time_gmt": null,
-    "venue": "St Lawrence Ground, Canterbury"
+    "venue": "St Lawrence Ground, Canterbury",
+    "day": "Day 1 of 5"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461899/lancashire-vs-northamptonshire-6th-match-county-championship-division-two-2025",
-    "team1": "Lancashire",
-    "team2": "Northamptonshire",
+    "home_team": "Lancashire",
+    "away_team": "Northamptonshire",
     "start_date": "2025-04-11",
     "end_date": "2025-04-15",
     "start_time_gmt": null,
-    "venue": "Old Trafford, Manchester"
+    "venue": "Old Trafford, Manchester",
+    "day": "Day 1 of 5"
   }
 ]

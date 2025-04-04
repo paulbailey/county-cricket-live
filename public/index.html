@@ -25,7 +25,6 @@
             <div class="flex justify-between items-center w-full">
                 <div class="flex items-center gap-4">
                     <h1 class="text-2xl font-bold">County Cricket Live</h1>
-                    <!-- <a href="about.html" class="link link-hover text-base-content/70">About</a> -->
                 </div>
                 <div class="flex items-center">
                     <label class="label cursor-pointer gap-2" x-cloak>
@@ -38,96 +37,69 @@
         </div>
     </header>
     <main class="container mx-auto px-4 py-8">
-        <section class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">Live Matches</h1>
-            <template x-if="liveStreams.length === 0">
-                <p class="text-base-content/70">There are no current live YouTube streams. When first class counties
-                    in England and Wales are playing a match, you'll see all the available streams here, in embedded
-                    players.</p>
-            </template>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <template x-for="stream in liveStreams" :key="stream.videoId">
-                    <div class="card bg-base-100 shadow-xl">
-                        <div class="relative aspect-w-16 aspect-h-9">
-                            <div class="absolute inset-0 w-full h-full">
-                                <iframe :id="'player-' + stream.videoId"
-                                    :src="'https://www.youtube.com/embed/' + stream.videoId + '?enablejsapi=1&origin=' + encodeURIComponent(window.location.origin) + '&autoplay=' + (autoplayEnabled ? '1' : '0')"
-                                    class="absolute inset-0 w-full h-full"
-                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title" x-text="stream.title"></h3>
-                            <template x-if="shouldCollapseDescription(stream.description)">
-                                <div class="collapse collapse-arrow">
-                                    <input type="checkbox" />
-                                    <div class="collapse-title text-base-content/70">
-                                        <span x-text="stream.description.split('\n')[0]"></span>
-                                    </div>
-                                    <div class="collapse-content text-base-content/70">
-                                        <p x-html="formatDescription(stream.description)"></p>
+        <template x-for="(competition, compName) in competitions" :key="compName">
+            <section class="mb-12">
+                <h2 class="text-2xl font-bold mb-4" x-text="compName"></h2>
+                <template x-if="competition.live.length === 0">
+                    <p class="text-base-content/70">No live streams available for this competition.</p>
+                </template>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <template x-for="stream in competition.live" :key="stream.videoId || stream.fixture.match_url">
+                        <div class="card bg-base-100 shadow-xl">
+                            <template x-if="stream.videoId">
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-2"
+                                        x-text="stream.fixture.home_team + ' vs ' + stream.fixture.away_team + (stream.fixture.day ? ' - ' + stream.fixture.day : '')">
+                                    </h4>
+                                    <div class="relative aspect-w-16 aspect-h-9">
+                                        <div class="absolute inset-0 w-full h-full">
+                                            <iframe :id="'player-' + stream.videoId"
+                                                :src="'https://www.youtube.com/embed/' + stream.videoId + '?enablejsapi=1&origin=' + encodeURIComponent(window.location.origin) + '&autoplay=' + (autoplayEnabled ? '1' : '0')"
+                                                class="absolute inset-0 w-full h-full"
+                                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
+                                        </div>
                                     </div>
                                 </div>
                             </template>
-                            <template x-if="!shouldCollapseDescription(stream.description)">
-                                <p class="text-base-content/70" x-html="formatDescription(stream.description)"></p>
+                            <template x-if="!stream.videoId">
+                                <figure class="relative aspect-w-16 aspect-h-9 bg-base-200">
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="text-center">
+                                            <h4 class="text-lg font-semibold mb-2"
+                                                x-text="stream.fixture.home_team + ' vs ' + stream.fixture.away_team + (stream.fixture.day ? ' - ' + stream.fixture.day : '')">
+                                            </h4>
+                                            <svg class="w-12 h-12 mx-auto text-base-content/50" fill="none"
+                                                stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                            </svg>
+                                            <p class="mt-2 text-base-content/70">No stream available</p>
+                                        </div>
+                                    </div>
+                                </figure>
                             </template>
-                            <p class="text-base-content/70">
-                                <a :href="'https://www.youtube.com/channel/' + stream.channelId" target="_blank"
-                                    rel="noopener noreferrer" class="link link-hover">
-                                    <span x-text="stream.channelName"></span>
-                                </a>
-                            </p>
-                            <div class="card-actions justify-end">
-                                <div class="badge badge-error">LIVE</div>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </section>
-
-        <template x-if="upcomingMatches.length > 0">
-            <section>
-                <h2 class="text-2xl font-bold mb-4">Scheduled Live Streams</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <template x-for="match in upcomingMatches" :key="match.videoId">
-                        <div class="card bg-base-100 shadow-xl">
-                            <figure class="relative aspect-w-16 aspect-h-9">
-                                <img :src="'https://img.youtube.com/vi/' + match.videoId + '/maxresdefault.jpg'"
-                                    :alt="match.title" class="absolute inset-0 w-full h-full object-cover">
-                            </figure>
                             <div class="card-body">
-                                <h3 class="card-title" x-text="match.title"></h3>
-                                <template x-if="shouldCollapseDescription(match.description)">
-                                    <div class="collapse collapse-arrow">
-                                        <input type="checkbox" />
-                                        <div class="collapse-title text-base-content/70">
-                                            <span x-text="match.description.split('\n')[0]"></span>
-                                        </div>
-                                        <div class="collapse-content text-base-content/70">
-                                            <p x-html="formatDescription(match.description)"></p>
-                                        </div>
-                                    </div>
-                                </template>
-                                <template x-if="!shouldCollapseDescription(match.description)">
-                                    <p class="text-base-content/70" x-html="formatDescription(match.description)"></p>
-                                </template>
-                                <p class="text-base-content/70">
-                                    <a :href="'https://www.youtube.com/channel/' + match.channelId" target="_blank"
-                                        rel="noopener noreferrer" class="link link-hover">
-                                        <span x-text="match.channelName"></span>
-                                    </a>
-                                </p>
-                                <div class="card-actions justify-end">
-                                    <div class="badge badge-ghost" x-text="formatTimeUntil(match.scheduledStartTime)">
-                                    </div>
+                                <h3 class="text-sm text-base-content/70" x-text="stream.title"></h3>
+                                <div class="text-base-content/70">
+                                    <p><span class="font-semibold">Venue:</span> <span
+                                            x-text="stream.fixture.venue"></span></p>
+                                    <p><span class="font-semibold">Start Time:</span> <span
+                                            x-text="formatLocalTime(stream.fixture.start_time_gmt)"></span></p>
                                 </div>
                             </div>
                         </div>
                     </template>
                 </div>
+            </section>
+        </template>
+
+        <template x-if="Object.keys(competitions).length === 0">
+            <section class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">Live Matches</h1>
+                <p class="text-base-content/70">There are no current live YouTube streams. When first class counties
+                    in England and Wales are playing a match, you'll see all the available streams here, in embedded
+                    players.</p>
             </section>
         </template>
     </main>

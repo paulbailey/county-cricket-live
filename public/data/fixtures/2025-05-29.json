@@ -2,8 +2,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460754/lancashire-vs-worcestershire-north-group-t20-blast-2025",
-    "team1": "Lancashire",
-    "team2": "Worcestershire",
+    "home_team": "Lancashire",
+    "away_team": "Worcestershire",
     "start_date": "2025-05-29",
     "end_date": "2025-05-29",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460755/middlesex-vs-sussex-south-group-t20-blast-2025",
-    "team1": "Middlesex",
-    "team2": "Sussex",
+    "home_team": "Middlesex",
+    "away_team": "Sussex",
     "start_date": "2025-05-29",
     "end_date": "2025-05-29",
     "start_time_gmt": null,

@@ -2,71 +2,78 @@
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461843/hampshire-vs-durham-20th-match-county-championship-division-one-2025",
-    "team1": "Hampshire",
-    "team2": "Durham",
+    "home_team": "Hampshire",
+    "away_team": "Durham",
     "start_date": "2025-05-02",
     "end_date": "2025-05-05",
     "start_time_gmt": null,
-    "venue": "The Rose Bowl, Southampton"
+    "venue": "The Rose Bowl, Southampton",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461844/somerset-vs-essex-21st-match-county-championship-division-one-2025",
-    "team1": "Somerset",
-    "team2": "Essex",
+    "home_team": "Somerset",
+    "away_team": "Essex",
     "start_date": "2025-05-02",
     "end_date": "2025-05-05",
     "start_time_gmt": null,
-    "venue": "The Cooper Associates County Ground, Taunton"
+    "venue": "The Cooper Associates County Ground, Taunton",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461842/yorkshire-vs-warwickshire-19th-match-county-championship-division-one-2025",
-    "team1": "Yorkshire",
-    "team2": "Warwickshire",
+    "home_team": "Yorkshire",
+    "away_team": "Warwickshire",
     "start_date": "2025-05-02",
     "end_date": "2025-05-05",
     "start_time_gmt": null,
-    "venue": "Headingley, Leeds"
+    "venue": "Headingley, Leeds",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461908/leicestershire-vs-northamptonshire-15th-match-county-championship-division-two-2025",
-    "team1": "Leicestershire",
-    "team2": "Northamptonshire",
+    "home_team": "Leicestershire",
+    "away_team": "Northamptonshire",
     "start_date": "2025-05-02",
     "end_date": "2025-05-05",
     "start_time_gmt": null,
-    "venue": "Grace Road, Leicester"
+    "venue": "Grace Road, Leicester",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461909/middlesex-vs-kent-16th-match-county-championship-division-two-2025",
-    "team1": "Middlesex",
-    "team2": "Kent",
+    "home_team": "Middlesex",
+    "away_team": "Kent",
     "start_date": "2025-05-02",
     "end_date": "2025-05-05",
     "start_time_gmt": null,
-    "venue": "Lord's, London"
+    "venue": "Lord's, London",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461910/lancashire-vs-gloucestershire-17th-match-county-championship-division-two-2025",
-    "team1": "Lancashire",
-    "team2": "Gloucestershire",
+    "home_team": "Lancashire",
+    "away_team": "Gloucestershire",
     "start_date": "2025-05-02",
     "end_date": "2025-05-05",
     "start_time_gmt": null,
-    "venue": "Old Trafford, Manchester"
+    "venue": "Old Trafford, Manchester",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461911/glamorgan-vs-derbyshire-18th-match-county-championship-division-two-2025",
-    "team1": "Glamorgan",
-    "team2": "Derbyshire",
+    "home_team": "Glamorgan",
+    "away_team": "Derbyshire",
     "start_date": "2025-05-02",
     "end_date": "2025-05-05",
     "start_time_gmt": null,
-    "venue": "Sophia Gardens, Cardiff"
+    "venue": "Sophia Gardens, Cardiff",
+    "day": "Day 2 of 4"
   }
 ]

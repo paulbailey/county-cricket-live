@@ -107,8 +107,8 @@ def parse_fixtures(url, competition):
                 {
                     "competition": competition,
                     "match_url": match_url,
-                    "team1": team1,
-                    "team2": team2,
+                    "home_team": team1,
+                    "away_team": team2,
                     "start_date": start_date,
                     "end_date": end_date,
                     "start_time_gmt": start_time_gmt,
@@ -129,14 +129,22 @@ def group_fixtures_by_day(fixtures):
         
         # Skip fixtures with missing dates
         if start is None or end is None:
-            print(f"Skipping fixture with missing dates: {fixture.get('team1', 'Unknown')} vs {fixture.get('team2', 'Unknown')}")
+            print(f"Skipping fixture with missing dates: {fixture.get('home_team', 'Unknown')} vs {fixture.get('away_team', 'Unknown')}")
             continue
             
         current = start
+        day_number = 1
+        total_days = (end - start).days + 1
+        
         while current <= end:
             key = current.isoformat()
-            grouped.setdefault(key, []).append(fixture)
+            # Create a copy of the fixture to avoid modifying the original
+            day_fixture = fixture.copy()
+            if total_days > 1:
+                day_fixture["day"] = f"Day {day_number} of {total_days}"
+            grouped.setdefault(key, []).append(day_fixture)
             current += timedelta(days=1)
+            day_number += 1
     return grouped
 
 

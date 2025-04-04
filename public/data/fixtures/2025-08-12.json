@@ -2,8 +2,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1461978/yorkshire-vs-lancashire-one-day-cup-2025",
-    "team1": "Yorkshire",
-    "team2": "Lancashire",
+    "home_team": "Yorkshire",
+    "away_team": "Lancashire",
     "start_date": "2025-08-12",
     "end_date": "2025-08-12",
     "start_time_gmt": null,

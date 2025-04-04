@@ -2,8 +2,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1462006/sussex-vs-somerset-one-day-cup-2025",
-    "team1": "Sussex",
-    "team2": "Somerset",
+    "home_team": "Sussex",
+    "away_team": "Somerset",
     "start_date": "2025-08-21",
     "end_date": "2025-08-21",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1462005/northamptonshire-vs-kent-one-day-cup-2025",
-    "team1": "Northamptonshire",
-    "team2": "Kent",
+    "home_team": "Northamptonshire",
+    "away_team": "Kent",
     "start_date": "2025-08-21",
     "end_date": "2025-08-21",
     "start_time_gmt": null,

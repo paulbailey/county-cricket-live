@@ -36,19 +36,16 @@ jobs:
     - name: Install dependencies
       run: uv sync --all-extras --dev
     
-    - name: Update streams and notify
+    - name: Update streams
       id: update
       env:
         GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-        BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
-        BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
       run: |
         # Run the script and capture its output
-        output=$(uv run script/update_and_notify.py)
+        output=$(uv run script/update_streams.py)
         echo "$output"
         # Extract the variables from the output
-        echo "has_changes=$(echo "$output" | grep '^has_changes=' | cut -d'=' -f2)" >> $GITHUB_OUTPUT
-        echo "has_new_streams=$(echo "$output" | grep '^has_new_streams=' | cut -d'=' -f2)" >> $GITHUB_OUTPUT
+        echo "has_changes=true" >> $GITHUB_OUTPUT
 
     - name: Commit and push if changed
       if: steps.update.outputs.has_changes == 'true'

@@ -2,8 +2,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1462001/essex-vs-glamorgan-one-day-cup-2025",
-    "team1": "Essex",
-    "team2": "Glamorgan",
+    "home_team": "Essex",
+    "away_team": "Glamorgan",
     "start_date": "2025-08-20",
     "end_date": "2025-08-20",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1462002/hampshire-vs-nottingham-one-day-cup-2025",
-    "team1": "Hampshire",
-    "team2": "Nottingham",
+    "home_team": "Hampshire",
+    "away_team": "Nottingham",
     "start_date": "2025-08-20",
     "end_date": "2025-08-20",
     "start_time_gmt": null,
@@ -22,8 +22,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1462003/lancashire-vs-durham-one-day-cup-2025",
-    "team1": "Lancashire",
-    "team2": "Durham",
+    "home_team": "Lancashire",
+    "away_team": "Durham",
     "start_date": "2025-08-20",
     "end_date": "2025-08-20",
     "start_time_gmt": null,
@@ -32,8 +32,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1462004/leicestershire-vs-derbyshire-one-day-cup-2025",
-    "team1": "Leicestershire",
-    "team2": "Derbyshire",
+    "home_team": "Leicestershire",
+    "away_team": "Derbyshire",
     "start_date": "2025-08-20",
     "end_date": "2025-08-20",
     "start_time_gmt": null,

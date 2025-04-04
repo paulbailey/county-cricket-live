@@ -2,41 +2,45 @@
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461914/gloucestershire-vs-kent-21st-match-county-championship-division-two-2025",
-    "team1": "Gloucestershire",
-    "team2": "Kent",
+    "home_team": "Gloucestershire",
+    "away_team": "Kent",
     "start_date": "2025-05-16",
     "end_date": "2025-05-20",
     "start_time_gmt": null,
-    "venue": "County Ground, Bristol"
+    "venue": "County Ground, Bristol",
+    "day": "Day 5 of 5"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461915/lancashire-vs-derbyshire-22nd-match-county-championship-division-two-2025",
-    "team1": "Lancashire",
-    "team2": "Derbyshire",
+    "home_team": "Lancashire",
+    "away_team": "Derbyshire",
     "start_date": "2025-05-16",
     "end_date": "2025-05-20",
     "start_time_gmt": null,
-    "venue": "Old Trafford, Manchester"
+    "venue": "Old Trafford, Manchester",
+    "day": "Day 5 of 5"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461916/middlesex-vs-leicestershire-23rd-match-county-championship-division-two-2025",
-    "team1": "Middlesex",
-    "team2": "Leicestershire",
+    "home_team": "Middlesex",
+    "away_team": "Leicestershire",
     "start_date": "2025-05-16",
     "end_date": "2025-05-20",
     "start_time_gmt": null,
-    "venue": "Lord's, London"
+    "venue": "Lord's, London",
+    "day": "Day 5 of 5"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461917/glamorgan-vs-northamptonshire-24th-match-county-championship-division-two-2025",
-    "team1": "Glamorgan",
-    "team2": "Northamptonshire",
+    "home_team": "Glamorgan",
+    "away_team": "Northamptonshire",
     "start_date": "2025-05-16",
     "end_date": "2025-05-20",
     "start_time_gmt": null,
-    "venue": "Sophia Gardens, Cardiff"
+    "venue": "Sophia Gardens, Cardiff",
+    "day": "Day 5 of 5"
   }
 ]

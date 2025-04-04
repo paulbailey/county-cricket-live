@@ -2,8 +2,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1462028/tbc-vs-tbc-quarter-final-one-day-cup-2025",
-    "team1": "tbc",
-    "team2": "tbc",
+    "home_team": "tbc",
+    "away_team": "tbc",
     "start_date": "2025-08-28",
     "end_date": "2025-08-28",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1462029/tbc-vs-tbc-quarter-final-one-day-cup-2025",
-    "team1": "tbc",
-    "team2": "tbc",
+    "home_team": "tbc",
+    "away_team": "tbc",
     "start_date": "2025-08-28",
     "end_date": "2025-08-28",
     "start_time_gmt": null,

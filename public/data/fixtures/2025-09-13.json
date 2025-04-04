@@ -2,8 +2,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460885/tbc-vs-tbc-2nd-semi-final-t20-blast-2025",
-    "team1": "tbc",
-    "team2": "tbc",
+    "home_team": "tbc",
+    "away_team": "tbc",
     "start_date": "2025-09-13",
     "end_date": "2025-09-13",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460886/tbc-vs-tbc-final-t20-blast-2025",
-    "team1": "tbc",
-    "team2": "tbc",
+    "home_team": "tbc",
+    "away_team": "tbc",
     "start_date": "2025-09-13",
     "end_date": "2025-09-13",
     "start_time_gmt": null,
@@ -22,8 +22,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460884/tbc-vs-tbc-1st-semi-final-t20-blast-2025",
-    "team1": "tbc",
-    "team2": "tbc",
+    "home_team": "tbc",
+    "away_team": "tbc",
     "start_date": "2025-09-13",
     "end_date": "2025-09-13",
     "start_time_gmt": null,

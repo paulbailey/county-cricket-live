@@ -2,91 +2,100 @@
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461868/sussex-vs-warwickshire-45th-match-county-championship-division-one-2025",
-    "team1": "Sussex",
-    "team2": "Warwickshire",
+    "home_team": "Sussex",
+    "away_team": "Warwickshire",
     "start_date": "2025-06-29",
     "end_date": "2025-07-02",
     "start_time_gmt": null,
-    "venue": "County Ground, Hove"
+    "venue": "County Ground, Hove",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461864/yorkshire-vs-essex-41st-match-county-championship-division-one-2025",
-    "team1": "Yorkshire",
-    "team2": "Essex",
+    "home_team": "Yorkshire",
+    "away_team": "Essex",
     "start_date": "2025-06-29",
     "end_date": "2025-07-02",
     "start_time_gmt": null,
-    "venue": "York Cricket Club"
+    "venue": "York Cricket Club",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461865/surrey-vs-durham-42nd-match-county-championship-division-one-2025",
-    "team1": "Surrey",
-    "team2": "Durham",
+    "home_team": "Surrey",
+    "away_team": "Durham",
     "start_date": "2025-06-29",
     "end_date": "2025-07-02",
     "start_time_gmt": null,
-    "venue": "Kennington Oval, London"
+    "venue": "Kennington Oval, London",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461866/somerset-vs-nottinghamshire-43rd-match-county-championship-division-one-2025",
-    "team1": "Somerset",
-    "team2": "Nottinghamshire",
+    "home_team": "Somerset",
+    "away_team": "Nottinghamshire",
     "start_date": "2025-06-29",
     "end_date": "2025-07-02",
     "start_time_gmt": null,
-    "venue": "The Cooper Associates County Ground, Taunton"
+    "venue": "The Cooper Associates County Ground, Taunton",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461867/hampshire-vs-worcestershire-44th-match-county-championship-division-one-2025",
-    "team1": "Hampshire",
-    "team2": "Worcestershire",
+    "home_team": "Hampshire",
+    "away_team": "Worcestershire",
     "start_date": "2025-06-29",
     "end_date": "2025-07-02",
     "start_time_gmt": null,
-    "venue": "The Rose Bowl, Southampton"
+    "venue": "The Rose Bowl, Southampton",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461926/leicestershire-vs-middlesex-33rd-match-county-championship-division-two-2025",
-    "team1": "Leicestershire",
-    "team2": "Middlesex",
+    "home_team": "Leicestershire",
+    "away_team": "Middlesex",
     "start_date": "2025-06-29",
     "end_date": "2025-07-02",
     "start_time_gmt": null,
-    "venue": "Grace Road, Leicester"
+    "venue": "Grace Road, Leicester",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461927/kent-vs-northamptonshire-34th-match-county-championship-division-two-2025",
-    "team1": "Kent",
-    "team2": "Northamptonshire",
+    "home_team": "Kent",
+    "away_team": "Northamptonshire",
     "start_date": "2025-06-29",
     "end_date": "2025-07-02",
     "start_time_gmt": null,
-    "venue": "St Lawrence Ground, Canterbury"
+    "venue": "St Lawrence Ground, Canterbury",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461928/derbyshire-vs-lancashire-35th-match-county-championship-division-two-2025",
-    "team1": "Derbyshire",
-    "team2": "Lancashire",
+    "home_team": "Derbyshire",
+    "away_team": "Lancashire",
     "start_date": "2025-06-29",
     "end_date": "2025-07-02",
     "start_time_gmt": null,
-    "venue": "Queen's Park, Chesterfield"
+    "venue": "Queen's Park, Chesterfield",
+    "day": "Day 2 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461929/glamorgan-vs-gloucestershire-36th-match-county-championship-division-two-2025",
-    "team1": "Glamorgan",
-    "team2": "Gloucestershire",
+    "home_team": "Glamorgan",
+    "away_team": "Gloucestershire",
     "start_date": "2025-06-29",
     "end_date": "2025-07-02",
     "start_time_gmt": null,
-    "venue": "Sophia Gardens, Cardiff"
+    "venue": "Sophia Gardens, Cardiff",
+    "day": "Day 2 of 4"
   }
 ]

@@ -1,5 +1,5 @@
-[
-    {
+{
+    "Derbyshire": {
         "name": "Derbyshire CCC",
         "nicknames": [
             "Derbyshire",
@@ -7,7 +7,7 @@
         ],
         "youtubeChannelId": "UCdsIWgLpXJZowUJvvh4gDoA"
     },
-    {
+    "Durham": {
         "name": "Durham CCC",
         "blueskyHandle": "durhamcricket.bsky.social",
         "nicknames": [
@@ -16,7 +16,7 @@
         ],
         "youtubeChannelId": "UCCZ5wP1IUo4_r8vgEzFDpEw"
     },
-    {
+    "Essex": {
         "name": "Essex CCC",
         "blueskyHandle": "essexcricket.bsky.social",
         "nicknames": [
@@ -25,7 +25,7 @@
         ],
         "youtubeChannelId": "UCL0ebrj8ISVXWikxxtjRlsA"
     },
-    {
+    "Glamorgan": {
         "name": "Glamorgan CCC",
         "blueskyHandle": "glamcricket.bsky.social",
         "nicknames": [
@@ -34,7 +34,7 @@
         ],
         "youtubeChannelId": "UCZ64uV20GKk9MIi2Y6YmOcA"
     },
-    {
+    "Gloucestershire": {
         "name": "Gloucestershire CCC",
         "blueskyHandle": "gloscricket.bsky.social",
         "nicknames": [
@@ -43,7 +43,7 @@
         ],
         "youtubeChannelId": "UC2bxVF6gzuzsCceyZRQS_sg"
     },
-    {
+    "Hampshire": {
         "name": "Hampshire CCC",
         "blueskyHandle": "hampshirecricket.bsky.social",
         "nicknames": [
@@ -52,7 +52,7 @@
         ],
         "youtubeChannelId": "UC8lemPb9z8zjmlk6tlkm6_Q"
     },
-    {
+    "Kent": {
         "name": "Kent CCC",
         "blueskyHandle": "kentcricket.co.uk",
         "nicknames": [
@@ -61,7 +61,7 @@
         ],
         "youtubeChannelId": "UCTtkVP_v56wU8zXpVBpdaZQ"
     },
-    {
+    "Lancashire": {
         "name": "Lancashire CCC",
         "blueskyHandle": "lancscricket.bsky.social",
         "nicknames": [
@@ -70,7 +70,7 @@
         ],
         "youtubeChannelId": "UCFNf9wV2ShfzFlFAK4elXyA"
     },
-    {
+    "Leicestershire": {
         "name": "Leicestershire CCC",
         "blueskyHandle": "leicsccc.bsky.social",
         "nicknames": [
@@ -79,7 +79,7 @@
         ],
         "youtubeChannelId": "UCAWIaUtlv3VvyDB619Clisw"
     },
-    {
+    "Middlesex": {
         "name": "Middlesex CCC",
         "nicknames": [
             "Middlesex",
@@ -87,7 +87,7 @@
         ],
         "youtubeChannelId": "UCj8uKvxoOpYEXE4SzZRtlgw"
     },
-    {
+    "Northamptonshire": {
         "name": "Northamptonshire CCC",
         "nicknames": [
             "Northamptonshire",
@@ -95,7 +95,7 @@
         ],
         "youtubeChannelId": "UCT1aGQpOXmqSHH63xvxn1TA"
     },
-    {
+    "Nottinghamshire": {
         "name": "Nottinghamshire CCC",
         "nicknames": [
             "Nottinghamshire",
@@ -103,7 +103,7 @@
         ],
         "youtubeChannelId": "UCiOki3bA8llEHVgXBQ3x6wg"
     },
-    {
+    "Somerset": {
         "name": "Somerset CCC",
         "blueskyHandle": "somersetccc.bsky.social",
         "nicknames": [
@@ -112,7 +112,7 @@
         ],
         "youtubeChannelId": "UCcCeaTFtzWdkTQYeFRRWvSg"
     },
-    {
+    "Surrey": {
         "name": "Surrey CCC",
         "blueskyHandle": "kiaoval.com",
         "nicknames": [
@@ -121,7 +121,7 @@
         ],
         "youtubeChannelId": "UCZLlXPWxwCtQxrspxx8pU-Q"
     },
-    {
+    "Sussex": {
         "name": "Sussex CCC",
         "nicknames": [
             "Sussex",
@@ -129,7 +129,7 @@
         ],
         "youtubeChannelId": "UC50wZUsUCBzXWsFn0vmaOAA"
     },
-    {
+    "Warwickshire": {
         "name": "Warwickshire CCC",
         "nicknames": [
             "Warwickshire",
@@ -137,7 +137,7 @@
         ],
         "youtubeChannelId": "UCyMJCUxEJGZJSBtw7QKC_lw"
     },
-    {
+    "Worcestershire": {
         "name": "Worcestershire CCC",
         "blueskyHandle": "worcestershireccc.bsky.social",
         "nicknames": [
@@ -146,7 +146,7 @@
         ],
         "youtubeChannelId": "UCorQ8Y6syhWYB6QJW_4xVzQ"
     },
-    {
+    "Yorkshire": {
         "name": "Yorkshire CCC",
         "blueskyHandle": "yorksccc.bsky.social",
         "nicknames": [
@@ -155,4 +155,4 @@
         ],
         "youtubeChannelId": "UCfbQbd1wpa6SP0uo22T6cXA"
     }
-]
+}

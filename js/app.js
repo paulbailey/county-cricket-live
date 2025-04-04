@@ -4,12 +4,37 @@ import persist from '@alpinejs/persist'
 // Register the stream component with Alpine
 Alpine.data('stream', () => ({
     autoplayEnabled: Alpine.$persist(false).as('autoplayEnabled').using(localStorage),
-    liveStreams: [],
-    upcomingMatches: [],
+    competitions: {},
     players: new Map(),
     apiReady: false,
     playersInitialized: false,
     metadataLoaded: false,
+
+    formatLocalTime(gmtTime) {
+        if (!gmtTime) return '';
+
+        // Parse the GMT time (HH:MM:SS)
+        const [hours, minutes] = gmtTime.split(':');
+
+        // Create a date object for today with the GMT time
+        const today = new Date();
+        const gmtDate = new Date(Date.UTC(
+            today.getUTCFullYear(),
+            today.getUTCMonth(),
+            today.getUTCDate(),
+            parseInt(hours),
+            parseInt(minutes),
+            0
+        ));
+
+        // Format in local time
+        return gmtDate.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+        });
+    },
 
     async init() {
         // Load initial data immediately
@@ -40,24 +65,26 @@ Alpine.data('stream', () => ({
     },
 
     initializePlayers() {
-        if (!this.apiReady || this.playersInitialized || this.liveStreams.length === 0) {
+        if (!this.apiReady || this.playersInitialized) {
             return;
         }
 
         console.log('Initializing players...');
         this.playersInitialized = true;
 
-        this.liveStreams.forEach(stream => {
-            const playerId = `player-${stream.videoId}`;
-            if (!this.players.has(stream.videoId)) {
-                console.log(`Creating player for video ${stream.videoId}`);
-                new YT.Player(playerId, {
-                    videoId: stream.videoId,
-                    events: {
-                        'onReady': (event) => this.onPlayerReady(stream.videoId, event)
-                    }
-                });
-            }
+        // Initialize players for all live streams across all competitions
+        Object.values(this.competitions).forEach(competition => {
+            competition.live.forEach(stream => {
+                if (stream.videoId && !this.players.has(stream.videoId)) {
+                    console.log(`Creating player for video ${stream.videoId}`);
+                    new YT.Player(`player-${stream.videoId}`, {
+                        videoId: stream.videoId,
+                        events: {
+                            'onReady': (event) => this.onPlayerReady(stream.videoId, event)
+                        }
+                    });
+                }
+            });
         });
     },
 
@@ -65,22 +92,21 @@ Alpine.data('stream', () => ({
         try {
             const response = await fetch('data/streams.json');
             const data = await response.json();
-            const hadStreams = this.liveStreams.length > 0;
-            this.updateStreams(data);
 
-            // Only reinitialize players if we have new streams and didn't have any before
-            if (this.apiReady && !hadStreams && this.liveStreams.length > 0) {
+            // Remove lastUpdated from the data
+            const { lastUpdated, ...competitions } = data;
+
+            // Update competitions
+            this.competitions = competitions;
+
+            // Reinitialize players if needed
+            if (this.apiReady) {
                 this.playersInitialized = false;
                 this.initializePlayers();
             }
         } catch (error) {
             console.error('Error loading stream data:', error);
         }
-    },
-
-    updateStreams(data) {
-        this.liveStreams = data.liveStreams || [];
-        this.upcomingMatches = data.upcomingMatches || [];
     },
 
     onPlayerReady(videoId, event) {

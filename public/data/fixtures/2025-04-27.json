@@ -2,51 +2,56 @@
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461839/nottinghamshire-vs-sussex-16th-match-county-championship-division-one-2025",
-    "team1": "Nottinghamshire",
-    "team2": "Sussex",
+    "home_team": "Nottinghamshire",
+    "away_team": "Sussex",
     "start_date": "2025-04-25",
     "end_date": "2025-04-28",
     "start_time_gmt": null,
-    "venue": "Trent Bridge, Nottingham"
+    "venue": "Trent Bridge, Nottingham",
+    "day": "Day 3 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461840/surrey-vs-somerset-17th-match-county-championship-division-one-2025",
-    "team1": "Surrey",
-    "team2": "Somerset",
+    "home_team": "Surrey",
+    "away_team": "Somerset",
     "start_date": "2025-04-25",
     "end_date": "2025-04-28",
     "start_time_gmt": null,
-    "venue": "Kennington Oval, London"
+    "venue": "Kennington Oval, London",
+    "day": "Day 3 of 4"
   },
   {
     "competition": "County Championship Division One",
     "match_url": "https://www.espncricinfo.com/series/8052/game/1461841/worcestershire-vs-durham-18th-match-county-championship-division-one-2025",
-    "team1": "Worcestershire",
-    "team2": "Durham",
+    "home_team": "Worcestershire",
+    "away_team": "Durham",
     "start_date": "2025-04-25",
     "end_date": "2025-04-28",
     "start_time_gmt": null,
-    "venue": "County Ground, New Road, Worcester"
+    "venue": "County Ground, New Road, Worcester",
+    "day": "Day 3 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461906/gloucestershire-vs-leicestershire-13th-match-county-championship-division-two-2025",
-    "team1": "Gloucestershire",
-    "team2": "Leicestershire",
+    "home_team": "Gloucestershire",
+    "away_team": "Leicestershire",
     "start_date": "2025-04-25",
     "end_date": "2025-04-28",
     "start_time_gmt": null,
-    "venue": "County Ground, Bristol"
+    "venue": "County Ground, Bristol",
+    "day": "Day 3 of 4"
   },
   {
     "competition": "County Championship Division Two",
     "match_url": "https://www.espncricinfo.com/series/8204/game/1461907/derbyshire-vs-middlesex-14th-match-county-championship-division-two-2025",
-    "team1": "Derbyshire",
-    "team2": "Middlesex",
+    "home_team": "Derbyshire",
+    "away_team": "Middlesex",
     "start_date": "2025-04-25",
     "end_date": "2025-04-28",
     "start_time_gmt": null,
-    "venue": "County Ground, Derby"
+    "venue": "County Ground, Derby",
+    "day": "Day 3 of 4"
   }
 ]

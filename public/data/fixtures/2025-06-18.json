@@ -2,8 +2,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460811/kent-vs-gloucestershire-south-group-t20-blast-2025",
-    "team1": "Kent",
-    "team2": "Gloucestershire",
+    "home_team": "Kent",
+    "away_team": "Gloucestershire",
     "start_date": "2025-06-18",
     "end_date": "2025-06-18",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460812/surrey-vs-sussex-south-group-t20-blast-2025",
-    "team1": "Surrey",
-    "team2": "Sussex",
+    "home_team": "Surrey",
+    "away_team": "Sussex",
     "start_date": "2025-06-18",
     "end_date": "2025-06-18",
     "start_time_gmt": null,
@@ -22,8 +22,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460813/worcestershire-vs-durham-north-group-t20-blast-2025",
-    "team1": "Worcestershire",
-    "team2": "Durham",
+    "home_team": "Worcestershire",
+    "away_team": "Durham",
     "start_date": "2025-06-18",
     "end_date": "2025-06-18",
     "start_time_gmt": null,

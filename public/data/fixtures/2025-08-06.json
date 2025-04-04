@@ -2,8 +2,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1461962/middlesex-vs-somerset-one-day-cup-2025",
-    "team1": "Middlesex",
-    "team2": "Somerset",
+    "home_team": "Middlesex",
+    "away_team": "Somerset",
     "start_date": "2025-08-06",
     "end_date": "2025-08-06",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1461963/surrey-vs-leicestershire-one-day-cup-2025",
-    "team1": "Surrey",
-    "team2": "Leicestershire",
+    "home_team": "Surrey",
+    "away_team": "Leicestershire",
     "start_date": "2025-08-06",
     "end_date": "2025-08-06",
     "start_time_gmt": null,

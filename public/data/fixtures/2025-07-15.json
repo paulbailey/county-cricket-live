@@ -2,8 +2,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460866/durham-vs-leicestershire-north-group-t20-blast-2025",
-    "team1": "Durham",
-    "team2": "Leicestershire",
+    "home_team": "Durham",
+    "away_team": "Leicestershire",
     "start_date": "2025-07-15",
     "end_date": "2025-07-15",
     "start_time_gmt": null,

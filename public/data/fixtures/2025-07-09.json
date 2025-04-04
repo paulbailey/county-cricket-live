@@ -2,8 +2,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460843/birmingham-bears-vs-lancashire-north-group-t20-blast-2025",
-    "team1": "Birmingham Bears",
-    "team2": "Lancashire",
+    "home_team": "Birmingham Bears",
+    "away_team": "Lancashire",
     "start_date": "2025-07-09",
     "end_date": "2025-07-09",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460844/gloucestershire-vs-surrey-south-group-t20-blast-2025",
-    "team1": "Gloucestershire",
-    "team2": "Surrey",
+    "home_team": "Gloucestershire",
+    "away_team": "Surrey",
     "start_date": "2025-07-09",
     "end_date": "2025-07-09",
     "start_time_gmt": null,
@@ -22,8 +22,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460845/middlesex-vs-hampshire-south-group-t20-blast-2025",
-    "team1": "Middlesex",
-    "team2": "Hampshire",
+    "home_team": "Middlesex",
+    "away_team": "Hampshire",
     "start_date": "2025-07-09",
     "end_date": "2025-07-09",
     "start_time_gmt": null,
@@ -32,8 +32,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460846/sussex-vs-kent-south-group-t20-blast-2025",
-    "team1": "Sussex",
-    "team2": "Kent",
+    "home_team": "Sussex",
+    "away_team": "Kent",
     "start_date": "2025-07-09",
     "end_date": "2025-07-09",
     "start_time_gmt": null,

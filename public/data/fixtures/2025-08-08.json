@@ -2,8 +2,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1461968/northamptonshire-vs-yorkshire-one-day-cup-2025",
-    "team1": "Northamptonshire",
-    "team2": "Yorkshire",
+    "home_team": "Northamptonshire",
+    "away_team": "Yorkshire",
     "start_date": "2025-08-08",
     "end_date": "2025-08-08",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1461969/somerset-vs-durham-one-day-cup-2025",
-    "team1": "Somerset",
-    "team2": "Durham",
+    "home_team": "Somerset",
+    "away_team": "Durham",
     "start_date": "2025-08-08",
     "end_date": "2025-08-08",
     "start_time_gmt": null,
@@ -22,8 +22,8 @@
   {
     "competition": "One-Day Cup",
     "match_url": "https://www.espncricinfo.com/series/8335/game/1461970/surrey-vs-gloucestershire-one-day-cup-2025",
-    "team1": "Surrey",
-    "team2": "Gloucestershire",
+    "home_team": "Surrey",
+    "away_team": "Gloucestershire",
     "start_date": "2025-08-08",
     "end_date": "2025-08-08",
     "start_time_gmt": null,

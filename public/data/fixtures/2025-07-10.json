@@ -2,8 +2,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460848/hampshire-vs-glamorgan-south-group-t20-blast-2025",
-    "team1": "Hampshire",
-    "team2": "Glamorgan",
+    "home_team": "Hampshire",
+    "away_team": "Glamorgan",
     "start_date": "2025-07-10",
     "end_date": "2025-07-10",
     "start_time_gmt": null,
@@ -12,8 +12,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460849/leicestershire-vs-northamptonshire-north-group-t20-blast-2025",
-    "team1": "Leicestershire",
-    "team2": "Northamptonshire",
+    "home_team": "Leicestershire",
+    "away_team": "Northamptonshire",
     "start_date": "2025-07-10",
     "end_date": "2025-07-10",
     "start_time_gmt": null,
@@ -22,8 +22,8 @@
   {
     "competition": "T20 Blast",
     "match_url": "https://www.espncricinfo.com/series/8053/game/1460847/derbyshire-vs-worcestershire-north-group-t20-blast-2025",
-    "team1": "Derbyshire",
-    "team2": "Worcestershire",
+    "home_team": "Derbyshire",
+    "away_team": "Worcestershire",
     "start_date": "2025-07-10",
     "end_date": "2025-07-10",
     "start_time_gmt": null,
