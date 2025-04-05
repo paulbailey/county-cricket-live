@@ -1,62 +1,57 @@
 [
   {
+    "match_id": "1fd36dd5-f567-4ff3-b7eb-6de4427e3f37",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461956/durham-vs-sussex-one-day-cup-2025",
     "home_team": "Durham",
     "away_team": "Sussex",
     "start_date": "2025-08-05",
     "end_date": "2025-08-05",
-    "start_time_gmt": null,
-    "venue": null
+    "start_time_gmt": "10:00",
+    "venue": "Riverside Ground, Chester-le-Street",
+    "day": "One Day Match"
   },
   {
+    "match_id": "5edec04a-9e83-45fc-b70d-7a740337cc12",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461957/glamorgan-vs-hampshire-one-day-cup-2025",
     "home_team": "Glamorgan",
     "away_team": "Hampshire",
     "start_date": "2025-08-05",
     "end_date": "2025-08-05",
-    "start_time_gmt": null,
-    "venue": null
+    "start_time_gmt": "10:00",
+    "venue": "The Gnoll Cricket Ground, Neath, Wales",
+    "day": "One Day Match"
   },
   {
+    "match_id": "d6706c29-dd9f-4ea7-801c-10d9db3dad98",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461958/gloucestershire-vs-derbyshire-one-day-cup-2025",
     "home_team": "Gloucestershire",
     "away_team": "Derbyshire",
     "start_date": "2025-08-05",
     "end_date": "2025-08-05",
-    "start_time_gmt": null,
-    "venue": null
+    "start_time_gmt": "10:00",
+    "venue": "College Ground, Cheltenham",
+    "day": "One Day Match"
   },
   {
+    "match_id": "3b9550a8-e6f5-4e8b-9fe2-69987d897b89",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461959/lancashire-vs-northamptonshire-one-day-cup-2025",
     "home_team": "Lancashire",
     "away_team": "Northamptonshire",
     "start_date": "2025-08-05",
     "end_date": "2025-08-05",
-    "start_time_gmt": null,
-    "venue": null
+    "start_time_gmt": "10:00",
+    "venue": "Sedbergh School Ground, Sedbergh",
+    "day": "One Day Match"
   },
   {
+    "match_id": "22f79a71-722e-4b29-b164-cf165f994c1d",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461960/nottingham-vs-essex-one-day-cup-2025",
-    "home_team": "Nottingham",
+    "home_team": "Nottinghamshire",
     "away_team": "Essex",
     "start_date": "2025-08-05",
     "end_date": "2025-08-05",
-    "start_time_gmt": null,
-    "venue": null
-  },
-  {
-    "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461961/yorkshire-vs-warwickshire-one-day-cup-2025",
-    "home_team": "Yorkshire",
-    "away_team": "Warwickshire",
-    "start_date": "2025-08-05",
-    "end_date": "2025-08-05",
-    "start_time_gmt": null,
-    "venue": null
+    "start_time_gmt": "10:00",
+    "venue": "The John Fretwell Sporting Complex, Nettleworth",
+    "day": "One Day Match"
   }
 ]
