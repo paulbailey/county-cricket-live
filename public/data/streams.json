@@ -102,12 +102,12 @@
   "County Championship Division Two": {
     "live": [
       {
-        "videoId": null,
-        "title": "Derbyshire vs Gloucestershire",
+        "videoId": "sUM3smhzHmo",
+        "title": "\ud83d\udd34 LIVE CRICKET | Derbyshire vs Gloucestershire, Day Two",
         "channelName": "Derbyshire CCC",
         "channelId": "UCdsIWgLpXJZowUJvvh4gDoA",
-        "description": "County Championship Division Two - County Ground, Derby",
-        "isPlaceholder": true,
+        "description": "Live action from The County Ground, Derby, as Derbyshire take on Gloucestershire in the Rothesay County Championship.\n\nMatch Centre \u27a1\ufe0f: https://cricket.derbyshireccc.com/fixtures/first-xi/2025-season/rothesay-county-championship/derbyshire-vs-gloucestershire-cc-2025/?tab=m_summary\n\nOnline Shop \u27a1\ufe0f: https://cricket.derbyshireccc.com/shop/\n\n#livestream #Derbyshire #cricket #live #countychampionship #countycricket",
+        "publishedAt": "2025-04-05T08:53:10Z",
         "fixture": {
           "match_id": "cd081f16-7216-4df7-8f47-f3803860a74d",
           "competition": "County Championship Division Two",
@@ -180,5 +180,5 @@
     ],
     "upcoming": []
   },
-  "lastUpdated": "2025-04-05T09:47:50.591091+00:00"
+  "lastUpdated": "2025-04-05T09:52:32.355189+00:00"
 }
