@@ -49,7 +49,7 @@ Alpine.data('stream', () => ({
 
         // Set up periodic updates
         setInterval(() => this.loadStreamData(), 5 * 60 * 1000);
-        setInterval(() => this.loadScores(), 3 * 60 * 1000); // Update scores every 3 minutes
+        setInterval(() => this.loadScores(), 60 * 1000); // Update scores every minute
 
         // Load YouTube IFrame API
         if (!window.YT) {
