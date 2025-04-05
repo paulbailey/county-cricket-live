@@ -2,12 +2,12 @@
   "County Championship Division One": {
     "live": [
       {
-        "videoId": "KUZlTPqKyGk",
-        "title": "LIVE: Essex v Surrey: Day 2 Stream",
+        "videoId": null,
+        "title": "Essex vs Surrey",
         "channelName": "Essex CCC",
         "channelId": "UCL0ebrj8ISVXWikxxtjRlsA",
-        "description": "Live stream of the Rothesay County Championship match between Essex and Surrey at the Ambassador Cruise Line, taking place on Friday 04 - Monday 07 April 2025.\n\nScheduled hours of play:\n\n11am: Start of play\n1pm-1:40pm: Lunch\n3:40pm-4pm: Tea\nClose of play: 6pm\n\nAll Essex home games at the Ambassador Cruise Line Ground will be streamed during the 2025 season, so hit the subscribe button to find out when we're next live!",
-        "publishedAt": "2025-04-05T09:04:41Z",
+        "description": "County Championship Division One - County Ground, Chelmsford",
+        "isPlaceholder": true,
         "fixture": {
           "match_id": "c7df1aa3-b952-44d4-b991-480ba4d9e0d4",
           "competition": "County Championship Division One",
@@ -59,12 +59,12 @@
         }
       },
       {
-        "videoId": "KsuON7enUA8",
-        "title": "LIVE STREAM: Somerset vs Worcestershire - Day Two",
+        "videoId": null,
+        "title": "Somerset vs Worcestershire",
         "channelName": "Somerset CCC",
         "channelId": "UCcCeaTFtzWdkTQYeFRRWvSg",
-        "description": "WATCH LIVE Somerset vs Worcestershire in the County Championship \n\n#Cricket #Somerset #countychampionship",
-        "publishedAt": "2025-04-05T08:55:58Z",
+        "description": "County Championship Division One - The Cooper Associates County Ground, Taunton",
+        "isPlaceholder": true,
         "fixture": {
           "match_id": "fe09fb7d-e583-4f67-98cf-5c3ec4e3967b",
           "competition": "County Championship Division One",
