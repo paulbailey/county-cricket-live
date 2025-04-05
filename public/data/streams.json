@@ -21,6 +21,25 @@
         }
       },
       {
+        "videoId": "XrQF0v4PEWc",
+        "title": "LIVE STREAM | Hampshire Men v Yorkshire | Rothesay County Championship (Day Two)",
+        "channelName": "Hampshire CCC",
+        "channelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
+        "description": "Watch the live stream from day two (Saturday 5th April 2025) of Hampshire Men's Rothesay County Championship match against Yorkshire at Utilita Bowl.",
+        "publishedAt": "2025-04-05T08:29:36Z",
+        "fixture": {
+          "match_id": "520428ac-28bf-4107-909e-fd3c33faab4b",
+          "competition": "County Championship Division One",
+          "home_team": "Hampshire",
+          "away_team": "Yorkshire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "The Rose Bowl, Southampton",
+          "day": "Day 2 of 4"
+        }
+      },
+      {
         "videoId": "0OLW1bHI2bM",
         "title": "\ud83d\udd34 LIVE STREAM |  Day Two | Nottinghamshire v Durham | Rothesay County Championship",
         "channelName": "Nottinghamshire CCC",
@@ -57,27 +76,6 @@
           "venue": "The Cooper Associates County Ground, Taunton",
           "day": "Day 2 of 4"
         }
-      }
-    ],
-    "upcoming": [
-      {
-        "videoId": "XrQF0v4PEWc",
-        "title": "LIVE STREAM | Hampshire Men v Yorkshire | Rothesay County Championship (Day Two)",
-        "channelName": "Hampshire CCC",
-        "channelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
-        "description": "Watch the live stream from day two (Saturday 5th April 2025) of Hampshire Men's Rothesay County Championship match against Yorkshire at Utilita Bowl.",
-        "scheduledStartTime": "2025-04-05T09:45:00Z",
-        "fixture": {
-          "match_id": "520428ac-28bf-4107-909e-fd3c33faab4b",
-          "competition": "County Championship Division One",
-          "home_team": "Hampshire",
-          "away_team": "Yorkshire",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "The Rose Bowl, Southampton",
-          "day": "Day 2 of 4"
-        }
       },
       {
         "videoId": "jVNcGnztddc",
@@ -85,7 +83,7 @@
         "channelName": "Warwickshire CCC",
         "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
         "description": "Watch Day Two of the Rothesay County Championship fixture between Warwickshire and Sussex at Edgbaston from 11am on Saturday 5th April.\n\nFor replays, live text commentary and scorecard, visit our Match Centre at edgbaston.com.",
-        "scheduledStartTime": "2025-04-05T09:45:00Z",
+        "publishedAt": "2025-04-05T09:24:50Z",
         "fixture": {
           "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
           "competition": "County Championship Division One",
@@ -98,10 +96,49 @@
           "day": "Day 2 of 4"
         }
       }
-    ]
+    ],
+    "upcoming": []
   },
   "County Championship Division Two": {
     "live": [
+      {
+        "videoId": null,
+        "title": "Derbyshire vs Gloucestershire",
+        "channelName": "Derbyshire CCC",
+        "channelId": "UCdsIWgLpXJZowUJvvh4gDoA",
+        "description": "County Championship Division Two - County Ground, Derby",
+        "isPlaceholder": true,
+        "fixture": {
+          "match_id": "cd081f16-7216-4df7-8f47-f3803860a74d",
+          "competition": "County Championship Division Two",
+          "home_team": "Derbyshire",
+          "away_team": "Gloucestershire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "County Ground, Derby",
+          "day": "Day 2 of 4"
+        }
+      },
+      {
+        "videoId": "XDEcUQOoQYA",
+        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day Two",
+        "channelName": "Glamorgan CCC",
+        "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
+        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
+        "publishedAt": "2025-04-05T08:23:31Z",
+        "fixture": {
+          "match_id": "4a8b4cd8-a5a5-4cb7-929a-169b32c56167",
+          "competition": "County Championship Division Two",
+          "home_team": "Glamorgan",
+          "away_team": "Leicestershire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "Sophia Gardens, Cardiff",
+          "day": "Day 2 of 4"
+        }
+      },
       {
         "videoId": "gJ-9hxfhgWs",
         "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY TWO",
@@ -141,46 +178,7 @@
         }
       }
     ],
-    "upcoming": [
-      {
-        "videoId": "sUM3smhzHmo",
-        "title": "\ud83d\udd34 LIVE CRICKET | Derbyshire vs Gloucestershire, Day Two",
-        "channelName": "Derbyshire CCC",
-        "channelId": "UCdsIWgLpXJZowUJvvh4gDoA",
-        "description": "Live action from The County Ground, Derby, as Derbyshire take on Gloucestershire in the Rothesay County Championship.\n\nMatch Centre \u27a1\ufe0f: https://cricket.derbyshireccc.com/fixtures/first-xi/2025-season/rothesay-county-championship/derbyshire-vs-gloucestershire-cc-2025/?tab=m_summary\n\nOnline Shop \u27a1\ufe0f: https://cricket.derbyshireccc.com/shop/\n\n#livestream #Derbyshire #cricket #live #countychampionship #countycricket",
-        "scheduledStartTime": "2025-04-05T09:45:00Z",
-        "fixture": {
-          "match_id": "cd081f16-7216-4df7-8f47-f3803860a74d",
-          "competition": "County Championship Division Two",
-          "home_team": "Derbyshire",
-          "away_team": "Gloucestershire",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "County Ground, Derby",
-          "day": "Day 2 of 4"
-        }
-      },
-      {
-        "videoId": "XDEcUQOoQYA",
-        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day Two",
-        "channelName": "Glamorgan CCC",
-        "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
-        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
-        "scheduledStartTime": "2025-04-05T09:45:00Z",
-        "fixture": {
-          "match_id": "4a8b4cd8-a5a5-4cb7-929a-169b32c56167",
-          "competition": "County Championship Division Two",
-          "home_team": "Glamorgan",
-          "away_team": "Leicestershire",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "Sophia Gardens, Cardiff",
-          "day": "Day 2 of 4"
-        }
-      }
-    ]
+    "upcoming": []
   },
-  "lastUpdated": "2025-04-05T09:44:15.943214+00:00"
+  "lastUpdated": "2025-04-05T09:47:50.591091+00:00"
 }
