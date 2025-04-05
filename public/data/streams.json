@@ -103,6 +103,25 @@
   "County Championship Division Two": {
     "live": [
       {
+        "videoId": "gJ-9hxfhgWs",
+        "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY TWO",
+        "channelName": "Middlesex CCC",
+        "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
+        "description": "Middlesex Cricket's live and enhanced broadcast of our Division Two Rothesay County Championship match at Lord's Cricket Ground, London against Lancashire.\n\nBUY BLAST TICKETS: https://www.middlesexccc.com/page/tickets-home\nBECOME A MEMBER: https://shop.middlesexccc.com/memberships/subscribe/\n\nMiddlesex's live stream is brought to you by Dafabet, the Club's Principal Sponsor.\n\n#cricket #cricketlive #cricketlover #cricketlovers #livestream #onemiddlesex",
+        "publishedAt": "2025-04-05T08:06:27Z",
+        "fixture": {
+          "match_id": "f3efb9ca-1427-428b-9c38-63dc0a1a435d",
+          "competition": "County Championship Division Two",
+          "home_team": "Middlesex",
+          "away_team": "Lancashire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "Lord's, London",
+          "day": "Day 2 of 4"
+        }
+      },
+      {
         "videoId": "_ZlPMyQG3fg",
         "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 2 | Rothesay County Championship",
         "channelName": "Northamptonshire CCC",
@@ -160,27 +179,8 @@
           "venue": "Sophia Gardens, Cardiff",
           "day": "Day 2 of 4"
         }
-      },
-      {
-        "videoId": "gJ-9hxfhgWs",
-        "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY TWO",
-        "channelName": "Middlesex CCC",
-        "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
-        "description": "Middlesex Cricket's live and enhanced broadcast of our Division Two Rothesay County Championship match at Lord's Cricket Ground, London against Lancashire.\n\nBUY BLAST TICKETS: https://www.middlesexccc.com/page/tickets-home\nBECOME A MEMBER: https://shop.middlesexccc.com/memberships/subscribe/\n\nMiddlesex's live stream is brought to you by Dafabet, the Club's Principal Sponsor.\n\n#cricket #cricketlive #cricketlover #cricketlovers #livestream #onemiddlesex",
-        "scheduledStartTime": "2025-04-05T09:30:00Z",
-        "fixture": {
-          "match_id": "f3efb9ca-1427-428b-9c38-63dc0a1a435d",
-          "competition": "County Championship Division Two",
-          "home_team": "Middlesex",
-          "away_team": "Lancashire",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "Lord's, London",
-          "day": "Day 2 of 4"
-        }
       }
     ]
   },
-  "lastUpdated": "2025-04-05T09:27:55.601094+00:00"
+  "lastUpdated": "2025-04-05T09:32:56.353799+00:00"
 }
