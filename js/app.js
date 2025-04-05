@@ -128,9 +128,9 @@ Alpine.data('stream', () => ({
 
     async loadScores() {
         try {
-            const response = await fetch('data/scores.json');
+            const response = await fetch(`data/scores.json?t=${Date.now()}`);
             const data = await response.json();
-            // Remove lastUpdated from the data
+            // Extract lastUpdated from the data
             const { lastUpdated, ...matches } = data;
             this.scores = matches;
             this.scoresLastUpdated = lastUpdated;
