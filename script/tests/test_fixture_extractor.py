@@ -1,54 +1,71 @@
-from datetime import date, time
-from script.fixture_extractor import (
-    parse_date_range,
-    parse_start_time_gmt,
-    extract_venue,
-    clean_team_name
+import os
+import sys
+import json
+
+# Add the script directory to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from fixture_extractor import (
+    group_fixtures_by_day,
+    write_fixtures_to_json
 )
 
-def test_parse_date_range():
-    # Test single date
-    start, end = parse_date_range("May 1, 2024")
-    assert start == date(2024, 5, 1)
-    assert end == date(2024, 5, 1)
+def test_group_fixtures_by_day():
+    """Test that fixtures are correctly grouped by day."""
+    fixtures = [
+        {
+            "match_id": "1",
+            "competition": "County Championship Division One",
+            "home_team": "Essex",
+            "away_team": "Surrey",
+            "start_date": "2025-04-04",
+            "end_date": "2025-04-07",
+            "start_time_gmt": "11:00",
+            "venue": "County Ground, Chelmsford"
+        }
+    ]
     
-    # Test date range
-    start, end = parse_date_range("May 1-3, 2024")
-    assert start == date(2024, 5, 1)
-    assert end == date(2024, 5, 3)
+    grouped = group_fixtures_by_day(fixtures)
     
-    # Test invalid input
-    start, end = parse_date_range("invalid date")
-    assert start is None
-    assert end is None
+    # Check that we have entries for all days
+    assert "2025-04-04" in grouped
+    assert "2025-04-05" in grouped
+    assert "2025-04-06" in grouped
+    assert "2025-04-07" in grouped
+    
+    # Check that each day has the correct fixture with day information
+    for i, date in enumerate(["2025-04-04", "2025-04-05", "2025-04-06", "2025-04-07"]):
+        day_fixtures = grouped[date]
+        assert len(day_fixtures) == 1
+        assert day_fixtures[0]["day"] == f"Day {i+1} of 4"
 
-def test_parse_start_time_gmt():
-    # Test valid time format
-    time_obj = parse_start_time_gmt("(10:30 local | 09:30 GMT)")
-    assert time_obj == time(9, 30)
+def test_write_fixtures_to_json(tmp_path):
+    """Test that fixtures are correctly written to JSON files."""
+    fixtures = {
+        "2025-04-04": [
+            {
+                "match_id": "1",
+                "competition": "County Championship Division One",
+                "home_team": "Essex",
+                "away_team": "Surrey",
+                "start_date": "2025-04-04",
+                "end_date": "2025-04-07",
+                "start_time_gmt": "11:00",
+                "venue": "County Ground, Chelmsford",
+                "day": "Day 1 of 4"
+            }
+        ]
+    }
     
-    # Test invalid format
-    time_obj = parse_start_time_gmt("invalid time")
-    assert time_obj is None
-
-def test_extract_venue():
-    # Test with venue
-    venue = extract_venue("Essex vs Kent at Chelmsford")
-    assert venue == "Chelmsford"
+    output_dir = tmp_path / "fixtures"
+    write_fixtures_to_json(fixtures, str(output_dir))
     
-    # Test without venue
-    venue = extract_venue("Essex vs Kent")
-    assert venue is None
-
-def test_clean_team_name():
-    # Test with score
-    team = clean_team_name("Essex 56/0 (15.1 ov)")
-    assert team == "Essex"
+    # Check that the file was created
+    assert (output_dir / "2025-04-04.json").exists()
     
-    # Test with score without overs
-    team = clean_team_name("Kent Spitfires 156/3")
-    assert team == "Kent Spitfires"
-    
-    # Test without score
-    team = clean_team_name("Essex")
-    assert team == "Essex" 
+    # Check the contents
+    with open(output_dir / "2025-04-04.json") as f:
+        data = json.load(f)
+        assert len(data) == 1
+        assert data[0]["match_id"] == "1"
+        assert data[0]["day"] == "Day 1 of 4" 

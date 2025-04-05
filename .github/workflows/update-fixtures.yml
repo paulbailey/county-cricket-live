@@ -33,6 +33,8 @@ jobs:
         run: uv sync --all-extras --dev
 
       - name: Run fixture extractor
+        env:
+          CRICKET_API_KEY: ${{ secrets.CRICKET_API_KEY }}
         run: uv run script/fixture_extractor.py
 
       - name: Check for changes

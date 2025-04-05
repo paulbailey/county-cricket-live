@@ -20,6 +20,7 @@ jobs:
         BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
         BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
         SKIP_BLUESKY_POSTING: "true"
+        CRICKET_API_KEY: ${{ secrets.CRICKET_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       
