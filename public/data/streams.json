@@ -9,15 +9,15 @@
         "description": "County Championship Division One - County Ground, Chelmsford",
         "isPlaceholder": true,
         "fixture": {
+          "match_id": "c7df1aa3-b952-44d4-b991-480ba4d9e0d4",
           "competition": "County Championship Division One",
-          "match_url": "https://www.espncricinfo.com/series/8052/game/1461824/essex-vs-surrey-1st-match-county-championship-division-one-2025",
           "home_team": "Essex",
           "away_team": "Surrey",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
-          "start_time_gmt": null,
+          "start_time_gmt": "10:00",
           "venue": "County Ground, Chelmsford",
-          "day": "Day 1 of 4"
+          "day": "Day 2 of 4"
         }
       },
       {
@@ -28,15 +28,15 @@
         "description": "County Championship Division One - The Rose Bowl, Southampton",
         "isPlaceholder": true,
         "fixture": {
+          "match_id": "520428ac-28bf-4107-909e-fd3c33faab4b",
           "competition": "County Championship Division One",
-          "match_url": "https://www.espncricinfo.com/series/8052/game/1461825/hampshire-vs-yorkshire-2nd-match-county-championship-division-one-2025",
           "home_team": "Hampshire",
           "away_team": "Yorkshire",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
-          "start_time_gmt": null,
+          "start_time_gmt": "10:00",
           "venue": "The Rose Bowl, Southampton",
-          "day": "Day 1 of 4"
+          "day": "Day 2 of 4"
         }
       },
       {
@@ -47,15 +47,15 @@
         "description": "County Championship Division One - Trent Bridge, Nottingham",
         "isPlaceholder": true,
         "fixture": {
+          "match_id": "e86f0f5b-5efb-4afb-8d30-04a14ec61ca4",
           "competition": "County Championship Division One",
-          "match_url": "https://www.espncricinfo.com/series/8052/game/1461828/nottinghamshire-vs-durham-5th-match-county-championship-division-one-2025",
           "home_team": "Nottinghamshire",
           "away_team": "Durham",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
-          "start_time_gmt": null,
+          "start_time_gmt": "10:00",
           "venue": "Trent Bridge, Nottingham",
-          "day": "Day 1 of 4"
+          "day": "Day 2 of 4"
         }
       },
       {
@@ -66,15 +66,15 @@
         "description": "County Championship Division One - The Cooper Associates County Ground, Taunton",
         "isPlaceholder": true,
         "fixture": {
+          "match_id": "fe09fb7d-e583-4f67-98cf-5c3ec4e3967b",
           "competition": "County Championship Division One",
-          "match_url": "https://www.espncricinfo.com/series/8052/game/1461826/somerset-vs-worcestershire-3rd-match-county-championship-division-one-2025",
           "home_team": "Somerset",
           "away_team": "Worcestershire",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
-          "start_time_gmt": null,
+          "start_time_gmt": "10:00",
           "venue": "The Cooper Associates County Ground, Taunton",
-          "day": "Day 1 of 4"
+          "day": "Day 2 of 4"
         }
       },
       {
@@ -85,15 +85,15 @@
         "description": "County Championship Division One - Edgbaston, Birmingham",
         "isPlaceholder": true,
         "fixture": {
+          "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
           "competition": "County Championship Division One",
-          "match_url": "https://www.espncricinfo.com/series/8052/game/1461827/warwickshire-vs-sussex-4th-match-county-championship-division-one-2025",
           "home_team": "Warwickshire",
           "away_team": "Sussex",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
-          "start_time_gmt": null,
+          "start_time_gmt": "10:00",
           "venue": "Edgbaston, Birmingham",
-          "day": "Day 1 of 4"
+          "day": "Day 2 of 4"
         }
       }
     ],
@@ -109,15 +109,15 @@
         "description": "County Championship Division Two - County Ground, Derby",
         "isPlaceholder": true,
         "fixture": {
+          "match_id": "cd081f16-7216-4df7-8f47-f3803860a74d",
           "competition": "County Championship Division Two",
-          "match_url": "https://www.espncricinfo.com/series/8204/game/1461895/derbyshire-vs-gloucestershire-2nd-match-county-championship-division-two-2025",
           "home_team": "Derbyshire",
           "away_team": "Gloucestershire",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
-          "start_time_gmt": null,
+          "start_time_gmt": "10:00",
           "venue": "County Ground, Derby",
-          "day": "Day 1 of 4"
+          "day": "Day 2 of 4"
         }
       },
       {
@@ -128,57 +128,58 @@
         "description": "County Championship Division Two - Sophia Gardens, Cardiff",
         "isPlaceholder": true,
         "fixture": {
+          "match_id": "4a8b4cd8-a5a5-4cb7-929a-169b32c56167",
           "competition": "County Championship Division Two",
-          "match_url": "https://www.espncricinfo.com/series/8204/game/1461897/glamorgan-vs-leicestershire-4th-match-county-championship-division-two-2025",
           "home_team": "Glamorgan",
           "away_team": "Leicestershire",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
-          "start_time_gmt": null,
+          "start_time_gmt": "10:00",
           "venue": "Sophia Gardens, Cardiff",
-          "day": "Day 1 of 4"
+          "day": "Day 2 of 4"
         }
-      },
+      }
+    ],
+    "upcoming": [
       {
-        "videoId": null,
-        "title": "Middlesex vs Lancashire",
+        "videoId": "gJ-9hxfhgWs",
+        "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY TWO",
         "channelName": "Middlesex CCC",
         "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
-        "description": "County Championship Division Two - Lord's, London",
-        "isPlaceholder": true,
+        "description": "Middlesex Cricket's live and enhanced broadcast of our Division Two Rothesay County Championship match at Lord's Cricket Ground, London against Lancashire.\n\nBUY BLAST TICKETS: https://www.middlesexccc.com/page/tickets-home\nBECOME A MEMBER: https://shop.middlesexccc.com/memberships/subscribe/\n\nMiddlesex's live stream is brought to you by Dafabet, the Club's Principal Sponsor.\n\n#cricket #cricketlive #cricketlover #cricketlovers #livestream #onemiddlesex",
+        "scheduledStartTime": "2025-04-05T09:30:00Z",
         "fixture": {
+          "match_id": "f3efb9ca-1427-428b-9c38-63dc0a1a435d",
           "competition": "County Championship Division Two",
-          "match_url": "https://www.espncricinfo.com/series/8204/game/1461896/middlesex-vs-lancashire-3rd-match-county-championship-division-two-2025",
           "home_team": "Middlesex",
           "away_team": "Lancashire",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
-          "start_time_gmt": null,
+          "start_time_gmt": "10:00",
           "venue": "Lord's, London",
-          "day": "Day 1 of 4"
+          "day": "Day 2 of 4"
         }
       },
       {
-        "videoId": null,
-        "title": "Northamptonshire vs Kent",
+        "videoId": "_ZlPMyQG3fg",
+        "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 2 | Rothesay County Championship",
         "channelName": "Northamptonshire CCC",
         "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
-        "description": "County Championship Division Two - County Ground, Northampton",
-        "isPlaceholder": true,
+        "description": "",
+        "scheduledStartTime": "2025-04-05T09:45:00Z",
         "fixture": {
+          "match_id": "6752524d-5897-4f02-bad7-a09003efc250",
           "competition": "County Championship Division Two",
-          "match_url": "https://www.espncricinfo.com/series/8204/game/1461894/northamptonshire-vs-kent-1st-match-county-championship-division-two-2025",
           "home_team": "Northamptonshire",
           "away_team": "Kent",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
-          "start_time_gmt": null,
+          "start_time_gmt": "10:00",
           "venue": "County Ground, Northampton",
-          "day": "Day 1 of 4"
+          "day": "Day 2 of 4"
         }
       }
-    ],
-    "upcoming": []
+    ]
   },
   "lastUpdated": "2025-04-04T14:45:35.275931+00:00"
 }
