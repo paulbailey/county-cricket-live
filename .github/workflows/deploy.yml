@@ -5,6 +5,8 @@ on:
     branches: [ main ]
   schedule:
     - cron: '*/3 * * * *'  # Run every 3 minutes
+  repository_dispatch:
+    types: [deploy]
   workflow_dispatch:  # Allow manual trigger
 
 permissions:

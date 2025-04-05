@@ -29,7 +29,10 @@ resource "aws_scheduler_schedule" "poll_youtube_workflow" {
     role_arn = aws_iam_role.scheduler_role.arn
 
     input = jsonencode({
-      ref = "main"
+      event_type = "poll-youtube"
+      client_payload = {
+        triggered_by = "eventbridge"
+      }
     })
 
     retry_policy {
@@ -39,7 +42,7 @@ resource "aws_scheduler_schedule" "poll_youtube_workflow" {
     api_destination {
       api_id              = aws_scheduler_connection.github.id
       method              = "POST"
-      invocation_endpoint = "https://api.github.com/repos/PBailey/county-cricket-live/actions/workflows/poll-youtube.yml/dispatches"
+      invocation_endpoint = "https://api.github.com/repos/PBailey/county-cricket-live/dispatches"
       header_parameters = {
         "Accept"       = "application/vnd.github.v3+json"
         "Content-Type" = "application/json"
@@ -64,7 +67,10 @@ resource "aws_scheduler_schedule" "deploy_workflow" {
     role_arn = aws_iam_role.scheduler_role.arn
 
     input = jsonencode({
-      ref = "main"
+      event_type = "deploy"
+      client_payload = {
+        triggered_by = "eventbridge"
+      }
     })
 
     retry_policy {
@@ -74,7 +80,7 @@ resource "aws_scheduler_schedule" "deploy_workflow" {
     api_destination {
       api_id              = aws_scheduler_connection.github.id
       method              = "POST"
-      invocation_endpoint = "https://api.github.com/repos/PBailey/county-cricket-live/actions/workflows/deploy.yml/dispatches"
+      invocation_endpoint = "https://api.github.com/repos/PBailey/county-cricket-live/dispatches"
       header_parameters = {
         "Accept"       = "application/vnd.github.v3+json"
         "Content-Type" = "application/json"
