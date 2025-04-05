@@ -150,7 +150,10 @@ Alpine.data('stream', () => ({
                 const inningNum = inning.inning.match(/\d+/)[0];
                 const ordinal = inningNum === '1' ? '1st' : '2nd';
                 const teamName = inning.inning.split(' Inning')[0];
-                scoreText += ` | ${teamName} ${ordinal} Innings: ${inning.r}/${inning.w} (${inning.o} overs)`;
+
+                // Format the score, using "all out" if all wickets are lost
+                const score = inning.w === '10' ? `${inning.r} all out` : `${inning.r}/${inning.w}`;
+                scoreText += ` | ${teamName} ${ordinal} Innings: ${score} (${inning.o} overs)`;
             });
         }
 

@@ -46,13 +46,12 @@
                         <div class="card bg-base-100 shadow-xl">
                             <template x-if="stream.videoId">
                                 <div>
-                                    <h4 class="text-lg font-semibold mb-2"
-                                        x-text="stream.fixture.home_team + ' vs ' + stream.fixture.away_team + (stream.fixture.day ? ' - ' + stream.fixture.day : '')">
+                                    <h4 class="text-lg font-semibold mb-2">
+                                        <a :href="'https://www.youtube.com/watch?v=' + stream.videoId" target="_blank"
+                                            rel="noopener noreferrer" class="hover:underline"
+                                            x-text="stream.fixture.home_team + ' vs ' + stream.fixture.away_team + (stream.fixture.day ? ' - ' + stream.fixture.day : '')">
+                                        </a>
                                     </h4>
-                                    <div class="text-sm text-base-content/70 mb-2"
-                                        x-show="getMatchScore(stream.fixture.match_id)">
-                                        <p x-text="getMatchScore(stream.fixture.match_id)"></p>
-                                    </div>
                                     <div class="relative aspect-w-16 aspect-h-9">
                                         <div class="absolute inset-0 w-full h-full">
                                             <iframe :id="'player-' + stream.videoId"
@@ -61,6 +60,10 @@
                                                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                 allowfullscreen></iframe>
                                         </div>
+                                    </div>
+                                    <div class="text-sm text-base-content/70 mt-2"
+                                        x-show="getMatchScore(stream.fixture.match_id)">
+                                        <p x-text="getMatchScore(stream.fixture.match_id)"></p>
                                     </div>
                                 </div>
                             </template>
