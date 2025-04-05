@@ -9,6 +9,7 @@ Alpine.data('stream', () => ({
     apiReady: false,
     playersInitialized: false,
     metadataLoaded: false,
+    scores: {},
 
     formatLocalTime(gmtTime) {
         if (!gmtTime) return '';
@@ -38,12 +39,16 @@ Alpine.data('stream', () => ({
 
     async init() {
         // Load initial data immediately
-        await this.loadStreamData();
+        await Promise.all([
+            this.loadStreamData(),
+            this.loadScores()
+        ]);
 
         this.metadataLoaded = true;
 
         // Set up periodic updates
         setInterval(() => this.loadStreamData(), 5 * 60 * 1000);
+        setInterval(() => this.loadScores(), 60 * 1000); // Update scores every minute
 
         // Load YouTube IFrame API
         if (!window.YT) {
@@ -118,6 +123,38 @@ Alpine.data('stream', () => ({
         } catch (error) {
             console.error('Error loading stream data:', error);
         }
+    },
+
+    async loadScores() {
+        try {
+            const response = await fetch('data/scores.json');
+            const data = await response.json();
+            // Remove lastUpdated from the data
+            const { lastUpdated, ...matches } = data;
+            this.scores = matches;
+        } catch (error) {
+            console.error('Error loading scores:', error);
+        }
+    },
+
+    getMatchScore(matchId) {
+        const match = this.scores[matchId];
+        if (!match) return null;
+
+        let scoreText = match.status || '';
+
+        // Add scores for each innings
+        if (match.score && match.score.length > 0) {
+            match.score.forEach(inning => {
+                // Convert inning number to ordinal
+                const inningNum = inning.inning.match(/\d+/)[0];
+                const ordinal = inningNum === '1' ? '1st' : '2nd';
+                const teamName = inning.inning.split(' Inning')[0];
+                scoreText += ` | ${teamName} ${ordinal} Innings: ${inning.r}/${inning.w} (${inning.o} overs)`;
+            });
+        }
+
+        return scoreText;
     },
 
     onPlayerReady(videoId, event) {
