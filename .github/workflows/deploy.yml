@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  schedule:
+    - cron: '* * * * *'  # Run every minute
   workflow_dispatch:  # Allow manual trigger
 
 permissions:
@@ -29,6 +31,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Generate scores.json
+        env:
+          CRICKET_API_KEY: ${{ secrets.CRICKET_API_KEY }}
+        run: node scripts/generate-scores.js
 
       - name: Build
         run: npm run build
