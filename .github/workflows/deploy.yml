@@ -35,7 +35,7 @@ jobs:
       - name: Generate scores.json
         env:
           CRICKET_API_KEY: ${{ secrets.CRICKET_API_KEY }}
-        run: node scripts/generate-scores.js
+        run: node script/generate-scores.js
 
       - name: Build
         run: npm run build
