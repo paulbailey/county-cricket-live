@@ -40,12 +40,12 @@
         }
       },
       {
-        "videoId": null,
-        "title": "Nottinghamshire vs Durham",
+        "videoId": "PLHAk1J_E-s",
+        "title": "\ud83d\udd34 LIVE STREAM |  Day Two | Nottinghamshire v Durham | Rothesay County Championship",
         "channelName": "Nottinghamshire CCC",
         "channelId": "UCiOki3bA8llEHVgXBQ3x6wg",
-        "description": "County Championship Division One - Trent Bridge, Nottingham",
-        "isPlaceholder": true,
+        "description": "Live stream action from Trent Bridge, Nottingham of Nottinghamshire vs Durham in the Rothesay County Championship Division One. \n\nIf you are experiencing any issues with pictures and sound please refresh the page.\n#trentbridgelive \n\n#Notts #cricket #NottinghamshireCCC #score #nottsccclivestream #live #stream #sport #watchlive #livesports",
+        "publishedAt": "2025-04-05T10:46:25Z",
         "fixture": {
           "match_id": "e86f0f5b-5efb-4afb-8d30-04a14ec61ca4",
           "competition": "County Championship Division One",
@@ -159,12 +159,12 @@
         }
       },
       {
-        "videoId": null,
-        "title": "Northamptonshire vs Kent",
+        "videoId": "_ZlPMyQG3fg",
+        "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 2 | Rothesay County Championship",
         "channelName": "Northamptonshire CCC",
         "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
-        "description": "County Championship Division Two - County Ground, Northampton",
-        "isPlaceholder": true,
+        "description": "",
+        "publishedAt": "2025-04-05T08:02:14Z",
         "fixture": {
           "match_id": "6752524d-5897-4f02-bad7-a09003efc250",
           "competition": "County Championship Division Two",
@@ -180,5 +180,5 @@
     ],
     "upcoming": []
   },
-  "lastUpdated": "2025-04-05T09:52:32.355189+00:00"
+  "lastUpdated": "2025-04-05T10:58:31.001964+00:00"
 }
