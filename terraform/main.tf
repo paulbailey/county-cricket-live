@@ -13,6 +13,21 @@ resource "aws_scheduler_connection" "github" {
   }
 }
 
+# API Destination for GitHub
+resource "aws_scheduler_destination" "github" {
+  name = "github-api"
+
+  api_destination {
+    api_id              = aws_scheduler_connection.github.id
+    method              = "POST"
+    invocation_endpoint = "https://api.github.com/repos/PBailey/county-cricket-live/dispatches"
+    header_parameters = {
+      "Accept"       = "application/vnd.github.v3+json"
+      "Content-Type" = "application/json"
+    }
+  }
+}
+
 # Poll YouTube workflow schedule
 resource "aws_scheduler_schedule" "poll_youtube_workflow" {
   name                = "trigger-poll-youtube-workflow"
@@ -25,7 +40,7 @@ resource "aws_scheduler_schedule" "poll_youtube_workflow" {
   }
 
   target {
-    arn      = "arn:aws:scheduler:::aws-sdk:default"
+    arn      = aws_scheduler_destination.github.arn
     role_arn = aws_iam_role.scheduler_role.arn
 
     input = jsonencode({
@@ -37,16 +52,6 @@ resource "aws_scheduler_schedule" "poll_youtube_workflow" {
 
     retry_policy {
       maximum_retry_attempts = 3
-    }
-
-    api_destination {
-      api_id              = aws_scheduler_connection.github.id
-      method              = "POST"
-      invocation_endpoint = "https://api.github.com/repos/PBailey/county-cricket-live/dispatches"
-      header_parameters = {
-        "Accept"       = "application/vnd.github.v3+json"
-        "Content-Type" = "application/json"
-      }
     }
   }
 }
@@ -63,7 +68,7 @@ resource "aws_scheduler_schedule" "deploy_workflow" {
   }
 
   target {
-    arn      = "arn:aws:scheduler:::aws-sdk:default"
+    arn      = aws_scheduler_destination.github.arn
     role_arn = aws_iam_role.scheduler_role.arn
 
     input = jsonencode({
@@ -75,16 +80,6 @@ resource "aws_scheduler_schedule" "deploy_workflow" {
 
     retry_policy {
       maximum_retry_attempts = 3
-    }
-
-    api_destination {
-      api_id              = aws_scheduler_connection.github.id
-      method              = "POST"
-      invocation_endpoint = "https://api.github.com/repos/PBailey/county-cricket-live/dispatches"
-      header_parameters = {
-        "Accept"       = "application/vnd.github.v3+json"
-        "Content-Type" = "application/json"
-      }
     }
   }
 }
@@ -118,7 +113,7 @@ resource "aws_iam_role_policy" "scheduler_policy" {
         Action = [
           "scheduler:InvokeApiDestination"
         ]
-        Resource = "*"
+        Resource = aws_scheduler_destination.github.arn
       }
     ]
   })
