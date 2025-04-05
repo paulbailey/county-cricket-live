@@ -44,11 +44,11 @@
                 <div class="auto-grid">
                     <template x-for="stream in competition.live" :key="stream.videoId || stream.fixture.match_url">
                         <div class="card bg-base-100 shadow-xl">
+                            <h4 class="text-lg font-semibold mb-2 px-4 pt-4"
+                                x-text="stream.fixture.home_team + ' vs ' + stream.fixture.away_team + (stream.fixture.day ? ' - ' + stream.fixture.day : '')">
+                            </h4>
                             <template x-if="stream.videoId">
                                 <div>
-                                    <h4 class="text-lg font-semibold mb-2"
-                                        x-text="stream.fixture.home_team + ' vs ' + stream.fixture.away_team + (stream.fixture.day ? ' - ' + stream.fixture.day : '')">
-                                    </h4>
                                     <div class="relative aspect-w-16 aspect-h-9">
                                         <div class="absolute inset-0 w-full h-full">
                                             <iframe :id="'player-' + stream.videoId"
@@ -64,9 +64,6 @@
                                 <figure class="relative aspect-w-16 aspect-h-9 bg-base-200">
                                     <div class="absolute inset-0 flex items-center justify-center">
                                         <div class="text-center">
-                                            <h4 class="text-lg font-semibold mb-2"
-                                                x-text="stream.fixture.home_team + ' vs ' + stream.fixture.away_team + (stream.fixture.day ? ' - ' + stream.fixture.day : '')">
-                                            </h4>
                                             <svg class="w-12 h-12 mx-auto text-base-content/50" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
