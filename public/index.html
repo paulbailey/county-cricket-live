@@ -61,10 +61,6 @@
                                                 allowfullscreen></iframe>
                                         </div>
                                     </div>
-                                    <div class="text-sm text-base-content/70 mt-2"
-                                        x-show="getMatchScore(stream.fixture.match_id)">
-                                        <p x-text="getMatchScore(stream.fixture.match_id)"></p>
-                                    </div>
                                 </div>
                             </template>
                             <template x-if="!stream.videoId">
@@ -85,11 +81,15 @@
                                 </figure>
                             </template>
                             <div class="card-body">
+                                <div class="text-sm text-base-content/70 mb-2"
+                                    x-show="getMatchScore(stream.fixture.match_id)">
+                                    <p x-text="getMatchScore(stream.fixture.match_id)"></p>
+                                </div>
                                 <h3 class="text-sm text-base-content/70" x-text="stream.title"></h3>
                                 <div class="text-base-content/70">
                                     <p><span class="font-semibold">Venue:</span> <span
                                             x-text="stream.fixture.venue"></span></p>
-                                    <template x-if="stream.fixture.start_time_gmt">
+                                    <template x-if="!stream.videoId && stream.fixture.start_time_gmt">
                                         <p><span class="font-semibold">Start Time:</span> <span
                                                 x-text="formatLocalTime(stream.fixture.start_time_gmt)"></span></p>
                                     </template>
