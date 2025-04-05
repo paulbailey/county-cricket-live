@@ -21,12 +21,12 @@
         }
       },
       {
-        "videoId": null,
-        "title": "Nottinghamshire vs Durham",
+        "videoId": "0OLW1bHI2bM",
+        "title": "\ud83d\udd34 LIVE STREAM |  Day Two | Nottinghamshire v Durham | Rothesay County Championship",
         "channelName": "Nottinghamshire CCC",
         "channelId": "UCiOki3bA8llEHVgXBQ3x6wg",
-        "description": "County Championship Division One - Trent Bridge, Nottingham",
-        "isPlaceholder": true,
+        "description": "Live stream action from Trent Bridge, Nottingham of Nottinghamshire vs Durham in the Rothesay County Championship Division One. \n\nIf you are experiencing any issues with pictures and sound please refresh the page.\n#trentbridgelive \n\n#Notts #cricket #NottinghamshireCCC #score #nottsccclivestream #live #stream #sport #watchlive #livesports",
+        "publishedAt": "2025-04-05T09:24:43Z",
         "fixture": {
           "match_id": "e86f0f5b-5efb-4afb-8d30-04a14ec61ca4",
           "competition": "County Championship Division One",
@@ -40,12 +40,12 @@
         }
       },
       {
-        "videoId": null,
-        "title": "Somerset vs Worcestershire",
+        "videoId": "KsuON7enUA8",
+        "title": "LIVE STREAM: Somerset vs Worcestershire - Day Two",
         "channelName": "Somerset CCC",
         "channelId": "UCcCeaTFtzWdkTQYeFRRWvSg",
-        "description": "County Championship Division One - The Cooper Associates County Ground, Taunton",
-        "isPlaceholder": true,
+        "description": "",
+        "publishedAt": "2025-04-05T08:55:58Z",
         "fixture": {
           "match_id": "fe09fb7d-e583-4f67-98cf-5c3ec4e3967b",
           "competition": "County Championship Division One",
@@ -55,25 +55,6 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "The Cooper Associates County Ground, Taunton",
-          "day": "Day 2 of 4"
-        }
-      },
-      {
-        "videoId": null,
-        "title": "Warwickshire vs Sussex",
-        "channelName": "Warwickshire CCC",
-        "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
-        "description": "County Championship Division One - Edgbaston, Birmingham",
-        "isPlaceholder": true,
-        "fixture": {
-          "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
-          "competition": "County Championship Division One",
-          "home_team": "Warwickshire",
-          "away_team": "Sussex",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "Edgbaston, Birmingham",
           "day": "Day 2 of 4"
         }
       }
@@ -95,6 +76,25 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "The Rose Bowl, Southampton",
+          "day": "Day 2 of 4"
+        }
+      },
+      {
+        "videoId": "jVNcGnztddc",
+        "title": "\ud83d\udd34 LIVE STREAM | Warwickshire v Sussex | Day Two | Rothesay County Championship",
+        "channelName": "Warwickshire CCC",
+        "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
+        "description": "Watch Day Two of the Rothesay County Championship fixture between Warwickshire and Sussex at Edgbaston from 11am on Saturday 5th April.\n\nFor replays, live text commentary and scorecard, visit our Match Centre at edgbaston.com.",
+        "scheduledStartTime": "2025-04-05T09:45:00Z",
+        "fixture": {
+          "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
+          "competition": "County Championship Division One",
+          "home_team": "Warwickshire",
+          "away_team": "Sussex",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "Edgbaston, Birmingham",
           "day": "Day 2 of 4"
         }
       }
@@ -182,5 +182,5 @@
       }
     ]
   },
-  "lastUpdated": "2025-04-05T09:22:22.156544+00:00"
+  "lastUpdated": "2025-04-05T09:27:55.601094+00:00"
 }
