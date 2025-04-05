@@ -156,9 +156,9 @@ Alpine.data('stream', () => ({
 
         let scoreText = match.status || '';
 
-        // Add scores for each innings
+        // Add scores for each innings in reverse order
         if (match.score && match.score.length > 0) {
-            match.score.forEach(inning => {
+            [...match.score].reverse().forEach(inning => {
                 // Convert inning number to ordinal
                 const inningNum = inning.inning.match(/\d+/)[0];
                 const ordinal = inningNum === '1' ? '1st' : '2nd';
