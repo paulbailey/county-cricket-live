@@ -1,12 +1,6 @@
 name: Poll YouTube for Live Streams
 
 on:
-  schedule:
-    - cron: '10 8-20 * * *'  # At the start of every hour from 8am to 8pm
-    - cron: '25 8-20 * * *'  # At 15 minutes past every hour from 8am to 8pm
-    - cron: '40 8-20 * * *'  # At 30 minutes past every hour from 8am to 8pm
-    - cron: '55 8-20 * * *'  # At 45 minutes past every hour from 8am to 8pm
-    - cron: '5,15,20,30,35,45,50 9 * * *'  # Check more frequently 10-11am BST
   repository_dispatch:
     types: [poll-youtube]
   workflow_dispatch:  # Allow manual trigger
