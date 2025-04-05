@@ -121,12 +121,12 @@
         }
       },
       {
-        "videoId": "XDEcUQOoQYA",
-        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day Two",
+        "videoId": null,
+        "title": "Glamorgan vs Leicestershire",
         "channelName": "Glamorgan CCC",
         "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
-        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
-        "publishedAt": "2025-04-05T08:23:31Z",
+        "description": "County Championship Division Two - Sophia Gardens, Cardiff",
+        "isPlaceholder": true,
         "fixture": {
           "match_id": "4a8b4cd8-a5a5-4cb7-929a-169b32c56167",
           "competition": "County Championship Division Two",
