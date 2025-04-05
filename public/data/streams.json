@@ -101,7 +101,27 @@
     ]
   },
   "County Championship Division Two": {
-    "live": [],
+    "live": [
+      {
+        "videoId": "_ZlPMyQG3fg",
+        "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 2 | Rothesay County Championship",
+        "channelName": "Northamptonshire CCC",
+        "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
+        "description": "",
+        "publishedAt": "2025-04-05T08:02:14Z",
+        "fixture": {
+          "match_id": "6752524d-5897-4f02-bad7-a09003efc250",
+          "competition": "County Championship Division Two",
+          "home_team": "Northamptonshire",
+          "away_team": "Kent",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "County Ground, Northampton",
+          "day": "Day 2 of 4"
+        }
+      }
+    ],
     "upcoming": [
       {
         "videoId": "sUM3smhzHmo",
@@ -159,27 +179,8 @@
           "venue": "Lord's, London",
           "day": "Day 2 of 4"
         }
-      },
-      {
-        "videoId": "_ZlPMyQG3fg",
-        "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 2 | Rothesay County Championship",
-        "channelName": "Northamptonshire CCC",
-        "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
-        "description": "",
-        "scheduledStartTime": "2025-04-05T09:45:00Z",
-        "fixture": {
-          "match_id": "6752524d-5897-4f02-bad7-a09003efc250",
-          "competition": "County Championship Division Two",
-          "home_team": "Northamptonshire",
-          "away_team": "Kent",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "County Ground, Northampton",
-          "day": "Day 2 of 4"
-        }
       }
     ]
   },
-  "lastUpdated": "2025-04-04T14:45:35.275931+00:00"
+  "lastUpdated": "2025-04-05T09:22:22.156544+00:00"
 }
