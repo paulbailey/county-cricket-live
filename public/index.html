@@ -78,8 +78,7 @@
                                 </figure>
                             </template>
                             <div class="card-body">
-                                <div class="text-sm mb-2 whitespace-pre-line"
-                                    x-text="getMatchScore(stream.fixture.match_id)"></div>
+                                <div class="text-sm mb-2" x-html="getMatchScore(stream.fixture.match_id)"></div>
                                 <h3 class="text-sm text-base-content/70">
                                     <a :href="'https://www.youtube.com/watch?v=' + stream.videoId" target="_blank"
                                         rel="noopener noreferrer" class="hover:underline" x-text="stream.title"></a>
