@@ -19,7 +19,10 @@ resource "aws_cloudwatch_event_target" "poll_youtube_workflow" {
   role_arn  = aws_iam_role.scheduler_role.arn
 
   input = jsonencode({
-    ref = "main"
+    event_type = "poll-youtube"
+    client_payload = {
+      triggered_by = "eventbridge"
+    }
   })
 
   retry_policy {
@@ -31,11 +34,14 @@ resource "aws_cloudwatch_event_target" "poll_youtube_workflow" {
 resource "aws_cloudwatch_event_target" "deploy_workflow" {
   rule      = aws_cloudwatch_event_rule.deploy_workflow.name
   target_id = "GitHubDispatch"
-  arn       = aws_cloudwatch_event_api_destination.github_deploy.arn
+  arn       = aws_cloudwatch_event_api_destination.github.arn
   role_arn  = aws_iam_role.scheduler_role.arn
 
   input = jsonencode({
-    ref = "main"
+    event_type = "deploy"
+    client_payload = {
+      triggered_by = "eventbridge"
+    }
   })
 
   retry_policy {
@@ -59,15 +65,7 @@ resource "aws_cloudwatch_event_connection" "github" {
 resource "aws_cloudwatch_event_api_destination" "github" {
   name                = "github-api"
   connection_arn      = aws_cloudwatch_event_connection.github.arn
-  invocation_endpoint = "https://api.github.com/repos/paulbailey/county-cricket-live/actions/workflows/poll-youtube.yml/dispatches"
-  http_method         = "POST"
-}
-
-# Create a second API destination for the deploy workflow
-resource "aws_cloudwatch_event_api_destination" "github_deploy" {
-  name                = "github-api-deploy"
-  connection_arn      = aws_cloudwatch_event_connection.github.arn
-  invocation_endpoint = "https://api.github.com/repos/paulbailey/county-cricket-live/actions/workflows/deploy.yml/dispatches"
+  invocation_endpoint = "https://api.github.com/repos/paulbailey/county-cricket-live/dispatches"
   http_method         = "POST"
 }
 
