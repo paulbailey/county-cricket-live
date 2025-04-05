@@ -1,9 +1,56 @@
-resource "aws_scheduler_schedule_group" "github_actions" {
-  name = "github-actions"
+resource "aws_cloudwatch_event_rule" "poll_youtube_workflow" {
+  name                = "trigger-poll-youtube-workflow"
+  description         = "Trigger the poll-youtube workflow on GitHub Actions"
+  schedule_expression = var.poll_youtube_schedule
+  state               = "ENABLED"
 }
 
-resource "aws_scheduler_connection" "github" {
-  name = "github-connection"
+resource "aws_cloudwatch_event_rule" "deploy_workflow" {
+  name                = "trigger-deploy-workflow"
+  description         = "Trigger the deploy workflow on GitHub Actions"
+  schedule_expression = var.deploy_schedule
+  state               = "ENABLED"
+}
+
+resource "aws_cloudwatch_event_target" "poll_youtube_workflow" {
+  rule      = aws_cloudwatch_event_rule.poll_youtube_workflow.name
+  target_id = "GitHubDispatch"
+  arn       = "arn:aws:events:${var.aws_region}:${data.aws_caller_identity.current.account_id}:api-destination/${aws_cloudwatch_event_api_destination.github.name}/*"
+  role_arn  = aws_iam_role.scheduler_role.arn
+
+  input = jsonencode({
+    event_type = "poll-youtube"
+    client_payload = {
+      triggered_by = "eventbridge"
+    }
+  })
+
+  retry_policy {
+    maximum_retry_attempts = 3
+  }
+}
+
+resource "aws_cloudwatch_event_target" "deploy_workflow" {
+  rule      = aws_cloudwatch_event_rule.deploy_workflow.name
+  target_id = "GitHubDispatch"
+  arn       = "arn:aws:events:${var.aws_region}:${data.aws_caller_identity.current.account_id}:api-destination/${aws_cloudwatch_event_api_destination.github.name}/*"
+  role_arn  = aws_iam_role.scheduler_role.arn
+
+  input = jsonencode({
+    event_type = "deploy"
+    client_payload = {
+      triggered_by = "eventbridge"
+    }
+  })
+
+  retry_policy {
+    maximum_retry_attempts = 3
+  }
+}
+
+resource "aws_cloudwatch_event_connection" "github" {
+  name               = "github-connection"
+  authorization_type = "API_KEY"
 
   auth_parameters {
     api_key {
@@ -13,76 +60,15 @@ resource "aws_scheduler_connection" "github" {
   }
 }
 
-# API Destination for GitHub
-resource "aws_scheduler_destination" "github" {
-  name = "github-api"
-
-  api_destination {
-    api_id              = aws_scheduler_connection.github.id
-    method              = "POST"
-    invocation_endpoint = "https://api.github.com/repos/PBailey/county-cricket-live/dispatches"
-    header_parameters = {
-      "Accept"       = "application/vnd.github.v3+json"
-      "Content-Type" = "application/json"
-    }
-  }
+resource "aws_cloudwatch_event_api_destination" "github" {
+  name                = "github-api"
+  connection_arn      = aws_cloudwatch_event_connection.github.arn
+  invocation_endpoint = "https://api.github.com/repos/PBailey/county-cricket-live/dispatches"
+  http_method         = "POST"
 }
 
-# Poll YouTube workflow schedule
-resource "aws_scheduler_schedule" "poll_youtube_workflow" {
-  name                = "trigger-poll-youtube-workflow"
-  group_name          = aws_scheduler_schedule_group.github_actions.name
-  schedule_expression = var.poll_youtube_schedule
-  state               = "ENABLED"
-
-  flexible_time_window {
-    mode = "OFF"
-  }
-
-  target {
-    arn      = aws_scheduler_destination.github.arn
-    role_arn = aws_iam_role.scheduler_role.arn
-
-    input = jsonencode({
-      event_type = "poll-youtube"
-      client_payload = {
-        triggered_by = "eventbridge"
-      }
-    })
-
-    retry_policy {
-      maximum_retry_attempts = 3
-    }
-  }
-}
-
-# Deploy workflow schedule
-resource "aws_scheduler_schedule" "deploy_workflow" {
-  name                = "trigger-deploy-workflow"
-  group_name          = aws_scheduler_schedule_group.github_actions.name
-  schedule_expression = var.deploy_schedule
-  state               = "ENABLED"
-
-  flexible_time_window {
-    mode = "OFF"
-  }
-
-  target {
-    arn      = aws_scheduler_destination.github.arn
-    role_arn = aws_iam_role.scheduler_role.arn
-
-    input = jsonencode({
-      event_type = "deploy"
-      client_payload = {
-        triggered_by = "eventbridge"
-      }
-    })
-
-    retry_policy {
-      maximum_retry_attempts = 3
-    }
-  }
-}
+# Get current AWS account ID
+data "aws_caller_identity" "current" {}
 
 resource "aws_iam_role" "scheduler_role" {
   name = "eventbridge-scheduler-role"
@@ -94,7 +80,7 @@ resource "aws_iam_role" "scheduler_role" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-          Service = "scheduler.amazonaws.com"
+          Service = "events.amazonaws.com"
         }
       }
     ]
@@ -111,9 +97,12 @@ resource "aws_iam_role_policy" "scheduler_policy" {
       {
         Effect = "Allow"
         Action = [
-          "scheduler:InvokeApiDestination"
+          "events:InvokeApiDestination"
         ]
-        Resource = aws_scheduler_destination.github.arn
+        Resource = [
+          aws_cloudwatch_event_api_destination.github.arn,
+          "${aws_cloudwatch_event_api_destination.github.arn}/*"
+        ]
       }
     ]
   })
