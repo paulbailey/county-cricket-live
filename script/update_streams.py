@@ -250,7 +250,7 @@ def get_new_streams(existing_streams, new_streams):
     return new_fixture_streams
 
 def post_to_bluesky(streams_data):
-    """Post to Bluesky about the available streams."""
+    """Post to Bluesky about newly added streams."""
     if not streams_data:
         return
         
@@ -259,35 +259,38 @@ def post_to_bluesky(streams_data):
         print("Skipping Bluesky post due to SKIP_BLUESKY_POSTING environment variable")
         return
     
+    # Load existing streams to compare against
+    existing_streams = load_existing_streams()
+    
+    # Get only the new streams
+    new_streams = get_new_streams(existing_streams, streams_data)
+    
+    if not new_streams:
+        return  # No new streams to post about
+        
     client = Client()
     client.login(BLUESKY_USERNAME, BLUESKY_PASSWORD)
-        
-    # Count only actual live streams (excluding placeholders)
-    live_count = sum(
-        len([s for s in comp["live"] if not s.get("isPlaceholder")])
-        for comp in streams_data.values()
-        if "live" in comp
-    )
     
     # Create the post text
-    if live_count == 0:
-        text = "No live streams available today."
-    else:
-        text = f"📺 {live_count} live stream{'s' if live_count != 1 else ''} available:\n\n"
-        
-        # Add stream details
-        for comp_name, comp_data in streams_data.items():
-            if "live" in comp_data:
-                # Filter out placeholders
-                actual_streams = [s for s in comp_data["live"] if not s.get("isPlaceholder")]
-                if actual_streams:
-                    # Shorten competition name if needed
-                    comp_short = comp_name.replace("County Championship ", "")
-                    text += f"🏏 {comp_short}\n"
-                    for stream in actual_streams:
-                        fixture = stream["fixture"]
-                        text += f"• {fixture['home_team']} v {fixture['away_team']}\n"
-                    text += "\n"
+    text = "📺 New streams started:\n\n"
+    
+    # Group new streams by competition
+    streams_by_comp = {}
+    for stream in new_streams:
+        comp_name = stream["fixture"]["competition"]
+        if comp_name not in streams_by_comp:
+            streams_by_comp[comp_name] = []
+        streams_by_comp[comp_name].append(stream)
+    
+    # Add stream details
+    for comp_name, streams in streams_by_comp.items():
+        # Shorten competition name if needed
+        comp_short = comp_name.replace("County Championship ", "")
+        text += f"🏏 {comp_short}\n"
+        for stream in streams:
+            fixture = stream["fixture"]
+            text += f"• {fixture['home_team']} v {fixture['away_team']}\n"
+        text += "\n"
     
     # Split text into chunks if needed
     chunks = []
@@ -330,7 +333,7 @@ def post_to_bluesky(streams_data):
             
     except Exception as e:
         print(f"Error posting to Bluesky: {str(e)}")
-    
+
 def main():
     channels = load_channels()
     fixtures = load_fixtures()
