@@ -78,12 +78,12 @@
         }
       },
       {
-        "videoId": "jVNcGnztddc",
-        "title": "\ud83d\udd34 LIVE STREAM | Warwickshire v Sussex | Day Two | Rothesay County Championship",
+        "videoId": null,
+        "title": "Warwickshire vs Sussex",
         "channelName": "Warwickshire CCC",
         "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
-        "description": "Watch Day Two of the Rothesay County Championship fixture between Warwickshire and Sussex at Edgbaston from 11am on Saturday 5th April.\n\nFor replays, live text commentary and scorecard, visit our Match Centre at edgbaston.com.",
-        "publishedAt": "2025-04-05T09:24:50Z",
+        "description": "County Championship Division One - Edgbaston, Birmingham",
+        "isPlaceholder": true,
         "fixture": {
           "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
           "competition": "County Championship Division One",
@@ -140,12 +140,12 @@
         }
       },
       {
-        "videoId": "gJ-9hxfhgWs",
-        "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY TWO",
+        "videoId": null,
+        "title": "Middlesex vs Lancashire",
         "channelName": "Middlesex CCC",
         "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
-        "description": "Middlesex Cricket's live and enhanced broadcast of our Division Two Rothesay County Championship match at Lord's Cricket Ground, London against Lancashire.\n\nBUY BLAST TICKETS: https://www.middlesexccc.com/page/tickets-home\nBECOME A MEMBER: https://shop.middlesexccc.com/memberships/subscribe/\n\nMiddlesex's live stream is brought to you by Dafabet, the Club's Principal Sponsor.\n\n#cricket #cricketlive #cricketlover #cricketlovers #livestream #onemiddlesex",
-        "publishedAt": "2025-04-05T08:06:27Z",
+        "description": "County Championship Division Two - Lord's, London",
+        "isPlaceholder": true,
         "fixture": {
           "match_id": "f3efb9ca-1427-428b-9c38-63dc0a1a435d",
           "competition": "County Championship Division Two",
