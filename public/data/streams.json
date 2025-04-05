@@ -21,12 +21,12 @@
         }
       },
       {
-        "videoId": "XrQF0v4PEWc",
-        "title": "LIVE STREAM | Hampshire Men v Yorkshire | Rothesay County Championship (Day Two)",
+        "videoId": null,
+        "title": "Hampshire vs Yorkshire",
         "channelName": "Hampshire CCC",
         "channelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
-        "description": "Watch the live stream from day two (Saturday 5th April 2025) of Hampshire Men's Rothesay County Championship match against Yorkshire at Utilita Bowl.",
-        "publishedAt": "2025-04-05T08:29:36Z",
+        "description": "County Championship Division One - The Rose Bowl, Southampton",
+        "isPlaceholder": true,
         "fixture": {
           "match_id": "520428ac-28bf-4107-909e-fd3c33faab4b",
           "competition": "County Championship Division One",
