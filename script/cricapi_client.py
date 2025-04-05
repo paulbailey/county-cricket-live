@@ -1,7 +1,11 @@
 import os
+from dotenv import load_dotenv
 import requests
 from datetime import datetime, timedelta
 from typing import List, Dict
+
+# Load environment variables from .env file
+load_dotenv()
 
 class CricAPIClient:
     def __init__(self):
@@ -15,7 +19,8 @@ class CricAPIClient:
         # Series IDs for County Championship competitions
         series_ids = {
             "County Championship Division One": "9362b075-d007-478c-b4a9-e08b9306caef",
-            "County Championship Division Two": "4cdcd4af-0d19-439d-afc3-c2e75d8a8e53"
+            "County Championship Division Two": "4cdcd4af-0d19-439d-afc3-c2e75d8a8e53",
+            "One-Day Cup": "475eb151-5521-46fd-8490-ef9f704138cb"
         }
         
         fixtures = []
