@@ -49,11 +49,14 @@ async function generateScores() {
             }
         }
 
-        // Add lastUpdated timestamp
-        scores.lastUpdated = new Date().toISOString();
+        // Create the final object with lastUpdated at the root level
+        const output = {
+            lastUpdated: new Date().toISOString(),
+            ...scores
+        };
 
         // Write scores.json
-        fs.writeFileSync(SCORES_FILE, JSON.stringify(scores, null, 2));
+        fs.writeFileSync(SCORES_FILE, JSON.stringify(output, null, 2));
         console.log('Successfully generated scores.json');
     } catch (error) {
         console.error('Error generating scores.json:', error);

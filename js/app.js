@@ -10,6 +10,7 @@ Alpine.data('stream', () => ({
     playersInitialized: false,
     metadataLoaded: false,
     scores: {},
+    scoresLastUpdated: null,
 
     formatLocalTime(gmtTime) {
         if (!gmtTime) return '';
@@ -132,9 +133,21 @@ Alpine.data('stream', () => ({
             // Remove lastUpdated from the data
             const { lastUpdated, ...matches } = data;
             this.scores = matches;
+            this.scoresLastUpdated = lastUpdated;
         } catch (error) {
             console.error('Error loading scores:', error);
         }
+    },
+
+    formatTimestamp(timestamp) {
+        if (!timestamp) return '';
+        const date = new Date(timestamp);
+        return date.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+        });
     },
 
     getMatchScore(matchId) {
