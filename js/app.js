@@ -99,7 +99,7 @@ Alpine.data('stream', () => ({
 
     async loadStreamData() {
         try {
-            const response = await fetch('data/streams.json');
+            const response = await fetch(`data/streams.json?t=${Date.now()}`);
             const data = await response.json();
 
             // Remove lastUpdated from the data
@@ -154,7 +154,7 @@ Alpine.data('stream', () => ({
         const match = this.scores[matchId];
         if (!match) return null;
 
-        let scoreText = match.status || '';
+        let scoreText = `<strong>${match.status || ''}</strong>`;
 
         // Add scores for each innings in reverse order
         if (match.score && match.score.length > 0) {
