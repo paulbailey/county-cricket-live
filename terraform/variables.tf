@@ -1,15 +1,3 @@
-variable "aws_region" {
-  description = "AWS region"
-  type        = string
-  default     = "eu-west-2" # London region
-}
-
-variable "environment" {
-  description = "Environment name"
-  type        = string
-  default     = "production"
-}
-
 variable "github_token" {
   description = "GitHub Personal Access Token with workflow permissions"
   type        = string

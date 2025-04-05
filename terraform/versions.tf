@@ -18,13 +18,10 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
-
+  region = "eu-west-2"
   default_tags {
     tags = {
-      Project     = "county-cricket-live"
-      Environment = var.environment
-      Terraform   = "true"
+      terraformed = "true"
     }
   }
 }

@@ -15,7 +15,7 @@ resource "aws_cloudwatch_event_rule" "deploy_workflow" {
 resource "aws_cloudwatch_event_target" "poll_youtube_workflow" {
   rule      = aws_cloudwatch_event_rule.poll_youtube_workflow.name
   target_id = "GitHubDispatch"
-  arn       = "arn:aws:events:${var.aws_region}:${data.aws_caller_identity.current.account_id}:api-destination/${aws_cloudwatch_event_api_destination.github.name}/*"
+  arn       = aws_cloudwatch_event_api_destination.github.arn
   role_arn  = aws_iam_role.scheduler_role.arn
 
   input = jsonencode({
@@ -26,14 +26,15 @@ resource "aws_cloudwatch_event_target" "poll_youtube_workflow" {
   })
 
   retry_policy {
-    maximum_retry_attempts = 3
+    maximum_retry_attempts       = 3
+    maximum_event_age_in_seconds = 60
   }
 }
 
 resource "aws_cloudwatch_event_target" "deploy_workflow" {
   rule      = aws_cloudwatch_event_rule.deploy_workflow.name
   target_id = "GitHubDispatch"
-  arn       = "arn:aws:events:${var.aws_region}:${data.aws_caller_identity.current.account_id}:api-destination/${aws_cloudwatch_event_api_destination.github.name}/*"
+  arn       = aws_cloudwatch_event_api_destination.github.arn
   role_arn  = aws_iam_role.scheduler_role.arn
 
   input = jsonencode({
@@ -44,7 +45,8 @@ resource "aws_cloudwatch_event_target" "deploy_workflow" {
   })
 
   retry_policy {
-    maximum_retry_attempts = 3
+    maximum_retry_attempts       = 3
+    maximum_event_age_in_seconds = 60
   }
 }
 
