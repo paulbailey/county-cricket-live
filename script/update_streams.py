@@ -317,7 +317,20 @@ def post_to_bluesky(streams_data):
         print("Posted first chunk to Bluesky successfully")
         
         # Post remaining chunks as replies
-        for chunk in chunks[1:]:
+        for i, chunk in enumerate(chunks[1:]):
+            # Add CTA link to the last chunk
+            if i == len(chunks[1:]) - 1:
+                # Create faceted link for the CTA
+                cta_text = "\n\n🔗 Watch all streams at countycricket.live"
+                facets = [models.AppBskyRichtext.Facet(
+                    index=models.AppBskyRichtext.ByteSlice(
+                        byteStart=len(chunk) + len("\n\n🔗 Watch all streams at "),
+                        byteEnd=len(chunk) + len(cta_text)
+                    ),
+                    features=[models.AppBskyRichtext.FacetLink(uri="https://countycricket.live")]
+                )]
+                chunk += cta_text
+            
             reply = models.AppBskyFeedPost.Reply(
                 parent=models.AppBskyFeedPost.ReplyRef(
                     uri=first_post.uri,
@@ -328,7 +341,7 @@ def post_to_bluesky(streams_data):
                     cid=first_post.cid
                 )
             )
-            client.send_post(text=chunk, reply_to=reply)
+            client.send_post(text=chunk, reply_to=reply, facets=facets if i == len(chunks[1:]) - 1 else None)
             print("Posted reply chunk to Bluesky successfully")
             
     except Exception as e:
