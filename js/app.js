@@ -105,13 +105,43 @@ Alpine.data('stream', () => ({
             // Remove lastUpdated from the data
             const { lastUpdated, ...competitions } = data;
 
-            // Check if there are any placeholders
-            const hasPlaceholders = Object.values(competitions).some(comp =>
-                comp.live?.some(stream => stream.isPlaceholder)
-            );
+            // Add matches from scores that aren't in streams
+            Object.entries(this.scores).forEach(([matchId, match]) => {
+                if (matchId === 'lastUpdated') return;
 
-            // Only update if there are placeholders or this is the first load
-            if (hasPlaceholders || !this.metadataLoaded) {
+                // Find the competition this match belongs to
+                const competitionName = match.matchType === 'test' ?
+                    (match.teams[0].includes('Division One') ? 'County Championship Division One' : 'County Championship Division Two') :
+                    'T20 Blast';
+
+                if (!competitions[competitionName]) {
+                    competitions[competitionName] = { live: [], upcoming: [] };
+                }
+
+                // Check if this match is already in the competition
+                const isInCompetition = [...competitions[competitionName].live, ...competitions[competitionName].upcoming]
+                    .some(stream => stream.fixture?.match_id === matchId);
+
+                if (!isInCompetition) {
+                    // Add the match to the competition's upcoming array
+                    if (!competitions[competitionName].upcoming) {
+                        competitions[competitionName].upcoming = [];
+                    }
+                    competitions[competitionName].upcoming.push({
+                        fixture: {
+                            match_id: matchId,
+                            home_team: match.teams[0],
+                            away_team: match.teams[1],
+                            venue: match.venue,
+                            start_time_gmt: match.dateTimeGMT?.split('T')[1]?.split('.')[0],
+                            day: match.status?.split(':')[0]
+                        }
+                    });
+                }
+            });
+
+            // Only update if there are changes or this is the first load
+            if (Object.keys(competitions).length > 0 || !this.metadataLoaded) {
                 this.competitions = competitions;
                 this.metadataLoaded = true;
 
@@ -171,6 +201,18 @@ Alpine.data('stream', () => ({
         }
 
         return scoreText;
+    },
+
+    isMatchInStreams(matchId) {
+        // Check if the match is in any competition's live or upcoming arrays
+        return Object.values(this.competitions).some(competition => {
+            const allMatches = [...(competition.live || []), ...(competition.upcoming || [])];
+            return allMatches.some(stream => {
+                // Check both match_id and match_url for compatibility
+                const streamMatchId = stream.fixture?.match_id || stream.fixture?.match_url;
+                return streamMatchId === matchId;
+            });
+        });
     },
 
     onPlayerReady(videoId, event) {

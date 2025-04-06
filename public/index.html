@@ -38,11 +38,13 @@
         <template x-for="(competition, compName) in competitions" :key="compName">
             <section class="mb-12">
                 <h2 class="text-2xl font-bold mb-4" x-text="compName"></h2>
-                <template x-if="competition.live.length === 0">
-                    <p class="text-base-content/70">No live streams available for this competition.</p>
+                <template
+                    x-if="(!competition.live || competition.live.length === 0) && (!competition.upcoming || competition.upcoming.length === 0)">
+                    <p class="text-base-content/70">No matches available for this competition.</p>
                 </template>
                 <div class="auto-grid">
-                    <template x-for="stream in competition.live" :key="stream.videoId || stream.fixture.match_url">
+                    <template x-for="stream in [...(competition.live || []), ...(competition.upcoming || [])]"
+                        :key="stream.fixture?.match_id || stream.fixture?.match_url || stream.videoId">
                         <div class="card bg-base-100 shadow-xl">
                             <h4 class="text-lg font-semibold mb-2 px-4 pt-4"
                                 x-text="stream.fixture.home_team + ' vs ' + stream.fixture.away_team + (stream.fixture.day ? ' - ' + stream.fixture.day : '')">
