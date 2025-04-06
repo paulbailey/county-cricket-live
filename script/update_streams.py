@@ -316,12 +316,14 @@ def post_to_bluesky(new_streams):
             streams_by_comp[comp_name] = []
         streams_by_comp[comp_name].append(stream)
     
-    # Add stream details
-    for comp_name, streams in streams_by_comp.items():
+    # Add stream details in alphabetical order by competition
+    for comp_name in sorted(streams_by_comp.keys()):
+        streams = streams_by_comp[comp_name]
         # Shorten competition name if needed
         comp_short = comp_name.replace("County Championship ", "")
         text += f"🏏 {comp_short}\n"
-        for stream in streams:
+        # Sort streams by home team name
+        for stream in sorted(streams, key=lambda x: x["fixture"]["home_team"]):
             fixture = stream["fixture"]
             text += f"• {fixture['home_team']} v {fixture['away_team']}\n"
         text += "\n"
@@ -421,14 +423,21 @@ def main():
             competitions[comp_name] = {"live": [], "upcoming": []}
         competitions[comp_name]["upcoming"].append(match)
     
+    # Sort streams within each competition by home team
+    for comp_data in competitions.values():
+        comp_data["live"].sort(key=lambda x: x["fixture"]["home_team"])
+        comp_data["upcoming"].sort(key=lambda x: x["fixture"]["home_team"])
+    
     # Get new streams before updating the file
     new_streams = get_new_streams(existing_streams, competitions)
     
-    # Combine all streams
+    # Combine all streams with sorted competitions
     all_streams = {
-        **competitions,
         "lastUpdated": datetime.now(timezone.utc).isoformat()
     }
+    # Add competitions in sorted order
+    for comp_name in sorted(competitions.keys()):
+        all_streams[comp_name] = competitions[comp_name]
     
     # Write to file
     output_dir = Path("public/data")
@@ -449,6 +458,9 @@ def main():
             if comp_name not in new_streams_by_comp:
                 new_streams_by_comp[comp_name] = {"live": [], "upcoming": []}
             new_streams_by_comp[comp_name]["live"].append(stream)
+        # Sort streams within each competition
+        for comp_data in new_streams_by_comp.values():
+            comp_data["live"].sort(key=lambda x: x["fixture"]["home_team"])
         post_to_bluesky(new_streams_by_comp)
     else:
         print("No new streams found, skipping Bluesky post")
