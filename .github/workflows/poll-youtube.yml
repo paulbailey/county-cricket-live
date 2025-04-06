@@ -39,17 +39,23 @@ jobs:
         BLUESKY_USERNAME: ${{ secrets.BLUESKY_USERNAME }}
         BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
       run: |
+        # Create data directory if it doesn't exist
+        mkdir -p public/data
+        
         # Run the script and capture its output
         output=$(uv run script/update_streams.py)
         echo "$output"
         
-        # Check if there are any changes to commit
-        if git diff --quiet public/data/streams.json; then
-          echo "No changes to commit"
-          echo "has_changes=false" >> $GITHUB_OUTPUT
-        else
+        # Stage the file first so git status works correctly
+        git add public/data/streams.json
+        
+        # Check if there are any changes (including new files)
+        if git status --porcelain | grep -q "public/data/streams.json"; then
           echo "Changes detected"
           echo "has_changes=true" >> $GITHUB_OUTPUT
+        else
+          echo "No changes to commit"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
         fi
 
     - name: Commit and push if changed
@@ -57,7 +63,6 @@ jobs:
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add public/data/streams.json
         git commit -m "Update streams data"
         git push
 
