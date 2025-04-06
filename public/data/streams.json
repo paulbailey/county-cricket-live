@@ -57,25 +57,6 @@
           "venue": "The Cooper Associates County Ground, Taunton",
           "day": "Day 3 of 4"
         }
-      },
-      {
-        "videoId": null,
-        "title": "Warwickshire vs Sussex",
-        "channelName": "Warwickshire CCC",
-        "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
-        "description": "County Championship Division One - Edgbaston, Birmingham",
-        "isPlaceholder": true,
-        "fixture": {
-          "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
-          "competition": "County Championship Division One",
-          "home_team": "Warwickshire",
-          "away_team": "Sussex",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "Edgbaston, Birmingham",
-          "day": "Day 3 of 4"
-        }
       }
     ],
     "upcoming": [
@@ -95,6 +76,25 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "The Rose Bowl, Southampton",
+          "day": "Day 3 of 4"
+        }
+      },
+      {
+        "videoId": "iGsL31tbwnY",
+        "title": "\ud83d\udd34 LIVE STREAM | Warwickshire v Sussex | Day Three | Rothesay County Championship",
+        "channelName": "Warwickshire CCC",
+        "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
+        "description": "Watch Day Three of the Rothesay County Championship fixture between Warwickshire and Sussex at Edgbaston from 11am on Sunday 6th April.\n\nFor replays, live text commentary and scorecard, visit our Match Centre at edgbaston.com.",
+        "scheduledStartTime": "2025-04-06T09:45:00Z",
+        "fixture": {
+          "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
+          "competition": "County Championship Division One",
+          "home_team": "Warwickshire",
+          "away_team": "Sussex",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "Edgbaston, Birmingham",
           "day": "Day 3 of 4"
         }
       }
