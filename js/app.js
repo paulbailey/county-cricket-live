@@ -5,12 +5,11 @@ import persist from '@alpinejs/persist'
 Alpine.data('stream', () => ({
     autoplayEnabled: Alpine.$persist(false).as('autoplayEnabled').using(localStorage),
     competitions: {},
+    rawCompetitions: {},
     players: new Map(),
     apiReady: false,
     playersInitialized: false,
     metadataLoaded: false,
-    scores: {},
-    scoresLastUpdated: null,
 
     formatLocalTime(gmtTime) {
         if (!gmtTime) return '';
@@ -40,16 +39,11 @@ Alpine.data('stream', () => ({
 
     async init() {
         // Load initial data immediately
-        await Promise.all([
-            this.loadStreamData(),
-            this.loadScores()
-        ]);
-
+        await this.loadStreamData();
         this.metadataLoaded = true;
 
         // Set up periodic updates
         setInterval(() => this.loadStreamData(), 5 * 60 * 1000);
-        setInterval(() => this.loadScores(), 60 * 1000); // Update scores every minute
 
         // Load YouTube IFrame API
         if (!window.YT) {
@@ -99,65 +93,60 @@ Alpine.data('stream', () => ({
 
     async loadStreamData() {
         try {
-            const response = await fetch(`data/streams.json?t=${Date.now()}`);
+            const response = await fetch(`data/matches.json?t=${Date.now()}`);
             const data = await response.json();
 
-            // Remove lastUpdated from the data
-            const { lastUpdated, ...competitions } = data;
-
-            // Ensure competitions is an object
-            if (!competitions || typeof competitions !== 'object') {
-                console.error('Invalid competitions data:', competitions);
-                return;
-            }
-
-            // Validate and normalize competition data
-            Object.entries(competitions).forEach(([name, comp]) => {
-                // Ensure live and upcoming are arrays
-                comp.live = Array.isArray(comp.live) ? comp.live : [];
-                comp.upcoming = Array.isArray(comp.upcoming) ? comp.upcoming : [];
-            });
-
-            // Create a Set of all match IDs already in streams
-            const existingMatchIds = new Set();
-            Object.values(competitions).forEach(comp => {
-                [...(comp.live || []), ...(comp.upcoming || [])].forEach(stream => {
-                    if (stream.fixture?.match_id) {
-                        existingMatchIds.add(stream.fixture.match_id);
-                    }
-                });
-            });
-
-            // Add matches from scores that aren't in streams
-            Object.entries(this.scores).forEach(([matchId, match]) => {
-                if (matchId === 'lastUpdated' || existingMatchIds.has(matchId)) return;
-
-                // Determine the correct competition based on the team name
-                const divisionMatch = match.teams[0].match(/Division (One|Two)/);
-                if (!divisionMatch) return;
-
-                const competitionName = `County Championship Division ${divisionMatch[1]}`;
-
-                if (!competitions[competitionName]) {
-                    competitions[competitionName] = { live: [], upcoming: [] };
-                }
-
-                // Add the match to the competition's upcoming array
-                competitions[competitionName].upcoming.push({
-                    fixture: {
-                        match_id: matchId,
-                        home_team: match.teams[0],
-                        away_team: match.teams[1],
-                        venue: match.venue,
-                        start_time_gmt: match.dateTimeGMT?.split('T')[1]?.split('.')[0],
-                        day: match.status?.split(':')[0]
-                    }
-                });
-            });
+            // Extract lastUpdated and competitions from the data
+            const { lastUpdated, competitions } = data;
 
             // Only update if there are changes or this is the first load
             if (Object.keys(competitions).length > 0 || !this.metadataLoaded) {
-                this.competitions = competitions;
+                // Store the raw competition data
+                this.rawCompetitions = competitions;
+
+                // Transform the matches data into the expected format
+                const transformedCompetitions = {};
+
+                Object.entries(competitions).forEach(([compName, comp]) => {
+                    transformedCompetitions[compName] = {
+                        live: [],
+                        upcoming: []
+                    };
+
+                    comp.matches.forEach(match => {
+                        const streamData = {
+                            videoId: match.stream?.videoId,
+                            title: match.stream?.title,
+                            channelId: match.stream?.channelId,
+                            matchEnded: match.matchEnded,
+                            fixture: {
+                                match_id: match.id,
+                                home_team: match.homeTeam,
+                                away_team: match.awayTeam,
+                                venue: match.venue,
+                                start_time_gmt: match.startTime,
+                                day: match.status?.split(' - ')?.[0]
+                            }
+                        };
+
+                        // Add to live array if there's a videoId, otherwise to upcoming
+                        if (match.stream?.videoId) {
+                            transformedCompetitions[compName].live.push(streamData);
+                        } else {
+                            transformedCompetitions[compName].upcoming.push(streamData);
+                        }
+                    });
+
+                    // Sort matches by home team
+                    transformedCompetitions[compName].live.sort((a, b) =>
+                        a.fixture.home_team.localeCompare(b.fixture.home_team)
+                    );
+                    transformedCompetitions[compName].upcoming.sort((a, b) =>
+                        a.fixture.home_team.localeCompare(b.fixture.home_team)
+                    );
+                });
+
+                this.competitions = transformedCompetitions;
                 this.metadataLoaded = true;
 
                 // Reinitialize players if needed
@@ -168,19 +157,6 @@ Alpine.data('stream', () => ({
             }
         } catch (error) {
             console.error('Error loading stream data:', error);
-        }
-    },
-
-    async loadScores() {
-        try {
-            const response = await fetch(`data/scores.json?t=${Date.now()}`);
-            const data = await response.json();
-            // Extract lastUpdated from the data
-            const { lastUpdated, ...matches } = data;
-            this.scores = matches;
-            this.scoresLastUpdated = lastUpdated;
-        } catch (error) {
-            console.error('Error loading scores:', error);
         }
     },
 
@@ -196,18 +172,24 @@ Alpine.data('stream', () => ({
     },
 
     getMatchScore(matchId) {
-        const match = this.scores[matchId];
+        // Find the match in raw competitions data
+        let match = null;
+        for (const comp of Object.values(this.rawCompetitions)) {
+            match = comp.matches.find(m => m.id === matchId);
+            if (match) break;
+        }
         if (!match) return null;
 
         let scoreText = `<strong>${match.status || ''}</strong>`;
 
         // Add scores for each innings in reverse order
-        if (match.score && match.score.length > 0) {
-            [...match.score].reverse().forEach(inning => {
-                // Convert inning number to ordinal
-                const inningNum = inning.inning.match(/\d+/)[0];
+        if (match.scores && match.scores.length > 0) {
+            [...match.scores].reverse().forEach(inning => {
+                // Extract team name and innings number
+                const [teamName, inningNum] = inning.inning.split(' Inning ');
+
+                // Convert number to ordinal
                 const ordinal = inningNum === '1' ? '1st' : '2nd';
-                const teamName = inning.inning.split(' Inning')[0];
 
                 // Format the score, using "all out" if all wickets are lost
                 const score = parseInt(inning.w) === 10 ? `${inning.r} all out` : `${inning.r}/${inning.w}`;

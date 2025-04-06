@@ -36,7 +36,7 @@
     </header>
     <main class="px-8 py-8">
         <template x-for="(competition, compName) in competitions" :key="compName">
-            <section class="mb-12">
+            <section class="mb-8">
                 <h2 class="text-2xl font-bold mb-4" x-text="compName"></h2>
                 <template
                     x-if="(!competition.live || competition.live.length === 0) && (!competition.upcoming || competition.upcoming.length === 0)">
@@ -48,43 +48,42 @@
                             <h4 class="text-lg font-semibold mb-2 px-4 pt-4"
                                 x-text="(stream.fixture?.home_team || '') + ' vs ' + (stream.fixture?.away_team || '') + (stream.fixture?.day ? ' - ' + stream.fixture.day : '')">
                             </h4>
-                            <template x-if="stream.videoId">
-                                <div>
-                                    <div class="relative aspect-w-16 aspect-h-9">
-                                        <div class="absolute inset-0 w-full h-full">
-                                            <iframe :id="'player-' + stream.videoId"
-                                                :src="'https://www.youtube.com/embed/' + stream.videoId + '?enablejsapi=1&origin=' + encodeURIComponent(window.location.origin) + '&autoplay=' + (autoplayEnabled ? '1' : '0') + '&mute=' + (autoplayEnabled ? '1' : '0')"
-                                                class="absolute inset-0 w-full h-full"
-                                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </template>
-                            <template x-if="!stream.videoId">
-                                <figure class="relative aspect-w-16 aspect-h-9 bg-base-200">
-                                    <div class="absolute inset-0 flex items-center justify-center">
+                            <figure class="relative aspect-w-16 aspect-h-9">
+                                <template x-if="stream.videoId">
+                                    <iframe class="w-full h-full"
+                                        :src="'https://www.youtube.com/embed/' + stream.videoId + '?enablejsapi=1&origin=' + encodeURIComponent(window.location.origin) + '&autoplay=' + (autoplayEnabled ? '1' : '0') + '&mute=1'"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen>
+                                    </iframe>
+                                </template>
+                                <template x-if="!stream.videoId">
+                                    <div class="absolute inset-0 flex items-center justify-center bg-base-200">
                                         <div class="text-center">
                                             <svg class="w-12 h-12 mx-auto text-base-content/50" fill="none"
                                                 stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                             </svg>
-                                            <p class="mt-2 text-base-content/70">No stream available</p>
+                                            <p class="mt-2 text-base-content/70"
+                                                x-text="stream.matchEnded ? 'Match ended' : 'Stream not yet available'">
+                                            </p>
                                         </div>
                                     </div>
-                                </figure>
-                            </template>
+                                </template>
+                            </figure>
                             <div class="card-body">
                                 <div class="text-sm mb-2" x-html="getMatchScore(stream.fixture?.match_id)"></div>
-                                <h3 class="text-sm text-base-content/70">
-                                    <a :href="'https://www.youtube.com/watch?v=' + stream.videoId" target="_blank"
-                                        rel="noopener noreferrer" class="hover:underline" x-text="stream.title"></a>
-                                </h3>
+                                <template x-if="stream.videoId">
+                                    <h3 class="text-sm text-base-content/70">
+                                        <a :href="'https://www.youtube.com/watch?v=' + stream.videoId" target="_blank"
+                                            rel="noopener noreferrer" class="hover:underline" x-text="stream.title"></a>
+                                    </h3>
+                                </template>
                                 <div class="text-base-content/70">
                                     <p><span class="font-semibold">Venue:</span> <span
                                             x-text="stream.fixture?.venue"></span></p>
-                                    <template x-if="!stream.videoId && stream.fixture?.start_time_gmt">
+                                    <template x-if="stream.fixture?.start_time_gmt">
                                         <p><span class="font-semibold">Start Time:</span> <span
                                                 x-text="formatLocalTime(stream.fixture?.start_time_gmt)"></span></p>
                                     </template>
@@ -105,7 +104,8 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                         </svg>
-                                        <p class="mt-2 text-base-content/70">Upcoming match</p>
+                                        <p class="mt-2 text-base-content/70"
+                                            x-text="stream.matchEnded ? 'Match ended' : 'Upcoming match'"></p>
                                     </div>
                                 </div>
                             </figure>

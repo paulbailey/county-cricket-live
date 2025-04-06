@@ -79,7 +79,9 @@ async function generateMatches() {
                     videoId: stream.videoId,
                     title: stream.title,
                     channelId: stream.channelId
-                }
+                },
+                matchStarted: matchDetails?.matchStarted,
+                matchEnded: matchDetails?.matchEnded
             };
 
             // Add to competition group
