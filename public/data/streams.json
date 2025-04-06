@@ -78,12 +78,12 @@
         }
       },
       {
-        "videoId": null,
-        "title": "Warwickshire vs Sussex",
+        "videoId": "iGsL31tbwnY",
+        "title": "\ud83d\udd34 LIVE STREAM | Warwickshire v Sussex | Day Three | Rothesay County Championship",
         "channelName": "Warwickshire CCC",
         "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
-        "description": "County Championship Division One - Edgbaston, Birmingham",
-        "isPlaceholder": true,
+        "description": "Watch Day Three of the Rothesay County Championship fixture between Warwickshire and Sussex at Edgbaston from 11am on Sunday 6th April.\n\nFor replays, live text commentary and scorecard, visit our Match Centre at edgbaston.com.",
+        "publishedAt": "2025-04-06T09:02:15Z",
         "fixture": {
           "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
           "competition": "County Championship Division One",
@@ -200,5 +200,5 @@
       }
     ]
   },
-  "lastUpdated": "2025-04-06T09:50:21.521362+00:00"
+  "lastUpdated": "2025-04-06T09:55:14.885357+00:00"
 }
