@@ -2,25 +2,6 @@
   "County Championship Division One": {
     "live": [
       {
-        "videoId": "iGsL31tbwnY",
-        "title": "\ud83d\udd34 LIVE STREAM | Warwickshire v Sussex | Day Three | Rothesay County Championship",
-        "channelName": "Warwickshire CCC",
-        "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
-        "description": "Watch Day Three of the Rothesay County Championship fixture between Warwickshire and Sussex at Edgbaston from 11am on Sunday 6th April.\n\nFor replays, live text commentary and scorecard, visit our Match Centre at edgbaston.com.",
-        "publishedAt": "2025-04-06T09:02:15Z",
-        "fixture": {
-          "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
-          "competition": "County Championship Division One",
-          "home_team": "Warwickshire",
-          "away_team": "Sussex",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "Edgbaston, Birmingham",
-          "day": "Day 3 of 4"
-        }
-      },
-      {
         "videoId": "FoMLwZ8IsdA",
         "title": "LIVE: Essex v Surrey: Day 3 Stream",
         "channelName": "Essex CCC",
@@ -40,21 +21,40 @@
         }
       },
       {
-        "videoId": "T6XR2LqdpzE",
-        "title": "\ud83d\udd34 LIVE STREAM |  Day Three | Nottinghamshire v Durham | Rothesay County Championship",
-        "channelName": "Nottinghamshire CCC",
-        "channelId": "UCiOki3bA8llEHVgXBQ3x6wg",
-        "description": "Live stream action from Trent Bridge, Nottingham of Nottinghamshire vs Durham in the Rothesay County Championship Division One. \n\nIf you are experiencing any issues with pictures and sound please refresh the page.\n#trentbridgelive \n\n#Notts #cricket #NottinghamshireCCC #score #nottsccclivestream #live #stream #sport #watchlive #livesports",
-        "publishedAt": "2025-04-06T09:30:41Z",
+        "videoId": "g2UrNkTosho",
+        "title": "LIVE STREAM: Somerset vs Worcestershire - Day Three",
+        "channelName": "Somerset CCC",
+        "channelId": "UCcCeaTFtzWdkTQYeFRRWvSg",
+        "description": "#cricket #somerset #countychampionship",
+        "publishedAt": "2025-04-06T09:28:19Z",
         "fixture": {
-          "match_id": "e86f0f5b-5efb-4afb-8d30-04a14ec61ca4",
+          "match_id": "fe09fb7d-e583-4f67-98cf-5c3ec4e3967b",
           "competition": "County Championship Division One",
-          "home_team": "Nottinghamshire",
-          "away_team": "Durham",
+          "home_team": "Somerset",
+          "away_team": "Worcestershire",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
-          "venue": "Trent Bridge, Nottingham",
+          "venue": "The Cooper Associates County Ground, Taunton",
+          "day": "Day 3 of 4"
+        }
+      },
+      {
+        "videoId": "iGsL31tbwnY",
+        "title": "\ud83d\udd34 LIVE STREAM | Warwickshire v Sussex | Day Three | Rothesay County Championship",
+        "channelName": "Warwickshire CCC",
+        "channelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
+        "description": "Watch Day Three of the Rothesay County Championship fixture between Warwickshire and Sussex at Edgbaston from 11am on Sunday 6th April.\n\nFor replays, live text commentary and scorecard, visit our Match Centre at edgbaston.com.",
+        "publishedAt": "2025-04-06T09:02:15Z",
+        "fixture": {
+          "match_id": "6584760c-83b9-45a3-be41-e53a9c5ffe41",
+          "competition": "County Championship Division One",
+          "home_team": "Warwickshire",
+          "away_team": "Sussex",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "Edgbaston, Birmingham",
           "day": "Day 3 of 4"
         }
       },
@@ -78,21 +78,21 @@
         }
       },
       {
-        "videoId": "g2UrNkTosho",
-        "title": "LIVE STREAM: Somerset vs Worcestershire - Day Three",
-        "channelName": "Somerset CCC",
-        "channelId": "UCcCeaTFtzWdkTQYeFRRWvSg",
-        "description": "#cricket #somerset #countychampionship",
-        "publishedAt": "2025-04-06T09:28:19Z",
+        "videoId": "T6XR2LqdpzE",
+        "title": "\ud83d\udd34 LIVE STREAM |  Day Three | Nottinghamshire v Durham | Rothesay County Championship",
+        "channelName": "Nottinghamshire CCC",
+        "channelId": "UCiOki3bA8llEHVgXBQ3x6wg",
+        "description": "Live stream action from Trent Bridge, Nottingham of Nottinghamshire vs Durham in the Rothesay County Championship Division One. \n\nIf you are experiencing any issues with pictures and sound please refresh the page.\n#trentbridgelive \n\n#Notts #cricket #NottinghamshireCCC #score #nottsccclivestream #live #stream #sport #watchlive #livesports",
+        "publishedAt": "2025-04-06T09:30:41Z",
         "fixture": {
-          "match_id": "fe09fb7d-e583-4f67-98cf-5c3ec4e3967b",
+          "match_id": "e86f0f5b-5efb-4afb-8d30-04a14ec61ca4",
           "competition": "County Championship Division One",
-          "home_team": "Somerset",
-          "away_team": "Worcestershire",
+          "home_team": "Nottinghamshire",
+          "away_team": "Durham",
           "start_date": "2025-04-04",
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
-          "venue": "The Cooper Associates County Ground, Taunton",
+          "venue": "Trent Bridge, Nottingham",
           "day": "Day 3 of 4"
         }
       }
@@ -140,25 +140,6 @@
         }
       },
       {
-        "videoId": "-4ldMTP9bVE",
-        "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 3 | Rothesay County Championship",
-        "channelName": "Northamptonshire CCC",
-        "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
-        "description": "",
-        "publishedAt": "2025-04-06T08:17:07Z",
-        "fixture": {
-          "match_id": "6752524d-5897-4f02-bad7-a09003efc250",
-          "competition": "County Championship Division Two",
-          "home_team": "Northamptonshire",
-          "away_team": "Kent",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "County Ground, Northampton",
-          "day": "Day 3 of 4"
-        }
-      },
-      {
         "videoId": "IPmPFLyDHcw",
         "title": "\ud83d\udd34 LIVE CRICKET | Derbyshire vs Gloucestershire, Day Three",
         "channelName": "Derbyshire CCC",
@@ -180,5 +161,5 @@
     ],
     "upcoming": []
   },
-  "lastUpdated": "2025-04-06T10:32:18.794631+00:00"
+  "lastUpdated": "2025-04-06T10:35:13.652298+00:00"
 }
