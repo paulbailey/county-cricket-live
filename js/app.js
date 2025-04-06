@@ -1,6 +1,19 @@
 import Alpine from 'alpinejs'
 import persist from '@alpinejs/persist'
 
+// Debounce function to limit the rate at which a function can fire
+const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
+
 // Register the stream component with Alpine
 Alpine.data('stream', () => ({
     autoplayEnabled: Alpine.$persist(false).as('autoplayEnabled').using(localStorage),
@@ -10,6 +23,7 @@ Alpine.data('stream', () => ({
     apiReady: false,
     playersInitialized: false,
     metadataLoaded: false,
+    error: null,
 
     formatLocalTime(gmtTime) {
         if (!gmtTime) return '';
@@ -64,7 +78,7 @@ Alpine.data('stream', () => ({
         }
     },
 
-    initializePlayers() {
+    initializePlayers: debounce(function () {
         if (!this.apiReady || this.playersInitialized) {
             return;
         }
@@ -72,28 +86,38 @@ Alpine.data('stream', () => ({
         console.log('Initializing players...');
         this.playersInitialized = true;
 
-        // Initialize players for all live streams across all competitions
         Object.values(this.competitions).forEach(competition => {
             competition.live.forEach(stream => {
                 if (stream.videoId && !this.players.has(stream.videoId)) {
-                    console.log(`Creating player for video ${stream.videoId}`);
-                    new YT.Player(`player-${stream.videoId}`, {
-                        videoId: stream.videoId,
-                        playerVars: {
-                            'mute': 1
-                        },
-                        events: {
-                            'onReady': (event) => this.onPlayerReady(stream.videoId, event)
-                        }
-                    });
+                    try {
+                        console.log(`Creating player for video ${stream.videoId}`);
+                        new YT.Player(`player-${stream.videoId}`, {
+                            videoId: stream.videoId,
+                            playerVars: {
+                                'mute': 1,
+                                'playsinline': 1,
+                                'rel': 0
+                            },
+                            events: {
+                                'onReady': (event) => this.onPlayerReady(stream.videoId, event),
+                                'onError': (event) => console.error(`Player error for video ${stream.videoId}:`, event)
+                            }
+                        });
+                    } catch (error) {
+                        console.error(`Failed to initialize player for video ${stream.videoId}:`, error);
+                    }
                 }
             });
         });
-    },
+    }, 500),
 
     async loadStreamData() {
         try {
+            this.error = null;
             const response = await fetch(`data/matches.json?t=${Date.now()}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const data = await response.json();
 
             // Extract lastUpdated and competitions from the data
@@ -157,6 +181,7 @@ Alpine.data('stream', () => ({
             }
         } catch (error) {
             console.error('Error loading stream data:', error);
+            this.error = 'Failed to load match data. Please try refreshing the page.';
         }
     },
 
