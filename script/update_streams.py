@@ -431,13 +431,28 @@ def main():
     # Get new streams before updating the file
     new_streams = get_new_streams(existing_streams, competitions)
     
+    # Check if there are any changes by comparing competitions with existing_streams
+    has_changes = False
+    if not existing_streams:
+        has_changes = bool(competitions)  # If no existing streams and we have competitions, that's a change
+    else:
+        # Remove lastUpdated for comparison
+        existing_without_timestamp = {k: v for k, v in existing_streams.items() if k != "lastUpdated"}
+        competitions_sorted = {k: competitions[k] for k in sorted(competitions.keys())}
+        has_changes = existing_without_timestamp != competitions_sorted
+    
     # Combine all streams with sorted competitions
-    all_streams = {
-        "lastUpdated": datetime.now(timezone.utc).isoformat()
-    }
+    all_streams = {}
     # Add competitions in sorted order
     for comp_name in sorted(competitions.keys()):
         all_streams[comp_name] = competitions[comp_name]
+    
+    # Only add lastUpdated if there are changes
+    if has_changes:
+        all_streams["lastUpdated"] = datetime.now(timezone.utc).isoformat()
+    elif "lastUpdated" in existing_streams:
+        # Keep the existing lastUpdated if no changes
+        all_streams["lastUpdated"] = existing_streams["lastUpdated"]
     
     # Write to file
     output_dir = Path("public/data")
@@ -465,7 +480,7 @@ def main():
     else:
         print("No new streams found, skipping Bluesky post")
 
-    print(f"has_changes={str(bool(live_streams)).lower()}")
+    print(f"has_changes={str(has_changes).lower()}")
 
 if __name__ == "__main__":
     main() 
