@@ -73,6 +73,9 @@ def get_live_streams(fixtures, channels):
         if channel_id:
             active_channels.add(channel_id)
     
+    # Keep track of matches we've already processed
+    processed_match_ids = set()
+    
     # For each active channel, get their uploads playlist
     for channel_id in active_channels:
         try:
@@ -121,16 +124,45 @@ def get_live_streams(fixtures, channels):
                 snippet = item["snippet"]
                 live_details = item.get("liveStreamingDetails", {})
                 
+                # Find the matching fixture for this channel
+                matching_fixture = next(
+                    (f for f in fixtures if get_channel_id_for_team(f["home_team"], channels) == snippet["channelId"]),
+                    None
+                )
+                
+                if not matching_fixture:
+                    continue
+
+                # Skip if we've already processed this match
+                match_id = matching_fixture.get("match_id")
+                if match_id in processed_match_ids:
+                    continue
+                
                 # Check for live stream (must have actualStartTime but no actualEndTime)
                 if live_details.get("actualStartTime") and not live_details.get("actualEndTime"):
-                    # Find the matching fixture for this channel
-                    matching_fixture = next(
-                        (f for f in fixtures if get_channel_id_for_team(f["home_team"], channels) == snippet["channelId"]),
-                        None
+                    stream_data = {
+                        "videoId": video_id,
+                        "title": snippet["title"],
+                        "channelName": next(
+                            ch["name"]
+                            for ch in channels.values()
+                            if ch["youtubeChannelId"] == snippet["channelId"]
+                        ),
+                        "channelId": snippet["channelId"],
+                        "description": snippet["description"],
+                        "publishedAt": snippet["publishedAt"],
+                        "fixture": matching_fixture
+                    }
+                    live_streams.append(stream_data)
+                    processed_match_ids.add(match_id)
+                
+                # Only check for upcoming if not already live
+                elif match_id not in processed_match_ids and live_details.get("scheduledStartTime"):
+                    scheduled_time = datetime.fromisoformat(
+                        live_details["scheduledStartTime"].replace("Z", "+00:00")
                     )
-                    
-                    if matching_fixture:
-                        stream_data = {
+                    if scheduled_time > current_time:
+                        match_data = {
                             "videoId": video_id,
                             "title": snippet["title"],
                             "channelName": next(
@@ -140,38 +172,11 @@ def get_live_streams(fixtures, channels):
                             ),
                             "channelId": snippet["channelId"],
                             "description": snippet["description"],
-                            "publishedAt": snippet["publishedAt"],
+                            "scheduledStartTime": live_details["scheduledStartTime"],
                             "fixture": matching_fixture
                         }
-                        live_streams.append(stream_data)
-                
-                # Check for upcoming stream (must have scheduledStartTime in the future)
-                elif live_details.get("scheduledStartTime"):
-                    scheduled_time = datetime.fromisoformat(
-                        live_details["scheduledStartTime"].replace("Z", "+00:00")
-                    )
-                    if scheduled_time > current_time:
-                        # Find the matching fixture for this channel
-                        matching_fixture = next(
-                            (f for f in fixtures if get_channel_id_for_team(f["home_team"], channels) == snippet["channelId"]),
-                            None
-                        )
-                        
-                        if matching_fixture:
-                            match_data = {
-                                "videoId": video_id,
-                                "title": snippet["title"],
-                                "channelName": next(
-                                    ch["name"]
-                                    for ch in channels.values()
-                                    if ch["youtubeChannelId"] == snippet["channelId"]
-                                ),
-                                "channelId": snippet["channelId"],
-                                "description": snippet["description"],
-                                "scheduledStartTime": live_details["scheduledStartTime"],
-                                "fixture": matching_fixture
-                            }
-                            upcoming_matches.append(match_data)
+                        upcoming_matches.append(match_data)
+                        processed_match_ids.add(match_id)
                             
         except Exception as e:
             print(f"Error fetching video details: {str(e)}")

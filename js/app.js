@@ -105,39 +105,54 @@ Alpine.data('stream', () => ({
             // Remove lastUpdated from the data
             const { lastUpdated, ...competitions } = data;
 
+            // Ensure competitions is an object
+            if (!competitions || typeof competitions !== 'object') {
+                console.error('Invalid competitions data:', competitions);
+                return;
+            }
+
+            // Validate and normalize competition data
+            Object.entries(competitions).forEach(([name, comp]) => {
+                // Ensure live and upcoming are arrays
+                comp.live = Array.isArray(comp.live) ? comp.live : [];
+                comp.upcoming = Array.isArray(comp.upcoming) ? comp.upcoming : [];
+            });
+
+            // Create a Set of all match IDs already in streams
+            const existingMatchIds = new Set();
+            Object.values(competitions).forEach(comp => {
+                [...(comp.live || []), ...(comp.upcoming || [])].forEach(stream => {
+                    if (stream.fixture?.match_id) {
+                        existingMatchIds.add(stream.fixture.match_id);
+                    }
+                });
+            });
+
             // Add matches from scores that aren't in streams
             Object.entries(this.scores).forEach(([matchId, match]) => {
-                if (matchId === 'lastUpdated') return;
+                if (matchId === 'lastUpdated' || existingMatchIds.has(matchId)) return;
 
-                // Find the competition this match belongs to
-                const competitionName = match.matchType === 'test' ?
-                    (match.teams[0].includes('Division One') ? 'County Championship Division One' : 'County Championship Division Two') :
-                    'T20 Blast';
+                // Determine the correct competition based on the team name
+                const divisionMatch = match.teams[0].match(/Division (One|Two)/);
+                if (!divisionMatch) return;
+
+                const competitionName = `County Championship Division ${divisionMatch[1]}`;
 
                 if (!competitions[competitionName]) {
                     competitions[competitionName] = { live: [], upcoming: [] };
                 }
 
-                // Check if this match is already in the competition
-                const isInCompetition = [...competitions[competitionName].live, ...competitions[competitionName].upcoming]
-                    .some(stream => stream.fixture?.match_id === matchId);
-
-                if (!isInCompetition) {
-                    // Add the match to the competition's upcoming array
-                    if (!competitions[competitionName].upcoming) {
-                        competitions[competitionName].upcoming = [];
+                // Add the match to the competition's upcoming array
+                competitions[competitionName].upcoming.push({
+                    fixture: {
+                        match_id: matchId,
+                        home_team: match.teams[0],
+                        away_team: match.teams[1],
+                        venue: match.venue,
+                        start_time_gmt: match.dateTimeGMT?.split('T')[1]?.split('.')[0],
+                        day: match.status?.split(':')[0]
                     }
-                    competitions[competitionName].upcoming.push({
-                        fixture: {
-                            match_id: matchId,
-                            home_team: match.teams[0],
-                            away_team: match.teams[1],
-                            venue: match.venue,
-                            start_time_gmt: match.dateTimeGMT?.split('T')[1]?.split('.')[0],
-                            day: match.status?.split(':')[0]
-                        }
-                    });
-                }
+                });
             });
 
             // Only update if there are changes or this is the first load
