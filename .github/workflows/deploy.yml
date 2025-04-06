@@ -41,18 +41,13 @@ jobs:
           CRICKET_API_KEY: ${{ secrets.CRICKET_API_KEY }}
         run: npm run generate-scores
 
-      - name: Copy data files
-        run: |
-          cp public/data/scores.json dist/data/scores.json
-          cp public/data/streams.json dist/data/streams.json
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./public
 
   deploy:
     environment:
