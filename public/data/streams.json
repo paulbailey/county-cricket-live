@@ -103,6 +103,25 @@
   "County Championship Division Two": {
     "live": [
       {
+        "videoId": "tnlMckJ8nyc",
+        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day Three",
+        "channelName": "Glamorgan CCC",
+        "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
+        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
+        "publishedAt": "2025-04-06T07:40:39Z",
+        "fixture": {
+          "match_id": "4a8b4cd8-a5a5-4cb7-929a-169b32c56167",
+          "competition": "County Championship Division Two",
+          "home_team": "Glamorgan",
+          "away_team": "Leicestershire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "Sophia Gardens, Cardiff",
+          "day": "Day 3 of 4"
+        }
+      },
+      {
         "videoId": "_q92Hldi5kI",
         "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY THREE",
         "channelName": "Middlesex CCC",
@@ -118,6 +137,25 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "Lord's, London",
+          "day": "Day 3 of 4"
+        }
+      },
+      {
+        "videoId": "-4ldMTP9bVE",
+        "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 3 | Rothesay County Championship",
+        "channelName": "Northamptonshire CCC",
+        "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
+        "description": "",
+        "publishedAt": "2025-04-06T08:17:07Z",
+        "fixture": {
+          "match_id": "6752524d-5897-4f02-bad7-a09003efc250",
+          "competition": "County Championship Division Two",
+          "home_team": "Northamptonshire",
+          "away_team": "Kent",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "County Ground, Northampton",
           "day": "Day 3 of 4"
         }
       }
@@ -160,46 +198,8 @@
           "venue": "Sophia Gardens, Cardiff",
           "day": "Day 3 of 4"
         }
-      },
-      {
-        "videoId": "tnlMckJ8nyc",
-        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day Three",
-        "channelName": "Glamorgan CCC",
-        "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
-        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
-        "scheduledStartTime": "2025-04-06T09:45:00Z",
-        "fixture": {
-          "match_id": "4a8b4cd8-a5a5-4cb7-929a-169b32c56167",
-          "competition": "County Championship Division Two",
-          "home_team": "Glamorgan",
-          "away_team": "Leicestershire",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "Sophia Gardens, Cardiff",
-          "day": "Day 3 of 4"
-        }
-      },
-      {
-        "videoId": "-4ldMTP9bVE",
-        "title": "\ud83d\udd34 LIVE | Northamptonshire vs Kent | Day 3 | Rothesay County Championship",
-        "channelName": "Northamptonshire CCC",
-        "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
-        "description": "",
-        "scheduledStartTime": "2025-04-06T09:45:00Z",
-        "fixture": {
-          "match_id": "6752524d-5897-4f02-bad7-a09003efc250",
-          "competition": "County Championship Division Two",
-          "home_team": "Northamptonshire",
-          "away_team": "Kent",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "County Ground, Northampton",
-          "day": "Day 3 of 4"
-        }
       }
     ]
   },
-  "lastUpdated": "2025-04-06T09:35:21.095451+00:00"
+  "lastUpdated": "2025-04-06T09:40:21.120795+00:00"
 }
