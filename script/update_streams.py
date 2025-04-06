@@ -259,10 +259,10 @@ def get_new_streams(existing_streams, new_streams):
     
     return new_fixture_streams
 
-def post_to_bluesky(streams_data):
+def post_to_bluesky(new_streams):
     """Post to Bluesky about newly added streams."""
-    if not streams_data:
-        print("No streams_data provided, skipping Bluesky post")
+    if not new_streams:
+        print("No streams to post about")
         return
         
     # Skip posting if SKIP_BLUESKY_POSTING is set
@@ -270,16 +270,6 @@ def post_to_bluesky(streams_data):
         print("Skipping Bluesky post due to SKIP_BLUESKY_POSTING environment variable")
         return
     
-    # Load existing streams to compare against
-    existing_streams = load_existing_streams()
-    
-    # Get only the new streams
-    new_streams = get_new_streams(existing_streams, streams_data)
-    
-    if not new_streams:
-        print("No new streams found after comparison, skipping Bluesky post")
-        return  # No new streams to post about
-        
     # Verify Bluesky credentials are set
     if not BLUESKY_USERNAME or not BLUESKY_PASSWORD:
         print("ERROR: Bluesky credentials not properly set")
@@ -385,86 +375,40 @@ def post_to_bluesky(streams_data):
 def main():
     channels = load_channels()
     fixtures = load_fixtures()
+    existing_streams = load_existing_streams()
     
+    if not channels:
+        print("No channels found")
+        return
+        
     if not fixtures:
-        print("No fixtures found for today")
+        print("No fixtures found")
         return
         
     live_streams, upcoming_matches = get_live_streams(fixtures, channels)
-    placeholders = create_placeholder_streams(fixtures, channels, live_streams, upcoming_matches)
+    placeholders = []  # We'll handle placeholders later
     
-    # Initialize competitions structure
+    # Group streams by competition
     competitions = {}
-    
-    # Get unique competitions from fixtures
-    for fixture in fixtures:
-        competition = fixture["competition"]
-        if competition not in competitions:
-            competitions[competition] = {
-                "live": [],
-                "upcoming": []
-            }
-    
-    # Organize live streams and placeholders by competition
-    for stream in live_streams + placeholders:
-        if stream["fixture"]:
-            competition = stream["fixture"]["competition"]
-            competitions[competition]["live"].append(stream)
-    
-    # Organize upcoming matches by competition
+    for stream in live_streams:
+        comp_name = stream["fixture"]["competition"]
+        if comp_name not in competitions:
+            competitions[comp_name] = {"live": [], "upcoming": []}
+        competitions[comp_name]["live"].append(stream)
+        
     for match in upcoming_matches:
-        if match["fixture"]:
-            competition = match["fixture"]["competition"]
-            competitions[competition]["upcoming"].append(match)
+        comp_name = match["fixture"]["competition"]
+        if comp_name not in competitions:
+            competitions[comp_name] = {"live": [], "upcoming": []}
+        competitions[comp_name]["upcoming"].append(match)
     
-    # Sort streams by home team within each competition
-    for competition in competitions:
-        # Sort live streams
-        competitions[competition]["live"].sort(
-            key=lambda x: x["fixture"]["home_team"] if x["fixture"] else ""
-        )
-        # Sort upcoming matches
-        competitions[competition]["upcoming"].sort(
-            key=lambda x: x["fixture"]["home_team"] if x["fixture"] else ""
-        )
-    
-    # Load existing streams
-    existing_streams = load_existing_streams()
-    
-    # Check for changes in video IDs
-    has_changes = False
-    if existing_streams:
-        for comp_name, comp_data in competitions.items():
-            if comp_name not in existing_streams:
-                has_changes = True
-                break
-                
-            existing_comp = existing_streams[comp_name]
-            for new_stream in comp_data.get("live", []):
-                if new_stream.get("isPlaceholder"):
-                    continue
-                    
-                # Check if this stream is new or changed
-                is_new = True
-                for existing_stream in existing_comp.get("live", []):
-                    if existing_stream.get("videoId") == new_stream.get("videoId"):
-                        is_new = False
-                        break
-                        
-                if is_new:
-                    has_changes = True
-                    break
-                    
-            if has_changes:
-                break
-    else:
-        # No existing streams, so this is definitely a change
-        has_changes = True
+    # Get new streams before updating the file
+    new_streams = get_new_streams(existing_streams, competitions)
     
     # Combine all streams
     all_streams = {
         **competitions,
-        "lastUpdated": datetime.now(timezone.utc).isoformat() if has_changes else existing_streams.get("lastUpdated", datetime.now(timezone.utc).isoformat())
+        "lastUpdated": datetime.now(timezone.utc).isoformat()
     }
     
     # Write to file
@@ -477,14 +421,13 @@ def main():
     print(f"Found {len(live_streams)} live streams, {len(upcoming_matches)} upcoming matches, and {len(placeholders)} placeholders")
     
     # Only post to Bluesky if there are new streams
-    new_streams = get_new_streams(existing_streams, competitions)
     if new_streams:
         print(f"Found {len(new_streams)} new streams, posting to Bluesky")
-        post_to_bluesky(competitions)
+        post_to_bluesky(new_streams)
     else:
         print("No new streams found, skipping Bluesky post")
 
-    print(f"has_changes={str(has_changes).lower()}")
+    print(f"has_changes={str(bool(live_streams)).lower()}")
 
 if __name__ == "__main__":
     main() 
