@@ -2,12 +2,12 @@
   "County Championship Division One": {
     "live": [
       {
-        "videoId": null,
-        "title": "Essex vs Surrey",
+        "videoId": "FoMLwZ8IsdA",
+        "title": "LIVE: Essex v Surrey: Day 3 Stream",
         "channelName": "Essex CCC",
         "channelId": "UCL0ebrj8ISVXWikxxtjRlsA",
-        "description": "County Championship Division One - County Ground, Chelmsford",
-        "isPlaceholder": true,
+        "description": "Live stream of the Rothesay County Championship match between Essex and Surrey at the Ambassador Cruise Line, taking place on Friday 04 - Monday 07 April 2025.\n\nScheduled hours of play:\n\n11am: Start of play\n1pm-1:40pm: Lunch\n3:40pm-4pm: Tea\nClose of play: 6pm\n\nAll Essex home games at the Ambassador Cruise Line Ground will be streamed during the 2025 season, so hit the subscribe button to find out when we're next live!",
+        "publishedAt": "2025-04-06T06:46:39Z",
         "fixture": {
           "match_id": "c7df1aa3-b952-44d4-b991-480ba4d9e0d4",
           "competition": "County Championship Division One",
@@ -21,12 +21,12 @@
         }
       },
       {
-        "videoId": null,
-        "title": "Nottinghamshire vs Durham",
+        "videoId": "T6XR2LqdpzE",
+        "title": "\ud83d\udd34 LIVE STREAM |  Day Three | Nottinghamshire v Durham | Rothesay County Championship",
         "channelName": "Nottinghamshire CCC",
         "channelId": "UCiOki3bA8llEHVgXBQ3x6wg",
-        "description": "County Championship Division One - Trent Bridge, Nottingham",
-        "isPlaceholder": true,
+        "description": "Live stream action from Trent Bridge, Nottingham of Nottinghamshire vs Durham in the Rothesay County Championship Division One. \n\nIf you are experiencing any issues with pictures and sound please refresh the page.\n#trentbridgelive \n\n#Notts #cricket #NottinghamshireCCC #score #nottsccclivestream #live #stream #sport #watchlive #livesports",
+        "publishedAt": "2025-04-06T09:30:41Z",
         "fixture": {
           "match_id": "e86f0f5b-5efb-4afb-8d30-04a14ec61ca4",
           "competition": "County Championship Division One",
@@ -40,12 +40,12 @@
         }
       },
       {
-        "videoId": null,
-        "title": "Somerset vs Worcestershire",
+        "videoId": "g2UrNkTosho",
+        "title": "LIVE STREAM: Somerset vs Worcestershire - Day Three",
         "channelName": "Somerset CCC",
         "channelId": "UCcCeaTFtzWdkTQYeFRRWvSg",
-        "description": "County Championship Division One - The Cooper Associates County Ground, Taunton",
-        "isPlaceholder": true,
+        "description": "#cricket #somerset #countychampionship",
+        "publishedAt": "2025-04-06T09:28:19Z",
         "fixture": {
           "match_id": "fe09fb7d-e583-4f67-98cf-5c3ec4e3967b",
           "competition": "County Championship Division One",
@@ -103,12 +103,12 @@
   "County Championship Division Two": {
     "live": [
       {
-        "videoId": null,
-        "title": "Middlesex vs Lancashire",
+        "videoId": "_q92Hldi5kI",
+        "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY THREE",
         "channelName": "Middlesex CCC",
         "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
-        "description": "County Championship Division Two - Lord's, London",
-        "isPlaceholder": true,
+        "description": "Middlesex Cricket's live and enhanced broadcast of our Division Two Rothesay County Championship match at Lord's Cricket Ground, London against Lancashire.\n\nBUY BLAST TICKETS: https://www.middlesexccc.com/page/tickets-home\nBECOME A MEMBER: https://shop.middlesexccc.com/memberships/subscribe/\n\nMiddlesex's live stream is brought to you by Dafabet, the Club's Principal Sponsor.\n\n#cricket #cricketlive #cricketlover #cricketlovers #livestream #onemiddlesex",
+        "publishedAt": "2025-04-06T08:52:41Z",
         "fixture": {
           "match_id": "f3efb9ca-1427-428b-9c38-63dc0a1a435d",
           "competition": "County Championship Division Two",
@@ -201,5 +201,5 @@
       }
     ]
   },
-  "lastUpdated": "2025-04-05T10:58:31.001964+00:00"
+  "lastUpdated": "2025-04-06T09:35:21.095451+00:00"
 }
