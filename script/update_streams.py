@@ -432,6 +432,9 @@ def format_streams_for_output(live_streams, upcoming_matches, placeholders):
                 "standardTitle": f"{placeholder['fixture']['home_team']} vs {placeholder['fixture']['away_team']}"
             }
     
+    # Sort streams by match_id
+    output["streams"] = dict(sorted(output["streams"].items()))
+    
     return output
 
 def main():
