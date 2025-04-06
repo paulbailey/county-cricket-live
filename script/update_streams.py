@@ -257,6 +257,7 @@ def get_new_streams(existing_streams, new_streams):
 def post_to_bluesky(streams_data):
     """Post to Bluesky about newly added streams."""
     if not streams_data:
+        print("No streams_data provided, skipping Bluesky post")
         return
         
     # Skip posting if SKIP_BLUESKY_POSTING is set
@@ -271,10 +272,24 @@ def post_to_bluesky(streams_data):
     new_streams = get_new_streams(existing_streams, streams_data)
     
     if not new_streams:
+        print("No new streams found after comparison, skipping Bluesky post")
         return  # No new streams to post about
         
+    # Verify Bluesky credentials are set
+    if not BLUESKY_USERNAME or not BLUESKY_PASSWORD:
+        print("ERROR: Bluesky credentials not properly set")
+        return
+        
+    print(f"Attempting to post about {len(new_streams)} new streams to Bluesky")
+    
     client = Client()
-    client.login(BLUESKY_USERNAME, BLUESKY_PASSWORD)
+    try:
+        print("Attempting to login to Bluesky...")
+        client.login(BLUESKY_USERNAME, BLUESKY_PASSWORD)
+        print("Successfully logged in to Bluesky")
+    except Exception as e:
+        print(f"ERROR: Failed to login to Bluesky: {str(e)}")
+        return
     
     # Create the post text
     text = "📺 New streams started:\n\n"
@@ -297,6 +312,8 @@ def post_to_bluesky(streams_data):
             text += f"• {fixture['home_team']} v {fixture['away_team']}\n"
         text += "\n"
     
+    print(f"Prepared post text:\n{text}")
+    
     # Split text into chunks if needed
     chunks = []
     current_chunk = ""
@@ -312,17 +329,22 @@ def post_to_bluesky(streams_data):
     if current_chunk:
         chunks.append(current_chunk.strip())
     
+    print(f"Split post into {len(chunks)} chunks")
+    
     # Post to Bluesky
     try:
         if not chunks:
+            print("No chunks to post")
             return
             
         # Post first chunk
+        print("Posting first chunk...")
         first_post = client.send_post(text=chunks[0])
         print("Posted first chunk to Bluesky successfully")
         
         # Post remaining chunks as replies
         for i, chunk in enumerate(chunks[1:]):
+            print(f"Posting chunk {i+2}...")
             # Add CTA link to the last chunk
             if i == len(chunks[1:]) - 1:
                 # Create faceted link for the CTA
@@ -347,10 +369,13 @@ def post_to_bluesky(streams_data):
                 )
             )
             client.send_post(text=chunk, reply_to=reply, facets=facets if i == len(chunks[1:]) - 1 else None)
-            print("Posted reply chunk to Bluesky successfully")
+            print(f"Posted chunk {i+2} successfully")
             
     except Exception as e:
-        print(f"Error posting to Bluesky: {str(e)}")
+        print(f"ERROR: Failed to post to Bluesky: {str(e)}")
+        print(f"Error type: {type(e)}")
+        if hasattr(e, '__dict__'):
+            print(f"Error attributes: {e.__dict__}")
 
 def main():
     channels = load_channels()
