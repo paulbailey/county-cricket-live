@@ -120,25 +120,6 @@
           "venue": "County Ground, Derby",
           "day": "Day 3 of 4"
         }
-      },
-      {
-        "videoId": null,
-        "title": "Middlesex vs Lancashire",
-        "channelName": "Middlesex CCC",
-        "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
-        "description": "County Championship Division Two - Lord's, London",
-        "isPlaceholder": true,
-        "fixture": {
-          "match_id": "f3efb9ca-1427-428b-9c38-63dc0a1a435d",
-          "competition": "County Championship Division Two",
-          "home_team": "Middlesex",
-          "away_team": "Lancashire",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "Lord's, London",
-          "day": "Day 3 of 4"
-        }
       }
     ],
     "upcoming": [
@@ -158,6 +139,25 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "Sophia Gardens, Cardiff",
+          "day": "Day 3 of 4"
+        }
+      },
+      {
+        "videoId": "_q92Hldi5kI",
+        "title": "MIDDLESEX V LANCASHIRE LIVE STREAM | ROTHESAY COUNTY CHAMPIONSHIP DAY THREE",
+        "channelName": "Middlesex CCC",
+        "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
+        "description": "Middlesex Cricket's live and enhanced broadcast of our Division Two Rothesay County Championship match at Lord's Cricket Ground, London against Lancashire.\n\nBUY BLAST TICKETS: https://www.middlesexccc.com/page/tickets-home\nBECOME A MEMBER: https://shop.middlesexccc.com/memberships/subscribe/\n\nMiddlesex's live stream is brought to you by Dafabet, the Club's Principal Sponsor.\n\n#cricket #cricketlive #cricketlover #cricketlovers #livestream #onemiddlesex",
+        "scheduledStartTime": "2025-04-06T09:30:00Z",
+        "fixture": {
+          "match_id": "f3efb9ca-1427-428b-9c38-63dc0a1a435d",
+          "competition": "County Championship Division Two",
+          "home_team": "Middlesex",
+          "away_team": "Lancashire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "Lord's, London",
           "day": "Day 3 of 4"
         }
       },
