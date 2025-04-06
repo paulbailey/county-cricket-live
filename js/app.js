@@ -43,7 +43,7 @@ Alpine.data('stream', () => ({
         this.metadataLoaded = true;
 
         // Set up periodic updates
-        setInterval(() => this.loadStreamData(), 5 * 60 * 1000);
+        setInterval(() => this.loadStreamData(), 2 * 60 * 1000);
 
         // Load YouTube IFrame API
         if (!window.YT) {
