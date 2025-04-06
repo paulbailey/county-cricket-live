@@ -230,32 +230,51 @@ def get_new_streams(existing_streams, new_streams):
     if "lastUpdated" in new_streams:
         new_streams = {k: v for k, v in new_streams.items() if k != "lastUpdated"}
     
+    # Create sets for existing streams
+    existing_video_ids = set()
+    existing_stream_keys = set()  # For streams without videoId
+    
+    for comp_data in existing_streams.values():
+        if isinstance(comp_data, dict) and "live" in comp_data:
+            for stream in comp_data["live"]:
+                if stream.get("videoId") and not stream.get("isPlaceholder"):
+                    existing_video_ids.add(stream["videoId"])
+                elif not stream.get("isPlaceholder"):
+                    # Create a unique key from other fields for streams without videoId
+                    key = (
+                        stream.get("channelId", ""),
+                        stream.get("title", ""),
+                        stream.get("startTime", ""),
+                        stream["fixture"]["home_team"] if "fixture" in stream else "",
+                        stream["fixture"]["away_team"] if "fixture" in stream else ""
+                    )
+                    existing_stream_keys.add(key)
+    
+    # Check each competition for new streams
     for comp_name, comp_data in new_streams.items():
         # Skip non-competition keys
         if not isinstance(comp_data, dict) or "live" not in comp_data:
             continue
             
-        # If competition doesn't exist in existing streams, all streams are new
-        if comp_name not in existing_streams:
-            new_streams_in_comp = [s for s in comp_data.get("live", []) if not s.get("isPlaceholder")]
-            new_fixture_streams.extend(new_streams_in_comp)
-            continue
-            
-        existing_comp = existing_streams[comp_name]
-        
-        # Create a set of existing video IDs that aren't placeholders
-        existing_video_ids = {
-            stream.get("videoId")
-            for stream in existing_comp.get("live", [])
-            if stream.get("videoId") and not stream.get("isPlaceholder")
-        }
-        
-        # Check for new streams that aren't placeholders
-        for new_stream in comp_data.get("live", []):
-            if (new_stream.get("videoId") 
-                and not new_stream.get("isPlaceholder")
-                and new_stream["videoId"] not in existing_video_ids):
-                new_fixture_streams.append(new_stream)
+        # Check each stream in the competition
+        for stream in comp_data["live"]:
+            if stream.get("isPlaceholder"):
+                continue
+                
+            if stream.get("videoId"):
+                if stream["videoId"] not in existing_video_ids:
+                    new_fixture_streams.append(stream)
+            else:
+                # Create key for comparison
+                key = (
+                    stream.get("channelId", ""),
+                    stream.get("title", ""),
+                    stream.get("startTime", ""),
+                    stream["fixture"]["home_team"] if "fixture" in stream else "",
+                    stream["fixture"]["away_team"] if "fixture" in stream else ""
+                )
+                if key not in existing_stream_keys:
+                    new_fixture_streams.append(stream)
     
     return new_fixture_streams
 
@@ -423,7 +442,14 @@ def main():
     # Only post to Bluesky if there are new streams
     if new_streams:
         print(f"Found {len(new_streams)} new streams, posting to Bluesky")
-        post_to_bluesky(new_streams)
+        # Group new streams by competition for posting
+        new_streams_by_comp = {}
+        for stream in new_streams:
+            comp_name = stream["fixture"]["competition"]
+            if comp_name not in new_streams_by_comp:
+                new_streams_by_comp[comp_name] = {"live": [], "upcoming": []}
+            new_streams_by_comp[comp_name]["live"].append(stream)
+        post_to_bluesky(new_streams_by_comp)
     else:
         print("No new streams found, skipping Bluesky post")
 
