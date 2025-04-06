@@ -124,6 +124,25 @@
     ],
     "upcoming": [
       {
+        "videoId": "at2CrJ0BvKE",
+        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day Four",
+        "channelName": "Glamorgan CCC",
+        "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
+        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
+        "scheduledStartTime": "2025-04-07T09:45:00Z",
+        "fixture": {
+          "match_id": "4a8b4cd8-a5a5-4cb7-929a-169b32c56167",
+          "competition": "County Championship Division Two",
+          "home_team": "Glamorgan",
+          "away_team": "Leicestershire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "Sophia Gardens, Cardiff",
+          "day": "Day 3 of 4"
+        }
+      },
+      {
         "videoId": "tnlMckJ8nyc",
         "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day Three",
         "channelName": "Glamorgan CCC",
