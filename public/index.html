@@ -46,7 +46,7 @@
                     <template x-for="stream in competition.live" :key="stream.fixture?.match_id">
                         <div class="card bg-base-100 shadow-xl">
                             <h4 class="text-lg font-semibold mb-2 px-4 pt-4"
-                                x-text="(stream.fixture?.home_team || '') + ' vs ' + (stream.fixture?.away_team || '') + (stream.fixture?.day ? ' - ' + stream.fixture.day : '')">
+                                x-text="(stream.fixture?.home_team || '') + ' vs ' + (stream.fixture?.away_team || '')">
                             </h4>
                             <figure class="relative aspect-w-16 aspect-h-9">
                                 <template x-if="stream.videoId">
@@ -73,13 +73,14 @@
                                 </template>
                             </figure>
                             <div class="card-body">
-                                <div class="text-sm mb-2" x-html="getMatchScore(stream.fixture?.match_id)"></div>
-                                <template x-if="stream.videoId">
-                                    <h3 class="text-sm text-base-content/70">
-                                        <a :href="'https://www.youtube.com/watch?v=' + stream.videoId" target="_blank"
-                                            rel="noopener noreferrer" class="hover:underline" x-text="stream.title"></a>
-                                    </h3>
-                                </template>
+                                <details class="text-sm">
+                                    <summary class="cursor-pointer">
+                                        <span x-html="getMatchScore(stream.fixture?.match_id)?.split('<br>')[0]"></span>
+                                    </summary>
+                                    <div class="mt-1"
+                                        x-html="getMatchScore(stream.fixture?.match_id)?.split('<br>').slice(1).join('<br>')">
+                                    </div>
+                                </details>
                                 <div class="text-base-content/70">
                                     <p><span class="font-semibold">Venue:</span> <span
                                             x-text="stream.fixture?.venue"></span></p>
@@ -88,13 +89,19 @@
                                                 x-text="formatLocalTime(stream.fixture?.start_time_gmt)"></span></p>
                                     </template>
                                 </div>
+                                <template x-if="stream.videoId">
+                                    <h3 class="text-sm text-base-content/70 mt-2">
+                                        <a :href="'https://www.youtube.com/watch?v=' + stream.videoId" target="_blank"
+                                            rel="noopener noreferrer" class="hover:underline" x-text="stream.title"></a>
+                                    </h3>
+                                </template>
                             </div>
                         </div>
                     </template>
                     <template x-for="stream in competition.upcoming" :key="stream.fixture?.match_id">
                         <div class="card bg-base-100 shadow-xl">
                             <h4 class="text-lg font-semibold mb-2 px-4 pt-4"
-                                x-text="(stream.fixture?.home_team || '') + ' vs ' + (stream.fixture?.away_team || '') + (stream.fixture?.day ? ' - ' + stream.fixture.day : '')">
+                                x-text="(stream.fixture?.home_team || '') + ' vs ' + (stream.fixture?.away_team || '')">
                             </h4>
                             <figure class="relative aspect-w-16 aspect-h-9 bg-base-200">
                                 <div class="absolute inset-0 flex items-center justify-center">
@@ -110,7 +117,14 @@
                                 </div>
                             </figure>
                             <div class="card-body">
-                                <div class="text-sm mb-2" x-html="getMatchScore(stream.fixture?.match_id)"></div>
+                                <details class="text-sm">
+                                    <summary class="cursor-pointer">
+                                        <span x-html="getMatchScore(stream.fixture?.match_id)?.split('<br>')[0]"></span>
+                                    </summary>
+                                    <div class="mt-1"
+                                        x-html="getMatchScore(stream.fixture?.match_id)?.split('<br>').slice(1).join('<br>')">
+                                    </div>
+                                </details>
                                 <div class="text-base-content/70">
                                     <p><span class="font-semibold">Venue:</span> <span
                                             x-text="stream.fixture?.venue"></span></p>
@@ -119,6 +133,12 @@
                                                 x-text="formatLocalTime(stream.fixture?.start_time_gmt)"></span></p>
                                     </template>
                                 </div>
+                                <template x-if="stream.videoId">
+                                    <h3 class="text-sm text-base-content/70 mt-2">
+                                        <a :href="'https://www.youtube.com/watch?v=' + stream.videoId" target="_blank"
+                                            rel="noopener noreferrer" class="hover:underline" x-text="stream.title"></a>
+                                    </h3>
+                                </template>
                             </div>
                         </div>
                     </template>
