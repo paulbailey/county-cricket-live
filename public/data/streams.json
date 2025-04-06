@@ -21,12 +21,12 @@
         }
       },
       {
-        "videoId": null,
-        "title": "Hampshire vs Yorkshire",
+        "videoId": "7vWXXfEE7ws",
+        "title": "LIVE STREAM | Hampshire Men v Yorkshire | Rothesay County Championship (Day Three)",
         "channelName": "Hampshire CCC",
         "channelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
-        "description": "County Championship Division One - The Rose Bowl, Southampton",
-        "isPlaceholder": true,
+        "description": "Watch the live stream from day three (Sunday 6th April 2025) of Hampshire Men's Rothesay County Championship match against Yorkshire at Utilita Bowl.\n\n\ud83d\udcf0 News \ud83d\udc49 https://www.utilitabowl.com/cricket/news/\n\ud83c\udf9f\ufe0f Tickets \ud83d\udc49 https://www.utilitabowl.com/cricket/tickets/\n\ud83d\udc65 Membership \ud83d\udc49 https://www.utilitabowl.com/cricket/membership/",
+        "publishedAt": "2025-04-06T08:13:51Z",
         "fixture": {
           "match_id": "520428ac-28bf-4107-909e-fd3c33faab4b",
           "competition": "County Championship Division One",
@@ -102,12 +102,12 @@
   "County Championship Division Two": {
     "live": [
       {
-        "videoId": null,
-        "title": "Derbyshire vs Gloucestershire",
+        "videoId": "IPmPFLyDHcw",
+        "title": "\ud83d\udd34 LIVE CRICKET | Derbyshire vs Gloucestershire, Day Three",
         "channelName": "Derbyshire CCC",
         "channelId": "UCdsIWgLpXJZowUJvvh4gDoA",
-        "description": "County Championship Division Two - County Ground, Derby",
-        "isPlaceholder": true,
+        "description": "Live action from The County Ground, Derby, as Derbyshire take on Gloucestershire in the Rothesay County Championship.\n\nMatch Centre \u27a1\ufe0f: https://cricket.derbyshireccc.com/fixtures/first-xi/2025-season/rothesay-county-championship/derbyshire-vs-gloucestershire-cc-2025/?tab=m_summary\n\nOnline Shop \u27a1\ufe0f: https://cricket.derbyshireccc.com/shop/\n\n#livestream #Derbyshire #cricket #live #countychampionship #countycricket",
+        "publishedAt": "2025-04-06T09:08:08Z",
         "fixture": {
           "match_id": "cd081f16-7216-4df7-8f47-f3803860a74d",
           "competition": "County Championship Division Two",
@@ -200,5 +200,5 @@
       }
     ]
   },
-  "lastUpdated": "2025-04-06T09:40:21.120795+00:00"
+  "lastUpdated": "2025-04-06T09:50:21.521362+00:00"
 }
