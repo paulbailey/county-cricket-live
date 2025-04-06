@@ -17,7 +17,7 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "County Ground, Chelmsford",
-          "day": "Day 2 of 4"
+          "day": "Day 3 of 4"
         }
       },
       {
@@ -36,7 +36,7 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "The Rose Bowl, Southampton",
-          "day": "Day 2 of 4"
+          "day": "Day 3 of 4"
         }
       },
       {
@@ -55,7 +55,7 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "Trent Bridge, Nottingham",
-          "day": "Day 2 of 4"
+          "day": "Day 3 of 4"
         }
       },
       {
@@ -74,7 +74,7 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "The Cooper Associates County Ground, Taunton",
-          "day": "Day 2 of 4"
+          "day": "Day 3 of 4"
         }
       },
       {
@@ -93,7 +93,7 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "Edgbaston, Birmingham",
-          "day": "Day 2 of 4"
+          "day": "Day 3 of 4"
         }
       }
     ],
@@ -117,26 +117,7 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "County Ground, Derby",
-          "day": "Day 2 of 4"
-        }
-      },
-      {
-        "videoId": null,
-        "title": "Glamorgan vs Leicestershire",
-        "channelName": "Glamorgan CCC",
-        "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
-        "description": "County Championship Division Two - Sophia Gardens, Cardiff",
-        "isPlaceholder": true,
-        "fixture": {
-          "match_id": "4a8b4cd8-a5a5-4cb7-929a-169b32c56167",
-          "competition": "County Championship Division Two",
-          "home_team": "Glamorgan",
-          "away_team": "Leicestershire",
-          "start_date": "2025-04-04",
-          "end_date": "2025-04-07",
-          "start_time_gmt": "10:00",
-          "venue": "Sophia Gardens, Cardiff",
-          "day": "Day 2 of 4"
+          "day": "Day 3 of 4"
         }
       },
       {
@@ -155,7 +136,7 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "Lord's, London",
-          "day": "Day 2 of 4"
+          "day": "Day 3 of 4"
         }
       },
       {
@@ -174,11 +155,31 @@
           "end_date": "2025-04-07",
           "start_time_gmt": "10:00",
           "venue": "County Ground, Northampton",
-          "day": "Day 2 of 4"
+          "day": "Day 3 of 4"
         }
       }
     ],
-    "upcoming": []
+    "upcoming": [
+      {
+        "videoId": "tnlMckJ8nyc",
+        "title": "\ud83d\udd34 Glamorgan vs Leicestershire | Rothesay County Championship | Day Three",
+        "channelName": "Glamorgan CCC",
+        "channelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
+        "description": "Glamorgan take on Leicestershire in the Rothesay County Championship. \n\n#OhGlammyGlammy",
+        "scheduledStartTime": "2025-04-06T09:45:00Z",
+        "fixture": {
+          "match_id": "4a8b4cd8-a5a5-4cb7-929a-169b32c56167",
+          "competition": "County Championship Division Two",
+          "home_team": "Glamorgan",
+          "away_team": "Leicestershire",
+          "start_date": "2025-04-04",
+          "end_date": "2025-04-07",
+          "start_time_gmt": "10:00",
+          "venue": "Sophia Gardens, Cardiff",
+          "day": "Day 3 of 4"
+        }
+      }
+    ]
   },
   "lastUpdated": "2025-04-05T10:58:31.001964+00:00"
 }
