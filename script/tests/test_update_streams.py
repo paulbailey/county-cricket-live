@@ -283,19 +283,32 @@ class TestMainFunction(BaseTest):
     
     def _make_test_data(self, has_fixtures=True, has_streams=True):
         """Create test data with optional flags."""
-        fixtures = [TestData.make_fixture()] if has_fixtures else []
+        fixture = TestData.make_fixture()
+        fixture["match_id"] = "match1"  # Add match_id to fixture
+        fixtures = [fixture] if has_fixtures else []
         streams = ([{
-            "fixture": TestData.make_fixture(),
+            "fixture": fixture,
             "videoId": "stream1",
             "channelId": "channel1",
             "title": "Live: Essex vs Kent",
             "description": "Live stream"
         }], []) if has_streams else ([], [])
         
+        # For mixed_streams case, include some existing streams
+        existing = {"County Championship": {"live": [], "upcoming": []}}
+        if has_streams and has_fixtures:
+            existing["County Championship"]["live"] = [{
+                "fixture": fixture,
+                "videoId": "existing_stream",
+                "channelId": "channel1",
+                "title": "Existing Stream",
+                "description": "Existing stream"
+            }]
+        
         return {
             "channels": {"channel1": TestData.make_channel()} if has_fixtures else {},
             "fixtures": fixtures,
-            "existing": {"County Championship": {"live": [], "upcoming": []}}
+            "existing": existing
         }, streams
 
     def _setup_mocks(self, mocks, data, expected):
@@ -314,13 +327,22 @@ class TestMainFunction(BaseTest):
             mocks["get_live_streams"].assert_called_once_with(data["fixtures"], data["channels"])
             mocks["load_existing_streams"].assert_called_once()
             live_streams, _ = expected
-            if live_streams:
-                mocks["post_to_bluesky"].assert_called_once_with({
-                    "County Championship": {
-                        "live": live_streams,
-                        "upcoming": []
+            
+            # Only verify post_to_bluesky if there are new streams to write
+            if live_streams and live_streams != data["existing"].get("County Championship", {}).get("live", []):
+                # Format the expected data to match the new format
+                expected_data = {
+                    "lastUpdated": mocks["post_to_bluesky"].call_args[0][0]["lastUpdated"],  # Use actual timestamp
+                    "streams": {
+                        "match1": {
+                            "videoId": "stream1",
+                            "title": "Live: Essex vs Kent",
+                            "channelId": "channel1",
+                            "standardTitle": "Essex vs Kent"
+                        }
                     }
-                })
+                }
+                mocks["post_to_bluesky"].assert_called_once_with(expected_data)
             else:
                 mocks["post_to_bluesky"].assert_not_called()
         else:
