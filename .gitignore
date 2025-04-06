@@ -21,6 +21,7 @@ Thumbs.db
 
 # Data files
 public/data/scores.json
+public/data/matches.json
 
 .venv/
 __pycache__/

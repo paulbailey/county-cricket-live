@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "A simple web application that shows live and upcoming county cricket streams from YouTube. The site automatically updates every 15 minutes during the day to show the latest streams.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build:css": "tailwindcss -i css/styles.css -o public/css/compiled.css --minify",
     "build:js": "esbuild js/app.js --bundle --outfile=public/js/bundle.js --minify",
     "build": "npm run build:css && npm run build:js",
-    "dev": "concurrently \"tailwindcss -i css/styles.css -o public/css/compiled.css --watch\" \"esbuild js/app.js --bundle --outfile=public/js/bundle.js --watch\" \"http-server public --no-browser --watch\""
+    "dev": "concurrently \"tailwindcss -i css/styles.css -o public/css/compiled.css --watch\" \"esbuild js/app.js --bundle --outfile=public/js/bundle.js --watch\" \"http-server public --no-browser --watch\"",
+    "generate-scores": "node script/generate-scores.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,7 @@
   "dependencies": {
     "@alpinejs/persist": "^3.14.9",
     "alpinejs": "^3.14.9",
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5"
   }
 }

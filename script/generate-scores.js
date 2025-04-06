@@ -1,10 +1,36 @@
-const fs = require('fs');
-const path = require('path');
-const axios = require('axios');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import axios from 'axios';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const CRICKET_API_KEY = process.env.CRICKET_API_KEY;
-const STREAMS_FILE = path.join(process.cwd(), 'public', 'data', 'streams.json');
-const SCORES_FILE = path.join(process.cwd(), 'public', 'data', 'scores.json');
+if (!CRICKET_API_KEY) {
+    console.error('CRICKET_API_KEY not found in environment variables');
+    process.exit(1);
+}
+
+const STREAMS_FILE = path.join(__dirname, '..', 'public', 'data', 'streams.json');
+const MATCHES_FILE = path.join(__dirname, '..', 'public', 'data', 'matches.json');
+const FIXTURES_DIR = path.join(__dirname, '..', 'public', 'data', 'fixtures');
+
+function loadFixtures() {
+    const today = new Date().toISOString().split('T')[0];
+    const fixturesFile = path.join(FIXTURES_DIR, `${today}.json`);
+
+    try {
+        return JSON.parse(fs.readFileSync(fixturesFile, 'utf8'));
+    } catch (error) {
+        console.error(`Error loading fixtures: ${error.message}`);
+        return [];
+    }
+}
 
 async function fetchMatchDetails(matchId) {
     try {
@@ -16,52 +42,69 @@ async function fetchMatchDetails(matchId) {
     }
 }
 
-async function generateScores() {
+async function generateMatches() {
     try {
-        // Read streams.json
+        // Read streams.json and fixtures
         const streamsData = JSON.parse(fs.readFileSync(STREAMS_FILE, 'utf8'));
+        const fixtures = loadFixtures();
 
-        // Extract all match IDs
-        const matchIds = new Set();
-        Object.values(streamsData).forEach(division => {
-            if (division.live) {
-                division.live.forEach(match => {
-                    if (match.fixture?.match_id) {
-                        matchIds.add(match.fixture.match_id);
-                    }
-                });
-            }
-            if (division.upcoming) {
-                division.upcoming.forEach(match => {
-                    if (match.fixture?.match_id) {
-                        matchIds.add(match.fixture.match_id);
-                    }
-                });
-            }
-        });
-
-        // Fetch match details for each match ID
-        const scores = {};
-        for (const matchId of matchIds) {
-            const matchDetails = await fetchMatchDetails(matchId);
-            if (matchDetails) {
-                scores[matchId] = matchDetails;
-            }
-        }
-
-        // Create the final object with lastUpdated at the root level
-        const output = {
+        // Initialize matches structure
+        const matches = {
             lastUpdated: new Date().toISOString(),
-            ...scores
+            competitions: {}
         };
 
-        // Write scores.json
-        fs.writeFileSync(SCORES_FILE, JSON.stringify(output, null, 2));
-        console.log('Successfully generated scores.json');
+        // Process all streams
+        for (const [matchId, stream] of Object.entries(streamsData.streams)) {
+            // Find corresponding fixture
+            const fixture = fixtures.find(f => f.match_id === matchId);
+            if (!fixture) {
+                console.warn(`No fixture found for match ${matchId}`);
+                continue;
+            }
+
+            // Get match details from API
+            const matchDetails = await fetchMatchDetails(matchId);
+
+            // Create match entry
+            const matchData = {
+                id: matchId,
+                venue: fixture.venue,
+                startTime: fixture.start_time,
+                homeTeam: fixture.home_team,
+                awayTeam: fixture.away_team,
+                scores: matchDetails?.score || null,
+                status: matchDetails?.status || 'upcoming',
+                stream: {
+                    videoId: stream.videoId,
+                    title: stream.title,
+                    channelId: stream.channelId
+                }
+            };
+
+            // Add to competition group
+            const competition = fixture.competition;
+            if (!matches.competitions[competition]) {
+                matches.competitions[competition] = {
+                    name: competition,
+                    matches: []
+                };
+            }
+            matches.competitions[competition].matches.push(matchData);
+        }
+
+        // Sort matches within each competition by home team
+        for (const competition of Object.values(matches.competitions)) {
+            competition.matches.sort((a, b) => a.homeTeam.localeCompare(b.homeTeam));
+        }
+
+        // Write matches.json
+        fs.writeFileSync(MATCHES_FILE, JSON.stringify(matches, null, 2));
+        console.log('Successfully generated matches.json');
     } catch (error) {
-        console.error('Error generating scores.json:', error);
+        console.error('Error generating matches.json:', error);
         process.exit(1);
     }
 }
 
-generateScores(); 
+generateMatches(); 

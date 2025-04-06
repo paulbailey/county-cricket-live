@@ -278,9 +278,9 @@ def get_new_streams(existing_streams, new_streams):
     
     return new_fixture_streams
 
-def post_to_bluesky(new_streams):
+def post_to_bluesky(streams_data):
     """Post to Bluesky about newly added streams."""
-    if not new_streams:
+    if not streams_data or not streams_data.get("streams"):
         print("No streams to post about")
         return
         
@@ -294,7 +294,7 @@ def post_to_bluesky(new_streams):
         print("ERROR: Bluesky credentials not properly set")
         return
         
-    print(f"Attempting to post about {len(new_streams)} new streams to Bluesky")
+    print(f"Attempting to post about {len(streams_data['streams'])} streams to Bluesky")
     
     client = Client()
     try:
@@ -308,13 +308,26 @@ def post_to_bluesky(new_streams):
     # Create the post text
     text = "📺 New streams started:\n\n"
     
-    # Group new streams by competition
+    # Group streams by competition
     streams_by_comp = {}
-    for stream in new_streams:
-        comp_name = stream["fixture"]["competition"]
+    for match_id, stream in streams_data["streams"].items():
+        # Skip streams without videoId (placeholders)
+        if not stream.get("videoId"):
+            continue
+            
+        # Load fixture data to get competition info
+        fixtures = load_fixtures()
+        fixture = next((f for f in fixtures if f["match_id"] == match_id), None)
+        if not fixture:
+            continue
+            
+        comp_name = fixture["competition"]
         if comp_name not in streams_by_comp:
             streams_by_comp[comp_name] = []
-        streams_by_comp[comp_name].append(stream)
+        streams_by_comp[comp_name].append({
+            "fixture": fixture,
+            "stream": stream
+        })
     
     # Add stream details in alphabetical order by competition
     for comp_name in sorted(streams_by_comp.keys()):
@@ -323,9 +336,8 @@ def post_to_bluesky(new_streams):
         comp_short = comp_name.replace("County Championship ", "")
         text += f"🏏 {comp_short}\n"
         # Sort streams by home team name
-        for stream in sorted(streams, key=lambda x: x["fixture"]["home_team"]):
-            fixture = stream["fixture"]
-            text += f"• {fixture['home_team']} v {fixture['away_team']}\n"
+        for stream_data in sorted(streams, key=lambda x: x["fixture"]["home_team"]):
+            text += f"• {stream_data['stream']['standardTitle']}\n"
         text += "\n"
     
     print(f"Prepared post text:\n{text}")
@@ -393,94 +405,66 @@ def post_to_bluesky(new_streams):
         if hasattr(e, '__dict__'):
             print(f"Error attributes: {e.__dict__}")
 
-def main():
-    channels = load_channels()
-    fixtures = load_fixtures()
-    existing_streams = load_existing_streams()
+def format_streams_for_output(live_streams, upcoming_matches, placeholders):
+    """Format streams into the expected output structure."""
+    output = {
+        "lastUpdated": datetime.now(timezone.utc).isoformat(),
+        "streams": {}
+    }
     
-    if not channels:
-        print("No channels found")
-        return
-        
-    if not fixtures:
-        print("No fixtures found")
-        return
-        
-    live_streams, upcoming_matches = get_live_streams(fixtures, channels)
-    placeholders = []  # We'll handle placeholders later
+    # Process all streams and add them to the streams object with match_id as key
+    for stream in live_streams + upcoming_matches:
+        if stream.get("fixture") and stream["fixture"].get("match_id"):
+            output["streams"][stream["fixture"]["match_id"]] = {
+                "videoId": stream.get("videoId"),
+                "title": stream.get("title"),
+                "channelId": stream.get("channelId"),
+                "standardTitle": f"{stream['fixture']['home_team']} vs {stream['fixture']['away_team']}"
+            }
     
-    # Group streams by competition
-    competitions = {}
-    for stream in live_streams:
-        comp_name = stream["fixture"]["competition"]
-        if comp_name not in competitions:
-            competitions[comp_name] = {"live": [], "upcoming": []}
-        competitions[comp_name]["live"].append(stream)
-        
-    for match in upcoming_matches:
-        comp_name = match["fixture"]["competition"]
-        if comp_name not in competitions:
-            competitions[comp_name] = {"live": [], "upcoming": []}
-        competitions[comp_name]["upcoming"].append(match)
+    # Add placeholders with null videoId
+    for placeholder in placeholders:
+        if placeholder.get("fixture") and placeholder["fixture"].get("match_id"):
+            output["streams"][placeholder["fixture"]["match_id"]] = {
+                "videoId": None,
+                "title": placeholder.get("title"),
+                "channelId": placeholder.get("channelId"),
+                "standardTitle": f"{placeholder['fixture']['home_team']} vs {placeholder['fixture']['away_team']}"
+            }
     
-    # Sort streams within each competition by home team
-    for comp_data in competitions.values():
-        comp_data["live"].sort(key=lambda x: x["fixture"]["home_team"])
-        comp_data["upcoming"].sort(key=lambda x: x["fixture"]["home_team"])
-    
-    # Get new streams before updating the file
-    new_streams = get_new_streams(existing_streams, competitions)
-    
-    # Check if there are any changes by comparing competitions with existing_streams
-    has_changes = False
-    if not existing_streams:
-        has_changes = bool(competitions)  # If no existing streams and we have competitions, that's a change
-    else:
-        # Remove lastUpdated for comparison
-        existing_without_timestamp = {k: v for k, v in existing_streams.items() if k != "lastUpdated"}
-        competitions_sorted = {k: competitions[k] for k in sorted(competitions.keys())}
-        has_changes = existing_without_timestamp != competitions_sorted
-    
-    # Combine all streams with sorted competitions
-    all_streams = {}
-    # Add competitions in sorted order
-    for comp_name in sorted(competitions.keys()):
-        all_streams[comp_name] = competitions[comp_name]
-    
-    # Only add lastUpdated if there are changes
-    if has_changes:
-        all_streams["lastUpdated"] = datetime.now(timezone.utc).isoformat()
-    elif "lastUpdated" in existing_streams:
-        # Keep the existing lastUpdated if no changes
-        all_streams["lastUpdated"] = existing_streams["lastUpdated"]
-    
-    # Write to file
-    output_dir = Path("public/data")
-    output_dir.mkdir(exist_ok=True)
-    
-    with open(output_dir / "streams.json", "w") as f:
-        json.dump(all_streams, f, indent=2)
-    
-    print(f"Found {len(live_streams)} live streams, {len(upcoming_matches)} upcoming matches, and {len(placeholders)} placeholders")
-    
-    # Only post to Bluesky if there are new streams
-    if new_streams:
-        print(f"Found {len(new_streams)} new streams, posting to Bluesky")
-        # Group new streams by competition for posting
-        new_streams_by_comp = {}
-        for stream in new_streams:
-            comp_name = stream["fixture"]["competition"]
-            if comp_name not in new_streams_by_comp:
-                new_streams_by_comp[comp_name] = {"live": [], "upcoming": []}
-            new_streams_by_comp[comp_name]["live"].append(stream)
-        # Sort streams within each competition
-        for comp_data in new_streams_by_comp.values():
-            comp_data["live"].sort(key=lambda x: x["fixture"]["home_team"])
-        post_to_bluesky(new_streams_by_comp)
-    else:
-        print("No new streams found, skipping Bluesky post")
+    return output
 
-    print(f"has_changes={str(has_changes).lower()}")
+def main():
+    try:
+        # Load required data
+        channels = load_channels()
+        fixtures = load_fixtures()
+        
+        if not fixtures:
+            print("No fixtures found for today")
+            return
+            
+        # Get live and upcoming streams
+        live_streams, upcoming_matches = get_live_streams(fixtures, channels)
+        
+        # Create placeholders for matches without streams
+        placeholders = create_placeholder_streams(fixtures, channels, live_streams, upcoming_matches)
+        
+        # Format streams data for output
+        output_data = format_streams_for_output(live_streams, upcoming_matches, placeholders)
+        
+        # Post new streams to Bluesky
+        post_to_bluesky(output_data)
+        
+        # Write streams.json
+        with open("public/data/streams.json", "w") as f:
+            json.dump(output_data, f, indent=2)
+            
+        print("Successfully updated streams.json")
+        
+    except Exception as e:
+        print(f"Error in main: {str(e)}")
+        exit(1)
 
 if __name__ == "__main__":
     main() 
