@@ -224,32 +224,37 @@ def get_new_streams(existing_streams, new_streams):
     """Compare existing and new streams to find new fixtures that now have streams."""
     new_fixture_streams = []
     
+    # Remove lastUpdated key if it exists
+    if "lastUpdated" in existing_streams:
+        existing_streams = {k: v for k, v in existing_streams.items() if k != "lastUpdated"}
+    if "lastUpdated" in new_streams:
+        new_streams = {k: v for k, v in new_streams.items() if k != "lastUpdated"}
+    
     for comp_name, comp_data in new_streams.items():
+        # Skip non-competition keys
+        if not isinstance(comp_data, dict) or "live" not in comp_data:
+            continue
+            
+        # If competition doesn't exist in existing streams, all streams are new
         if comp_name not in existing_streams:
-            # New competition found - all streams are new
-            new_fixture_streams.extend(comp_data.get("live", []))
+            new_streams_in_comp = [s for s in comp_data.get("live", []) if not s.get("isPlaceholder")]
+            new_fixture_streams.extend(new_streams_in_comp)
             continue
             
         existing_comp = existing_streams[comp_name]
         
-        # Create a set of existing fixture IDs that have streams
-        existing_fixture_ids = set()
-        for existing_stream in existing_comp.get("live", []):
-            if existing_stream.get("fixture") and not existing_stream.get("isPlaceholder"):
-                fixture = existing_stream["fixture"]
-                fixture_id = f"{fixture['home_team']}-{fixture['away_team']}-{fixture['start_date']}-{fixture['end_date']}"
-                existing_fixture_ids.add(fixture_id)
+        # Create a set of existing video IDs that aren't placeholders
+        existing_video_ids = {
+            stream.get("videoId")
+            for stream in existing_comp.get("live", [])
+            if stream.get("videoId") and not stream.get("isPlaceholder")
+        }
         
-        # Check for new fixtures that now have streams
+        # Check for new streams that aren't placeholders
         for new_stream in comp_data.get("live", []):
-            if new_stream.get("isPlaceholder") or not new_stream.get("fixture"):
-                continue
-                
-            fixture = new_stream["fixture"]
-            fixture_id = f"{fixture['home_team']}-{fixture['away_team']}-{fixture['start_date']}-{fixture['end_date']}"
-            
-            # Only add if this is a new fixture getting a stream
-            if fixture_id not in existing_fixture_ids:
+            if (new_stream.get("videoId") 
+                and not new_stream.get("isPlaceholder")
+                and new_stream["videoId"] not in existing_video_ids):
                 new_fixture_streams.append(new_stream)
     
     return new_fixture_streams
