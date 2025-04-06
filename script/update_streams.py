@@ -294,7 +294,22 @@ def post_to_bluesky(streams_data):
         print("ERROR: Bluesky credentials not properly set")
         return
         
-    print(f"Attempting to post about {len(streams_data['streams'])} streams to Bluesky")
+    # Load existing streams to compare
+    existing_data = load_existing_streams()
+    existing_streams = existing_data.get("streams", {})
+    new_streams = {}
+    
+    # Find only new streams (those that weren't in existing_streams)
+    for match_id, stream in streams_data["streams"].items():
+        if match_id not in existing_streams or not existing_streams[match_id].get("videoId"):
+            if stream.get("videoId"):  # Only include streams with actual video IDs
+                new_streams[match_id] = stream
+    
+    if not new_streams:
+        print("No new streams to post about")
+        return
+        
+    print(f"Attempting to post about {len(new_streams)} new streams to Bluesky")
     
     client = Client()
     try:
@@ -305,16 +320,13 @@ def post_to_bluesky(streams_data):
         print(f"ERROR: Failed to login to Bluesky: {str(e)}")
         return
     
-    # Create the post text
-    text = "📺 New streams started:\n\n"
+    # Create the post text using TextBuilder
+    text_builder = models.TextBuilder()
+    text_builder.text("📺 New streams started:\n\n")
     
     # Group streams by competition
     streams_by_comp = {}
-    for match_id, stream in streams_data["streams"].items():
-        # Skip streams without videoId (placeholders)
-        if not stream.get("videoId"):
-            continue
-            
+    for match_id, stream in new_streams.items():
         # Load fixture data to get competition info
         fixtures = load_fixtures()
         fixture = next((f for f in fixtures if f["match_id"] == match_id), None)
@@ -334,28 +346,36 @@ def post_to_bluesky(streams_data):
         streams = streams_by_comp[comp_name]
         # Shorten competition name if needed
         comp_short = comp_name.replace("County Championship ", "")
-        text += f"🏏 {comp_short}\n"
+        text_builder.text(f"🏏 {comp_short}\n")
         # Sort streams by home team name
         for stream_data in sorted(streams, key=lambda x: x["fixture"]["home_team"]):
-            text += f"• {stream_data['stream']['standardTitle']}\n"
-        text += "\n"
+            text_builder.text(f"• {stream_data['stream']['standardTitle']}\n")
+        text_builder.text("\n")
     
+    # Add link at the end
+    text_builder.text("\n🔗 Watch all streams at ")
+    text_builder.link("countycricket.live", "https://countycricket.live")
+    
+    # Get the final text and facets
+    text, facets = text_builder.build()
     print(f"Prepared post text:\n{text}")
     
     # Split text into chunks if needed
     chunks = []
     current_chunk = ""
+    current_facets = []
     
     for line in text.split("\n"):
         if len(current_chunk) + len(line) + 1 > 300:  # +1 for newline
             if current_chunk:
-                chunks.append(current_chunk.strip())
+                chunks.append((current_chunk.strip(), current_facets))
             current_chunk = line + "\n"
+            current_facets = []
         else:
             current_chunk += line + "\n"
     
     if current_chunk:
-        chunks.append(current_chunk.strip())
+        chunks.append((current_chunk.strip(), current_facets))
     
     print(f"Split post into {len(chunks)} chunks")
     
@@ -367,24 +387,12 @@ def post_to_bluesky(streams_data):
             
         # Post first chunk
         print("Posting first chunk...")
-        first_post = client.send_post(text=chunks[0])
+        first_post = client.send_post(text=chunks[0][0], facets=chunks[0][1])
         print("Posted first chunk to Bluesky successfully")
         
         # Post remaining chunks as replies
-        for i, chunk in enumerate(chunks[1:]):
+        for i, (chunk_text, chunk_facets) in enumerate(chunks[1:]):
             print(f"Posting chunk {i+2}...")
-            # Add CTA link to the last chunk
-            if i == len(chunks[1:]) - 1:
-                # Create faceted link for the CTA
-                cta_text = "\n\n🔗 Watch all streams at countycricket.live"
-                facets = [models.AppBskyRichtext.Facet(
-                    index=models.AppBskyRichtext.ByteSlice(
-                        byteStart=len(chunk) + len("\n\n🔗 Watch all streams at "),
-                        byteEnd=len(chunk) + len(cta_text)
-                    ),
-                    features=[models.AppBskyRichtext.FacetLink(uri="https://countycricket.live")]
-                )]
-                chunk += cta_text
             
             reply = models.AppBskyFeedPost.Reply(
                 parent=models.AppBskyFeedPost.ReplyRef(
@@ -396,7 +404,7 @@ def post_to_bluesky(streams_data):
                     cid=first_post.cid
                 )
             )
-            client.send_post(text=chunk, reply_to=reply, facets=facets if i == len(chunks[1:]) - 1 else None)
+            client.send_post(text=chunk_text, reply_to=reply, facets=chunk_facets)
             print(f"Posted chunk {i+2} successfully")
             
     except Exception as e:
