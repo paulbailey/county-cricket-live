@@ -456,14 +456,23 @@ def main():
         # Format streams data for output
         output_data = format_streams_for_output(live_streams, upcoming_matches, placeholders)
         
-        # Post new streams to Bluesky
-        post_to_bluesky(output_data)
+        # Load existing streams data
+        existing_data = load_existing_streams()
         
-        # Write streams.json
-        with open("public/data/streams.json", "w") as f:
-            json.dump(output_data, f, indent=2)
+        # Compare streams data (excluding lastUpdated)
+        output_streams = output_data.get("streams", {})
+        existing_streams = existing_data.get("streams", {})
+        
+        if output_streams != existing_streams:
+            # Only write if there are actual changes to the streams
+            with open("public/data/streams.json", "w") as f:
+                json.dump(output_data, f, indent=2)
+            print("Successfully updated streams.json with changes")
             
-        print("Successfully updated streams.json")
+            # Post new streams to Bluesky
+            post_to_bluesky(output_data)
+        else:
+            print("No changes detected in streams data, skipping write")
         
     except Exception as e:
         print(f"Error in main: {str(e)}")
