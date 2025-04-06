@@ -100,6 +100,15 @@ async function generateMatches() {
             competition.matches.sort((a, b) => a.homeTeam.localeCompare(b.homeTeam));
         }
 
+        // Sort competitions alphabetically and create new ordered object
+        const orderedCompetitions = {};
+        Object.keys(matches.competitions)
+            .sort()
+            .forEach(key => {
+                orderedCompetitions[key] = matches.competitions[key];
+            });
+        matches.competitions = orderedCompetitions;
+
         // Write matches.json
         fs.writeFileSync(MATCHES_FILE, JSON.stringify(matches, null, 2));
         console.log('Successfully generated matches.json');
