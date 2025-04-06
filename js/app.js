@@ -161,13 +161,17 @@ Alpine.data('stream', () => ({
                         }
                     });
 
-                    // Sort matches by home team
-                    transformedCompetitions[compName].live.sort((a, b) =>
-                        a.fixture.home_team.localeCompare(b.fixture.home_team)
-                    );
-                    transformedCompetitions[compName].upcoming.sort((a, b) =>
-                        a.fixture.home_team.localeCompare(b.fixture.home_team)
-                    );
+                    // Sort matches by home team, with ended matches last
+                    transformedCompetitions[compName].live.sort((a, b) => {
+                        if (a.matchEnded && !b.matchEnded) return 1;
+                        if (!a.matchEnded && b.matchEnded) return -1;
+                        return a.fixture.home_team.localeCompare(b.fixture.home_team);
+                    });
+                    transformedCompetitions[compName].upcoming.sort((a, b) => {
+                        if (a.matchEnded && !b.matchEnded) return 1;
+                        if (!a.matchEnded && b.matchEnded) return -1;
+                        return a.fixture.home_team.localeCompare(b.fixture.home_team);
+                    });
                 });
 
                 this.competitions = transformedCompetitions;
