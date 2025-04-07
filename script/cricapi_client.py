@@ -38,7 +38,7 @@ class CricAPIClient:
                         "id": series_id
                     }
                 )
-                response.raise_for_status()  # Raise an exception for bad status codes
+                response.raise_for_status()
                 data = response.json()
                 
                 if data["status"] == "success":
@@ -75,7 +75,7 @@ class CricAPIClient:
         
         return fixtures
 
-    async def get_match_details(self, match_id: str) -> MatchDetails:
+    def get_match_details(self, match_id: str) -> MatchDetails:
         """Get detailed information about a specific match."""
         try:
             response = requests.get(
@@ -114,7 +114,7 @@ class CricAPIClient:
             print(f"Error fetching match details for {match_id}: {str(e)}")
             return MatchDetails(id=match_id, status="error")
 
-    async def generate_matches_data(self, streams_data: StreamsData) -> MatchesData:
+    def generate_matches_data(self, streams_data: StreamsData) -> MatchesData:
         """Generate matches data from streams and fixtures."""
         try:
             # Read fixtures for today
@@ -139,7 +139,7 @@ class CricAPIClient:
                     continue
 
                 # Get match details from API
-                match_details = await self.get_match_details(match_id)
+                match_details = self.get_match_details(match_id)
 
                 # Create match entry
                 match_data = MatchData(
@@ -148,9 +148,9 @@ class CricAPIClient:
                     startTime=fixture.start_time_gmt,
                     homeTeam=fixture.home_team,
                     awayTeam=fixture.away_team,
-                    scores=match_details.score,
+                    scores=match_details.score.model_dump() if match_details.score else None,
                     status=match_details.status,
-                    stream=stream,
+                    stream=stream.model_dump(),
                     matchStarted=match_details.matchStarted,
                     matchEnded=match_details.matchEnded
                 )

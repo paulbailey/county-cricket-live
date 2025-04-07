@@ -28,3 +28,6 @@ test = [
 testpaths = ["script/tests"]
 pythonpath = ["."]
 addopts = "-v --cov=script --cov-report=term-missing"
+
+[tool.coverage.run]
+omit = ["script/tests/*"]
