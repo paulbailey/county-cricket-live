@@ -1,10 +1,9 @@
-import asyncio
 import json
 from pathlib import Path
 from cricapi_client import CricAPIClient
 from models import StreamsData
 
-async def main():
+def main():
     try:
         # Initialize the client
         client = CricAPIClient()
@@ -15,7 +14,7 @@ async def main():
             streams_data = StreamsData(**json.load(f))
 
         # Generate matches data
-        matches_data = await client.generate_matches_data(streams_data)
+        matches_data = client.generate_matches_data(streams_data)
 
         # Write matches.json
         matches_file = Path(__file__).parent.parent / 'public' / 'data' / 'matches.json'
@@ -28,4 +27,4 @@ async def main():
         exit(1)
 
 if __name__ == '__main__':
-    asyncio.run(main()) 
+    main() 
