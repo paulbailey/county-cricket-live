@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 from googleapiclient.discovery import build
 from atproto import Client, models
 from dotenv import load_dotenv
+from models import Channel, VideoStream, StreamsData, Fixture, StreamInfo
+from typing import Optional
 
 # Load environment variables
 load_dotenv()
@@ -17,15 +19,17 @@ youtube = build("youtube", "v3", developerKey=GOOGLE_API_KEY)
 BLUESKY_USERNAME = os.getenv("BLUESKY_USERNAME")
 BLUESKY_PASSWORD = os.getenv("BLUESKY_PASSWORD")
 
-def load_channels():
+def load_channels() -> dict[str, Channel]:
     """Load channels from channels.json file."""
     try:
         with open("channels.json") as f:
-            return json.load(f)
+            data = json.load(f)
+            return {id: Channel(**channel) for id, channel in data.items()}
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
 
-def load_fixtures():
+def load_fixtures() -> list[Fixture]:
+    """Load fixtures from today's fixtures file."""
     fixtures_dir = Path("public/data/fixtures")
     if not fixtures_dir.exists():
         return []
@@ -38,29 +42,37 @@ def load_fixtures():
         
     try:
         with open(fixtures_file) as f:
-            return json.load(f)
+            data = json.load(f)
+            return [Fixture(**fixture) for fixture in data]
     except json.JSONDecodeError:
         return []
 
-def load_existing_streams():
+def load_existing_streams() -> StreamsData:
     """Load existing streams from streams.json if it exists."""
     streams_file = Path("public/data/streams.json")
     if not streams_file.exists():
-        return {}
+        return StreamsData(
+            lastUpdated=datetime.now(timezone.utc),
+            streams={}
+        )
         
     try:
         with open(streams_file) as f:
-            return json.load(f)
+            data = json.load(f)
+            return StreamsData(**data)
     except json.JSONDecodeError:
-        return {}
+        return StreamsData(
+            lastUpdated=datetime.now(timezone.utc),
+            streams={}
+        )
 
-def get_channel_id_for_team(team_name, channels):
+def get_channel_id_for_team(team_name: str, channels: dict[str, Channel]) -> Optional[str]:
     for channel in channels.values():
-        if team_name == channel["name"] or team_name in channel.get("nicknames", []):
-            return channel["youtubeChannelId"]
+        if team_name == channel.name or team_name in channel.nicknames:
+            return channel.youtubeChannelId
     return None
 
-def get_live_streams(fixtures, channels):
+def get_live_streams(fixtures: list[Fixture], channels: dict[str, Channel]) -> tuple[list[VideoStream], list[VideoStream]]:
     live_streams = []
     upcoming_matches = []
     all_video_ids = []
@@ -69,7 +81,7 @@ def get_live_streams(fixtures, channels):
     # Create a set of channels that are actually playing today
     active_channels = set()
     for fixture in fixtures:
-        channel_id = get_channel_id_for_team(fixture["home_team"], channels)
+        channel_id = get_channel_id_for_team(fixture.home_team, channels)
         if channel_id:
             active_channels.add(channel_id)
     
@@ -126,7 +138,7 @@ def get_live_streams(fixtures, channels):
                 
                 # Find the matching fixture for this channel
                 matching_fixture = next(
-                    (f for f in fixtures if get_channel_id_for_team(f["home_team"], channels) == snippet["channelId"]),
+                    (f for f in fixtures if get_channel_id_for_team(f.home_team, channels) == snippet["channelId"]),
                     None
                 )
                 
@@ -134,25 +146,25 @@ def get_live_streams(fixtures, channels):
                     continue
 
                 # Skip if we've already processed this match
-                match_id = matching_fixture.get("match_id")
+                match_id = matching_fixture.match_id
                 if match_id in processed_match_ids:
                     continue
                 
                 # Check for live stream (must have actualStartTime but no actualEndTime)
                 if live_details.get("actualStartTime") and not live_details.get("actualEndTime"):
-                    stream_data = {
-                        "videoId": video_id,
-                        "title": snippet["title"],
-                        "channelName": next(
-                            ch["name"]
+                    stream_data = VideoStream(
+                        videoId=video_id,
+                        title=snippet["title"],
+                        channelName=next(
+                            ch.name
                             for ch in channels.values()
-                            if ch["youtubeChannelId"] == snippet["channelId"]
+                            if ch.youtubeChannelId == snippet["channelId"]
                         ),
-                        "channelId": snippet["channelId"],
-                        "description": snippet["description"],
-                        "publishedAt": snippet["publishedAt"],
-                        "fixture": matching_fixture
-                    }
+                        channelId=snippet["channelId"],
+                        description=snippet["description"],
+                        publishedAt=snippet["publishedAt"],
+                        fixture=matching_fixture
+                    )
                     live_streams.append(stream_data)
                     processed_match_ids.add(match_id)
                 
@@ -162,19 +174,19 @@ def get_live_streams(fixtures, channels):
                         live_details["scheduledStartTime"].replace("Z", "+00:00")
                     )
                     if scheduled_time > current_time:
-                        match_data = {
-                            "videoId": video_id,
-                            "title": snippet["title"],
-                            "channelName": next(
-                                ch["name"]
+                        match_data = VideoStream(
+                            videoId=video_id,
+                            title=snippet["title"],
+                            channelName=next(
+                                ch.name
                                 for ch in channels.values()
-                                if ch["youtubeChannelId"] == snippet["channelId"]
+                                if ch.youtubeChannelId == snippet["channelId"]
                             ),
-                            "channelId": snippet["channelId"],
-                            "description": snippet["description"],
-                            "scheduledStartTime": live_details["scheduledStartTime"],
-                            "fixture": matching_fixture
-                        }
+                            channelId=snippet["channelId"],
+                            description=snippet["description"],
+                            scheduledStartTime=live_details["scheduledStartTime"],
+                            fixture=matching_fixture
+                        )
                         upcoming_matches.append(match_data)
                         processed_match_ids.add(match_id)
                             
@@ -186,36 +198,42 @@ def get_live_streams(fixtures, channels):
             
     return live_streams, upcoming_matches
 
-def create_placeholder_streams(fixtures, channels, live_streams, upcoming_matches):
+def create_placeholder_streams(
+    fixtures: list[Fixture],
+    channels: dict[str, Channel],
+    live_streams: list[VideoStream],
+    upcoming_matches: list[VideoStream]
+) -> list[VideoStream]:
+    """Create placeholder streams for fixtures without actual streams."""
     placeholders = []
     
     for fixture in fixtures:
-        channel_id = get_channel_id_for_team(fixture["home_team"], channels)
+        channel_id = get_channel_id_for_team(fixture.home_team, channels)
         if not channel_id:
             continue
             
         # Check if we already have a stream for this fixture
         has_stream = False
         for stream in live_streams + upcoming_matches:
-            if stream["channelId"] == channel_id:
+            if stream.channelId == channel_id:
                 has_stream = True
                 break
                 
         if not has_stream:
             # Create a placeholder
-            placeholder = {
-                "videoId": None,
-                "title": f"{fixture['home_team']} vs {fixture['away_team']}",
-                "channelName": next(
-                    ch["name"]
+            placeholder = VideoStream(
+                videoId=None,
+                title=f"{fixture.home_team} vs {fixture.away_team}",
+                channelName=next(
+                    ch.name
                     for ch in channels.values()
-                    if ch["youtubeChannelId"] == channel_id
+                    if ch.youtubeChannelId == channel_id
                 ),
-                "channelId": channel_id,
-                "description": f"{fixture['competition']} - {fixture['venue']}",
-                "isPlaceholder": True,
-                "fixture": fixture
-            }
+                channelId=channel_id,
+                description=f"{fixture.competition} - {fixture.venue}",
+                isPlaceholder=True,
+                fixture=fixture
+            )
             placeholders.append(placeholder)
             
     return placeholders
@@ -278,9 +296,9 @@ def get_new_streams(existing_streams, new_streams):
     
     return new_fixture_streams
 
-def post_to_bluesky(streams_data):
+def post_to_bluesky(streams_data: StreamsData):
     """Post to Bluesky about newly added streams."""
-    if not streams_data or not streams_data.get("streams"):
+    if not streams_data or not streams_data.streams:
         print("No streams to post about")
         return
         
@@ -296,13 +314,13 @@ def post_to_bluesky(streams_data):
         
     # Load existing streams to compare
     existing_data = load_existing_streams()
-    existing_streams = existing_data.get("streams", {})
+    existing_streams = existing_data.streams
     new_streams = {}
     
     # Find only new streams (those that weren't in existing_streams)
-    for match_id, stream in streams_data["streams"].items():
-        if match_id not in existing_streams or not existing_streams[match_id].get("videoId"):
-            if stream.get("videoId"):  # Only include streams with actual video IDs
+    for match_id, stream in streams_data.streams.items():
+        if match_id not in existing_streams or not existing_streams[match_id].videoId:
+            if stream.videoId:  # Only include streams with actual video IDs
                 new_streams[match_id] = stream
     
     if not new_streams:
@@ -329,11 +347,11 @@ def post_to_bluesky(streams_data):
     for match_id, stream in new_streams.items():
         # Load fixture data to get competition info
         fixtures = load_fixtures()
-        fixture = next((f for f in fixtures if f["match_id"] == match_id), None)
+        fixture = next((f for f in fixtures if f.match_id == match_id), None)
         if not fixture:
             continue
             
-        comp_name = fixture["competition"]
+        comp_name = fixture.competition
         if comp_name not in streams_by_comp:
             streams_by_comp[comp_name] = []
         streams_by_comp[comp_name].append({
@@ -348,8 +366,8 @@ def post_to_bluesky(streams_data):
         comp_short = comp_name.replace("County Championship ", "")
         text_builder.text(f"🏏 {comp_short}\n")
         # Sort streams by home team name
-        for stream_data in sorted(streams, key=lambda x: x["fixture"]["home_team"]):
-            text_builder.text(f"• {stream_data['stream']['standardTitle']}\n")
+        for stream_data in sorted(streams, key=lambda x: x["fixture"].home_team):
+            text_builder.text(f"• {stream_data['stream'].standardTitle}\n")
         text_builder.text("\n")
     
     # Add link at the end
@@ -413,35 +431,39 @@ def post_to_bluesky(streams_data):
         if hasattr(e, '__dict__'):
             print(f"Error attributes: {e.__dict__}")
 
-def format_streams_for_output(live_streams, upcoming_matches, placeholders):
-    """Format streams into the expected output structure."""
-    output = {
-        "lastUpdated": datetime.now(timezone.utc).isoformat(),
-        "streams": {}
-    }
+def format_streams_for_output(
+    live_streams: list[VideoStream],
+    upcoming_matches: list[VideoStream],
+    placeholders: list[VideoStream]
+) -> StreamsData:
+    """Format streams into the final output structure."""
+    output = StreamsData(
+        lastUpdated=datetime.now(timezone.utc),
+        streams={}
+    )
     
     # Process all streams and add them to the streams object with match_id as key
     for stream in live_streams + upcoming_matches:
-        if stream.get("fixture") and stream["fixture"].get("match_id"):
-            output["streams"][stream["fixture"]["match_id"]] = {
-                "videoId": stream.get("videoId"),
-                "title": stream.get("title"),
-                "channelId": stream.get("channelId"),
-                "standardTitle": f"{stream['fixture']['home_team']} vs {stream['fixture']['away_team']}"
-            }
+        if stream.fixture and stream.fixture.match_id:
+            output.streams[stream.fixture.match_id] = StreamInfo(
+                videoId=stream.videoId,
+                title=stream.title,
+                channelId=stream.channelId,
+                standardTitle=f"{stream.fixture.home_team} vs {stream.fixture.away_team}"
+            )
     
     # Add placeholders with null videoId
     for placeholder in placeholders:
-        if placeholder.get("fixture") and placeholder["fixture"].get("match_id"):
-            output["streams"][placeholder["fixture"]["match_id"]] = {
-                "videoId": None,
-                "title": placeholder.get("title"),
-                "channelId": placeholder.get("channelId"),
-                "standardTitle": f"{placeholder['fixture']['home_team']} vs {placeholder['fixture']['away_team']}"
-            }
+        if placeholder.fixture and placeholder.fixture.match_id:
+            output.streams[placeholder.fixture.match_id] = StreamInfo(
+                videoId=None,
+                title=placeholder.title,
+                channelId=placeholder.channelId,
+                standardTitle=f"{placeholder.fixture.home_team} vs {placeholder.fixture.away_team}"
+            )
     
     # Sort streams by match_id
-    output["streams"] = dict(sorted(output["streams"].items()))
+    output.streams = dict(sorted(output.streams.items()))
     
     return output
 
@@ -468,13 +490,16 @@ def main():
         existing_data = load_existing_streams()
         
         # Compare streams data (excluding lastUpdated)
-        output_streams = output_data.get("streams", {})
-        existing_streams = existing_data.get("streams", {})
+        output_streams = output_data.streams
+        existing_streams = existing_data.streams
         
         if output_streams != existing_streams:
             # Only write if there are actual changes to the streams
             with open("public/data/streams.json", "w") as f:
-                json.dump(output_data, f, indent=2)
+                # Convert datetime to ISO format string for JSON serialization
+                data = output_data.model_dump()
+                data["lastUpdated"] = data["lastUpdated"].isoformat()
+                json.dump(data, f, indent=2)
             print("Successfully updated streams.json with changes")
             
             # Post new streams to Bluesky

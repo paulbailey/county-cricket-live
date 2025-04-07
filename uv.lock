@@ -784,6 +784,7 @@ dependencies = [
     { name = "google-api-python-client" },
     { name = "google-auth-httplib2" },
     { name = "google-auth-oauthlib" },
+    { name = "pydantic" },
 ]
 
 [package.dev-dependencies]
@@ -803,6 +804,7 @@ requires-dist = [
     { name = "google-api-python-client", specifier = ">=2.166.0" },
     { name = "google-auth-httplib2", specifier = ">=0.2.0" },
     { name = "google-auth-oauthlib", specifier = ">=1.2.1" },
+    { name = "pydantic", specifier = ">=2.6.1" },
 ]
 
 [package.metadata.requires-dev]
