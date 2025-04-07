@@ -1,5 +1,6 @@
 import Alpine from 'alpinejs'
 import persist from '@alpinejs/persist'
+import morph from '@alpinejs/morph'
 
 // Debounce function to limit the rate at which a function can fire
 const debounce = (func, wait) => {
@@ -348,6 +349,7 @@ Alpine.data('stream', () => ({
 
 // Initialize Alpine
 Alpine.plugin(persist)
+Alpine.plugin(morph)
 Alpine.start()
 
 function displayStreams(streams) {
