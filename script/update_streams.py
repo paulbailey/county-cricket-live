@@ -285,8 +285,8 @@ def post_to_bluesky(streams_data: StreamsData):
     
     # Find only new streams (those that weren't in existing_streams)
     for match_id, stream in streams_data.streams.items():
-        if match_id not in existing_streams or not existing_streams[match_id].videoId:
-            if stream.videoId:  # Only include streams with actual video IDs
+        if match_id not in existing_streams or not existing_streams[match_id].video_id:
+            if stream.video_id:  # Only include streams with actual video IDs
                 new_streams[match_id] = stream
     
     if not new_streams:
