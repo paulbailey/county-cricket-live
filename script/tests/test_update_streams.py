@@ -13,7 +13,7 @@ def test_load_channels(mock_json_load, mock_open, mock_channels):
     mock_json_load.return_value = {
         id: {
             "name": channel.name,
-            "youtubeChannelId": channel.youtubeChannelId,
+            "youtube_channel_id": channel.youtube_channel_id,
             "nicknames": channel.nicknames
         } for id, channel in mock_channels.items()
     }
@@ -21,7 +21,7 @@ def test_load_channels(mock_json_load, mock_open, mock_channels):
     channels = load_channels()
     assert len(channels) == 2
     assert channels["team1"].name == "Team A"
-    assert channels["team2"].youtubeChannelId == "channel2"
+    assert channels["team2"].youtube_channel_id == "channel2"
 
 def test_get_channel_id_for_team(mock_channels):
     """Test getting channel ID for a team."""

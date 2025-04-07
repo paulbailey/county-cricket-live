@@ -52,7 +52,7 @@ def load_existing_streams() -> StreamsData:
     streams_file = Path("public/data/streams.json")
     if not streams_file.exists():
         return StreamsData(
-            lastUpdated=datetime.now(timezone.utc),
+            last_updated=datetime.now(timezone.utc),
             streams={}
         )
         
@@ -62,14 +62,14 @@ def load_existing_streams() -> StreamsData:
             return StreamsData(**data)
     except json.JSONDecodeError:
         return StreamsData(
-            lastUpdated=datetime.now(timezone.utc),
+            last_updated=datetime.now(timezone.utc),
             streams={}
         )
 
 def get_channel_id_for_team(team_name: str, channels: dict[str, Channel]) -> Optional[str]:
     for channel in channels.values():
         if team_name == channel.name or team_name in channel.nicknames:
-            return channel.youtubeChannelId
+            return channel.youtube_channel_id
     return None
 
 def get_live_streams(fixtures: list[Fixture], channels: dict[str, Channel]) -> tuple[list[VideoStream], list[VideoStream]]:
@@ -153,16 +153,16 @@ def get_live_streams(fixtures: list[Fixture], channels: dict[str, Channel]) -> t
                 # Check for live stream (must have actualStartTime but no actualEndTime)
                 if live_details.get("actualStartTime") and not live_details.get("actualEndTime"):
                     stream_data = VideoStream(
-                        videoId=video_id,
+                        video_id=video_id,
                         title=snippet["title"],
-                        channelName=next(
+                        channel_name=next(
                             ch.name
                             for ch in channels.values()
-                            if ch.youtubeChannelId == snippet["channelId"]
+                            if ch.youtube_channel_id == snippet["channelId"]
                         ),
-                        channelId=snippet["channelId"],
+                        channel_id=snippet["channelId"],
                         description=snippet["description"],
-                        publishedAt=snippet["publishedAt"],
+                        published_at=snippet["publishedAt"],
                         fixture=matching_fixture
                     )
                     live_streams.append(stream_data)
@@ -175,16 +175,16 @@ def get_live_streams(fixtures: list[Fixture], channels: dict[str, Channel]) -> t
                     )
                     if scheduled_time > current_time:
                         match_data = VideoStream(
-                            videoId=video_id,
+                            video_id=video_id,
                             title=snippet["title"],
-                            channelName=next(
+                            channel_name=next(
                                 ch.name
                                 for ch in channels.values()
-                                if ch.youtubeChannelId == snippet["channelId"]
+                                if ch.youtube_channel_id == snippet["channelId"]
                             ),
-                            channelId=snippet["channelId"],
+                            channel_id=snippet["channelId"],
                             description=snippet["description"],
-                            scheduledStartTime=live_details["scheduledStartTime"],
+                            scheduled_start_time=live_details["scheduledStartTime"],
                             fixture=matching_fixture
                         )
                         upcoming_matches.append(match_data)
@@ -215,23 +215,23 @@ def create_placeholder_streams(
         # Check if we already have a stream for this fixture
         has_stream = False
         for stream in live_streams + upcoming_matches:
-            if stream.channelId == channel_id:
+            if stream.channel_id == channel_id:
                 has_stream = True
                 break
                 
         if not has_stream:
             # Create a placeholder
             placeholder = VideoStream(
-                videoId=None,
+                video_id=None,
                 title=f"{fixture.home_team} vs {fixture.away_team}",
-                channelName=next(
+                channel_name=next(
                     ch.name
                     for ch in channels.values()
-                    if ch.youtubeChannelId == channel_id
+                    if ch.youtube_channel_id == channel_id
                 ),
-                channelId=channel_id,
+                channel_id=channel_id,
                 description=f"{fixture.competition} - {fixture.venue}",
-                isPlaceholder=True,
+                is_placeholder=True,
                 fixture=fixture
             )
             placeholders.append(placeholder)
@@ -242,11 +242,11 @@ def get_new_streams(existing_streams, new_streams):
     """Compare existing and new streams to find new fixtures that now have streams."""
     new_fixture_streams = []
     
-    # Remove lastUpdated key if it exists
-    if "lastUpdated" in existing_streams:
-        existing_streams = {k: v for k, v in existing_streams.items() if k != "lastUpdated"}
-    if "lastUpdated" in new_streams:
-        new_streams = {k: v for k, v in new_streams.items() if k != "lastUpdated"}
+    # Remove last_updated key if it exists
+    if "last_updated" in existing_streams:
+        existing_streams = {k: v for k, v in existing_streams.items() if k != "last_updated"}
+    if "last_updated" in new_streams:
+        new_streams = {k: v for k, v in new_streams.items() if k != "last_updated"}
     
     # Create sets for existing streams
     existing_video_ids = set()
@@ -438,7 +438,7 @@ def format_streams_for_output(
 ) -> StreamsData:
     """Format streams into the final output structure."""
     output = StreamsData(
-        lastUpdated=datetime.now(timezone.utc),
+        last_updated=datetime.now(timezone.utc),
         streams={}
     )
     
@@ -446,20 +446,20 @@ def format_streams_for_output(
     for stream in live_streams + upcoming_matches:
         if stream.fixture and stream.fixture.match_id:
             output.streams[stream.fixture.match_id] = StreamInfo(
-                videoId=stream.videoId,
+                video_id=stream.video_id,
                 title=stream.title,
-                channelId=stream.channelId,
-                standardTitle=f"{stream.fixture.home_team} vs {stream.fixture.away_team}"
+                channel_id=stream.channel_id,
+                standard_title=f"{stream.fixture.home_team} vs {stream.fixture.away_team}"
             )
     
     # Add placeholders with null videoId
     for placeholder in placeholders:
         if placeholder.fixture and placeholder.fixture.match_id:
             output.streams[placeholder.fixture.match_id] = StreamInfo(
-                videoId=None,
+                video_id=None,
                 title=placeholder.title,
-                channelId=placeholder.channelId,
-                standardTitle=f"{placeholder.fixture.home_team} vs {placeholder.fixture.away_team}"
+                channel_id=placeholder.channel_id,
+                standard_title=f"{placeholder.fixture.home_team} vs {placeholder.fixture.away_team}"
             )
     
     # Sort streams by match_id
@@ -489,7 +489,7 @@ def main():
         # Load existing streams data
         existing_data = load_existing_streams()
         
-        # Compare streams data (excluding lastUpdated)
+        # Compare streams data (excluding last_updated)
         output_streams = output_data.streams
         existing_streams = existing_data.streams
         
@@ -497,7 +497,7 @@ def main():
             # Only write if there are actual changes to the streams
             with open("public/data/streams.json", "w") as f:
                 # Convert datetime to ISO format string for JSON serialization
-                data = output_data.model_dump()
+                data = output_data.model_dump(by_alias=True)
                 data["lastUpdated"] = data["lastUpdated"].isoformat()
                 json.dump(data, f, indent=2)
             print("Successfully updated streams.json with changes")

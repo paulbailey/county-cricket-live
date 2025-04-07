@@ -19,7 +19,7 @@ def main():
         # Write matches.json
         matches_file = Path(__file__).parent.parent / 'public' / 'data' / 'matches.json'
         with open(matches_file, 'w', encoding='utf-8') as f:
-            json.dump(matches_data.model_dump(), f, indent=2, default=str)
+            json.dump(matches_data.model_dump(by_alias=True), f, indent=2, default=str)
         print('Successfully generated matches.json')
 
     except Exception as e:

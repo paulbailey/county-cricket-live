@@ -95,24 +95,24 @@ class CricAPIClient:
                     innings_scores = []
                     for innings in match_data["score"]:
                         innings_scores.append(InningsScore(
-                            innings=innings.get("inning", ""),
-                            runs=innings.get("r", 0),
-                            wickets=innings.get("w", 0),
-                            overs=innings.get("o", 0.0)
+                            innings_name=innings.get("inning", ""),
+                            runs_scored=innings.get("r", 0),
+                            wickets_fallen=innings.get("w", 0),
+                            overs_bowled=innings.get("o", 0.0)
                         ))
-                    score = MatchScore(innings=innings_scores)
+                    score = MatchScore(innings_list=innings_scores)
                 
                 return MatchDetails(
-                    id=match_id,
+                    match_id=match_id,
                     status=match_data.get("status", "upcoming"),
-                    matchStarted=match_data.get("matchStarted"),
-                    matchEnded=match_data.get("matchEnded"),
+                    match_started=match_data.get("matchStarted"),
+                    match_ended=match_data.get("matchEnded"),
                     score=score
                 )
-            return MatchDetails(id=match_id, status="error")
+            return MatchDetails(match_id=match_id, status="error")
         except Exception as e:
             print(f"Error fetching match details for {match_id}: {str(e)}")
-            return MatchDetails(id=match_id, status="error")
+            return MatchDetails(match_id=match_id, status="error")
 
     def generate_matches_data(self, streams_data: StreamsData) -> MatchesData:
         """Generate matches data from streams and fixtures."""
@@ -126,7 +126,7 @@ class CricAPIClient:
 
             # Initialize matches structure
             matches = MatchesData(
-                lastUpdated=datetime.now(),
+                last_updated=datetime.now(),
                 competitions={}
             )
 
@@ -143,30 +143,30 @@ class CricAPIClient:
 
                 # Create match entry
                 match_data = MatchData(
-                    id=match_id,
+                    match_id=match_id,
                     venue=fixture.venue,
-                    startTime=fixture.start_time_gmt,
-                    homeTeam=fixture.home_team,
-                    awayTeam=fixture.away_team,
+                    start_time=fixture.start_time_gmt,
+                    home_team=fixture.home_team,
+                    away_team=fixture.away_team,
                     scores=match_details.score.model_dump() if match_details.score else None,
                     status=match_details.status,
                     stream=stream.model_dump(),
-                    matchStarted=match_details.matchStarted,
-                    matchEnded=match_details.matchEnded
+                    match_started=match_details.match_started,
+                    match_ended=match_details.match_ended
                 )
 
                 # Add to competition group
                 competition = fixture.competition.value
                 if competition not in matches.competitions:
                     matches.competitions[competition] = CompetitionMatches(
-                        name=competition,
-                        matches=[]
+                        competition_name=competition,
+                        matches_list=[]
                     )
-                matches.competitions[competition].matches.append(match_data)
+                matches.competitions[competition].matches_list.append(match_data)
 
             # Sort matches within each competition by home team
             for competition in matches.competitions.values():
-                competition.matches.sort(key=lambda x: x.homeTeam)
+                competition.matches_list.sort(key=lambda x: x.home_team)
 
             # Sort competitions alphabetically
             matches.competitions = dict(sorted(matches.competitions.items()))
