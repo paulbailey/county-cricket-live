@@ -51,4 +51,40 @@ class StreamInfo(BaseModel):
 
 class StreamsData(BaseModel):
     lastUpdated: datetime = Field(description="When the streams data was last updated")
-    streams: dict[str, StreamInfo] = Field(description="Streams organized by match ID") 
+    streams: dict[str, StreamInfo] = Field(description="Streams organized by match ID")
+
+class InningsScore(BaseModel):
+    innings: str = Field(description="Name of the innings")
+    runs: int = Field(description="Total runs scored")
+    wickets: int = Field(description="Total wickets fallen")
+    overs: float = Field(description="Overs bowled")
+
+class MatchScore(BaseModel):
+    innings: list[InningsScore] = Field(description="List of innings scores")
+
+class MatchDetails(BaseModel):
+    id: str = Field(description="Unique identifier for the match")
+    status: str = Field(description="Current status of the match")
+    matchStarted: Optional[bool] = Field(None, description="Whether the match has started")
+    matchEnded: Optional[bool] = Field(None, description="Whether the match has ended")
+    score: Optional[MatchScore] = Field(None, description="Current match score")
+
+class MatchData(BaseModel):
+    id: str = Field(description="Unique identifier for the match")
+    venue: str = Field(description="Name of the venue")
+    startTime: str = Field(description="Start time of the match")
+    homeTeam: str = Field(description="Name of the home team")
+    awayTeam: str = Field(description="Name of the away team")
+    scores: Optional[MatchScore] = Field(None, description="Current match score")
+    status: str = Field(description="Current status of the match")
+    stream: StreamInfo = Field(description="Stream information")
+    matchStarted: Optional[bool] = Field(None, description="Whether the match has started")
+    matchEnded: Optional[bool] = Field(None, description="Whether the match has ended")
+
+class CompetitionMatches(BaseModel):
+    name: str = Field(description="Name of the competition")
+    matches: list[MatchData] = Field(description="List of matches in the competition")
+
+class MatchesData(BaseModel):
+    lastUpdated: datetime = Field(description="When the matches data was last updated")
+    competitions: dict[str, CompetitionMatches] = Field(description="Matches organized by competition") 

@@ -1,8 +1,13 @@
 import os
+import json
+from pathlib import Path
 from dotenv import load_dotenv
 import requests
 from datetime import datetime, timedelta
-from models import Fixture, CompetitionType
+from models import (
+    Fixture, CompetitionType, MatchDetails, MatchData, CompetitionMatches,
+    MatchesData, StreamsData, MatchScore, InningsScore
+)
 
 # Load environment variables from .env file
 load_dotenv()
@@ -68,4 +73,105 @@ class CricAPIClient:
                 print(f"Error processing data for {competition}: {str(e)}")
                 continue
         
-        return fixtures 
+        return fixtures
+
+    async def get_match_details(self, match_id: str) -> MatchDetails:
+        """Get detailed information about a specific match."""
+        try:
+            response = requests.get(
+                f"{self.base_url}/match_info",
+                params={
+                    "apikey": self.api_key,
+                    "id": match_id
+                }
+            )
+            response.raise_for_status()
+            data = response.json()
+            
+            if data["status"] == "success":
+                match_data = data["data"]
+                score = None
+                if "score" in match_data and match_data["score"]:
+                    innings_scores = []
+                    for innings in match_data["score"]:
+                        innings_scores.append(InningsScore(
+                            innings=innings.get("inning", ""),
+                            runs=innings.get("r", 0),
+                            wickets=innings.get("w", 0),
+                            overs=innings.get("o", 0.0)
+                        ))
+                    score = MatchScore(innings=innings_scores)
+                
+                return MatchDetails(
+                    id=match_id,
+                    status=match_data.get("status", "upcoming"),
+                    matchStarted=match_data.get("matchStarted"),
+                    matchEnded=match_data.get("matchEnded"),
+                    score=score
+                )
+            return MatchDetails(id=match_id, status="error")
+        except Exception as e:
+            print(f"Error fetching match details for {match_id}: {str(e)}")
+            return MatchDetails(id=match_id, status="error")
+
+    async def generate_matches_data(self, streams_data: StreamsData) -> MatchesData:
+        """Generate matches data from streams and fixtures."""
+        try:
+            # Read fixtures for today
+            today = datetime.now().strftime('%Y-%m-%d')
+            fixtures_file = Path(__file__).parent.parent / 'public' / 'data' / 'fixtures' / f'{today}.json'
+            
+            with open(fixtures_file, 'r', encoding='utf-8') as f:
+                fixtures = [Fixture(**fixture) for fixture in json.load(f)]
+
+            # Initialize matches structure
+            matches = MatchesData(
+                lastUpdated=datetime.now(),
+                competitions={}
+            )
+
+            # Process all streams
+            for match_id, stream in streams_data.streams.items():
+                # Find corresponding fixture
+                fixture = next((f for f in fixtures if f.match_id == match_id), None)
+                if not fixture:
+                    print(f'No fixture found for match {match_id}')
+                    continue
+
+                # Get match details from API
+                match_details = await self.get_match_details(match_id)
+
+                # Create match entry
+                match_data = MatchData(
+                    id=match_id,
+                    venue=fixture.venue,
+                    startTime=fixture.start_time_gmt,
+                    homeTeam=fixture.home_team,
+                    awayTeam=fixture.away_team,
+                    scores=match_details.score,
+                    status=match_details.status,
+                    stream=stream,
+                    matchStarted=match_details.matchStarted,
+                    matchEnded=match_details.matchEnded
+                )
+
+                # Add to competition group
+                competition = fixture.competition.value
+                if competition not in matches.competitions:
+                    matches.competitions[competition] = CompetitionMatches(
+                        name=competition,
+                        matches=[]
+                    )
+                matches.competitions[competition].matches.append(match_data)
+
+            # Sort matches within each competition by home team
+            for competition in matches.competitions.values():
+                competition.matches.sort(key=lambda x: x.homeTeam)
+
+            # Sort competitions alphabetically
+            matches.competitions = dict(sorted(matches.competitions.items()))
+
+            return matches
+        except Exception as e:
+            print(f"Error generating matches data: {str(e)}")
+            raise 

@@ -29,17 +29,29 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install Node dependencies
         run: npm ci
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
 
-      - name: Build
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+
+      - name: Install Python dependencies
+        run: uv sync --all-extras --dev
+
+      - name: Build frontend assets
         run: npm run build
 
       - name: Generate scores.json
         env:
           CRICKET_API_KEY: ${{ secrets.CRICKET_API_KEY }}
-        run: npm run generate-scores
+        run: uv run script/generate_scores.py
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

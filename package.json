@@ -8,8 +8,7 @@
     "build:css": "tailwindcss -i css/styles.css -o public/css/compiled.css --minify",
     "build:js": "esbuild js/app.js --bundle --outfile=public/js/bundle.js --minify",
     "build": "npm run build:css && npm run build:js",
-    "dev": "concurrently \"tailwindcss -i css/styles.css -o public/css/compiled.css --watch\" \"esbuild js/app.js --bundle --outfile=public/js/bundle.js --watch\" \"http-server public --no-browser --watch\"",
-    "generate-scores": "node script/generate-scores.js"
+    "dev": "concurrently \"tailwindcss -i css/styles.css -o public/css/compiled.css --watch\" \"esbuild js/app.js --bundle --outfile=public/js/bundle.js --watch\" \"http-server public --no-browser --watch\""
   },
   "repository": {
     "type": "git",
