@@ -42,9 +42,11 @@ jobs:
         # Create data directory if it doesn't exist
         mkdir -p public/data
         
-        # Run the script and capture its output
-        output=$(uv run script/update_streams.py)
-        echo "$output"
+        # Run the script with better error handling
+        if ! uv run script/update_streams.py; then
+          echo "Script failed with exit code $?"
+          exit 1
+        fi
         
         # Stage the file first so git status works correctly
         git add public/data/streams.json
