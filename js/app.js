@@ -28,27 +28,33 @@ Alpine.data('stream', () => ({
     formatLocalTime(gmtTime) {
         if (!gmtTime) return '';
 
-        // Parse the GMT time (HH:MM:SS)
-        const [hours, minutes] = gmtTime.split(':');
+        try {
+            // Parse the GMT time (HH:MM:SS or HH:MM)
+            const [hours, minutes] = gmtTime.split(':').map(num => parseInt(num, 10));
+            if (isNaN(hours) || isNaN(minutes)) return '';
 
-        // Create a date object for today with the GMT time
-        const today = new Date();
-        const gmtDate = new Date(Date.UTC(
-            today.getUTCFullYear(),
-            today.getUTCMonth(),
-            today.getUTCDate(),
-            parseInt(hours),
-            parseInt(minutes),
-            0
-        ));
+            // Create a date object for today with the GMT time
+            const today = new Date();
+            const gmtDate = new Date(Date.UTC(
+                today.getUTCFullYear(),
+                today.getUTCMonth(),
+                today.getUTCDate(),
+                hours,
+                minutes,
+                0
+            ));
 
-        // Format in local time
-        return gmtDate.toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false,
-            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
-        });
+            // Format in local time
+            return gmtDate.toLocaleTimeString([], {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false,
+                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            });
+        } catch (error) {
+            console.error('Error formatting time:', error);
+            return '';
+        }
     },
 
     async init() {
@@ -148,7 +154,7 @@ Alpine.data('stream', () => ({
                                 home_team: match.homeTeam,
                                 away_team: match.awayTeam,
                                 venue: match.venue,
-                                start_time_gmt: match.startTime,
+                                start_time_gmt: match.startTime || null,
                                 day: match.status?.split(' - ')?.[0]
                             }
                         };
@@ -212,17 +218,17 @@ Alpine.data('stream', () => ({
         let scoreText = `<strong>${match.status || ''}</strong>`;
 
         // Add scores for each innings in reverse order
-        if (match.scores && match.scores.length > 0) {
-            [...match.scores].reverse().forEach(inning => {
+        if (match.scores?.innings && match.scores.innings.length > 0) {
+            [...match.scores.innings].reverse().forEach(inning => {
                 // Extract team name and innings number
-                const [teamName, inningNum] = inning.inning.split(' Inning ');
+                const [teamName, inningNum] = inning.innings.split(' Inning ');
 
                 // Convert number to ordinal
                 const ordinal = inningNum === '1' ? '1st' : '2nd';
 
                 // Format the score, using "all out" if all wickets are lost
-                const score = parseInt(inning.w) === 10 ? `${inning.r} all out` : `${inning.r}/${inning.w}`;
-                scoreText += `<br>${teamName} ${ordinal} Innings: ${score} (${inning.o} overs)`;
+                const score = parseInt(inning.wickets) === 10 ? `${inning.runs} all out` : `${inning.runs}/${inning.wickets}`;
+                scoreText += `<br>${teamName} ${ordinal} Innings: ${score} (${inning.overs} overs)`;
             });
         }
 

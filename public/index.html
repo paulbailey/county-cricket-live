@@ -84,10 +84,6 @@
                                 <div class="text-base-content/70">
                                     <p><span class="font-semibold">Venue:</span> <span
                                             x-text="stream.fixture?.venue"></span></p>
-                                    <template x-if="stream.fixture?.start_time_gmt">
-                                        <p><span class="font-semibold">Start Time:</span> <span
-                                                x-text="formatLocalTime(stream.fixture?.start_time_gmt)"></span></p>
-                                    </template>
                                 </div>
                                 <template x-if="stream.videoId">
                                     <h3 class="text-sm text-base-content/70 mt-2">
@@ -128,7 +124,8 @@
                                 <div class="text-base-content/70">
                                     <p><span class="font-semibold">Venue:</span> <span
                                             x-text="stream.fixture?.venue"></span></p>
-                                    <template x-if="stream.fixture?.start_time_gmt">
+                                    <template
+                                        x-if="stream.fixture?.start_time_gmt && !stream.videoId && !stream.matchEnded">
                                         <p><span class="font-semibold">Start Time:</span> <span
                                                 x-text="formatLocalTime(stream.fixture?.start_time_gmt)"></span></p>
                                     </template>
