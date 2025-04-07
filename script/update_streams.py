@@ -248,52 +248,18 @@ def get_new_streams(existing_streams, new_streams):
     if "last_updated" in new_streams:
         new_streams = {k: v for k, v in new_streams.items() if k != "last_updated"}
     
-    # Create sets for existing streams
-    existing_video_ids = set()
-    existing_stream_keys = set()  # For streams without videoId
-    
-    for comp_data in existing_streams.values():
-        if isinstance(comp_data, dict) and "live" in comp_data:
-            for stream in comp_data["live"]:
-                if stream.get("videoId") and not stream.get("isPlaceholder"):
-                    existing_video_ids.add(stream["videoId"])
-                elif not stream.get("isPlaceholder"):
-                    # Create a unique key from other fields for streams without videoId
-                    key = (
-                        stream.get("channelId", ""),
-                        stream.get("title", ""),
-                        stream.get("startTime", ""),
-                        stream["fixture"]["home_team"] if "fixture" in stream else "",
-                        stream["fixture"]["away_team"] if "fixture" in stream else ""
-                    )
-                    existing_stream_keys.add(key)
-    
-    # Check each competition for new streams
-    for comp_name, comp_data in new_streams.items():
-        # Skip non-competition keys
-        if not isinstance(comp_data, dict) or "live" not in comp_data:
-            continue
+    # Compare streams for each fixture
+    for fixture_id, new_stream_info in new_streams.items():
+        existing_stream_info = existing_streams.get(fixture_id)
+        
+        # If this is a new fixture with a stream
+        if not existing_stream_info and new_stream_info.get("video_id"):
+            new_fixture_streams.append(new_stream_info)
             
-        # Check each stream in the competition
-        for stream in comp_data["live"]:
-            if stream.get("isPlaceholder"):
-                continue
-                
-            if stream.get("videoId"):
-                if stream["videoId"] not in existing_video_ids:
-                    new_fixture_streams.append(stream)
-            else:
-                # Create key for comparison
-                key = (
-                    stream.get("channelId", ""),
-                    stream.get("title", ""),
-                    stream.get("startTime", ""),
-                    stream["fixture"]["home_team"] if "fixture" in stream else "",
-                    stream["fixture"]["away_team"] if "fixture" in stream else ""
-                )
-                if key not in existing_stream_keys:
-                    new_fixture_streams.append(stream)
-    
+        # If this fixture had a placeholder and now has a real stream
+        elif existing_stream_info and not existing_stream_info.get("video_id") and new_stream_info.get("video_id"):
+            new_fixture_streams.append(new_stream_info)
+            
     return new_fixture_streams
 
 def post_to_bluesky(streams_data: StreamsData):
