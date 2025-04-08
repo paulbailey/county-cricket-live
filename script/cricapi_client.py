@@ -121,6 +121,14 @@ class CricAPIClient:
             today = datetime.now().strftime('%Y-%m-%d')
             fixtures_file = Path(__file__).parent.parent / 'public' / 'data' / 'fixtures' / f'{today}.json'
             
+            # Return empty matches data if no fixtures file exists
+            if not fixtures_file.exists():
+                print(f'No fixtures file found for {today}, skipping score generation')
+                return MatchesData(
+                    last_updated=datetime.now(),
+                    competitions={}
+                )
+            
             with open(fixtures_file, 'r', encoding='utf-8') as f:
                 fixtures = [Fixture(**fixture) for fixture in json.load(f)]
 
