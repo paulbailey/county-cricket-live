@@ -40,49 +40,31 @@ def test_get_new_streams(mock_streams_data):
     """Test finding new streams."""
     existing_streams = {
         "match1": {
-            "live": [{
-                "videoId": "video1",
-                "title": "Team A vs Team B",
-                "channelId": "channel1",
-                "standardTitle": "Team A vs Team B",
-                "fixture": {
-                    "home_team": "Team A",
-                    "away_team": "Team B"
-                }
-            }]
+            "video_id": "video1",
+            "title": "Team A vs Team B",
+            "channel_id": "channel1",
+            "standard_title": "Team A vs Team B"
         }
     }
     
     new_streams = {
         "match1": {
-            "live": [{
-                "videoId": "video1",
-                "title": "Team A vs Team B",
-                "channelId": "channel1",
-                "standardTitle": "Team A vs Team B",
-                "fixture": {
-                    "home_team": "Team A",
-                    "away_team": "Team B"
-                }
-            }]
+            "video_id": "video1",
+            "title": "Team A vs Team B",
+            "channel_id": "channel1",
+            "standard_title": "Team A vs Team B"
         },
         "match2": {
-            "live": [{
-                "videoId": "video2",
-                "title": "Team B vs Team C",
-                "channelId": "channel2",
-                "standardTitle": "Team B vs Team C",
-                "fixture": {
-                    "home_team": "Team B",
-                    "away_team": "Team C"
-                }
-            }]
+            "video_id": "video2",
+            "title": "Team B vs Team C",
+            "channel_id": "channel2",
+            "standard_title": "Team B vs Team C"
         }
     }
     
     new_fixture_streams = get_new_streams(existing_streams, new_streams)
     assert len(new_fixture_streams) == 1
-    assert new_fixture_streams[0]["videoId"] == "video2"
+    assert new_fixture_streams[0]["video_id"] == "video2"
 
 @patch('builtins.open')
 @patch('json.load')
