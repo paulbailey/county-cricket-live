@@ -441,6 +441,28 @@ def main():
         
         if not fixtures:
             print("No fixtures found for today")
+            # Check if streams.json exists and is empty
+            streams_file = Path("public/data/streams.json")
+            if streams_file.exists():
+                try:
+                    with open(streams_file) as f:
+                        data = json.load(f)
+                        if not data.get("streams"):  # Check if streams is empty
+                            print("Empty streams.json already exists, skipping write")
+                            return
+                except json.JSONDecodeError:
+                    pass  # If file is invalid JSON, we'll overwrite it
+            
+            # Write empty streams.json
+            empty_data = StreamsData(
+                last_updated=datetime.now(timezone.utc),
+                streams={}
+            )
+            with open("public/data/streams.json", "w") as f:
+                data = empty_data.model_dump(by_alias=True)
+                data["lastUpdated"] = data["lastUpdated"].isoformat()
+                json.dump(data, f, indent=2)
+            print("Successfully wrote empty streams.json")
             return
             
         # Get live and upcoming streams
