@@ -13,5 +13,5 @@ variable "poll_youtube_schedule" {
 variable "deploy_schedule" {
   description = "EventBridge scheduler cron expression for deploy workflow"
   type        = string
-  default     = "cron(0/2 8-21 * * ? *)" # Every 2 minutes between 8 AM and 8:59 PM UTC
+  default     = "cron(0/5 8-21 * * ? *)" # Every 2 minutes between 8 AM and 8:59 PM UTC
 }
