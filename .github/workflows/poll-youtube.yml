@@ -13,6 +13,7 @@ permissions:
 jobs:
   poll-youtube:
     runs-on: ubuntu-latest
+    timeout-minutes: 4  # Job will timeout after 4 minutes
     
     steps:
     - uses: actions/checkout@v4
