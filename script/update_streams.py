@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone
 from googleapiclient.discovery import build
-from atproto import Client, models, client_utils
+from atproto import Client, client_utils
 from dotenv import load_dotenv
 from models import Channel, VideoStream, StreamsData, Fixture, StreamInfo
 from typing import Optional
@@ -312,70 +312,72 @@ def post_to_bluesky(match_ids: list[str]):
         comp_short = comp_name.replace("County Championship ", "")
         text_builder.text(f"🏏 {comp_short}\n")
         # Sort streams by home team name
-        for stream_data in sorted(streams, key=lambda x: x["fixture"].home_team):
-            text_builder.text(f"• {stream_data['stream'].standardTitle}\n")
+        for stream_data in sorted(streams, key=lambda x: x.home_team):
+            text_builder.text(f"• {stream_data.home_team} vs {stream_data.away_team}\n")
         text_builder.text("\n")
     
     # Add link at the end
     text_builder.text("\n🔗 Watch all streams at ")
     text_builder.link("countycricket.live", "https://countycricket.live")
+
+    client.send_post(text=text_builder)
     
-    # Get the final text and facets
-    text, facets = text_builder.build()
-    print(f"Prepared post text:\n{text}")
+    # # Get the final text and facets
+    # text, facets = text_builder
+    # print(f"Prepared post text:\n{text}")
     
-    # Split text into chunks if needed
-    chunks = []
-    current_chunk = ""
-    current_facets = []
+    # # Split text into chunks if needed
+    # chunks = []
+    # current_chunk = ""
+    # current_facets = []
     
-    for line in text.split("\n"):
-        if len(current_chunk) + len(line) + 1 > 300:  # +1 for newline
-            if current_chunk:
-                chunks.append((current_chunk.strip(), current_facets))
-            current_chunk = line + "\n"
-            current_facets = []
-        else:
-            current_chunk += line + "\n"
+    # for line in text.split("\n"):
+    #     if len(current_chunk) + len(line) + 1 > 300:  # +1 for newline
+    #         if current_chunk:
+    #             chunks.append((current_chunk.strip(), current_facets))
+    #         current_chunk = line + "\n"
+    #         current_facets = []
+    #     else:
+    #         current_chunk += line + "\n"
     
-    if current_chunk:
-        chunks.append((current_chunk.strip(), current_facets))
+    # if current_chunk:
+    #     chunks.append((current_chunk.strip(), current_facets))
     
-    print(f"Split post into {len(chunks)} chunks")
+    # print(f"Split post into {len(chunks)} chunks")
     
-    # Post to Bluesky
-    try:
-        if not chunks:
-            print("No chunks to post")
-            return
+    # # Post to Bluesky
+    # try:
+    #     if not chunks:
+    #         print("No chunks to post")
+    #         return
             
-        # Post first chunk
-        print("Posting first chunk...")
-        first_post = client.send_post(text=chunks[0][0], facets=chunks[0][1])
-        print("Posted first chunk to Bluesky successfully")
+    #     # Post first chunk
+    #     print("Posting first chunk...")
+    #     first_post = client.send_post(text=chunks[0][0], facets=chunks[0][1])
+    #     print("Posted first chunk to Bluesky successfully")
         
-        # Post remaining chunks as replies
-        for i, (chunk_text, chunk_facets) in enumerate(chunks[1:]):
-            print(f"Posting chunk {i+2}...")
+    #     # Post remaining chunks as replies
+    #     for i, (chunk_text, chunk_facets) in enumerate(chunks[1:]):
+    #         print(f"Posting chunk {i+2}...")
             
-            reply = models.AppBskyFeedPost.Reply(
-                parent=models.AppBskyFeedPost.ReplyRef(
-                    uri=first_post.uri,
-                    cid=first_post.cid
-                ),
-                root=models.AppBskyFeedPost.ReplyRef(
-                    uri=first_post.uri,
-                    cid=first_post.cid
-                )
-            )
-            client.send_post(text=chunk_text, reply_to=reply, facets=chunk_facets)
-            print(f"Posted chunk {i+2} successfully")
+    #         reply = models.AppBskyFeedPost.Reply(
+    #             parent=models.AppBskyFeedPost.ReplyRef(
+    #                 uri=first_post.uri,
+    #                 cid=first_post.cid
+    #             ),
+    #             root=models.AppBskyFeedPost.ReplyRef(
+    #                 uri=first_post.uri,
+    #                 cid=first_post.cid
+    #             )
+    #         )
+    #         client.send_post(text=chunk_text, reply_to=reply, facets=chunk_facets)
+    #         print(f"Posted chunk {i+2} successfully")
             
-    except Exception as e:
-        print(f"ERROR: Failed to post to Bluesky: {str(e)}")
-        print(f"Error type: {type(e)}")
-        if hasattr(e, '__dict__'):
-            print(f"Error attributes: {e.__dict__}")
+    # except Exception as e:
+    #     print(f"ERROR: Failed to post to Bluesky: {str(e)}")
+    #     print(f"Error type: {type(e)}")
+    #     if hasattr(e, '__dict__'):
+    #         print(f"Error attributes: {e.__dict__}")
 
 def format_streams_for_output(
     live_streams: list[VideoStream],
