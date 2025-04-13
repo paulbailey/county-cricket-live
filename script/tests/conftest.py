@@ -52,12 +52,14 @@ def mock_channels():
         "team1": Channel(
             name="Team A",
             youtubeChannelId="channel1",
-            nicknames=["Team A Nickname"]
+            nicknames=["Team A Nickname"],
+            uploadsPlaylistId="playlist1"
         ),
         "team2": Channel(
             name="Team B",
             youtubeChannelId="channel2",
-            nicknames=["Team B Nickname"]
+            nicknames=["Team B Nickname"],
+            uploadsPlaylistId="playlist2"
         )
     }
 

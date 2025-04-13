@@ -14,7 +14,8 @@ def test_load_channels(mock_json_load, mock_open, mock_channels):
         id: {
             "name": channel.name,
             "youtube_channel_id": channel.youtube_channel_id,
-            "nicknames": channel.nicknames
+            "nicknames": channel.nicknames,
+            "uploads_playlist_id": channel.uploads_playlist_id
         } for id, channel in mock_channels.items()
     }
     
