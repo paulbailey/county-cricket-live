@@ -262,11 +262,9 @@ def get_new_streams(existing_streams, new_streams):
             
     return new_fixture_streams
 
-def post_to_bluesky(streams_data: StreamsData):
+def post_to_bluesky(match_ids: list[str]):
     """Post to Bluesky about newly added streams."""
-    if not streams_data or not streams_data.streams:
-        print("No streams to post about")
-        return
+
         
     # Skip posting if SKIP_BLUESKY_POSTING is set
     if os.getenv("SKIP_BLUESKY_POSTING", "false").lower() == "true":
@@ -278,22 +276,7 @@ def post_to_bluesky(streams_data: StreamsData):
         print("ERROR: Bluesky credentials not properly set")
         return
         
-    # Load existing streams to compare
-    existing_data = load_existing_streams()
-    existing_streams = existing_data.streams
-    new_streams = {}
-    
-    # Find only new streams (those that weren't in existing_streams)
-    for match_id, stream in streams_data.streams.items():
-        if match_id not in existing_streams or not existing_streams[match_id].video_id:
-            if stream.video_id:  # Only include streams with actual video IDs
-                new_streams[match_id] = stream
-    
-    if not new_streams:
-        print("No new streams to post about")
-        return
-        
-    print(f"Attempting to post about {len(new_streams)} new streams to Bluesky")
+    print(f"Attempting to post about {len(match_ids)} new streams to Bluesky")
     
     client = Client()
     try:
@@ -307,27 +290,24 @@ def post_to_bluesky(streams_data: StreamsData):
     # Create the post text using TextBuilder
     text_builder = models.TextBuilder()
     text_builder.text("📺 New streams started:\n\n")
-    
-    # Group streams by competition
-    streams_by_comp = {}
-    for match_id, stream in new_streams.items():
-        # Load fixture data to get competition info
-        fixtures = load_fixtures()
-        fixture = next((f for f in fixtures if f.match_id == match_id), None)
-        if not fixture:
-            continue
-            
-        comp_name = fixture.competition
-        if comp_name not in streams_by_comp:
-            streams_by_comp[comp_name] = []
-        streams_by_comp[comp_name].append({
-            "fixture": fixture,
-            "stream": stream
-        })
+
+    # Retrieve a list of fixture objects for the given match_ids, using the dict of match_id to fixture
+    fixtures = load_fixtures()
+    fixtures_dict = {fixture.match_id: fixture for fixture in fixtures}
+
+    fixtures_list = [fixtures_dict[match_id] for match_id in match_ids]
+
+    # Group fixtures by competition from the fixtures list
+    fixtures_by_comp = {}
+    for fixture in fixtures_list:
+        if fixture.competition not in fixtures_by_comp:
+            fixtures_by_comp[fixture.competition] = []
+        fixtures_by_comp[fixture.competition].append(fixture)
+
     
     # Add stream details in alphabetical order by competition
-    for comp_name in sorted(streams_by_comp.keys()):
-        streams = streams_by_comp[comp_name]
+    for comp_name in sorted(fixtures_by_comp.keys()):
+        streams = fixtures_by_comp[comp_name]
         # Shorten competition name if needed
         comp_short = comp_name.replace("County Championship ", "")
         text_builder.text(f"🏏 {comp_short}\n")
@@ -491,7 +471,15 @@ def main():
             print("Successfully updated streams.json with changes")
             
             # Post new streams to Bluesky
-            post_to_bluesky(output_data)
+            # Get list of match IDs with new or changed video IDs
+            new_or_changed_stream_match_ids = [
+                match_id for match_id, stream in output_data.streams.items()
+                if stream.video_id and (
+                    match_id not in existing_data.streams or 
+                    existing_data.streams[match_id].video_id != stream.video_id
+                )]
+            # Get list of match IDs with new or changed video IDs
+            post_to_bluesky(new_or_changed_stream_match_ids)
         else:
             print("No changes detected in streams data, skipping write")
         
