@@ -477,7 +477,8 @@ def main():
                     existing_data.streams[match_id].video_id != stream.video_id
                 )]
             # Get list of match IDs with new or changed video IDs
-            post_to_bluesky(new_or_changed_stream_match_ids)
+            if len(new_or_changed_stream_match_ids) > 0:
+                post_to_bluesky(new_or_changed_stream_match_ids)
         else:
             print("No changes detected in streams data, skipping write")
         
