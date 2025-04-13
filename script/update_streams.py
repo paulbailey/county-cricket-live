@@ -315,7 +315,8 @@ def post_to_bluesky(match_ids: list[str]):
     text_builder.text("\n🔗 Watch all streams at ")
     text_builder.link("countycricket.live", "https://countycricket.live")
 
-    client.send_post(text=text_builder)
+    if len(match_ids) > 0:
+        client.send_post(text=text_builder)
     
     # # Get the final text and facets
     # text, facets = text_builder
