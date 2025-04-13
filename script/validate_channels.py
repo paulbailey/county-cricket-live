@@ -1,16 +1,28 @@
 import os
 import json
+from dotenv import load_dotenv
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+# Load environment variables from .env file
+load_dotenv()
+
 # YouTube API setup
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+if not GOOGLE_API_KEY:
+    raise ValueError("GOOGLE_API_KEY environment variable is not set")
+
 youtube = build("youtube", "v3", developerKey=GOOGLE_API_KEY)
 
 
 def load_channels():
     with open("channels.json", "r") as f:
         return json.load(f)
+
+
+def save_channels(channels):
+    with open("channels.json", "w") as f:
+        json.dump(channels, f, indent=2)
 
 
 def search_channel(name):
@@ -42,15 +54,16 @@ def search_channel(name):
 
 def validate_channels():
     channels = load_channels()
+    updated = False
 
-    for channel in channels:
+    for county, channel in channels.items():
         try:
             print(f"\nValidating: {channel['name']}")
             print(f"Current ID: {channel['youtubeChannelId']}")
 
-            # Get channel details
+            # Get channel details including contentDetails to get uploads playlist
             request = youtube.channels().list(
-                part="snippet", id=channel["youtubeChannelId"]
+                part="snippet,contentDetails", id=channel["youtubeChannelId"]
             )
             response = request.execute()
 
@@ -61,10 +74,18 @@ def validate_channels():
                 continue
 
             channel_info = response["items"][0]["snippet"]
+            content_details = response["items"][0]["contentDetails"]
+            uploads_playlist_id = content_details["relatedPlaylists"]["uploads"]
+            
             print(f"Found channel: {channel_info['title']}")
-            print(
-                f"Channel URL: https://www.youtube.com/channel/{channel['youtubeChannelId']}"
-            )
+            print(f"Channel URL: https://www.youtube.com/channel/{channel['youtubeChannelId']}")
+            print(f"Uploads Playlist ID: {uploads_playlist_id}")
+
+            # Update the channel with uploads playlist ID if it's not already there
+            if "uploadsPlaylistId" not in channel or channel["uploadsPlaylistId"] != uploads_playlist_id:
+                channel["uploadsPlaylistId"] = uploads_playlist_id
+                updated = True
+                print("✅ Added/Updated uploads playlist ID")
 
             # Check if the found title matches our expected name
             if channel_info["title"].lower() != channel["name"].lower():
@@ -79,6 +100,10 @@ def validate_channels():
         except HttpError as e:
             print(f"❌ Error: {e}")
             continue
+
+    if updated:
+        save_channels(channels)
+        print("\n✅ Updated channels.json with uploads playlist IDs")
 
 
 if __name__ == "__main__":
