@@ -1,159 +1,195 @@
 {
     "Derbyshire": {
-        "name": "Derbyshire CCC",
-        "nicknames": [
-            "Derbyshire",
-            "The Falcons"
-        ],
-        "youtubeChannelId": "UCdsIWgLpXJZowUJvvh4gDoA"
+      "name": "Derbyshire CCC",
+      "nicknames": [
+        "Derbyshire",
+        "The Falcons"
+      ],
+      "youtubeChannelId": "UCdsIWgLpXJZowUJvvh4gDoA",
+      "abbr": "Derbys",
+      "abbr3": "DER"
     },
     "Durham": {
-        "name": "Durham CCC",
-        "blueskyHandle": "durhamcricket.bsky.social",
-        "nicknames": [
-            "Durham",
-            "The Riverside Men"
-        ],
-        "youtubeChannelId": "UCCZ5wP1IUo4_r8vgEzFDpEw"
+      "name": "Durham CCC",
+      "blueskyHandle": "durhamcricket.bsky.social",
+      "nicknames": [
+        "Durham",
+        "The Riverside Men"
+      ],
+      "youtubeChannelId": "UCCZ5wP1IUo4_r8vgEzFDpEw",
+      "abbr": "Durham",
+      "abbr3": "DUR"
     },
     "Essex": {
-        "name": "Essex CCC",
-        "blueskyHandle": "essexcricket.bsky.social",
-        "nicknames": [
-            "Essex",
-            "The Eagles"
-        ],
-        "youtubeChannelId": "UCL0ebrj8ISVXWikxxtjRlsA"
+      "name": "Essex CCC",
+      "blueskyHandle": "essexcricket.bsky.social",
+      "nicknames": [
+        "Essex",
+        "The Eagles"
+      ],
+      "youtubeChannelId": "UCL0ebrj8ISVXWikxxtjRlsA",
+      "abbr": "Essex",
+      "abbr3": "ESS"
     },
     "Glamorgan": {
-        "name": "Glamorgan CCC",
-        "blueskyHandle": "glamcricket.bsky.social",
-        "nicknames": [
-            "Glamorgan",
-            "The Welsh Dragons"
-        ],
-        "youtubeChannelId": "UCZ64uV20GKk9MIi2Y6YmOcA"
+      "name": "Glamorgan CCC",
+      "blueskyHandle": "glamcricket.bsky.social",
+      "nicknames": [
+        "Glamorgan",
+        "The Welsh Dragons"
+      ],
+      "youtubeChannelId": "UCZ64uV20GKk9MIi2Y6YmOcA",
+      "abbr": "Glam",
+      "abbr3": "GLA"
     },
     "Gloucestershire": {
-        "name": "Gloucestershire CCC",
-        "blueskyHandle": "gloscricket.bsky.social",
-        "nicknames": [
-            "Gloucestershire",
-            "The Shire"
-        ],
-        "youtubeChannelId": "UC2bxVF6gzuzsCceyZRQS_sg"
+      "name": "Gloucestershire CCC",
+      "blueskyHandle": "gloscricket.bsky.social",
+      "nicknames": [
+        "Gloucestershire",
+        "The Shire"
+      ],
+      "youtubeChannelId": "UC2bxVF6gzuzsCceyZRQS_sg",
+      "abbr": "Gloucs",
+      "abbr3": "GLO"
     },
     "Hampshire": {
-        "name": "Hampshire CCC",
-        "blueskyHandle": "hampshirecricket.bsky.social",
-        "nicknames": [
-            "Hampshire",
-            "The Hawks"
-        ],
-        "youtubeChannelId": "UC8lemPb9z8zjmlk6tlkm6_Q"
+      "name": "Hampshire CCC",
+      "blueskyHandle": "hampshirecricket.bsky.social",
+      "nicknames": [
+        "Hampshire",
+        "The Hawks"
+      ],
+      "youtubeChannelId": "UC8lemPb9z8zjmlk6tlkm6_Q",
+      "abbr": "Hants",
+      "abbr3": "HAM"
     },
     "Kent": {
-        "name": "Kent CCC",
-        "blueskyHandle": "kentcricket.co.uk",
-        "nicknames": [
-            "Kent",
-            "The Spitfires"
-        ],
-        "youtubeChannelId": "UCTtkVP_v56wU8zXpVBpdaZQ"
+      "name": "Kent CCC",
+      "blueskyHandle": "kentcricket.co.uk",
+      "nicknames": [
+        "Kent",
+        "The Spitfires"
+      ],
+      "youtubeChannelId": "UCTtkVP_v56wU8zXpVBpdaZQ",
+      "abbr": "Kent",
+      "abbr3": "KEN"
     },
     "Lancashire": {
-        "name": "Lancashire CCC",
-        "blueskyHandle": "lancscricket.bsky.social",
-        "nicknames": [
-            "Lancashire",
-            "The Red Rose"
-        ],
-        "youtubeChannelId": "UCFNf9wV2ShfzFlFAK4elXyA"
+      "name": "Lancashire CCC",
+      "blueskyHandle": "lancscricket.bsky.social",
+      "nicknames": [
+        "Lancashire",
+        "The Red Rose"
+      ],
+      "youtubeChannelId": "UCFNf9wV2ShfzFlFAK4elXyA",
+      "abbr": "Lancs",
+      "abbr3": "LAN"
     },
     "Leicestershire": {
-        "name": "Leicestershire CCC",
-        "blueskyHandle": "leicsccc.bsky.social",
-        "nicknames": [
-            "Leicestershire",
-            "The Foxes"
-        ],
-        "youtubeChannelId": "UCAWIaUtlv3VvyDB619Clisw"
+      "name": "Leicestershire CCC",
+      "blueskyHandle": "leicsccc.bsky.social",
+      "nicknames": [
+        "Leicestershire",
+        "The Foxes"
+      ],
+      "youtubeChannelId": "UCAWIaUtlv3VvyDB619Clisw",
+      "abbr": "Leics",
+      "abbr3": "LEI"
     },
     "Middlesex": {
-        "name": "Middlesex CCC",
-        "nicknames": [
-            "Middlesex",
-            "The Panthers"
-        ],
-        "youtubeChannelId": "UCj8uKvxoOpYEXE4SzZRtlgw"
+      "name": "Middlesex CCC",
+      "nicknames": [
+        "Middlesex",
+        "The Panthers"
+      ],
+      "youtubeChannelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
+      "abbr": "Middx",
+      "abbr3": "MID"
     },
     "Northamptonshire": {
-        "name": "Northamptonshire CCC",
-        "nicknames": [
-            "Northamptonshire",
-            "The Steelbacks"
-        ],
-        "youtubeChannelId": "UCT1aGQpOXmqSHH63xvxn1TA"
+      "name": "Northamptonshire CCC",
+      "nicknames": [
+        "Northamptonshire",
+        "The Steelbacks"
+      ],
+      "youtubeChannelId": "UCT1aGQpOXmqSHH63xvxn1TA",
+      "abbr": "Northants",
+      "abbr3": "NOR"
     },
     "Nottinghamshire": {
-        "name": "Nottinghamshire CCC",
-        "nicknames": [
-            "Nottinghamshire",
-            "The Outlaws"
-        ],
-        "youtubeChannelId": "UCiOki3bA8llEHVgXBQ3x6wg"
+      "name": "Nottinghamshire CCC",
+      "nicknames": [
+        "Nottinghamshire",
+        "The Outlaws"
+      ],
+      "youtubeChannelId": "UCiOki3bA8llEHVgXBQ3x6wg",
+      "abbr": "Notts",
+      "abbr3": "NOT"
     },
     "Somerset": {
-        "name": "Somerset CCC",
-        "blueskyHandle": "somersetccc.bsky.social",
-        "nicknames": [
-            "Somerset",
-            "The Sabres"
-        ],
-        "youtubeChannelId": "UCcCeaTFtzWdkTQYeFRRWvSg"
+      "name": "Somerset CCC",
+      "blueskyHandle": "somersetccc.bsky.social",
+      "nicknames": [
+        "Somerset",
+        "The Sabres"
+      ],
+      "youtubeChannelId": "UCcCeaTFtzWdkTQYeFRRWvSg",
+      "abbr": "Somerset",
+      "abbr3": "SOM"
     },
     "Surrey": {
-        "name": "Surrey CCC",
-        "blueskyHandle": "kiaoval.com",
-        "nicknames": [
-            "Surrey",
-            "The Brown Caps"
-        ],
-        "youtubeChannelId": "UCZLlXPWxwCtQxrspxx8pU-Q"
+      "name": "Surrey CCC",
+      "blueskyHandle": "kiaoval.com",
+      "nicknames": [
+        "Surrey",
+        "The Brown Caps"
+      ],
+      "youtubeChannelId": "UCZLlXPWxwCtQxrspxx8pU-Q",
+      "abbr": "Surrey",
+      "abbr3": "SUR"
     },
     "Sussex": {
-        "name": "Sussex CCC",
-        "nicknames": [
-            "Sussex",
-            "The Sharks"
-        ],
-        "youtubeChannelId": "UC50wZUsUCBzXWsFn0vmaOAA"
+      "name": "Sussex CCC",
+      "nicknames": [
+        "Sussex",
+        "The Sharks"
+      ],
+      "youtubeChannelId": "UC50wZUsUCBzXWsFn0vmaOAA",
+      "abbr": "Sussex",
+      "abbr3": "SUS"
     },
     "Warwickshire": {
-        "name": "Warwickshire CCC",
-        "nicknames": [
-            "Warwickshire",
-            "The Bears",
-            "Birmingham Bears"
-        ],
-        "youtubeChannelId": "UCyMJCUxEJGZJSBtw7QKC_lw"
+      "name": "Warwickshire CCC",
+      "nicknames": [
+        "Warwickshire",
+        "The Bears",
+        "Birmingham Bears"
+      ],
+      "youtubeChannelId": "UCyMJCUxEJGZJSBtw7QKC_lw",
+      "abbr": "Warks",
+      "abbr3": "WAR"
     },
     "Worcestershire": {
-        "name": "Worcestershire CCC",
-        "blueskyHandle": "worcestershireccc.bsky.social",
-        "nicknames": [
-            "Worcestershire",
-            "The Rapids"
-        ],
-        "youtubeChannelId": "UCorQ8Y6syhWYB6QJW_4xVzQ"
+      "name": "Worcestershire CCC",
+      "blueskyHandle": "worcestershireccc.bsky.social",
+      "nicknames": [
+        "Worcestershire",
+        "The Rapids"
+      ],
+      "youtubeChannelId": "UCorQ8Y6syhWYB6QJW_4xVzQ",
+      "abbr": "Worcs",
+      "abbr3": "WOR"
     },
     "Yorkshire": {
-        "name": "Yorkshire CCC",
-        "blueskyHandle": "yorksccc.bsky.social",
-        "nicknames": [
-            "Yorkshire",
-            "The White Rose"
-        ],
-        "youtubeChannelId": "UCfbQbd1wpa6SP0uo22T6cXA"
+      "name": "Yorkshire CCC",
+      "blueskyHandle": "yorksccc.bsky.social",
+      "nicknames": [
+        "Yorkshire",
+        "The White Rose"
+      ],
+      "youtubeChannelId": "UCfbQbd1wpa6SP0uo22T6cXA",
+      "abbr": "Yorks",
+      "abbr3": "YOR"
     }
-}
+  }
