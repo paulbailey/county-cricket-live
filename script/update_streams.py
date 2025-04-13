@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone
 from googleapiclient.discovery import build
-from atproto import Client, models
+from atproto import Client, models, client_utils
 from dotenv import load_dotenv
 from models import Channel, VideoStream, StreamsData, Fixture, StreamInfo
 from typing import Optional
@@ -288,7 +288,7 @@ def post_to_bluesky(match_ids: list[str]):
         return
     
     # Create the post text using TextBuilder
-    text_builder = models.TextBuilder()
+    text_builder = client_utils.TextBuilder()
     text_builder.text("📺 New streams started:\n\n")
 
     # Retrieve a list of fixture objects for the given match_ids, using the dict of match_id to fixture
