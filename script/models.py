@@ -39,6 +39,7 @@ class Channel(BaseModel):
     name: str = Field(description="Name of the cricket team/channel")
     youtube_channel_id: str = Field(description="YouTube channel ID", alias="youtubeChannelId")
     nicknames: list[str] = Field(default_factory=list, description="Alternative names for the team")
+    uploads_playlist_id: str = Field(description="YouTube uploads playlist ID", alias="uploadsPlaylistId")
 
 class VideoStream(BaseModel):
     model_config = ConfigDict(populate_by_name=True)

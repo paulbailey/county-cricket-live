@@ -91,18 +91,13 @@ def get_live_streams(fixtures: list[Fixture], channels: dict[str, Channel]) -> t
     # For each active channel, get their uploads playlist
     for channel_id in active_channels:
         try:
-            # Get the channel's uploads playlist ID
-            channel_request = youtube.channels().list(
-                part="contentDetails",
-                id=channel_id
-            )
-            channel_response = channel_request.execute()
-            
-            if not channel_response.get("items"):
-                print(f"No channel found for ID {channel_id}")
+            # Get the channel's uploads playlist ID from the channel data
+            channel = next((ch for ch in channels.values() if ch.youtube_channel_id == channel_id), None)
+            if not channel or not channel.uploads_playlist_id:
+                print(f"No uploads playlist found for channel {channel_id}")
                 continue
                 
-            uploads_playlist_id = channel_response["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+            uploads_playlist_id = channel.uploads_playlist_id
             
             # Get videos from uploads playlist
             playlist_request = youtube.playlistItems().list(
