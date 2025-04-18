@@ -14,7 +14,9 @@ class Fixture(BaseModel):
     match_id: str = Field(description="Unique identifier for the match", alias="matchId")
     competition: CompetitionType = Field(description="Type of competition")
     home_team: str = Field(description="Name of the home team", alias="homeTeam")
+    home_bluesky_handle: str | None = Field(description="Bluesky handle of the home team", alias="homeTeamBlueskyHandle", default=None)
     away_team: str = Field(description="Name of the away team", alias="awayTeam")
+    away_bluesky_handle: str | None = Field(description="Bluesky handle of the away team", alias="awayTeamBlueskyHandle", default=None)
     start_date: date = Field(description="Start date of the match", alias="startDate")
     end_date: date = Field(description="End date of the match", alias="endDate")
     start_time_gmt: str = Field(description="Start time in GMT (HH:MM format)", alias="startTimeGmt")
@@ -40,7 +42,8 @@ class Channel(BaseModel):
     youtube_channel_id: str = Field(description="YouTube channel ID", alias="youtubeChannelId")
     nicknames: list[str] = Field(default_factory=list, description="Alternative names for the team")
     uploads_playlist_id: str = Field(description="YouTube uploads playlist ID", alias="uploadsPlaylistId")
-
+    bluesky_handle: str | None = Field(description="Bluesky handle of the team", alias="blueskyHandle", default=None)
+    
 class VideoStream(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
     
