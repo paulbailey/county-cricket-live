@@ -18,6 +18,20 @@ class CricAPIClient:
         if not self.api_key:
             raise ValueError("CRICKET_API_KEY environment variable is not set")
         self.base_url = "https://api.cricapi.com/v1"
+        self.channels_data = self._load_channels_data()
+        
+    def _load_channels_data(self) -> dict:
+        """Load channels data from channels.json file."""
+        channels_file = Path(__file__).parent.parent / 'channels.json'
+        with open(channels_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+            
+    def _get_bluesky_handle(self, team_name: str) -> str | None:
+        """Get Bluesky handle for a team from channels data."""
+        for team_data in self.channels_data.values():
+            if team_name in team_data['nicknames'] or team_name == team_data['name']:
+                return team_data.get('blueskyHandle')
+        return None
         
     def get_county_fixtures(self) -> list[Fixture]:
         """Get all County Championship fixtures from CricAPI."""
@@ -55,11 +69,19 @@ class CricAPIClient:
                         else:
                             end_date = start_date  # One-day matches
                         
+                        # Get Bluesky handles for both teams
+                        home_team = match["teams"][0]
+                        away_team = match["teams"][1]
+                        home_bluesky_handle = self._get_bluesky_handle(home_team)
+                        away_bluesky_handle = self._get_bluesky_handle(away_team)
+                        
                         fixture = Fixture(
                             match_id=match["id"],
                             competition=competition,
-                            home_team=match["teams"][0],
-                            away_team=match["teams"][1],
+                            home_team=home_team,
+                            home_bluesky_handle=home_bluesky_handle,
+                            away_team=away_team,
+                            away_bluesky_handle=away_bluesky_handle,
                             start_date=start_date,
                             end_date=end_date,
                             start_time_gmt=start_time,
