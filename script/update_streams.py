@@ -257,7 +257,7 @@ def get_new_streams(existing_streams, new_streams):
             
     return new_fixture_streams
 
-def post_to_bluesky(match_ids: list[str]):
+def post_to_bluesky(match_ids: list[str], output_data: StreamsData):
     """Post to Bluesky about newly added streams."""
     
     # Skip posting if SKIP_BLUESKY_POSTING is set
@@ -343,6 +343,12 @@ def post_to_bluesky(match_ids: list[str]):
                     text_builder.text(stream_data.away_team)
             else:
                 text_builder.text(stream_data.away_team)
+            text_builder.text(" - ")
+            video_id = output_data.streams[stream_data.match_id].video_id
+            if video_id:
+                text_builder.link("YT", f"https://youtube.com/watch?v={video_id}")
+            else:
+                text_builder.text("No stream available")
             text_builder.text("\n")
         text_builder.text("\n")
     
@@ -456,7 +462,7 @@ def main():
                 )]
             # Get list of match IDs with new or changed video IDs
             if len(new_or_changed_stream_match_ids) > 0:
-                post_to_bluesky(new_or_changed_stream_match_ids)
+                post_to_bluesky(new_or_changed_stream_match_ids, output_data)
         else:
             print("No changes detected in streams data, skipping write")
         
