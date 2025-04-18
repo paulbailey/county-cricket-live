@@ -259,8 +259,7 @@ def get_new_streams(existing_streams, new_streams):
 
 def post_to_bluesky(match_ids: list[str]):
     """Post to Bluesky about newly added streams."""
-
-        
+    
     # Skip posting if SKIP_BLUESKY_POSTING is set
     if os.getenv("SKIP_BLUESKY_POSTING", "false").lower() == "true":
         print("Skipping Bluesky post due to SKIP_BLUESKY_POSTING environment variable")
@@ -299,6 +298,20 @@ def post_to_bluesky(match_ids: list[str]):
             fixtures_by_comp[fixture.competition] = []
         fixtures_by_comp[fixture.competition].append(fixture)
 
+    # Cache for resolved handles to avoid multiple API calls
+    resolved_handles = {}
+    
+    def resolve_handle(handle: str) -> str | None:
+        """Resolve a handle to a DID, using cache if available."""
+        if handle in resolved_handles:
+            return resolved_handles[handle]
+        try:
+            did = client.resolve_handle(handle)
+            resolved_handles[handle] = did
+            return did
+        except Exception as e:
+            print(f"Error resolving handle {handle}: {str(e)}")
+            return None
     
     # Add stream details in alphabetical order by competition
     for comp_name in sorted(fixtures_by_comp.keys()):
@@ -308,7 +321,27 @@ def post_to_bluesky(match_ids: list[str]):
         text_builder.text(f"🏏 {comp_short}\n")
         # Sort streams by home team name
         for stream_data in sorted(streams, key=lambda x: x.home_team):
-            text_builder.text(f"• {stream_data.home_team} vs {stream_data.away_team}\n")
+            text_builder.text("• ")
+            # Add home team with handle if it exists
+            if stream_data.home_bluesky_handle:
+                did = resolve_handle(stream_data.home_bluesky_handle)
+                if did:
+                    text_builder.mention(did, stream_data.home_team)
+                else:
+                    text_builder.text(stream_data.home_team)
+            else:
+                text_builder.text(stream_data.home_team)
+            text_builder.text(" vs ")
+            # Add away team with handle if it exists
+            if stream_data.away_bluesky_handle:
+                did = resolve_handle(stream_data.away_bluesky_handle)
+                if did:
+                    text_builder.mention(did, stream_data.away_team)
+                else:
+                    text_builder.text(stream_data.away_team)
+            else:
+                text_builder.text(stream_data.away_team)
+            text_builder.text("\n")
         text_builder.text("\n")
     
     # Add link at the end
@@ -317,63 +350,6 @@ def post_to_bluesky(match_ids: list[str]):
 
     if len(match_ids) > 0:
         client.send_post(text=text_builder)
-    
-    # # Get the final text and facets
-    # text, facets = text_builder
-    # print(f"Prepared post text:\n{text}")
-    
-    # # Split text into chunks if needed
-    # chunks = []
-    # current_chunk = ""
-    # current_facets = []
-    
-    # for line in text.split("\n"):
-    #     if len(current_chunk) + len(line) + 1 > 300:  # +1 for newline
-    #         if current_chunk:
-    #             chunks.append((current_chunk.strip(), current_facets))
-    #         current_chunk = line + "\n"
-    #         current_facets = []
-    #     else:
-    #         current_chunk += line + "\n"
-    
-    # if current_chunk:
-    #     chunks.append((current_chunk.strip(), current_facets))
-    
-    # print(f"Split post into {len(chunks)} chunks")
-    
-    # # Post to Bluesky
-    # try:
-    #     if not chunks:
-    #         print("No chunks to post")
-    #         return
-            
-    #     # Post first chunk
-    #     print("Posting first chunk...")
-    #     first_post = client.send_post(text=chunks[0][0], facets=chunks[0][1])
-    #     print("Posted first chunk to Bluesky successfully")
-        
-    #     # Post remaining chunks as replies
-    #     for i, (chunk_text, chunk_facets) in enumerate(chunks[1:]):
-    #         print(f"Posting chunk {i+2}...")
-            
-    #         reply = models.AppBskyFeedPost.Reply(
-    #             parent=models.AppBskyFeedPost.ReplyRef(
-    #                 uri=first_post.uri,
-    #                 cid=first_post.cid
-    #             ),
-    #             root=models.AppBskyFeedPost.ReplyRef(
-    #                 uri=first_post.uri,
-    #                 cid=first_post.cid
-    #             )
-    #         )
-    #         client.send_post(text=chunk_text, reply_to=reply, facets=chunk_facets)
-    #         print(f"Posted chunk {i+2} successfully")
-            
-    # except Exception as e:
-    #     print(f"ERROR: Failed to post to Bluesky: {str(e)}")
-    #     print(f"Error type: {type(e)}")
-    #     if hasattr(e, '__dict__'):
-    #         print(f"Error attributes: {e.__dict__}")
 
 def format_streams_for_output(
     live_streams: list[VideoStream],
