@@ -306,7 +306,8 @@ def post_to_bluesky(match_ids: list[str]):
         if handle in resolved_handles:
             return resolved_handles[handle]
         try:
-            did = client.resolve_handle(handle)
+            response = client.resolve_handle(handle)
+            did = response.did
             resolved_handles[handle] = did
             return did
         except Exception as e:
