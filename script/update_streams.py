@@ -307,14 +307,9 @@ def post_to_bluesky(match_ids: list[str]):
             return resolved_handles[handle]
         try:
             response = client.resolve_handle(handle)
-            if not response.success:
-                print(f"Failed to resolve handle {handle}: {response.content}")
-                return None
-            did = response.content.did
-            if not did or not did.startswith('did:'):
-                print(f"Invalid DID format for handle {handle}: {did}")
-                return None
+            did = response.did
             resolved_handles[handle] = did
+            print(f"Resolved handle {handle} to {did}")
             return did
         except Exception as e:
             print(f"Error resolving handle {handle}: {str(e)}")
