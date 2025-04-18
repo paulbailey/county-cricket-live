@@ -283,7 +283,7 @@ def post_to_bluesky(match_ids: list[str]):
     
     # Create the post text using TextBuilder
     text_builder = client_utils.TextBuilder()
-    text_builder.text("📺 New streams started:\n\n")
+    text_builder.text(f"📺 New stream{ 's' if len(match_ids) > 1 else '' } posted:\n\n")
 
     # Retrieve a list of fixture objects for the given match_ids, using the dict of match_id to fixture
     fixtures = load_fixtures()
