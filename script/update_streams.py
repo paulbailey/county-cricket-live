@@ -328,7 +328,7 @@ def post_to_bluesky(match_ids: list[str]):
             if stream_data.home_bluesky_handle:
                 did = resolve_handle(stream_data.home_bluesky_handle)
                 if did:
-                    text_builder.mention(did, stream_data.home_team)
+                    text_builder.mention(stream_data.home_team, did)
                 else:
                     text_builder.text(stream_data.home_team)
             else:
@@ -338,7 +338,7 @@ def post_to_bluesky(match_ids: list[str]):
             if stream_data.away_bluesky_handle:
                 did = resolve_handle(stream_data.away_bluesky_handle)
                 if did:
-                    text_builder.mention(did, stream_data.away_team)
+                    text_builder.mention(stream_data.away_team, did)
                 else:
                     text_builder.text(stream_data.away_team)
             else:
