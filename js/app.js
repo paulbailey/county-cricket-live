@@ -3,7 +3,7 @@ import persist from '@alpinejs/persist'
 import morph from '@alpinejs/morph'
 
 // Debounce function to limit the rate at which a function can fire
-const debounce = (func, wait) => {
+const debounce = function(func, wait) {
     let timeout;
     return function executedFunction(...args) {
         const later = () => {
