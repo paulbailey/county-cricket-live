@@ -68,6 +68,7 @@ Alpine.data('stream', () => ({
 
         // Load YouTube IFrame API
         if (!window.YT) {
+            console.log('Loading YouTube IFrame API');
             const tag = document.createElement('script');
             tag.src = "https://www.youtube.com/iframe_api";
             const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -80,6 +81,7 @@ Alpine.data('stream', () => ({
                 this.initializePlayers();
             };
         } else {
+            console.log('YouTube IFrame API already loaded');
             this.apiReady = true;
             this.initializePlayers();
         }
