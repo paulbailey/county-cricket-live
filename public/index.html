@@ -67,7 +67,7 @@
                             </h4>
                             <figure class="relative aspect-w-16 aspect-h-9">
                                 <template x-if="stream.videoId">
-                                    <div id="player-{{ stream.videoId }}"></div>
+                                    <div :id="`player-${ stream.videoId }`"></div>
                                     <!-- <iframe class="w-full h-full"
                                         :src="'https://www.youtube.com/embed/' + stream.videoId + '?enablejsapi=1&origin=' + encodeURIComponent(window.location.origin) + '&autoplay=' + (autoplayEnabled ? '1' : '0') + '&mute=' + (autoplayEnabled ? '1' : '0')"
                                         frameborder="0"
