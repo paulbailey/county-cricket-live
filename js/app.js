@@ -101,7 +101,7 @@ Alpine.data('stream', () => ({
                         new YT.Player(`player-${stream.videoId}`, {
                             videoId: stream.videoId,
                             playerVars: {
-                                'mute': 1,
+                                'mute': this.autoplayEnabled ? 1 : 0,
                                 'playsinline': 1,
                                 'rel': 0
                             },
