@@ -89,6 +89,7 @@ Alpine.data('stream', () => ({
 
     initializePlayers: debounce(function () {
         if (!this.apiReady || this.playersInitialized) {
+            console.log('Players already initialized or API not ready');
             return;
         }
 
