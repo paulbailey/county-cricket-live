@@ -3,18 +3,18 @@ import persist from '@alpinejs/persist'
 import morph from '@alpinejs/morph'
 
 // Debounce function to limit the rate at which a function can fire
-const debounce = function(func, wait) {
+const debounce = function (func, wait) {
     let timeout;
     return function executedFunction(...args) {
+        const context = this;
         const later = () => {
             clearTimeout(timeout);
-            func(...args);
+            func.apply(context, args);
         };
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
 };
-
 // Register the stream component with Alpine
 Alpine.data('stream', () => ({
     autoplayEnabled: Alpine.$persist(false).as('autoplayEnabled').using(localStorage),
