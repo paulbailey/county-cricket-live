@@ -78,6 +78,19 @@
     "day": "Day 1 of 4"
   },
   {
+    "matchId": "76c6e1d3-0b76-4119-a6aa-51a648afee3d",
+    "competition": "County Championship Division Two",
+    "homeTeam": "Leicestershire",
+    "homeTeamBlueskyHandle": "leicsccc.bsky.social",
+    "awayTeam": "Middlesex",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-06-29",
+    "endDate": "2025-07-02",
+    "startTimeGmt": "10:00",
+    "venue": "Grace Road, Leicester",
+    "day": "Day 1 of 4"
+  },
+  {
     "matchId": "1de1d3be-3e80-40fd-b4d0-f34533378305",
     "competition": "County Championship Division Two",
     "homeTeam": "Glamorgan",

@@ -13,6 +13,32 @@
     "day": "Day 2 of 4"
   },
   {
+    "matchId": "12dbdb84-ed5a-4405-89d2-69fa77516844",
+    "competition": "County Championship Division One",
+    "homeTeam": "Sussex",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Yorkshire",
+    "awayTeamBlueskyHandle": "yorkshireccc.bsky.social",
+    "startDate": "2025-09-15",
+    "endDate": "2025-09-18",
+    "startTimeGmt": "10:00",
+    "venue": "County Ground, Hove",
+    "day": "Day 2 of 4"
+  },
+  {
+    "matchId": "c18cbba7-eda1-4b8a-ad88-27c93f70ab77",
+    "competition": "County Championship Division One",
+    "homeTeam": "Durham",
+    "homeTeamBlueskyHandle": "durhamcricket.bsky.social",
+    "awayTeam": "Worcestershire",
+    "awayTeamBlueskyHandle": "worcestershireccc.bsky.social",
+    "startDate": "2025-09-15",
+    "endDate": "2025-09-18",
+    "startTimeGmt": "10:00",
+    "venue": "Riverside Ground, Chester-le-Street",
+    "day": "Day 2 of 4"
+  },
+  {
     "matchId": "4cb964ec-f70c-4212-b789-d56c4154ae57",
     "competition": "County Championship Division One",
     "homeTeam": "Warwickshire",
