@@ -1,32 +1,41 @@
 [
   {
+    "matchId": "03e562cc-60da-46c7-8e1c-a1270c7d8486",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460848/hampshire-vs-glamorgan-south-group-t20-blast-2025",
-    "home_team": "Hampshire",
-    "away_team": "Glamorgan",
-    "start_date": "2025-07-10",
-    "end_date": "2025-07-10",
-    "start_time_gmt": null,
-    "venue": "The Rose Bowl, Southampton"
+    "homeTeam": "Derbyshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Worcestershire",
+    "awayTeamBlueskyHandle": "worcestershireccc.bsky.social",
+    "startDate": "2025-07-10",
+    "endDate": "2025-07-10",
+    "startTimeGmt": "17:30",
+    "venue": "County Ground, Derby",
+    "day": "One Day Match"
   },
   {
+    "matchId": "511b254c-8b31-49e7-b3ae-6c509b9916ac",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460849/leicestershire-vs-northamptonshire-north-group-t20-blast-2025",
-    "home_team": "Leicestershire",
-    "away_team": "Northamptonshire",
-    "start_date": "2025-07-10",
-    "end_date": "2025-07-10",
-    "start_time_gmt": null,
-    "venue": "Grace Road, Leicester"
+    "homeTeam": "Hampshire",
+    "homeTeamBlueskyHandle": "hampshirecricket.bsky.social",
+    "awayTeam": "Glamorgan",
+    "awayTeamBlueskyHandle": "glamcricket.bsky.social",
+    "startDate": "2025-07-10",
+    "endDate": "2025-07-10",
+    "startTimeGmt": "17:30",
+    "venue": "The Rose Bowl, Southampton",
+    "day": "One Day Match"
   },
   {
+    "matchId": "20755341-b79d-4060-ac19-2ce78ca190d3",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460847/derbyshire-vs-worcestershire-north-group-t20-blast-2025",
-    "home_team": "Derbyshire",
-    "away_team": "Worcestershire",
-    "start_date": "2025-07-10",
-    "end_date": "2025-07-10",
-    "start_time_gmt": null,
-    "venue": "County Ground, Derby"
+    "homeTeam": "Lancashire",
+    "homeTeamBlueskyHandle": "lancscricket.bsky.social",
+    "awayTeam": "Northamptonshire",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-07-10",
+    "endDate": "2025-07-10",
+    "startTimeGmt": "17:30",
+    "venue": "Grace Road, Leicester",
+    "day": "One Day Match"
   }
 ]

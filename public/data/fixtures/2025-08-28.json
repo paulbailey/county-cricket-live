@@ -1,22 +1,28 @@
 [
   {
+    "matchId": "207cba26-c0ea-4c00-8cac-516669de919c",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1462028/tbc-vs-tbc-quarter-final-one-day-cup-2025",
-    "home_team": "tbc",
-    "away_team": "tbc",
-    "start_date": "2025-08-28",
-    "end_date": "2025-08-28",
-    "start_time_gmt": null,
-    "venue": "TBA"
+    "homeTeam": "Tbc",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Tbc",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-08-28",
+    "endDate": "2025-08-28",
+    "startTimeGmt": "10:00",
+    "venue": "TBC, TBC",
+    "day": "One Day Match"
   },
   {
+    "matchId": "d05ce189-2f27-48d2-a786-ba790dd85d7f",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1462029/tbc-vs-tbc-quarter-final-one-day-cup-2025",
-    "home_team": "tbc",
-    "away_team": "tbc",
-    "start_date": "2025-08-28",
-    "end_date": "2025-08-28",
-    "start_time_gmt": null,
-    "venue": "TBA"
+    "homeTeam": "Tbc",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Tbc",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-08-28",
+    "endDate": "2025-08-28",
+    "startTimeGmt": "10:00",
+    "venue": "TBC, TBC",
+    "day": "One Day Match"
   }
 ]

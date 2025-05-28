@@ -1,32 +1,41 @@
 [
   {
+    "matchId": "b11bcbf7-bac2-4cd8-a5b0-e308bdb4d3f6",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460791/northamptonshire-vs-birmingham-bears-north-group-t20-blast-2025",
-    "home_team": "Northamptonshire",
-    "away_team": "Birmingham Bears",
-    "start_date": "2025-06-11",
-    "end_date": "2025-06-11",
-    "start_time_gmt": null,
-    "venue": "County Ground, Northampton"
+    "homeTeam": "Durham",
+    "homeTeamBlueskyHandle": "durhamcricket.bsky.social",
+    "awayTeam": "Derbyshire",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-06-11",
+    "endDate": "2025-06-11",
+    "startTimeGmt": "17:30",
+    "venue": "Riverside Ground, Chester-le-Street",
+    "day": "One Day Match"
   },
   {
+    "matchId": "75ffccbe-22f7-454b-99b0-5ac2e6a9f6cd",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460792/nottinghamshire-vs-yorkshire-north-group-t20-blast-2025",
-    "home_team": "Nottinghamshire",
-    "away_team": "Yorkshire",
-    "start_date": "2025-06-11",
-    "end_date": "2025-06-11",
-    "start_time_gmt": null,
-    "venue": "Trent Bridge, Nottingham"
+    "homeTeam": "Northamptonshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Warwickshire",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-06-11",
+    "endDate": "2025-06-11",
+    "startTimeGmt": "17:30",
+    "venue": "County Ground, Northampton",
+    "day": "One Day Match"
   },
   {
+    "matchId": "7c92f2aa-996a-4da7-a39f-e28702af6528",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460790/durham-vs-derbyshire-north-group-t20-blast-2025",
-    "home_team": "Durham",
-    "away_team": "Derbyshire",
-    "start_date": "2025-06-11",
-    "end_date": "2025-06-11",
-    "start_time_gmt": null,
-    "venue": "Riverside Ground, Chester-le-Street"
+    "homeTeam": "Nottinghamshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Yorkshire",
+    "awayTeamBlueskyHandle": "yorkshireccc.bsky.social",
+    "startDate": "2025-06-11",
+    "endDate": "2025-06-11",
+    "startTimeGmt": "17:30",
+    "venue": "Trent Bridge, Nottingham",
+    "day": "One Day Match"
   }
 ]

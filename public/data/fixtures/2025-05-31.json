@@ -1,22 +1,28 @@
 [
   {
+    "matchId": "0a48b781-2c81-4459-8db4-9ca81dbd17f3",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460762/birmingham-bears-vs-durham-north-group-t20-blast-2025",
-    "home_team": "Birmingham Bears",
-    "away_team": "Durham",
-    "start_date": "2025-05-31",
-    "end_date": "2025-05-31",
-    "start_time_gmt": null,
-    "venue": "Edgbaston, Birmingham"
+    "homeTeam": "Lancashire",
+    "homeTeamBlueskyHandle": "lancscricket.bsky.social",
+    "awayTeam": "Nottinghamshire",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-05-31",
+    "endDate": "2025-05-31",
+    "startTimeGmt": "17:30",
+    "venue": "Emirates Old Trafford, Manchester",
+    "day": "One Day Match"
   },
   {
+    "matchId": "f840d00e-8457-43e7-9caf-76f13639fadc",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460763/lancashire-vs-nottinghamshire-north-group-t20-blast-2025",
-    "home_team": "Lancashire",
-    "away_team": "Nottinghamshire",
-    "start_date": "2025-05-31",
-    "end_date": "2025-05-31",
-    "start_time_gmt": null,
-    "venue": "Old Trafford, Manchester"
+    "homeTeam": "Warwickshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Durham",
+    "awayTeamBlueskyHandle": "durhamcricket.bsky.social",
+    "startDate": "2025-05-31",
+    "endDate": "2025-05-31",
+    "startTimeGmt": "17:30",
+    "venue": "Edgbaston, Birmingham",
+    "day": "One Day Match"
   }
 ]

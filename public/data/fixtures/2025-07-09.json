@@ -1,42 +1,54 @@
 [
   {
+    "matchId": "736045b1-5951-4013-98c4-1ce89d83117f",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460843/birmingham-bears-vs-lancashire-north-group-t20-blast-2025",
-    "home_team": "Birmingham Bears",
-    "away_team": "Lancashire",
-    "start_date": "2025-07-09",
-    "end_date": "2025-07-09",
-    "start_time_gmt": null,
-    "venue": "Edgbaston, Birmingham"
+    "homeTeam": "Sussex",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Kent",
+    "awayTeamBlueskyHandle": "kentcricket.co.uk",
+    "startDate": "2025-07-09",
+    "endDate": "2025-07-09",
+    "startTimeGmt": "17:30",
+    "venue": "County Ground, Hove",
+    "day": "One Day Match"
   },
   {
+    "matchId": "8f32b6e4-433e-46fe-83e8-5e7284efda7b",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460844/gloucestershire-vs-surrey-south-group-t20-blast-2025",
-    "home_team": "Gloucestershire",
-    "away_team": "Surrey",
-    "start_date": "2025-07-09",
-    "end_date": "2025-07-09",
-    "start_time_gmt": null,
-    "venue": "County Ground, Bristol"
+    "homeTeam": "Middlesex",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Hampshire",
+    "awayTeamBlueskyHandle": "hampshirecricket.bsky.social",
+    "startDate": "2025-07-09",
+    "endDate": "2025-07-09",
+    "startTimeGmt": "17:30",
+    "venue": "Merchant Taylors' School Ground, Northwood",
+    "day": "One Day Match"
   },
   {
+    "matchId": "1bd0fe7b-b283-4c18-8b0b-89f9e60b2895",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460845/middlesex-vs-hampshire-south-group-t20-blast-2025",
-    "home_team": "Middlesex",
-    "away_team": "Hampshire",
-    "start_date": "2025-07-09",
-    "end_date": "2025-07-09",
-    "start_time_gmt": null,
-    "venue": "Merchant Taylors' School Ground, Northwood"
+    "homeTeam": "Gloucestershire",
+    "homeTeamBlueskyHandle": "gloscricket.bsky.social",
+    "awayTeam": "Surrey",
+    "awayTeamBlueskyHandle": "kiaoval.com",
+    "startDate": "2025-07-09",
+    "endDate": "2025-07-09",
+    "startTimeGmt": "17:30",
+    "venue": "County Ground, Bristol",
+    "day": "One Day Match"
   },
   {
+    "matchId": "b57e334f-d2ef-47dd-9a4a-530c16821194",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460846/sussex-vs-kent-south-group-t20-blast-2025",
-    "home_team": "Sussex",
-    "away_team": "Kent",
-    "start_date": "2025-07-09",
-    "end_date": "2025-07-09",
-    "start_time_gmt": null,
-    "venue": "County Ground, Hove"
+    "homeTeam": "Warwickshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Lancashire",
+    "awayTeamBlueskyHandle": "lancscricket.bsky.social",
+    "startDate": "2025-07-09",
+    "endDate": "2025-07-09",
+    "startTimeGmt": "17:30",
+    "venue": "Edgbaston, Birmingham",
+    "day": "One Day Match"
   }
 ]

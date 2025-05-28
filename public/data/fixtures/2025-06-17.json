@@ -1,12 +1,15 @@
 [
   {
+    "matchId": "0065cd63-de4b-48fa-ad15-7ef6fc0044df",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460810/hampshire-vs-surrey-south-group-t20-blast-2025",
-    "home_team": "Hampshire",
-    "away_team": "Surrey",
-    "start_date": "2025-06-17",
-    "end_date": "2025-06-17",
-    "start_time_gmt": null,
-    "venue": "The Rose Bowl, Southampton"
+    "homeTeam": "Hampshire",
+    "homeTeamBlueskyHandle": "hampshirecricket.bsky.social",
+    "awayTeam": "Surrey",
+    "awayTeamBlueskyHandle": "kiaoval.com",
+    "startDate": "2025-06-17",
+    "endDate": "2025-06-17",
+    "startTimeGmt": "17:30",
+    "venue": "The Rose Bowl, Southampton",
+    "day": "One Day Match"
   }
 ]

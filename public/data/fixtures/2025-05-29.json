@@ -1,22 +1,28 @@
 [
   {
+    "matchId": "f37fc8e4-ad3d-43c1-85e6-58624ec19e94",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460754/lancashire-vs-worcestershire-north-group-t20-blast-2025",
-    "home_team": "Lancashire",
-    "away_team": "Worcestershire",
-    "start_date": "2025-05-29",
-    "end_date": "2025-05-29",
-    "start_time_gmt": null,
-    "venue": "Old Trafford, Manchester"
+    "homeTeam": "Lancashire",
+    "homeTeamBlueskyHandle": "lancscricket.bsky.social",
+    "awayTeam": "Worcestershire",
+    "awayTeamBlueskyHandle": "worcestershireccc.bsky.social",
+    "startDate": "2025-05-29",
+    "endDate": "2025-05-29",
+    "startTimeGmt": "17:30",
+    "venue": "Emirates Old Trafford, Manchester",
+    "day": "One Day Match"
   },
   {
+    "matchId": "6587a906-559f-4b1e-9978-06fa0d67ffc4",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460755/middlesex-vs-sussex-south-group-t20-blast-2025",
-    "home_team": "Middlesex",
-    "away_team": "Sussex",
-    "start_date": "2025-05-29",
-    "end_date": "2025-05-29",
-    "start_time_gmt": null,
-    "venue": "Lord's, London"
+    "homeTeam": "Middlesex",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Sussex",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-05-29",
+    "endDate": "2025-05-29",
+    "startTimeGmt": "17:30",
+    "venue": "Lord's, London",
+    "day": "One Day Match"
   }
 ]

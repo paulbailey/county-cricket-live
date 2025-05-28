@@ -1,22 +1,28 @@
 [
   {
+    "matchId": "f48d1b78-4912-4967-9c1a-20e177a8d08d",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460773/middlesex-vs-kent-south-group-t20-blast-2025",
-    "home_team": "Middlesex",
-    "away_team": "Kent",
-    "start_date": "2025-06-05",
-    "end_date": "2025-06-05",
-    "start_time_gmt": null,
-    "venue": "Lord's, London"
+    "homeTeam": "Middlesex",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Kent",
+    "awayTeamBlueskyHandle": "kentcricket.co.uk",
+    "startDate": "2025-06-05",
+    "endDate": "2025-06-05",
+    "startTimeGmt": "17:30",
+    "venue": "Lord's, London",
+    "day": "One Day Match"
   },
   {
+    "matchId": "026d103f-9f8b-4c5b-b014-1f42e63da4fd",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460774/surrey-vs-hampshire-south-group-t20-blast-2025",
-    "home_team": "Surrey",
-    "away_team": "Hampshire",
-    "start_date": "2025-06-05",
-    "end_date": "2025-06-05",
-    "start_time_gmt": null,
-    "venue": "Kennington Oval, London"
+    "homeTeam": "Surrey",
+    "homeTeamBlueskyHandle": "kiaoval.com",
+    "awayTeam": "Hampshire",
+    "awayTeamBlueskyHandle": "hampshirecricket.bsky.social",
+    "startDate": "2025-06-05",
+    "endDate": "2025-06-05",
+    "startTimeGmt": "17:30",
+    "venue": "Kennington Oval, London",
+    "day": "One Day Match"
   }
 ]

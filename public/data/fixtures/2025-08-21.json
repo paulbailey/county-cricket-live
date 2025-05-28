@@ -1,22 +1,28 @@
 [
   {
+    "matchId": "5600b68b-fea9-4fd3-aa86-fd79fb79617c",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1462006/sussex-vs-somerset-one-day-cup-2025",
-    "home_team": "Sussex",
-    "away_team": "Somerset",
-    "start_date": "2025-08-21",
-    "end_date": "2025-08-21",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Northamptonshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Kent",
+    "awayTeamBlueskyHandle": "kentcricket.co.uk",
+    "startDate": "2025-08-21",
+    "endDate": "2025-08-21",
+    "startTimeGmt": "10:00",
+    "venue": "County Ground, Northampton",
+    "day": "One Day Match"
   },
   {
+    "matchId": "a7f9f4d6-f87e-4b7d-9c03-f17535aead64",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1462005/northamptonshire-vs-kent-one-day-cup-2025",
-    "home_team": "Northamptonshire",
-    "away_team": "Kent",
-    "start_date": "2025-08-21",
-    "end_date": "2025-08-21",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Sussex",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Somerset",
+    "awayTeamBlueskyHandle": "somersetccc.bsky.social",
+    "startDate": "2025-08-21",
+    "endDate": "2025-08-21",
+    "startTimeGmt": "10:00",
+    "venue": "County Ground, Hove",
+    "day": "One Day Match"
   }
 ]

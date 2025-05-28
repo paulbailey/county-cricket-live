@@ -1,32 +1,41 @@
 [
   {
+    "matchId": "7f5b7742-bd35-423c-828d-6e636ace3766",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460816/somerset-vs-hampshire-south-group-t20-blast-2025",
-    "home_team": "Somerset",
-    "away_team": "Hampshire",
-    "start_date": "2025-06-19",
-    "end_date": "2025-06-19",
-    "start_time_gmt": null,
-    "venue": "The Cooper Associates County Ground, Taunton"
+    "homeTeam": "Leicestershire",
+    "homeTeamBlueskyHandle": "leicsccc.bsky.social",
+    "awayTeam": "Nottinghamshire",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-06-19",
+    "endDate": "2025-06-19",
+    "startTimeGmt": "17:30",
+    "venue": "Grace Road, Leicester",
+    "day": "One Day Match"
   },
   {
+    "matchId": "2596fc39-29de-4df3-8724-18add503896e",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460814/leicestershire-vs-nottinghamshire-north-group-t20-blast-2025",
-    "home_team": "Leicestershire",
-    "away_team": "Nottinghamshire",
-    "start_date": "2025-06-19",
-    "end_date": "2025-06-19",
-    "start_time_gmt": null,
-    "venue": "Grace Road, Leicester"
+    "homeTeam": "Middlesex",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Essex",
+    "awayTeamBlueskyHandle": "essexcricket.bsky.social",
+    "startDate": "2025-06-19",
+    "endDate": "2025-06-19",
+    "startTimeGmt": "17:30",
+    "venue": "Lord's, London",
+    "day": "One Day Match"
   },
   {
+    "matchId": "369c5a8c-aa30-4d6c-bde3-22728b36c15d",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460815/middlesex-vs-essex-south-group-t20-blast-2025",
-    "home_team": "Middlesex",
-    "away_team": "Essex",
-    "start_date": "2025-06-19",
-    "end_date": "2025-06-19",
-    "start_time_gmt": null,
-    "venue": "Lord's, London"
+    "homeTeam": "Somerset",
+    "homeTeamBlueskyHandle": "somersetccc.bsky.social",
+    "awayTeam": "Hampshire",
+    "awayTeamBlueskyHandle": "hampshirecricket.bsky.social",
+    "startDate": "2025-06-19",
+    "endDate": "2025-06-19",
+    "startTimeGmt": "17:30",
+    "venue": "The Cooper Associates County Ground, Taunton",
+    "day": "One Day Match"
   }
 ]

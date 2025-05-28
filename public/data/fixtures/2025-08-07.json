@@ -1,42 +1,54 @@
 [
   {
+    "matchId": "2bdfe755-d679-4ad6-89b6-2c37917e7ef6",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461964/glamorgan-vs-derbyshire-one-day-cup-2025",
-    "home_team": "Glamorgan",
-    "away_team": "Derbyshire",
-    "start_date": "2025-08-07",
-    "end_date": "2025-08-07",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Glamorgan",
+    "homeTeamBlueskyHandle": "glamcricket.bsky.social",
+    "awayTeam": "Derbyshire",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-08-07",
+    "endDate": "2025-08-07",
+    "startTimeGmt": "10:00",
+    "venue": "The Gnoll Cricket Ground, Neath, Wales",
+    "day": "One Day Match"
   },
   {
+    "matchId": "90c333e5-94f9-47ec-98e1-74599da48482",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461965/hampshire-vs-essex-one-day-cup-2025",
-    "home_team": "Hampshire",
-    "away_team": "Essex",
-    "start_date": "2025-08-07",
-    "end_date": "2025-08-07",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Nottinghamshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Worcestershire",
+    "awayTeamBlueskyHandle": "worcestershireccc.bsky.social",
+    "startDate": "2025-08-07",
+    "endDate": "2025-08-07",
+    "startTimeGmt": "10:00",
+    "venue": "The John Fretwell Sporting Complex, Nettleworth",
+    "day": "One Day Match"
   },
   {
+    "matchId": "5a80e7f1-7b19-4962-b38c-f9a2498bb48d",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461966/nottingham-vs-worcestershire-one-day-cup-2025",
-    "home_team": "Nottingham",
-    "away_team": "Worcestershire",
-    "start_date": "2025-08-07",
-    "end_date": "2025-08-07",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Hampshire",
+    "homeTeamBlueskyHandle": "hampshirecricket.bsky.social",
+    "awayTeam": "Essex",
+    "awayTeamBlueskyHandle": "essexcricket.bsky.social",
+    "startDate": "2025-08-07",
+    "endDate": "2025-08-07",
+    "startTimeGmt": "10:00",
+    "venue": "The Rose Bowl, Southampton",
+    "day": "One Day Match"
   },
   {
+    "matchId": "f1c360f9-066c-4eca-8e6f-d5356c65e0a4",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461967/sussex-vs-kent-one-day-cup-2025",
-    "home_team": "Sussex",
-    "away_team": "Kent",
-    "start_date": "2025-08-07",
-    "end_date": "2025-08-07",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Sussex",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Kent",
+    "awayTeamBlueskyHandle": "kentcricket.co.uk",
+    "startDate": "2025-08-07",
+    "endDate": "2025-08-07",
+    "startTimeGmt": "10:00",
+    "venue": "Arundel Castle, Arundel",
+    "day": "One Day Match"
   }
 ]

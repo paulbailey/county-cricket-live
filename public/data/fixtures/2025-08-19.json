@@ -1,12 +1,15 @@
 [
   {
+    "matchId": "bdfbb241-2a66-4d04-a517-dbc48b158d2f",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1462000/middlesex-vs-kent-one-day-cup-2025",
-    "home_team": "Middlesex",
-    "away_team": "Kent",
-    "start_date": "2025-08-19",
-    "end_date": "2025-08-19",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Middlesex",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Kent",
+    "awayTeamBlueskyHandle": "kentcricket.co.uk",
+    "startDate": "2025-08-19",
+    "endDate": "2025-08-19",
+    "startTimeGmt": "10:00",
+    "venue": "Radlett Cricket Club, Radlett",
+    "day": "One Day Match"
   }
 ]

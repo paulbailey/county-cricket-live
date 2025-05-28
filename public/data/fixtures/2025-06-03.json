@@ -1,12 +1,15 @@
 [
   {
+    "matchId": "7f0e75ba-e754-4a65-96be-83ff2e50d596",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460770/glamorgan-vs-surrey-south-group-t20-blast-2025",
-    "home_team": "Glamorgan",
-    "away_team": "Surrey",
-    "start_date": "2025-06-03",
-    "end_date": "2025-06-03",
-    "start_time_gmt": null,
-    "venue": "Sophia Gardens, Cardiff"
+    "homeTeam": "Glamorgan",
+    "homeTeamBlueskyHandle": "glamcricket.bsky.social",
+    "awayTeam": "Surrey",
+    "awayTeamBlueskyHandle": "kiaoval.com",
+    "startDate": "2025-06-03",
+    "endDate": "2025-06-03",
+    "startTimeGmt": "17:30",
+    "venue": "Sophia Gardens, Cardiff",
+    "day": "One Day Match"
   }
 ]

@@ -1,12 +1,15 @@
 [
   {
+    "matchId": "55fb11b2-b927-4446-8296-d0f760300b58",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461999/surrey-vs-hampshire-one-day-cup-2025",
-    "home_team": "Surrey",
-    "away_team": "Hampshire",
-    "start_date": "2025-08-18",
-    "end_date": "2025-08-18",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Surrey",
+    "homeTeamBlueskyHandle": "kiaoval.com",
+    "awayTeam": "Hampshire",
+    "awayTeamBlueskyHandle": "hampshirecricket.bsky.social",
+    "startDate": "2025-08-18",
+    "endDate": "2025-08-18",
+    "startTimeGmt": "10:00",
+    "venue": "Kennington Oval, London",
+    "day": "One Day Match"
   }
 ]

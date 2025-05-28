@@ -1,22 +1,28 @@
 [
   {
+    "matchId": "20e3db8d-a4e9-4889-ab8c-7e3351836a58",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460771/derbyshire-vs-northamptonshire-north-group-t20-blast-2025",
-    "home_team": "Derbyshire",
-    "away_team": "Northamptonshire",
-    "start_date": "2025-06-04",
-    "end_date": "2025-06-04",
-    "start_time_gmt": null,
-    "venue": "County Ground, Derby"
+    "homeTeam": "Derbyshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Northamptonshire",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-06-04",
+    "endDate": "2025-06-04",
+    "startTimeGmt": "17:30",
+    "venue": "County Ground, Derby",
+    "day": "One Day Match"
   },
   {
+    "matchId": "a6a70e0c-14fa-41d8-a357-15040f6f5c11",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460772/lancashire-vs-leicestershire-north-group-t20-blast-2025",
-    "home_team": "Lancashire",
-    "away_team": "Leicestershire",
-    "start_date": "2025-06-04",
-    "end_date": "2025-06-04",
-    "start_time_gmt": null,
-    "venue": "Old Trafford, Manchester"
+    "homeTeam": "Lancashire",
+    "homeTeamBlueskyHandle": "lancscricket.bsky.social",
+    "awayTeam": "Leicestershire",
+    "awayTeamBlueskyHandle": "leicsccc.bsky.social",
+    "startDate": "2025-06-04",
+    "endDate": "2025-06-04",
+    "startTimeGmt": "17:30",
+    "venue": "Emirates Old Trafford, Manchester",
+    "day": "One Day Match"
   }
 ]

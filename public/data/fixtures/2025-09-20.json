@@ -1,12 +1,15 @@
 [
   {
+    "matchId": "90055057-79ed-4290-97bf-106ef1b98b82",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1462032/tbc-vs-tbc-final-one-day-cup-2025",
-    "home_team": "tbc",
-    "away_team": "tbc",
-    "start_date": "2025-09-20",
-    "end_date": "2025-09-20",
-    "start_time_gmt": null,
-    "venue": "Trent Bridge, Nottingham"
+    "homeTeam": "Tbc",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Tbc",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-09-20",
+    "endDate": "2025-09-20",
+    "startTimeGmt": "10:00",
+    "venue": "TBC, TBC",
+    "day": "One Day Match"
   }
 ]

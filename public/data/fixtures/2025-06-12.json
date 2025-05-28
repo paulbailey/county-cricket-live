@@ -1,32 +1,41 @@
 [
   {
+    "matchId": "865b79d4-c274-46c6-9b03-d35c4e3658c2",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460793/essex-vs-glamorgan-south-group-t20-blast-2025",
-    "home_team": "Essex",
-    "away_team": "Glamorgan",
-    "start_date": "2025-06-12",
-    "end_date": "2025-06-12",
-    "start_time_gmt": null,
-    "venue": "County Ground, Chelmsford"
+    "homeTeam": "Surrey",
+    "homeTeamBlueskyHandle": "kiaoval.com",
+    "awayTeam": "Kent",
+    "awayTeamBlueskyHandle": "kentcricket.co.uk",
+    "startDate": "2025-06-12",
+    "endDate": "2025-06-12",
+    "startTimeGmt": "17:30",
+    "venue": "Kennington Oval, London",
+    "day": "One Day Match"
   },
   {
+    "matchId": "6600db00-8ce6-478a-b539-b0bbfff304a8",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460794/somerset-vs-middlesex-south-group-t20-blast-2025",
-    "home_team": "Somerset",
-    "away_team": "Middlesex",
-    "start_date": "2025-06-12",
-    "end_date": "2025-06-12",
-    "start_time_gmt": null,
-    "venue": "The Cooper Associates County Ground, Taunton"
+    "homeTeam": "Somerset",
+    "homeTeamBlueskyHandle": "somersetccc.bsky.social",
+    "awayTeam": "Middlesex",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-06-12",
+    "endDate": "2025-06-12",
+    "startTimeGmt": "17:30",
+    "venue": "The Cooper Associates County Ground, Taunton",
+    "day": "One Day Match"
   },
   {
+    "matchId": "fb8abc6d-8a85-4c43-9315-8778f6967e99",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460795/surrey-vs-kent-south-group-t20-blast-2025",
-    "home_team": "Surrey",
-    "away_team": "Kent",
-    "start_date": "2025-06-12",
-    "end_date": "2025-06-12",
-    "start_time_gmt": null,
-    "venue": "Kennington Oval, London"
+    "homeTeam": "Essex",
+    "homeTeamBlueskyHandle": "essexcricket.bsky.social",
+    "awayTeam": "Glamorgan",
+    "awayTeamBlueskyHandle": "glamcricket.bsky.social",
+    "startDate": "2025-06-12",
+    "endDate": "2025-06-12",
+    "startTimeGmt": "17:30",
+    "venue": "County Ground, Chelmsford",
+    "day": "One Day Match"
   }
 ]

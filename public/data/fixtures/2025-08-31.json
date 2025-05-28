@@ -1,22 +1,28 @@
 [
   {
+    "matchId": "c5bcf78f-5d3c-4be1-af91-1a4c363ca8c3",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1462031/tbc-vs-tbc-semi-fial-one-day-cup-2025",
-    "home_team": "tbc",
-    "away_team": "tbc",
-    "start_date": "2025-08-31",
-    "end_date": "2025-08-31",
-    "start_time_gmt": null,
-    "venue": "TBA"
+    "homeTeam": "Tbc",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Tbc",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-08-31",
+    "endDate": "2025-08-31",
+    "startTimeGmt": "10:00",
+    "venue": "TBC, TBC",
+    "day": "One Day Match"
   },
   {
+    "matchId": "3d205699-bc2b-4210-9f50-74593318fd51",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1462030/tbc-vs-tbc-semi-fial-one-day-cup-2025",
-    "home_team": "tbc",
-    "away_team": "tbc",
-    "start_date": "2025-08-31",
-    "end_date": "2025-08-31",
-    "start_time_gmt": null,
-    "venue": "TBA"
+    "homeTeam": "Tbc",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Tbc",
+    "awayTeamBlueskyHandle": null,
+    "startDate": "2025-08-31",
+    "endDate": "2025-08-31",
+    "startTimeGmt": "10:00",
+    "venue": "TBC, TBC",
+    "day": "One Day Match"
   }
 ]

@@ -1,12 +1,15 @@
 [
   {
+    "matchId": "3459e383-2e71-4ce2-9d74-a0fc81752b06",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460842/somerset-vs-essex-south-group-t20-blast-2025",
-    "home_team": "Somerset",
-    "away_team": "Essex",
-    "start_date": "2025-07-08",
-    "end_date": "2025-07-08",
-    "start_time_gmt": null,
-    "venue": "The Cooper Associates County Ground, Taunton"
+    "homeTeam": "Somerset",
+    "homeTeamBlueskyHandle": "somersetccc.bsky.social",
+    "awayTeam": "Essex",
+    "awayTeamBlueskyHandle": "essexcricket.bsky.social",
+    "startDate": "2025-07-08",
+    "endDate": "2025-07-08",
+    "startTimeGmt": "17:30",
+    "venue": "The Cooper Associates County Ground, Taunton",
+    "day": "One Day Match"
   }
 ]

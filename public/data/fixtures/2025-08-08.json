@@ -1,32 +1,41 @@
 [
   {
+    "matchId": "6b6b7d6a-1527-4250-912e-575ce726d7e7",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461968/northamptonshire-vs-yorkshire-one-day-cup-2025",
-    "home_team": "Northamptonshire",
-    "away_team": "Yorkshire",
-    "start_date": "2025-08-08",
-    "end_date": "2025-08-08",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Somerset",
+    "homeTeamBlueskyHandle": "somersetccc.bsky.social",
+    "awayTeam": "Durham",
+    "awayTeamBlueskyHandle": "durhamcricket.bsky.social",
+    "startDate": "2025-08-08",
+    "endDate": "2025-08-08",
+    "startTimeGmt": "10:00",
+    "venue": "The Cooper Associates County Ground, Taunton",
+    "day": "One Day Match"
   },
   {
+    "matchId": "f9303d19-a958-49d1-81b4-b648871f39fb",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461969/somerset-vs-durham-one-day-cup-2025",
-    "home_team": "Somerset",
-    "away_team": "Durham",
-    "start_date": "2025-08-08",
-    "end_date": "2025-08-08",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Northamptonshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Yorkshire",
+    "awayTeamBlueskyHandle": "yorkshireccc.bsky.social",
+    "startDate": "2025-08-08",
+    "endDate": "2025-08-08",
+    "startTimeGmt": "10:00",
+    "venue": "County Ground, Northampton",
+    "day": "One Day Match"
   },
   {
+    "matchId": "6e55947a-69fb-46de-a8cf-142aa44709e3",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461970/surrey-vs-gloucestershire-one-day-cup-2025",
-    "home_team": "Surrey",
-    "away_team": "Gloucestershire",
-    "start_date": "2025-08-08",
-    "end_date": "2025-08-08",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Surrey",
+    "homeTeamBlueskyHandle": "kiaoval.com",
+    "awayTeam": "Gloucestershire",
+    "awayTeamBlueskyHandle": "gloscricket.bsky.social",
+    "startDate": "2025-08-08",
+    "endDate": "2025-08-08",
+    "startTimeGmt": "10:00",
+    "venue": "Woodbridge Road, Guildford",
+    "day": "One Day Match"
   }
 ]

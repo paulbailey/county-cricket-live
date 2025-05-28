@@ -1,12 +1,15 @@
 [
   {
+    "matchId": "8bdd09f3-bbda-40ed-82ab-13e2df931181",
     "competition": "T20 Blast",
-    "match_url": "https://www.espncricinfo.com/series/8053/game/1460783/nottinghamshire-vs-worcestershire-north-group-t20-blast-2025",
-    "home_team": "Nottinghamshire",
-    "away_team": "Worcestershire",
-    "start_date": "2025-06-07",
-    "end_date": "2025-06-07",
-    "start_time_gmt": null,
-    "venue": "Trent Bridge, Nottingham"
+    "homeTeam": "Nottinghamshire",
+    "homeTeamBlueskyHandle": null,
+    "awayTeam": "Worcestershire",
+    "awayTeamBlueskyHandle": "worcestershireccc.bsky.social",
+    "startDate": "2025-06-07",
+    "endDate": "2025-06-07",
+    "startTimeGmt": "17:30",
+    "venue": "Trent Bridge, Nottingham",
+    "day": "One Day Match"
   }
 ]

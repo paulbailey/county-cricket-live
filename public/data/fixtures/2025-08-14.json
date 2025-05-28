@@ -1,12 +1,15 @@
 [
   {
+    "matchId": "aa049802-fd19-4b49-a762-22a1949968e5",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461984/yorkshire-vs-somerset-one-day-cup-2025",
-    "home_team": "Yorkshire",
-    "away_team": "Somerset",
-    "start_date": "2025-08-14",
-    "end_date": "2025-08-14",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Yorkshire",
+    "homeTeamBlueskyHandle": "yorkshireccc.bsky.social",
+    "awayTeam": "Somerset",
+    "awayTeamBlueskyHandle": "somersetccc.bsky.social",
+    "startDate": "2025-08-14",
+    "endDate": "2025-08-14",
+    "startTimeGmt": "10:00",
+    "venue": "York Cricket Club, York",
+    "day": "One Day Match"
   }
 ]

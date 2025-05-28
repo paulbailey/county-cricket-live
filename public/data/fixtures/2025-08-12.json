@@ -1,12 +1,15 @@
 [
   {
+    "matchId": "88ab1983-0534-4d5f-9a9b-ea4a15d67978",
     "competition": "One-Day Cup",
-    "match_url": "https://www.espncricinfo.com/series/8335/game/1461978/yorkshire-vs-lancashire-one-day-cup-2025",
-    "home_team": "Yorkshire",
-    "away_team": "Lancashire",
-    "start_date": "2025-08-12",
-    "end_date": "2025-08-12",
-    "start_time_gmt": null,
-    "venue": null
+    "homeTeam": "Yorkshire",
+    "homeTeamBlueskyHandle": "yorkshireccc.bsky.social",
+    "awayTeam": "Lancashire",
+    "awayTeamBlueskyHandle": "lancscricket.bsky.social",
+    "startDate": "2025-08-12",
+    "endDate": "2025-08-12",
+    "startTimeGmt": "10:00",
+    "venue": "York Cricket Club, York",
+    "day": "One Day Match"
   }
 ]
