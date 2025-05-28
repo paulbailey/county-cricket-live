@@ -7,6 +7,7 @@ class CompetitionType(str, Enum):
     COUNTY_CHAMPIONSHIP_DIV_ONE = "County Championship Division One"
     COUNTY_CHAMPIONSHIP_DIV_TWO = "County Championship Division Two"
     ONE_DAY_CUP = "One-Day Cup"
+    BLAST = "T20 Blast"
 
 class Fixture(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
