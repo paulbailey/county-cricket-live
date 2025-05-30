@@ -65,6 +65,19 @@
     "day": "One Day Match"
   },
   {
+    "matchId": "4ab5f6e9-133e-4d9f-877b-99898e229b01",
+    "competition": "T20 Blast",
+    "homeTeam": "Worcestershire",
+    "homeTeamBlueskyHandle": "worcestershireccc.bsky.social",
+    "awayTeam": "Lancashire",
+    "awayTeamBlueskyHandle": "lancscricket.bsky.social",
+    "startDate": "2025-06-13",
+    "endDate": "2025-06-13",
+    "startTimeGmt": "17:30",
+    "venue": "New Road, Worcester",
+    "day": "One Day Match"
+  },
+  {
     "matchId": "852cbb7e-56ed-41bd-b061-383c29401e72",
     "competition": "T20 Blast",
     "homeTeam": "Yorkshire",
