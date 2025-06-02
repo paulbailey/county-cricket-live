@@ -1,41 +1,4 @@
 {
-  "lastUpdated": "2025-06-01T19:40:19.825402+00:00",
-  "streams": {
-    "116043a1-a81f-4747-801c-2c401e907753": {
-      "videoId": null,
-      "title": "Sussex vs Gloucestershire",
-      "channelId": "UC50wZUsUCBzXWsFn0vmaOAA",
-      "standardTitle": "Sussex vs Gloucestershire"
-    },
-    "4350f0ab-181e-4b68-8b05-cf34bd88b710": {
-      "videoId": null,
-      "title": "Middlesex vs Glamorgan",
-      "channelId": "UCj8uKvxoOpYEXE4SzZRtlgw",
-      "standardTitle": "Middlesex vs Glamorgan"
-    },
-    "468993f8-b6e0-4998-848a-408402a13988": {
-      "videoId": null,
-      "title": "Durham vs Lancashire",
-      "channelId": "UCCZ5wP1IUo4_r8vgEzFDpEw",
-      "standardTitle": "Durham vs Lancashire"
-    },
-    "b39c3fc8-2c68-4aa7-94af-61f0f9c908ee": {
-      "videoId": null,
-      "title": "Essex vs Somerset",
-      "channelId": "UCL0ebrj8ISVXWikxxtjRlsA",
-      "standardTitle": "Essex vs Somerset"
-    },
-    "b965e33f-d36e-4a94-bef5-8d8c6534ee55": {
-      "videoId": null,
-      "title": "Northamptonshire vs Leicestershire",
-      "channelId": "UCT1aGQpOXmqSHH63xvxn1TA",
-      "standardTitle": "Northamptonshire vs Leicestershire"
-    },
-    "dc9b7813-9742-4208-87d9-99bd8d5b76ec": {
-      "videoId": null,
-      "title": "Worcestershire vs Yorkshire",
-      "channelId": "UCorQ8Y6syhWYB6QJW_4xVzQ",
-      "standardTitle": "Worcestershire vs Yorkshire"
-    }
-  }
+  "lastUpdated": "2025-06-02T01:31:51.497324+00:00",
+  "streams": {}
 }
